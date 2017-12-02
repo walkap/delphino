@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ReadConfig {
+public class ReadConfig  {
 
 
     private String user, password, DbUrl, DriverUrl;
