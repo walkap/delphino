@@ -40,7 +40,7 @@ public class ReadConfig  {
         return this.DbUrl;
     }
 
-    public String getDriverUrl() {
+    public String getDriverUrl()  {
         return this.DriverUrl;
     }
 }
