@@ -6,36 +6,36 @@ package Entity.Users;
 
 public class User {
     private int ID;
-    private String nome;
-    private String cognome;
+    private String name;
+    private String surname;
 
-    public User(int ID, String nome, String cognome){
+    public User(int ID, String name, String surname){
         this.ID = ID;
-        this.nome = nome;
-        this.cognome = cognome;
+        this.name = name;
+        this.surname = surname;
     }
 
     public void setID(int ID) {
         this.ID = ID;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public int getID(){
+    public int getID() {
         return ID;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getCognome() {
-        return cognome;
+    public String getSurname() {
+        return surname;
     }
 }
