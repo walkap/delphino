@@ -12,7 +12,7 @@ public class DataSource extends ReadConfig {
      *
      */
 
-    private Connection getConnection() throws SQLException, ClassNotFoundException{
+    protected Connection getConnection() throws SQLException, ClassNotFoundException{
 
         ReadConfig rc = new ReadConfig();
         rc.load();
@@ -30,7 +30,7 @@ public class DataSource extends ReadConfig {
         return connection;
     }
 
-    /*public static void main(String[] args){
+    public static void main(String[] args){
 
         try{
 
@@ -44,6 +44,6 @@ public class DataSource extends ReadConfig {
 
         }
 
-    }*/
+    }
 
 }
