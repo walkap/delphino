@@ -4,13 +4,13 @@ package Entity;
 
 public class Building {
 
-    private String nome;
-    private int numeroPiani;
+    private String name;
+    private int numbersOfFloors;
 
-    public Building(String nome, int numeroPiani){
+    public Building(String name, int numbersOfFloors){
 
-        this.nome = nome;
-        this.numeroPiani = numeroPiani;
+        this.name = name;
+        this.numbersOfFloors = numbersOfFloors;
     }
 
 }
