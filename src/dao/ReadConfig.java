@@ -6,13 +6,21 @@ import java.util.Properties;
 
 public class ReadConfig  {
 
+    private static final String FILE = "config.properties";
+
     private String user, password, dbUrl, driverUrl;
+
+    /**
+     * Load database parameter from configuration file,
+     * the database type is not specified, so it is possible
+     * to connect to any database
+     */
 
     public void load() {
 
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("config.properties"));
+            properties.load(new FileInputStream(FILE));
         } catch (IOException e) {
 
             System.out.println("File not found");
