@@ -6,6 +6,12 @@ import java.sql.SQLException;
 
 public class DataSource extends ReadConfig {
 
+    /**
+     * Returns a connection to the database
+     * @return Connection
+     *
+     */
+
     private Connection getConnection() throws SQLException, ClassNotFoundException{
 
         ReadConfig rc = new ReadConfig();
@@ -23,5 +29,21 @@ public class DataSource extends ReadConfig {
 
         return connection;
     }
+
+    /*public static void main(String[] args){
+
+        try{
+
+            DataSource ds = new DataSource();
+
+            System.out.println(ds.getConnection());
+
+        }catch (SQLException | ClassNotFoundException e){
+
+            e.printStackTrace();
+
+        }
+
+    }*/
 
 }
