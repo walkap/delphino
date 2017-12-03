@@ -5,12 +5,12 @@ package Entity;
 public class Building {
 
     private String name;
-    private int numbersOfRooms;
+    private int numbersOfFloors;
 
-    public Building(String name, int numbersOfRooms){
+    public Building(String name, int numbersOfFloors){
 
         this.name = name;
-        this.numbersOfRooms = numbersOfRooms;
+        this.numbersOfFloors = numbersOfFloors;
     }
 
 }
