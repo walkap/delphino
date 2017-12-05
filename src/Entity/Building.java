@@ -5,6 +5,7 @@ package Entity;
 public class Building {
 
     private String name;
+
     private int numbersOfFloors;
 
     public Building(String name, int numbersOfFloors){
@@ -12,5 +13,15 @@ public class Building {
         this.name = name;
         this.numbersOfFloors = numbersOfFloors;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNumbersOfFloors() {
+        return numbersOfFloors;
+    }
+
+
 
 }
