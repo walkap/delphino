@@ -8,46 +8,59 @@ public class ReadConfig  {
 
     private static final String FILE = "config.properties";
 
-    private String user, password, dbUrl, driverUrl;
+    private static Properties properties;
 
     /**
+     * Singleton pattern
      * Load database parameter from configuration file,
      * the database type is not specified, so it is possible
      * to connect to any database
      */
+    private ReadConfig(){
 
-    public void load() {
+    }
 
-        Properties properties = new Properties();
+    public static Properties getProperties() {
+
+        if (properties == null) {
+
+            properties = new Properties();
+        }
+
+            FileInputStream input = null;
+
         try {
-            properties.load(new FileInputStream(FILE));
+            input = new FileInputStream(FILE);
+            properties.load(input);
+
+
         } catch (IOException e) {
 
             System.out.println("File not found");
             e.printStackTrace();
         }
+        finally {
 
-        this.user = properties.getProperty("USER");
-        this.password = properties.getProperty("PASSWORD");
-        this.dbUrl = properties.getProperty("DB_URL");
-        this.driverUrl = properties.getProperty("DRIVER_CLASS_NAME");
+            try{
+
+                if (input != null)
+                  input.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return properties;
 
     }
 
-    public String getUser() {
-        return this.user;
-    }
+    public static void main(String[] args){
 
-    public String getPassword() {
-        return this.password;
-    }
+        Properties p = ReadConfig.getProperties();
 
-    public String getDbUrl() {
-        return this.dbUrl;
-    }
 
-    public String getDriverUrl()  {
-        return this.driverUrl;
+        System.out.println(p);
     }
 
 }
