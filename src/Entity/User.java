@@ -1,4 +1,4 @@
-package Entity.Users;
+package Entity;
 
 /**This is a generic structure for a User in own application
  * It will be finished in next iteration

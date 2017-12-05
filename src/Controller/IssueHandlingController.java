@@ -2,7 +2,7 @@ package Controller;
 
 import Entity.Issue;
 import Entity.Room;
-import Entity.Users.User;
+import Entity.User;
 
 import java.util.Date;
 
