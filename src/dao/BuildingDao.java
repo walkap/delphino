@@ -23,12 +23,16 @@ public class BuildingDao {
         } catch (SQLException e) {
             e.getMessage();
         }
-        try {
-            connection.close();
+        finally {
+
+            try {
+                connection.close();
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
