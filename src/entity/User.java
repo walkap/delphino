@@ -12,8 +12,8 @@ public class User {
         this.surname = surname;
     }
 
-    public void setID(int ID) {
-        this.id = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
