@@ -1,6 +1,6 @@
 package dao;
 
-import Entity.Building;
+import entity.Building;
 
 import java.sql.*;
 
