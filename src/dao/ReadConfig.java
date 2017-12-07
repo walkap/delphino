@@ -19,7 +19,7 @@ public class ReadConfig {
     private ReadConfig(){}
 
     /**
-     * Signleton to have a single instance of this class
+     * Signleton Pattern used to have a single instance of this class
      * @return ReadConfig
      */
 
