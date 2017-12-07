@@ -1,22 +1,19 @@
 package entity;
 
-/**This is a generic structure for a User in own application
- * It will be finished in next iteration
- */
-
 public class User {
-    private int ID;
+
+    private int id;
     private String name;
     private String surname;
 
-    public User(int ID, String name, String surname){
-        this.ID = ID;
+    public User(int id, String name, String surname){
+        this.id = id;
         this.name = name;
         this.surname = surname;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = ID;
     }
 
     public void setName(String name) {
@@ -27,8 +24,8 @@ public class User {
         this.surname = surname;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
