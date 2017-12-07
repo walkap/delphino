@@ -1,6 +1,6 @@
-package Controller;
+package controller;
 
-import Entity.Building;
+import entity.Building;
 import dao.BuildingDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
