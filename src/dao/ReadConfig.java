@@ -7,59 +7,42 @@ import java.util.Properties;
 public class ReadConfig  {
 
     private static final String FILE = "config.properties";
-
     private static Properties properties;
 
     /**
-     * Singleton pattern
+     *
      * Load database parameter from configuration file,
-     * the database type is not specified, so it is possible
-     * to connect to any database
+     * then return a type Properties that contain an array
+     *
+     * @return Properties
+     *
      */
-    private ReadConfig(){
-
-    }
 
     public static Properties getProperties() {
 
-        if (properties == null) {
+        FileInputStream fileInputStream = null;
 
-            properties = new Properties();
-        }
-
-            FileInputStream input = null;
-
+        //Try to open a file stream
         try {
-            input = new FileInputStream(FILE);
-            properties.load(input);
-
+            fileInputStream = new FileInputStream(FILE);
+            properties = new Properties();
+            properties.load(fileInputStream);
 
         } catch (IOException e) {
-
-            System.out.println("File not found");
             e.printStackTrace();
-        }
-        finally {
-
+        } finally {
             try{
-
-                if (input != null)
-                  input.close();
-            }
-            catch (IOException e) {
+                if(fileInputStream != null)
+                    fileInputStream.close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
         return properties;
-
     }
 
     public static void main(String[] args){
-
         Properties p = ReadConfig.getProperties();
-
-
         System.out.println(p);
     }
 
