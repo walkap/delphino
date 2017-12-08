@@ -5,16 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DataSource  {
+public class DataSource {
 
     private Connection connection;
 
     /**
-     *
      * Returns a connection to the database
      *
      * @return Connection
-     *
      */
 
     public Connection getConnection() {
@@ -23,25 +21,25 @@ public class DataSource  {
         String password = properties.getProperty("PASSWORD");
         String dbUrl = properties.getProperty("DB_URL");
         String driver = properties.getProperty("DRIVER_CLASS_NAME");
-       try {
-           Class.forName(driver);
-           connection = DriverManager.getConnection(dbUrl, user, password);
-       }
-       catch (SQLException | ClassNotFoundException e){
-           e.printStackTrace();
-       }
-       return connection;
+        try {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(dbUrl, user, password);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     /**
      * Close a sql connection
+     *
      * @param connection
      */
 
-    public void closeConnection(Connection connection){
-        try{
+    public void closeConnection(Connection connection) {
+        try {
             connection.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
