@@ -12,11 +12,13 @@ public class ReadConfig {
     private static ReadConfig instance = null;
 
     /**
-     * Pivate Default constructor avoid instantiation
+     * Private Default constructor avoid instantiation
      * from external class
      */
 
-    private ReadConfig(){}
+    private ReadConfig(){
+
+    }
 
     /**
      * Signleton Pattern used to have a single instance of this class
