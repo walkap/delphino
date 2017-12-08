@@ -18,14 +18,11 @@ public class DataSource  {
      */
 
     public Connection getConnection() {
-
         Properties properties = ReadConfig.getProperties();
-
         String user = properties.getProperty("USER");
         String password = properties.getProperty("PASSWORD");
         String dbUrl = properties.getProperty("DB_URL");
         String driver = properties.getProperty("DRIVER_CLASS_NAME");
-
        try {
            Class.forName(driver);
            connection = DriverManager.getConnection(dbUrl, user, password);
@@ -33,8 +30,19 @@ public class DataSource  {
        catch (SQLException | ClassNotFoundException e){
            e.printStackTrace();
        }
-
        return connection;
     }
 
+    /**
+     * Close a sql connection
+     * @param connection
+     */
+
+    public void closeConnection(Connection connection){
+        try{
+            connection.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
