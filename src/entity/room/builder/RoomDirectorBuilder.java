@@ -12,7 +12,7 @@ public class RoomDirectorBuilder {
         return myRoomBuilder.getRoom();
     }
 
-    public void constructRoom(int id, String name, Building building, int floor, String type)
+    public void buildRoom(int id, String name, Building building, int floor, String type)
     {
 
         switch (type){
@@ -36,7 +36,7 @@ public class RoomDirectorBuilder {
 
         RoomDirectorBuilder rdb = new RoomDirectorBuilder();
 
-        rdb.constructRoom(23, "a1", new Building("D", 4), 3, "ClassRoom");
+        rdb.buildRoom(23, "a1", new Building("D", 4), 3, "ClassRoom");
 
         Room room = rdb.getRoom();
 
