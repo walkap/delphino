@@ -1,5 +1,4 @@
 package controller;
 
-public class IssueHandlingController {
-
+public class IssueHandlerController {
 }
