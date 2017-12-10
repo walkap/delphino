@@ -44,7 +44,7 @@ public class RoomDirectorBuilder {
         room.setBoard("lavagna nera");
 
         System.out.println(
-                "Floor: " + room.getFloor() +
+                " Floor: " + room.getFloor() +
                 " Id: "  + room.getId() +
                 " Name: " + room.getName() +
                 " Building: " + room.getBuilding().getName() +

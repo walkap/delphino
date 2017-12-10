@@ -5,7 +5,7 @@ import entity.room.Room;
 
 public abstract class RoomBuilder {
 
-    private Room myRoom;
+    public Room myRoom;
 
     public void createRoom(int id, String name, Building building, int floor){
         myRoom = new Room(id, name, building, floor);

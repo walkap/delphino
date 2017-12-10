@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="514.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.roomController.TemplateClassRoomController
+">
+   <children>
+      <Label layoutX="214.0" layoutY="60.0" text="Creazione Modello Aula" />
+      <Label layoutX="47.0" layoutY="137.0" text="Nome" />
+      <Label layoutX="47.0" layoutY="174.0" text="Numero posti a sedere" />
+      <Label layoutX="46.0" layoutY="213.0" text="Lavagna" />
+      <Label layoutX="46.0" layoutY="249.0" text="Proiettore" />
+      <Label layoutX="45.0" layoutY="284.0" text="Cattedra" />
+      <CheckBox fx:id="desk" layoutX="214.0" layoutY="284.0" mnemonicParsing="false" />
+      <TextField fx:id="projector" layoutX="214.0" layoutY="244.0" />
+      <TextField fx:id="board" layoutX="214.0" layoutY="208.0" />
+      <TextField fx:id="seats" layoutX="214.0" layoutY="169.0" />
+      <TextField fx:id="name" layoutX="214.0" layoutY="132.0" />
+   </children>
+</AnchorPane>
