@@ -1,7 +1,5 @@
 package dao;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import entity.Building;
 import entity.room.Room;
 
 import java.sql.*;
