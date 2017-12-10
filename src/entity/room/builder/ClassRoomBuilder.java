@@ -4,6 +4,6 @@ public class ClassRoomBuilder extends RoomBuilder{
 
     @Override
     public void setRoomType() {
-        this.myRoom.setType("ClassRoom");
+        this.getRoom().setType("ClassRoom");
     }
 }
