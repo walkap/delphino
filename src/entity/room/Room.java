@@ -26,7 +26,6 @@ public class Room {
      * @param building - Room's building
      * @param floor    - Room's floor
      */
-
     public Room(int id, String name, Building building, int floor) {
         this.id = id;
         this.name = name;
@@ -39,7 +38,6 @@ public class Room {
      *
      * @return int
      */
-
     public int getId() {
         return id;
     }
@@ -49,7 +47,6 @@ public class Room {
      *
      * @return String
      */
-
     public String getName() {
         return name;
     }
@@ -59,7 +56,6 @@ public class Room {
      *
      * @return Building
      */
-
     public Building getBuilding() {
         return building;
     }
@@ -69,7 +65,6 @@ public class Room {
      * It should be <= building floors
      * @return int
      */
-
     public int getFloor() {
         return floor;
     }
@@ -79,7 +74,6 @@ public class Room {
      * This is an optional variable
      * @return int
      */
-
     public int getSeats() {
         return seats;
     }
@@ -89,7 +83,6 @@ public class Room {
      * This is an optional variable
      * @return String
      */
-
     public String getBoard() {
         return board;
     }
@@ -99,7 +92,6 @@ public class Room {
      * This is an optional variable
      * @return String
      */
-
     public String getProjector() {
         return projector;
     }
@@ -110,7 +102,6 @@ public class Room {
      *
      * @return int
      */
-
     public int getComputers() {
         return computers;
     }
@@ -120,7 +111,6 @@ public class Room {
      *
      * @return Boolean
      */
-
     public Boolean hasDesk() {
         return desk;
     }
@@ -130,7 +120,6 @@ public class Room {
      *
      * @return String
      */
-
     public String getType() {
         return type;
     }

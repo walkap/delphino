@@ -14,7 +14,6 @@ public class DataSource {
      *
      * @return Connection
      */
-
     public Connection getConnection() {
         Properties properties = ReadConfig.getProperties();
         String user = properties.getProperty("USER");
@@ -35,7 +34,6 @@ public class DataSource {
      *
      * @param connection
      */
-
     public void closeConnection(Connection connection) {
         try {
             connection.close();
