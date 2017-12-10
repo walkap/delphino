@@ -18,6 +18,7 @@ public class Room {
     private int computers;
     private Boolean desk;
 
+
     /**
      * Constructor
      *
