@@ -7,8 +7,8 @@ public abstract class RoomBuilder {
 
     private Room myRoom;
 
-    public void createRoom(int id, String name, Building building){
-        myRoom = new Room(id, name, building);
+    public void createRoom(String name, Building building, String type){
+        myRoom = new Room(name, building, type);
     }
 
     public Room getRoom(){
@@ -35,8 +35,8 @@ public abstract class RoomBuilder {
         return this;
     }
 
-    public RoomBuilder hasDesk(Boolean arg0){
-        myRoom.setDesk(arg0);
+    public RoomBuilder hasTeacherDesk(Boolean arg0){
+        myRoom.setTeacherDesk(arg0);
         return this;
     }
 
