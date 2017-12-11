@@ -12,7 +12,7 @@ public class RoomDirectorBuilder {
         return myRoomBuilder.getRoom();
     }
 
-    public void buildRoom(int id, String name, Building building, int floor, String type)
+    public void buildRoom(String name, Building building, String type)
     {
 
         switch (type){
@@ -27,7 +27,7 @@ public class RoomDirectorBuilder {
                 break;
         }
 
-        myRoomBuilder.createRoom(id, name, building, floor);
+        myRoomBuilder.createRoom(name, building, type);
         myRoomBuilder.setRoomType();
 
     }
@@ -36,7 +36,7 @@ public class RoomDirectorBuilder {
 
         RoomDirectorBuilder rdb = new RoomDirectorBuilder();
 
-        rdb.buildRoom(23, "a1", new Building("D", 4), 3, "ClassRoom");
+        rdb.buildRoom("a1", new Building("D", "ingegneria"), "ClassRoom");
 
         Room room = rdb.getRoom();
 
@@ -44,7 +44,6 @@ public class RoomDirectorBuilder {
         room.setBoard("lavagna nera");
 
         System.out.println(
-                " Floor: " + room.getFloor() +
                 " Id: "  + room.getId() +
                 " Name: " + room.getName() +
                 " Building: " + room.getBuilding().getName() +
