@@ -1,7 +1,7 @@
-package entity.builder;
+package entity.room.builder;
 
 import entity.Building;
-import entity.Room;
+import entity.room.Room;
 
 public abstract class RoomBuilder {
 

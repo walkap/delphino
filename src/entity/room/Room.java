@@ -1,4 +1,6 @@
-package entity;
+package entity.room;
+
+import entity.Building;
 
 public class Room {
 

@@ -1,4 +1,4 @@
-package entity.builder;
+package entity.room.builder;
 
 public class ClassRoomBuilder extends RoomBuilder{
 
