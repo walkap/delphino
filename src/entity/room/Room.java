@@ -15,20 +15,19 @@ public class Room {
     private String board;
     private int projectors;
     private int computers;
-    private Boolean desk;
+    private Boolean teacherDesk;
 
 
     /**
      * Constructor
      *
-     * @param id       - Room's id
      * @param name     - Room's name
      * @param building - Room's building
      */
-    public Room(int id, String name, Building building) {
-        this.id = id;
+    public Room(String name, Building building, String type) {
         this.name = name;
         this.building = building;
+        this.type = type;
     }
 
     /**
@@ -100,8 +99,8 @@ public class Room {
      *
      * @return Boolean
      */
-    public Boolean hasDesk() {
-        return desk;
+    public Boolean hasTeacherDesk() {
+        return teacherDesk;
     }
 
     /**
@@ -133,7 +132,7 @@ public class Room {
         this.board = board;
     }
 
-    public void setProjectors(int projector) {
+    public void setProjectors(int projectors) {
         this.projectors = projectors;
     }
 
@@ -141,8 +140,8 @@ public class Room {
         this.computers = computers;
     }
 
-    public void setDesk(Boolean desk) {
-        this.desk = desk;
+    public void setTeacherDesk(Boolean teacherDesk) {
+        this.teacherDesk = teacherDesk;
     }
 
     public void setType(String type) {
