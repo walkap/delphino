@@ -5,21 +5,19 @@ package entity;
 public class Building {
 
     private String name;
+    private String area;
 
-    private int numbersOfFloors;
-
-    public Building(String name, int numbersOfFloors){
-
+    public Building(String name, String area){
         this.name = name;
-        this.numbersOfFloors = numbersOfFloors;
+        this.area = area;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getNumbersOfFloors() {
-        return numbersOfFloors;
+    public String getArea() {
+        return area;
     }
 
 
