@@ -1,7 +1,5 @@
 package entity.room;
 
-import entity.Building;
-
 public class Room {
 
     //These variables are mandatory
