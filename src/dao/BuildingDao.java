@@ -6,38 +6,36 @@ import java.sql.*;
 
 public class BuildingDao {
 
-    private Connection connection;
-
-
     public void addBuilding(Building building) {
 
-        Statement stmt = null;
-        DataSource src = new DataSource();
-        connection = src.getConnection();
+        Statement s = null;
+        DataSource ds = new DataSource();
+        Connection c = ds.getConnection();
         try {
-            stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            String sql = "insert into  Buildings(name, numberFloors) values ('" + building.getName() +
-                    "'," + building.getNumbersOfFloors() + ")";
-            stmt.executeQuery(sql);
+            String sql = "insert into  building(name, area) values ('" + building.getName() +
+                    "','" + building.getArea() + "')";
+
+            System.out.println(sql);
+
+            s.executeQuery(sql);
         } catch (SQLException e) {
             e.getMessage();
         }
         finally {
-
+            ds.closeConnection(c);
             try {
-                connection.close();
+                if (s != null)
+                    s.close();
             } catch (SQLException e) {
-
                 e.printStackTrace();
             }
-
-
         }
     }
 
     public static void main (String args[]) {
-        Building building = new Building("Headbuilding", 10);
+        Building building = new Building("C", "Ingegneria");
         BuildingDao buildingDao = new BuildingDao();
         buildingDao.addBuilding(building);
     }
