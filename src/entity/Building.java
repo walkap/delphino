@@ -1,4 +1,4 @@
-package entity.room;
+package entity;
 
 //This object is Building that contains rooms
 

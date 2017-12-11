@@ -1,6 +1,6 @@
 package dao;
 
-import entity.room.Room;
+import entity.Room;
 
 import java.sql.*;
 

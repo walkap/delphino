@@ -1,4 +1,4 @@
-package entity.room;
+package entity;
 
 public class Room {
 

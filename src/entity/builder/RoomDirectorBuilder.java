@@ -1,7 +1,7 @@
-package entity.room.builder;
+package entity.builder;
 
-import entity.room.Building;
-import entity.room.Room;
+import entity.Building;
+import entity.Room;
 
 public class RoomDirectorBuilder {
 

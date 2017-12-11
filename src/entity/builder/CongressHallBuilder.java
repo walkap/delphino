@@ -1,4 +1,4 @@
-package entity.room.builder;
+package entity.builder;
 
 public class CongressHallBuilder extends RoomBuilder {
     @Override
