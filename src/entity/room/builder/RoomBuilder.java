@@ -7,8 +7,8 @@ public abstract class RoomBuilder {
 
     private Room myRoom;
 
-    public void createRoom(int id, String name, Building building, int floor){
-        myRoom = new Room(id, name, building, floor);
+    public void createRoom(int id, String name, Building building){
+        myRoom = new Room(id, name, building);
     }
 
     public Room getRoom(){
@@ -25,8 +25,8 @@ public abstract class RoomBuilder {
         return this;
     }
 
-    public RoomBuilder setProjector(String arg0){
-        myRoom.setProjector(arg0);
+    public RoomBuilder setProjectors(int arg0){
+        myRoom.setProjectors(arg0);
         return this;
     }
 

@@ -14,7 +14,7 @@ public class RoomDao {
     private static final String COLUMN_BOARD = "board";
     private static final String COLUMN_DESK = "desk";
     private static final String COLUMN_SEATS = "seats";
-    private static final String COLUMN_PROJECTOR = "projector";
+    private static final String COLUMN_PROJECTOR = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
 
     /**
