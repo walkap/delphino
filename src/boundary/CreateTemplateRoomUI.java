@@ -1,4 +1,4 @@
-package boundary.createTemplateClassRoom;
+package boundary;
 
 import javafx.fxml.FXML;
 

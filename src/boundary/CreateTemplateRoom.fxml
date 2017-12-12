@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="514.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.createTemplateClassRoom.CreateTemplateRoomUI ">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.CreateTemplateRoomUI ">
     <Label layoutX="214.0" layoutY="60.0" text="Creazione Modello Stanza"/>
     <Label layoutX="51.0" layoutY="158.0" text="Nome"/>
     <Label layoutX="51.0" layoutY="195.0" text="Numero posti a sedere"/>
