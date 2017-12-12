@@ -1,6 +1,13 @@
 package dao;
 
 import entity.room.Room;
+import entity.room.builder.RoomDirectorBuilder;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
 
 public class RoomDao extends AbstractDao {
 
@@ -14,6 +21,17 @@ public class RoomDao extends AbstractDao {
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
 
+    /**
+     * This method is used to add a new room to the database
+     * @param name
+     * @param building
+     * @param type
+     * @param seats
+     * @param boards
+     * @param projectors
+     * @param computers
+     * @param desk
+     */
     public void addRoom(String name, int building, String type, int seats, String boards, int projectors, int computers, Boolean desk) {
         if(!isRoomPresent(name)){
             StringBuilder sql = new StringBuilder();
@@ -24,7 +42,6 @@ public class RoomDao extends AbstractDao {
             sql.append("'").append(type).append("', ");
             sql.append("'").append(building).append("')");
             this.executeUpdate(sql.toString());
-
             System.out.println("Yay! The room has been added to the database!");
         }else{
             System.out.println("It's already present a room named " + name + "in the database");
@@ -55,18 +72,55 @@ public class RoomDao extends AbstractDao {
      * @param name - Room's name
      * @return Boolean
      */
-    public Boolean isRoomPresent(String name) {
+    private Boolean isRoomPresent(String name) {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT from ").append(TABLE_NAME).append(" WHERE ").append(COLUMN_NAME).append(" = '").append(name).append("'");
         System.out.println(sql.toString());
         return this.isPresent(sql.toString());
     }
 
+    public Vector<Room> getAllRoom(){
+        Statement s = null;
+        DataSource ds = new DataSource();
+        Connection c = ds.getConnection();
+        Vector<Room> vec = new Vector<Room>();
+
+        try{
+            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT * FROM " + TABLE_NAME);
+            ResultSet rs = s.executeQuery(sql.toString());
+            RoomDirectorBuilder rdb = new RoomDirectorBuilder();
+
+            while(rs.next()){
+                rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                Room room = rdb.getRoom();
+                room.setBoard(rs.getString(COLUMN_BOARD));
+                room.setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK));
+                room.setSeats(rs.getInt(COLUMN_SEATS));
+                room.setProjectors(rs.getInt(COLUMN_PROJECTORS));
+                room.setComputers(rs.getInt(COLUMN_COMPUTERS));
+                vec.add(room);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("Closing statement...");
+            this.closeStatement(s);
+            System.out.println("Closing connection...");
+            ds.closeConnection(c);
+        }
+
+        return vec;
+    }
+
     public static void main(String[] args) {
         RoomDao rd = new RoomDao();
-        //rd.addRoom("C6", 4, "ClassRoom", 0, null, 0, 0, null);
+        //rd.addRoom("F6", 4, "ClassRoom", 0, null, 0, 0, null);
         //rd.deleteRoom("C4");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
+        //rd.getAllRoom();
     }
 }

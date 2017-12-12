@@ -7,7 +7,7 @@ public abstract class RoomBuilder {
 
     private Room myRoom;
 
-    public void createRoom(String name, Building building, String type){
+    public void createRoom(String name, String building, String type){
         myRoom = new Room(name, building, type);
     }
 
