@@ -25,7 +25,7 @@ public class ReadConfig {
      * @return ReadConfig
      */
 
-    private static synchronized ReadConfig getInstance(){
+    private static ReadConfig getInstance(){
         if(instance == null){
             instance = new ReadConfig();
         }
