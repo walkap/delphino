@@ -7,7 +7,7 @@ public class Room {
     //These variables are mandatory
     private int id;
     private String name;
-    private Building building;
+    private String building;
     private String type;
 
     //There variable are optional
@@ -24,7 +24,7 @@ public class Room {
      * @param name     - Room's name
      * @param building - Room's building
      */
-    public Room(String name, Building building, String type) {
+    public Room(String name, String building, String type) {
         this.name = name;
         this.building = building;
         this.type = type;
@@ -53,7 +53,7 @@ public class Room {
      *
      * @return Building
      */
-    public Building getBuilding() {
+    public String getBuilding() {
         return building;
     }
 
@@ -120,7 +120,7 @@ public class Room {
         this.name = name;
     }
 
-    public void setBuilding(Building building) {
+    public void setBuilding(String building) {
         this.building = building;
     }
 
