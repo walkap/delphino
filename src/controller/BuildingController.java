@@ -9,14 +9,14 @@ public class BuildingController {
     @FXML
     private TextField name;
     @FXML
-    private TextField floorsNum;
+    private TextField area;
 
     public void createBuilding() {
 
         String nameBuilding = name.getText();
-        int floorsNumber = Integer.parseInt(floorsNum.getText());
+        String nameArea = area.getText();
 
-        Building building = new Building(nameBuilding, floorsNumber);
+        Building building = new Building(nameBuilding, nameArea);
         BuildingDao buildingDao = new BuildingDao();
         buildingDao.addBuilding(building);
     }
