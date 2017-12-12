@@ -64,7 +64,7 @@ public class RoomDao extends AbstractDao {
 
     public static void main(String[] args) {
         RoomDao rd = new RoomDao();
-        //rd.addRoom("C6", 4, "ClassRoom", 0, null, 0, 0, null);
+        rd.addRoom("C6", 4, "ClassRoom", 0, null, 0, 0, null);
         //rd.deleteRoom("C4");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
