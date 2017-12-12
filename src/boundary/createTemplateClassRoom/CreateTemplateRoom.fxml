@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="514.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.createTemplateClassRoom.CreateTemplateRoomUI ">
+    <Label layoutX="214.0" layoutY="60.0" text="Creazione Modello Stanza"/>
+    <Label layoutX="51.0" layoutY="158.0" text="Nome"/>
+    <Label layoutX="51.0" layoutY="195.0" text="Numero posti a sedere"/>
+    <Label layoutX="50.0" layoutY="234.0" text="Lavagna"/>
+    <Label layoutX="50.0" layoutY="270.0" text="Proiettori"/>
+    <Label layoutX="49.0" layoutY="305.0" text="Cattedra"/>
+    <CheckBox fx:id="desk" layoutX="218.0" layoutY="305.0" mnemonicParsing="false"/>
+    <TextField fx:id="projectors" layoutX="218.0" layoutY="265.0"/>
+    <TextField fx:id="board" layoutX="218.0" layoutY="229.0"/>
+    <TextField fx:id="seats" layoutX="218.0" layoutY="190.0"/>
+    <TextField fx:id="name" layoutX="218.0" layoutY="153.0"/>
+    <Label layoutX="51.0" layoutY="122.0" text="Tipo di Stanza"/>
+    <TextField layoutX="218.0" layoutY="117.0"/>
+</AnchorPane>
