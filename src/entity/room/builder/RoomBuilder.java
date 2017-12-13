@@ -1,6 +1,5 @@
 package entity.room.builder;
 
-import entity.Building;
 import entity.room.Room;
 
 public abstract class RoomBuilder {
