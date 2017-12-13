@@ -1,4 +1,6 @@
-package entity.room.builder;
+package entity.room.builder.concreteBuilder;
+
+import entity.room.builder.RoomBuilder;
 
 public class LaboratoryBuilder extends RoomBuilder {
 

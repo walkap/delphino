@@ -1,6 +1,9 @@
 package entity.room.builder;
 
 import entity.room.Room;
+import entity.room.builder.concreteBuilder.ClassRoomBuilder;
+import entity.room.builder.concreteBuilder.CongressHallBuilder;
+import entity.room.builder.concreteBuilder.LaboratoryBuilder;
 
 public class RoomDirectorBuilder {
     private RoomBuilder myRoomBuilder;
