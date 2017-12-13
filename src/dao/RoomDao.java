@@ -187,14 +187,14 @@ public class RoomDao extends AbstractDao {
 
     public static void main(String[] args) {
         RoomDao rd = new RoomDao();
-        //rd.addRoom("F6", 4, "ClassRoom", 0, null, 0, 0, null);
-        //rd.deleteRoom("C4");
+        //rd.addRoom("D6", 4, "ClassRoom", 0, null, 0, 0, null);
+        //rd.deleteRoom("C6");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
-        //rd.getAllRoom();
+        rd.getAllRoom();
         //rd.getRoom("D6");
-        Room room = new Room("D6", "5", "Laboratory");
-        room.setBoard("bianca");
-        rd.updateRoom(room);
+        //Room room = new Room("D6", "5", "Laboratory");
+        //room.setBoard("bianca");
+        //rd.updateRoom(room);
     }
 }
