@@ -12,6 +12,7 @@ import java.util.Vector;
 public class RoomDao extends AbstractDao {
 
     private static final String TABLE_NAME = "room";
+    private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_BUILDING = "building";
@@ -43,24 +44,36 @@ public class RoomDao extends AbstractDao {
     /**
      * This method is used to add a new room to the database
      *
-     * @param name
-     * @param building
-     * @param type
-     * @param seats
-     * @param boards
-     * @param projectors
-     * @param computers
-     * @param desk
+     * @param name        - String
+     * @param type        - String
+     * @param seats       - int
+     * @param board       - String
+     * @param projectors  - int
+     * @param computers   - int
+     * @param teacherDesk - Boolean
+     * @param building    - int Building's id
      */
-    public void addRoom(String name, int building, String type, int seats, String boards, int projectors, int computers, Boolean desk) {
+    public void addRoom(String name, String type, int seats, String board, int projectors, int computers, Boolean teacherDesk, int building) {
         if (!isRoomPresent(name)) {
             StringBuilder sql = new StringBuilder();
-            sql.append("insert into " + TABLE_NAME + "(");
-            sql.append(COLUMN_NAME).append(", ").append(COLUMN_TYPE).append(", ").append(COLUMN_BUILDING).append(")");
-            sql.append(" values(");
-            sql.append("'").append(name).append("', ");
-            sql.append("'").append(type).append("', ");
-            sql.append("'").append(building).append("')");
+            sql.append("insert into ").append(TABLE_NAME).append("(")
+                    .append(COLUMN_NAME).append(", ")
+                    .append(COLUMN_TYPE).append(", ")
+                    .append(COLUMN_SEATS).append(", ")
+                    .append(COLUMN_BOARD).append(", ")
+                    .append(COLUMN_PROJECTORS).append(", ")
+                    .append(COLUMN_COMPUTERS).append(", ")
+                    .append(COLUMN_TEACHER_DESK).append(", ")
+                    .append(COLUMN_BUILDING).append(")")
+                    .append(" values(")
+                    .append("'").append(name).append("', ")
+                    .append("'").append(type).append("', ")
+                    .append("'").append(seats).append("', ")
+                    .append("'").append(board).append("', ")
+                    .append("'").append(projectors).append("', ")
+                    .append("'").append(computers).append("', ")
+                    .append("'").append(teacherDesk).append("', ")
+                    .append("'").append(building).append("')");
             this.executeUpdate(sql.toString());
             System.out.println("Yay! The room has been added to the database!");
         } else {
@@ -77,7 +90,10 @@ public class RoomDao extends AbstractDao {
     public void deleteRoom(String name) {
         if (isRoomPresent(name)) {
             StringBuilder sql = new StringBuilder();
-            sql.append("DELETE from ").append(TABLE_NAME).append(" WHERE ").append(COLUMN_NAME).append(" = '").append(name).append("'");
+            sql.append("DELETE from ")
+                    .append(TABLE_NAME)
+                    .append(" WHERE ")
+                    .append(COLUMN_NAME).append(" = '").append(name).append("'");
             this.executeUpdate(sql.toString());
             System.out.println("The room has been deleted from the database!");
         } else {
@@ -85,8 +101,8 @@ public class RoomDao extends AbstractDao {
         }
     }
 
-
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
+
     /**
      * This method is used to update a room
      *
@@ -123,18 +139,18 @@ public class RoomDao extends AbstractDao {
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
-            sql.append("SELECT * FROM ").append(TABLE_NAME);
-            sql.append(" WHERE " + COLUMN_NAME + "='" + name + "'");
+            sql.append("SELECT * FROM ").append(TABLE_NAME)
+                    .append(" WHERE ")
+                    .append(COLUMN_NAME)
+                    .append("='")
+                    .append(name)
+                    .append("'");
             ResultSet rs = s.executeQuery(sql.toString());
             if (rs.next()) {
                 RoomDirectorBuilder rdb = new RoomDirectorBuilder();
                 rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
                 room = rdb.getRoom();
-                room.setBoard(rs.getString(COLUMN_BOARD));
-                room.setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK));
-                room.setSeats(rs.getInt(COLUMN_SEATS));
-                room.setProjectors(rs.getInt(COLUMN_PROJECTORS));
-                room.setComputers(rs.getInt(COLUMN_COMPUTERS));
+                setAllOptionalAttributes(room, rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -167,11 +183,7 @@ public class RoomDao extends AbstractDao {
             while (rs.next()) {
                 rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
                 Room room = rdb.getRoom();
-                room.setBoard(rs.getString(COLUMN_BOARD));
-                room.setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK));
-                room.setSeats(rs.getInt(COLUMN_SEATS));
-                room.setProjectors(rs.getInt(COLUMN_PROJECTORS));
-                room.setComputers(rs.getInt(COLUMN_COMPUTERS));
+                setAllOptionalAttributes(room, rs);
                 vec.add(room);
             }
         } catch (SQLException e) {
@@ -185,13 +197,30 @@ public class RoomDao extends AbstractDao {
         return vec;
     }
 
+    /**
+     * This method is used to set all optional attribute
+     * to instantiate a new object
+     *
+     * @param room - Room's object
+     * @param rs   - ResultSet
+     * @throws SQLException - Exception
+     */
+    private void setAllOptionalAttributes(Room room, ResultSet rs) throws SQLException {
+        room.setId(rs.getInt(COLUMN_ID));
+        room.setBoard(rs.getString(COLUMN_BOARD));
+        room.setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK));
+        room.setSeats(rs.getInt(COLUMN_SEATS));
+        room.setProjectors(rs.getInt(COLUMN_PROJECTORS));
+        room.setComputers(rs.getInt(COLUMN_COMPUTERS));
+    }
+
     public static void main(String[] args) {
-        RoomDao rd = new RoomDao();
+        //RoomDao rd = new RoomDao();
         //rd.addRoom("D6", 4, "ClassRoom", 0, null, 0, 0, null);
         //rd.deleteRoom("C6");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
-        rd.getAllRoom();
+        //rd.getAllRoom();
         //rd.getRoom("D6");
         //Room room = new Room("D6", "5", "Laboratory");
         //room.setBoard("bianca");
