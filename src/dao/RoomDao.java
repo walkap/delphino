@@ -23,6 +23,27 @@ public class RoomDao extends AbstractDao {
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
 
+    private static RoomDao instance = null;
+
+    /**
+     * Default constructor
+     */
+    private RoomDao() {
+
+    }
+
+    /**
+     * This is a singleton, it returns an instance of this class
+     *
+     * @return RoomDao
+     */
+    public static RoomDao getInstance() {
+        if (instance == null) {
+            instance = new RoomDao();
+        }
+        return instance;
+    }
+
     /**
      * This method checks if a room is present
      * in the database using the room's id as parameter
@@ -103,6 +124,7 @@ public class RoomDao extends AbstractDao {
     }
 
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
+
     /**
      * This method is used to update a room
      *
@@ -199,6 +221,7 @@ public class RoomDao extends AbstractDao {
 
     /**
      * This method set all otpional attributes
+     *
      * @param rb - RoomBuilder
      * @param rs - ResultSet
      * @throws SQLException
@@ -212,16 +235,16 @@ public class RoomDao extends AbstractDao {
                 .setComputers(rs.getInt(COLUMN_COMPUTERS));
     }
 
-    public static void main(String[] args) {
-        RoomDao rd = new RoomDao();
+    /*public static void main(String[] args) {
+        //RoomDao rd = new RoomDao();
         //rd.addRoom("D6", 4, "ClassRoom", 0, null, 0, 0, null);
         //rd.deleteRoom("C6");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
-        rd.getAllRoom();
+        //rd.getAllRoom();
         //rd.getRoom("D6");
         //Room room = new Room("D6", "5", "Laboratory");
         //room.setBoard("bianca");
         //rd.updateRoom(room);
-    }
+    }*/
 }
