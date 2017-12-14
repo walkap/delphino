@@ -48,8 +48,8 @@ public class RoomDao extends AbstractDao {
      * This method checks if a room is present
      * in the database using the room's id as parameter
      *
-     * @param name - Room's name
-     * @return Boolean
+     * @param name - String
+     * @return
      */
     private Boolean isRoomPresent(String name) {
         StringBuilder sql = new StringBuilder();
@@ -66,17 +66,10 @@ public class RoomDao extends AbstractDao {
     /**
      * This method is used to add a new room to the database
      *
-     * @param name        - String
-     * @param type        - String
-     * @param seats       - int
-     * @param board       - String
-     * @param projectors  - int
-     * @param computers   - int
-     * @param teacherDesk - Boolean
-     * @param building    - int Building's id
+     * @param room - Room
      */
-    public void addRoom(String name, String type, int seats, String board, int projectors, int computers, Boolean teacherDesk, int building) {
-        if (!isRoomPresent(name)) {
+    public void addRoom(Room room) {
+        if (!isRoomPresent(room.getName())) {
             StringBuilder sql = new StringBuilder();
             sql.append("insert into ").append(TABLE_NAME).append("(")
                     .append(COLUMN_NAME).append(", ")
@@ -88,18 +81,18 @@ public class RoomDao extends AbstractDao {
                     .append(COLUMN_TEACHER_DESK).append(", ")
                     .append(COLUMN_BUILDING).append(")")
                     .append(" values(")
-                    .append("'").append(name).append("', ")
-                    .append("'").append(type).append("', ")
-                    .append("'").append(seats).append("', ")
-                    .append("'").append(board).append("', ")
-                    .append("'").append(projectors).append("', ")
-                    .append("'").append(computers).append("', ")
-                    .append("'").append(teacherDesk).append("', ")
-                    .append("'").append(building).append("')");
+                    .append("'").append(room.getName()).append("', ")
+                    .append("'").append(room.getType()).append("', ")
+                    .append("'").append(room.getSeats()).append("', ")
+                    .append("'").append(room.getBoard()).append("', ")
+                    .append("'").append(room.getProjectors()).append("', ")
+                    .append("'").append(room.getComputers()).append("', ")
+                    .append("'").append(room.hasTeacherDesk()).append("', ")
+                    .append("'").append(room.getBuilding()).append("')");
             this.executeUpdate(sql.toString());
             System.out.println("Yay! The room has been added to the database!");
         } else {
-            System.out.println("It's already present a room named " + name + "in the database");
+            System.out.println("It's already present a room named " + room.getName() + "in the database");
         }
     }
 
@@ -107,15 +100,15 @@ public class RoomDao extends AbstractDao {
      * This method is used to delete {@code room} object
      * from database
      *
-     * @param name - {@code String}
+     * @param room - Room
      */
-    public void deleteRoom(String name) {
-        if (isRoomPresent(name)) {
+    public void deleteRoom(Room room) {
+        if (isRoomPresent(room.getName())) {
             StringBuilder sql = new StringBuilder();
             sql.append("DELETE from ")
                     .append(TABLE_NAME)
                     .append(" WHERE ")
-                    .append(COLUMN_NAME).append(" = '").append(name).append("'");
+                    .append(COLUMN_ID).append(" = '").append(room.getId()).append("'");
             this.executeUpdate(sql.toString());
             System.out.println("The room has been deleted from the database!");
         } else {
@@ -150,11 +143,10 @@ public class RoomDao extends AbstractDao {
     /**
      * This method is used to get an existing room
      *
-     * @param name - String
-     * @return Room
+     * @param room - Room
+     * @return
      */
-    public Room getRoom(String name) {
-        Room room = null;
+    public Room getRoom(Room room) {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
@@ -163,9 +155,9 @@ public class RoomDao extends AbstractDao {
             StringBuilder sql = new StringBuilder();
             sql.append("SELECT * FROM ").append(TABLE_NAME)
                     .append(" WHERE ")
-                    .append(COLUMN_NAME)
+                    .append(COLUMN_ID)
                     .append("='")
-                    .append(name)
+                    .append(room.getId())
                     .append("'");
             ResultSet rs = s.executeQuery(sql.toString());
             if (rs.next()) {
@@ -191,7 +183,7 @@ public class RoomDao extends AbstractDao {
      *
      * @return Vector
      */
-    public Vector<Room> getAllRoom() {
+    public Vector<Room> getAllRooms() {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
