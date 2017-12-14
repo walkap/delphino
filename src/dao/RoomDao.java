@@ -1,6 +1,7 @@
 package dao;
 
 import entity.room.Room;
+import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
 
 import java.sql.Connection;
@@ -102,7 +103,6 @@ public class RoomDao extends AbstractDao {
     }
 
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
-
     /**
      * This method is used to update a room
      *
@@ -148,9 +148,9 @@ public class RoomDao extends AbstractDao {
             ResultSet rs = s.executeQuery(sql.toString());
             if (rs.next()) {
                 RoomDirectorBuilder rdb = new RoomDirectorBuilder();
-                rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                setAllOptionalAttributes(rb, rs);
                 room = rdb.getRoom();
-                setAllOptionalAttributes(room, rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -181,9 +181,9 @@ public class RoomDao extends AbstractDao {
             ResultSet rs = s.executeQuery(sql.toString());
             RoomDirectorBuilder rdb = new RoomDirectorBuilder();
             while (rs.next()) {
-                rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                setAllOptionalAttributes(rb, rs);
                 Room room = rdb.getRoom();
-                setAllOptionalAttributes(room, rs);
                 vec.add(room);
             }
         } catch (SQLException e) {
@@ -198,29 +198,27 @@ public class RoomDao extends AbstractDao {
     }
 
     /**
-     * This method is used to set all optional attribute
-     * to instantiate a new object
-     *
-     * @param room - Room's object
-     * @param rs   - ResultSet
-     * @throws SQLException - Exception
+     * This method set all otpional attributes
+     * @param rb - RoomBuilder
+     * @param rs - ResultSet
+     * @throws SQLException
      */
-    private void setAllOptionalAttributes(Room room, ResultSet rs) throws SQLException {
-        room.setId(rs.getInt(COLUMN_ID));
-        room.setBoard(rs.getString(COLUMN_BOARD));
-        room.setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK));
-        room.setSeats(rs.getInt(COLUMN_SEATS));
-        room.setProjectors(rs.getInt(COLUMN_PROJECTORS));
-        room.setComputers(rs.getInt(COLUMN_COMPUTERS));
+    private void setAllOptionalAttributes(RoomBuilder rb, ResultSet rs) throws SQLException {
+        rb.setId(rs.getInt(COLUMN_ID))
+                .setBoard(rs.getString(COLUMN_BOARD))
+                .setTeacherDesk(rs.getBoolean(COLUMN_TEACHER_DESK))
+                .setSeats(rs.getInt(COLUMN_SEATS))
+                .setProjectors(rs.getInt(COLUMN_PROJECTORS))
+                .setComputers(rs.getInt(COLUMN_COMPUTERS));
     }
 
     public static void main(String[] args) {
-        //RoomDao rd = new RoomDao();
+        RoomDao rd = new RoomDao();
         //rd.addRoom("D6", 4, "ClassRoom", 0, null, 0, 0, null);
         //rd.deleteRoom("C6");
         //rd.isRoomPresent("C6");
         //rd.updateRoom();
-        //rd.getAllRoom();
+        rd.getAllRoom();
         //rd.getRoom("D6");
         //Room room = new Room("D6", "5", "Laboratory");
         //room.setBoard("bianca");

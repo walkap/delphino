@@ -14,6 +14,11 @@ public abstract class RoomBuilder {
         return myRoom;
     }
 
+    public RoomBuilder setId(int arg0){
+        myRoom.setId(arg0);
+        return this;
+    }
+
     public RoomBuilder setSeats(int arg0){
         myRoom.setSeats(arg0);
         return this;
@@ -34,7 +39,7 @@ public abstract class RoomBuilder {
         return this;
     }
 
-    public RoomBuilder hasTeacherDesk(Boolean arg0){
+    public RoomBuilder setTeacherDesk(Boolean arg0){
         myRoom.setTeacherDesk(arg0);
         return this;
     }

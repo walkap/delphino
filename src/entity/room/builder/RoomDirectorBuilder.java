@@ -15,7 +15,7 @@ public class RoomDirectorBuilder {
      * @param building - String
      * @param type     - String
      */
-    public void buildRoom(String name, String building, String type) {
+    public RoomBuilder buildRoom(String name, String building, String type) {
         switch (type) {
             case "ClassRoom":
                 myRoomBuilder = new ClassRoomBuilder();
@@ -29,6 +29,8 @@ public class RoomDirectorBuilder {
         }
         myRoomBuilder.createRoom(name, building, type);
         myRoomBuilder.setRoomType();
+
+        return myRoomBuilder;
     }
 
     /**
