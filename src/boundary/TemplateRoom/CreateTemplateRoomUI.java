@@ -1,10 +1,11 @@
 package boundary.TemplateRoom;
 
-import javafx.beans.property.BooleanProperty;
+import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.CheckBox;
+import javafx.stage.Stage;
 
 import java.awt.*;
 
@@ -35,7 +36,13 @@ public class CreateTemplateRoomUI {
     private CheckBox desk;
     @FXML
     private TextField computers;
+    @FXML
+    private Button quitBtn;
 
+
+    /**
+     * clearInputFields is activated with onAction of Cancel Button
+     */
 
     public void clearInputFields(){
         name.clear();
@@ -62,6 +69,12 @@ public class CreateTemplateRoomUI {
 
         controller.TemplateRoomController.createTemplateRoom(nameT, seatsT, boarsT, projectorsT, computersT, deskT);
 
+    }
+
+    public void closeWindow(){
+
+        Stage stage = (Stage) quitBtn.getScene().getWindow();
+        stage.close();
     }
 
 

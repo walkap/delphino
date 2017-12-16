@@ -15,4 +15,8 @@ public class TemplateRoomController {
             System.out.println("Not work");
         }
     }
+
+    public static void deleteTemplateRoom(String nameTemplate){
+
+    }
 }
