@@ -17,6 +17,7 @@ public class TemplateRoomDao extends AbstractDao {
     private static final String COLUMN_SEATS = "seats";
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
+    private int res;
 
     public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) {
 
@@ -38,11 +39,21 @@ public class TemplateRoomDao extends AbstractDao {
             sql.append("'").append(desk).append("')");
             this.executeUpdate(sql.toString());
 
+            setRes(0);
             System.out.println("The Template of Room has been added to the database");
         } else {
+            setRes(1);
             System.out.println("Ops! " + nameTemplate + " already exists in the system");
         }
     }
+
+    public int getRes(){
+      return res;
+    };
+
+    public void setRes(int res){
+        this.res = res;
+    };
 
 
     /**
