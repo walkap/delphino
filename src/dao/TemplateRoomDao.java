@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+/**
+ *  http://code.makery.ch/blog/javafx-dialogs-official/
+ *
+ */
+
 public class TemplateRoomDao extends AbstractDao {
 
     private static final String TABLE_NAME = "template_room";
@@ -51,7 +56,7 @@ public class TemplateRoomDao extends AbstractDao {
       return res;
     };
 
-    public void setRes(int res){
+    private void setRes(int res){
         this.res = res;
     };
 
@@ -70,8 +75,10 @@ public class TemplateRoomDao extends AbstractDao {
                     .append(" WHERE ").append(COLUMN_NAME)
                     .append(" = '").append(nameTemplate).append("'");
             this.executeUpdate(sql.toString());
+            setRes(0);
             System.out.println("The template of room " + nameTemplate + " has been deleted from database");
         } else {
+            setRes(1);
             System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
         }
     }

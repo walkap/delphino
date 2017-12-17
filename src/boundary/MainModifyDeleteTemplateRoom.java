@@ -13,7 +13,7 @@ public class MainModifyDeleteTemplateRoom extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("ModifyDeleteTemplateRoom.fxml"));
         primaryStage.setTitle("Modifica o Elimina Modello Stanza");
-        primaryStage.setScene(new Scene(root, 600, 500));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
 
     }
