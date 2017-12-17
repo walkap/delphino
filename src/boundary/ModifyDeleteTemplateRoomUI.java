@@ -1,5 +1,6 @@
 package boundary;
 
+import controller.TemplateRoomController;
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
@@ -39,6 +40,7 @@ public class ModifyDeleteTemplateRoomUI {
     private Button delete;
 
     private static TemplateRoomDao tRD = new TemplateRoomDao();
+    private static TemplateRoom tr = null;
 
 
 
@@ -72,7 +74,7 @@ public class ModifyDeleteTemplateRoomUI {
             public void handle(MouseEvent event) {
                 List<String> list = ListViewTemplateRooms.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                TemplateRoom tr = controller.TemplateRoomController.getTemplateRoom(item);
+                tr = controller.TemplateRoomController.getTemplateRoom(item);
                 name.setText(tr.getNameTemplate());
                 seats.setText(Integer.toString(tr.getSeats()));
                 board.setText(tr.getBoard());
@@ -85,6 +87,65 @@ public class ModifyDeleteTemplateRoomUI {
 
     }
 
+    public void clearInputFields(){
+        name.setText("Name");
+        seats.setText("000");
+        board.setText("Board");
+        projectors.setText("0");
+        computers.setText("00");
+        desk.setSelected(false);
+    }
+
+
+    public void modifyTemplateRoom(){
+        String nTR = name.getText();
+        int sTR = Integer.parseInt(seats.getText());
+        String bTR = board.getText();
+        int pTR = Integer.parseInt(projectors.getText());
+        int cTR = Integer.parseInt(computers.getText());
+        Boolean dTR = desk.isSelected();
+
+        System.out.println(nTR);
+
+        if (!nTR.isEmpty()){
+            TemplateRoom tr = new TemplateRoom(nTR, sTR, bTR, pTR, cTR, dTR);
+            TemplateRoomController.modifyTemplateRoom(tr);
+            int v = TemplateRoomController.getValue();
+            if(v == 2){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("The Template Room has been update");
+                alert.showAndWait();
+                System.out.println(v);
+
+            }else{
+                if (v == 0) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle(null);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Changes at least a value for modify the Template Room");
+                    alert.showAndWait();
+                    System.out.println(v);
+
+                } else if (v == 1){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle(null);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Error in db");
+                    alert.showAndWait();
+                    System.out.println(v);
+
+                }
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error with name of Template");
+            alert.setContentText("You don't choose any Template!");
+            alert.showAndWait();
+        }
+    }
 
 
     public void closeWindow(){
@@ -95,27 +156,46 @@ public class ModifyDeleteTemplateRoomUI {
 
     public void deleteTemplateRoom(){
         String nameT = name.getText();
+
         if(!nameT.isEmpty()){
             controller.TemplateRoomController.deleteTemplateRoom(nameT);
-            /* if(check res){
+            if(tRD.getRes() == 0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("The template of room "
+                        + nameT + " has been deleted from database");
+                alert.showAndWait();
+                ListViewTemplateRooms.getItems().remove(nameT);
 
-            }else{
+            }else if(tRD.getRes() == 1){
+                System.out.println("We are sorry, the template of room you wanted to delete it doesn't exist");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("We are sorry, the template of room "
+                        + nameT + " you wanted to delete it doesn't exist");
+                alert.showAndWait();
 
-            }*/
+            }
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error with name of Template");
             alert.setContentText("You don't choose any Template!");
-
             alert.showAndWait();
         }
-
     }
 
 
     public void initialize() {
 
+        name.setText("Name");
+        seats.setText("000");
+        board.setText("Board");
+        projectors.setText("0");
+        computers.setText("00");
+        desk.setSelected(false);
         ModifyDeleteTemplateRoomUI dTO = new ModifyDeleteTemplateRoomUI();
         ObservableList<String> values = FXCollections.observableArrayList(dTO.createListOfName());
         ListViewTemplateRooms.setItems(values);

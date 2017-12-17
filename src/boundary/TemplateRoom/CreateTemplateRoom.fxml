@@ -14,7 +14,7 @@
             <Label layoutX="48.0" layoutY="193.0" text="Lavagna" />
             <Label layoutX="48.0" layoutY="229.0" text="Proiettori" />
             <Label layoutX="51.0" layoutY="307.0" text="Cattedra" />
-            <CheckBox fx:id="desk" layoutX="216.0" layoutY="307.0" mnemonicParsing="false" />
+            <CheckBox fx:id="desk"  layoutX="216.0" layoutY="307.0" mnemonicParsing="false" />
             <TextField fx:id="projectors" layoutX="216.0" layoutY="224.0" />
             <TextField fx:id="board" layoutX="216.0" layoutY="188.0" />
             <TextField fx:id="seats" layoutX="216.0" layoutY="149.0" />

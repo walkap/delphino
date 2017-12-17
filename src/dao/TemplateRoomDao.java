@@ -22,7 +22,7 @@ public class TemplateRoomDao extends AbstractDao {
     private static final String COLUMN_SEATS = "seats";
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
-    private int res;
+    private static int res;
 
     public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) {
 
@@ -134,7 +134,7 @@ public class TemplateRoomDao extends AbstractDao {
      * @param templateRoom
      */
 
-    public void updateTemplateRoom (TemplateRoom templateRoom){
+    public void updateTemplateRoom(TemplateRoom templateRoom){
         StringBuilder sql = new StringBuilder();
         sql.append("UPDATE " + TABLE_NAME)
                 .append(" SET ")

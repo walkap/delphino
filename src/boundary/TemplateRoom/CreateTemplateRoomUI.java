@@ -1,5 +1,6 @@
 package boundary.TemplateRoom;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 
@@ -39,20 +40,28 @@ public class CreateTemplateRoomUI {
     @FXML
     private Button quitBtn;
 
+    public void initialize(){
+        name.setText("Name");
+        seats.setText("000");
+        board.setText("Board");
+        projectors.setText("0");
+        computers.setText("00");
+        desk.setSelected(false);
+
+    }
+
 
     /**
      * clearInputFields is activated with onAction of Cancel Button
      */
 
     public void clearInputFields(){
-        name.clear();
-        seats.clear();
-        board.clear();
-        board.clear();
-        projectors.clear();
+        name.setText("Name");
+        seats.setText("000");
+        board.setText("Board");
+        projectors.setText("0");
+        computers.setText("00");
         desk.setSelected(false);
-        computers.clear();
-
     }
 
     /**
@@ -67,7 +76,20 @@ public class CreateTemplateRoomUI {
         int computersT = Integer.parseInt(computers.getText());
         Boolean deskT = desk.isSelected();
 
-        controller.TemplateRoomController.createTemplateRoom(nameT, seatsT, boarsT, projectorsT, computersT, deskT);
+        if(controller.TemplateRoomController.createTemplateRoom(nameT, seatsT,
+                boarsT, projectorsT, computersT, deskT) == 0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("The Template " + nameT + " has been created");
+            alert.showAndWait();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("The Template '" + nameT + "' is present yet");
+            alert.showAndWait();
+        }
 
     }
 
