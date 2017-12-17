@@ -1,6 +1,7 @@
 package controller;
 
 import dao.TemplateRoomDao;
+import entity.TemplateRoom;
 
 public class TemplateRoomController {
 
@@ -25,5 +26,17 @@ public class TemplateRoomController {
         }else{
             System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
         }
+    }
+
+    public static TemplateRoom getTemplateRoom(String nameT) throws NullPointerException{
+        TemplateRoom tr = null;
+
+        try {
+            tr = tRD.getTemplateRoom(nameT);
+
+        }catch (NullPointerException n) {
+
+        }
+        return tr;
     }
 }
