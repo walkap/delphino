@@ -62,7 +62,7 @@ public class TemplateRoomDao extends AbstractDao {
 
 
     /**
-     * This method is used to delete {@code templateRoom} object
+     * This method is used to delete {@code boundary.templateRoom} object
      * from database
      *
      * @param nameTemplate - {@code string}
@@ -85,7 +85,7 @@ public class TemplateRoomDao extends AbstractDao {
 
 
     /**
-     * This method is used to get an existing templateRoom
+     * This method is used to get an existing boundary.templateRoom
      *
      * @param nameTemplate - String
      * @return Room
@@ -129,7 +129,7 @@ public class TemplateRoomDao extends AbstractDao {
     }
 
     /**
-     * This method is used to update a templateRoom
+     * This method is used to update a boundary.templateRoom
      *
      * @param templateRoom
      */

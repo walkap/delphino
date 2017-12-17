@@ -27,7 +27,7 @@ public class TemplateRoomController {
 
     public static int createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
         //createTemplateRoom(nT, sT, bT, pT, cT, dT);
-        //TemplateRoom templateRoom = new TemplateRoom(nT, sT, bT, pT, cT, dT);
+        //TemplateRoom boundary.templateRoom = new TemplateRoom(nT, sT, bT, pT, cT, dT);
         tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
         int res = 0;
         if (tRD.getRes() == 0 ) {

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="clear" prefHeight="543.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.ModifyDeleteTemplateRoomUI">
+<AnchorPane id="clear" prefHeight="543.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.templateRoom.modifyDeleteTemplateRoom.ModifyDeleteTemplateRoomUI">
     <children>
         <Label layoutX="193.0" layoutY="32.0" text="Modifica o Elimina Modello Stanza">
             <font>

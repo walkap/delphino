@@ -1,4 +1,4 @@
-package boundary;
+package boundary.templateRoom.modifyDeleteTemplateRoom;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

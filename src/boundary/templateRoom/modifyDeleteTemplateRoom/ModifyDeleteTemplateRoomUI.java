@@ -1,4 +1,4 @@
-package boundary;
+package boundary.templateRoom.modifyDeleteTemplateRoom;
 
 import controller.TemplateRoomController;
 import dao.TemplateRoomDao;

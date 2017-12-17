@@ -1,4 +1,4 @@
-package boundary.TemplateRoom;
+package boundary.templateRoom.createTemplateRoom;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
