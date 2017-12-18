@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -8,21 +11,21 @@
     <children>
         <AnchorPane prefHeight="514.0" prefWidth="600.0">
             <children>
-            <Label layoutX="214.0" layoutY="60.0" text="Creazione Modello Stanza" />
-            <Label layoutX="49.0" layoutY="117.0" text="Nome" />
-            <Label layoutX="49.0" layoutY="154.0" text="Numero posti a sedere" />
-            <Label layoutX="48.0" layoutY="193.0" text="Lavagna" />
-            <Label layoutX="48.0" layoutY="229.0" text="Proiettori" />
-            <Label layoutX="51.0" layoutY="307.0" text="Cattedra" />
-            <CheckBox fx:id="desk"  layoutX="216.0" layoutY="307.0" mnemonicParsing="false" />
-            <TextField fx:id="projectors" layoutX="216.0" layoutY="224.0" />
-            <TextField fx:id="board" layoutX="216.0" layoutY="188.0" />
-            <TextField fx:id="seats" layoutX="216.0" layoutY="149.0" />
-            <TextField fx:id="name" layoutX="216.0" layoutY="112.0" />
-            <Button layoutX="474.0" layoutY="364.0" mnemonicParsing="false" onAction="#createTemplateRoom" text="Conferma" />
-            <Button layoutX="387.0" layoutY="364.0" mnemonicParsing="false" onAction="#clearInputFields" text="Cancella" />
-            <Label layoutX="52.0" layoutY="268.0" text="Computers" />
-            <TextField fx:id="computers" layoutX="216.0" layoutY="263.0" />
+            <Label layoutX="214.0" layoutY="62.0" text="Creazione Modello Stanza" />
+            <Label layoutX="40.0" layoutY="110.0" text="Nome" />
+            <Label layoutX="40.0" layoutY="150.0" text="Numero posti a sedere" />
+            <Label layoutX="40.0" layoutY="190.0" text="Lavagna" />
+            <Label layoutX="40.0" layoutY="230.0" text="Proiettori" />
+            <Label layoutX="40.0" layoutY="310.0" text="Cattedra" />
+            <CheckBox fx:id="desk" layoutX="216.0" layoutY="310.0" mnemonicParsing="false" />
+            <TextField fx:id="projectors" layoutX="216.0" layoutY="230.0" />
+            <TextField fx:id="board" layoutX="216.0" layoutY="190.0" />
+            <TextField fx:id="seats" layoutX="216.0" layoutY="150.0" />
+            <TextField fx:id="name" layoutX="216.0" layoutY="110.0" />
+            <Button layoutX="474.0" layoutY="370.0" mnemonicParsing="false" onAction="#createTemplateRoom" text="Conferma" />
+            <Button layoutX="387.0" layoutY="370.0" mnemonicParsing="false" onAction="#clearInputFields" text="Cancella" />
+            <Label layoutX="40.0" layoutY="270.0" text="Computers" />
+            <TextField fx:id="computers" layoutX="216.0" layoutY="270.0" />
             <Button fx:id="quitBtn" layoutX="529.0" layoutY="22.0" mnemonicParsing="false" onAction="#closeWindow" text="Esci" />
             </children>
         </AnchorPane>

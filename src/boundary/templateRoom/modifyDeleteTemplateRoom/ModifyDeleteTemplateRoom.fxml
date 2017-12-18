@@ -10,28 +10,28 @@
 
 <AnchorPane id="clear" prefHeight="543.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.templateRoom.modifyDeleteTemplateRoom.ModifyDeleteTemplateRoomUI">
     <children>
-        <Label layoutX="193.0" layoutY="32.0" text="Modifica o Elimina Modello Stanza">
+        <Label layoutX="244.0" layoutY="27.0" text="Modifica o Elimina Modello Stanza">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="14.0" layoutY="109.0" text="Nome Modello" />
-        <ListView fx:id="ListViewTemplateRooms" layoutX="125.0" layoutY="109.0" onMouseClicked="#chooseTemplateRoomAndFillTV" prefHeight="123.0" prefWidth="150.0" />
-      <Label layoutX="319.0" layoutY="109.0" text="Nome" />
-      <Label layoutX="319.0" layoutY="150.0" text="Numero posti a sedere" />
-      <Label layoutX="319.0" layoutY="190.0" text="Lavagna" />
-      <Label layoutX="316.0" layoutY="232.0" text="Proiettori" />
-      <Label layoutX="314.0" layoutY="274.0" text="Computers" />
-      <Label layoutX="318.0" layoutY="318.0" text="Cattedra" />
-      <TextField fx:id="name" disable="true" layoutX="493.0" layoutY="104.0" />
-      <TextField fx:id="seats" layoutX="493.0" layoutY="145.0" />
-      <TextField fx:id="board" layoutX="493.0" layoutY="185.0" />
-      <TextField fx:id="projectors" layoutX="493.0" layoutY="227.0" />
-      <TextField fx:id="computers" layoutX="493.0" layoutY="269.0" />
-      <CheckBox fx:id="desk" layoutX="493.0" layoutY="318.0" mnemonicParsing="false" />
-      <Button fx:id="modify" layoutX="565.0" layoutY="432.0" mnemonicParsing="false" onAction="#modifyTemplateRoom" text="Modifica" />
-      <Button fx:id="delete" layoutX="656.0" layoutY="432.0" mnemonicParsing="false" onAction="#deleteTemplateRoom" prefHeight="29.0" prefWidth="85.0" text="Elimina " />
+        <Label layoutX="14.0" layoutY="110.0" text="Nome Modello" />
+        <ListView fx:id="ListViewTemplateRooms" layoutX="125.0" layoutY="110.0" onMouseClicked="#chooseTemplateRoomAndFillTV" prefHeight="123.0" prefWidth="150.0" />
+      <Label layoutX="320.0" layoutY="110.0" text="Nome" />
+      <Label layoutX="320.0" layoutY="150.0" text="Numero posti a sedere" />
+      <Label layoutX="320.0" layoutY="190.0" text="Lavagna" />
+      <Label layoutX="320.0" layoutY="230.0" text="Proiettori" />
+      <Label layoutX="320.0" layoutY="270.0" text="Computers" />
+      <Label layoutX="320.0" layoutY="310.0" text="Cattedra" />
+      <TextField fx:id="name" disable="true" layoutX="490.0" layoutY="110.0" />
+      <TextField fx:id="seats" layoutX="490.0" layoutY="150.0" />
+      <TextField fx:id="board" layoutX="490.0" layoutY="190.0" />
+      <TextField fx:id="projectors" layoutX="490.0" layoutY="230.0" />
+      <TextField fx:id="computers" layoutX="490.0" layoutY="270.0" />
+      <CheckBox fx:id="desk" layoutX="490.0" layoutY="310.0" mnemonicParsing="false" />
+      <Button fx:id="modify" layoutX="560.0" layoutY="430.0" mnemonicParsing="false" onAction="#modifyTemplateRoom" text="Modifica" />
+      <Button fx:id="delete" layoutX="655.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteTemplateRoom" prefHeight="29.0" prefWidth="85.0" text="Elimina " />
       <Button fx:id="quitBtn" layoutX="676.0" layoutY="37.0" mnemonicParsing="false" onAction="#closeWindow" text="Esci" />
-      <Button onAction="#clearInputFields" layoutX="437.0" layoutY="432.0" mnemonicParsing="false" text="Pulisci i campi" />
+      <Button layoutX="430.0" layoutY="430.0" mnemonicParsing="false" onAction="#clearInputFields" text="Pulisci i campi" />
     </children>
 </AnchorPane>

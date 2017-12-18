@@ -124,7 +124,9 @@ public class TemplateRoomDao extends AbstractDao {
             System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
-        System.out.println(tr.getNameTemplate());
+        System.out.println(tr.getNameTemplate() + tr.getSeats() + tr.getBoard() + tr.getProjectors()
+        + tr.getComputers() + tr.getDesk());
+        System.out.println(tr);
         return tr;
     }
 
@@ -217,14 +219,15 @@ public class TemplateRoomDao extends AbstractDao {
 
     }
 
+
     public static void main(String[] args) {
         TemplateRoomDao rtd = new TemplateRoomDao();
         //rtd.addTemplateRoom("C", 150, "BlackBoard", 2, 0, true);
         //rtd.deleteTemplateRoom("B");
         //rtd.getTemplateRoom("D");
         //rtd.getAllTemplateRoom();
-        TemplateRoom tr = new TemplateRoom("C", 150, "White", 3, 20, false);
-        rtd.updateTemplateRoom(tr);
+        //TemplateRoom tr = new TemplateRoom("C", 150, "White", 3, 20, false);
+        //rtd.updateTemplateRoom(tr);
 
     }
 }

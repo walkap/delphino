@@ -39,12 +39,18 @@ public class CreateTemplateRoomUI {
     private Button quitBtn;
 
     public void initialize(){
+        /*
         name.setText("Name");
-        seats.setText("000");
         board.setText("Board");
         projectors.setText("0");
         computers.setText("00");
         desk.setSelected(false);
+        */
+        seats.setText("0");
+        projectors.setText("0");
+        computers.setText("0");
+        board.setText("No board");
+
 
     }
 
@@ -54,12 +60,23 @@ public class CreateTemplateRoomUI {
      */
 
     public void clearInputFields(){
-        name.setText("Name");
+        /*name.setText("Name");
         seats.setText("000");
         board.setText("Board");
         projectors.setText("0");
         computers.setText("00");
         desk.setSelected(false);
+        */
+        name.setText("");
+        seats.setText("0");
+        board.setText("No board");
+        board.setText("");
+        projectors.setText("0");
+        computers.setText("0");
+        desk.setSelected(false);
+    }
+
+    public void controlInputEmpty(){
     }
 
     /**
@@ -69,23 +86,31 @@ public class CreateTemplateRoomUI {
     public void createTemplateRoom(){
         String nameT = name.getText();
         int seatsT = Integer.parseInt(seats.getText());
-        String boarsT = board.getText();
+        String boardsT = board.getText();
         int projectorsT = Integer.parseInt(projectors.getText());
         int computersT = Integer.parseInt(computers.getText());
         Boolean deskT = desk.isSelected();
 
-        if(controller.TemplateRoomController.createTemplateRoom(nameT, seatsT,
-                boarsT, projectorsT, computersT, deskT) == 0){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(null);
-            alert.setHeaderText(null);
-            alert.setContentText("The Template " + nameT + " has been created");
-            alert.showAndWait();
-        }else{
+        if(!nameT.isEmpty()) {
+            if (controller.TemplateRoomController.createTemplateRoom(nameT, seatsT,
+                    boardsT, projectorsT, computersT, deskT)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("The Template " + nameT + " has been created");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("The Template '" + nameT + "' is present yet");
+                alert.showAndWait();
+            }
+        }else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle(null);
             alert.setHeaderText(null);
-            alert.setContentText("The Template '" + nameT + "' is present yet");
+            alert.setContentText("Name can't be null");
             alert.showAndWait();
         }
 

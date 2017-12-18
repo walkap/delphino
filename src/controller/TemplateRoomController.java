@@ -24,33 +24,27 @@ public class TemplateRoomController {
     }
 
 
-
-    public static int createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
+    public static Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
         //createTemplateRoom(nT, sT, bT, pT, cT, dT);
         //TemplateRoom boundary.templateRoom = new TemplateRoom(nT, sT, bT, pT, cT, dT);
+        Boolean bool = false;
         tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
-        int res = 0;
-        if (tRD.getRes() == 0 ) {
+        if (tRD.getRes() == 0) {
             System.out.println("Ok Template Room created");
-            return res;
+            return bool = true;
         } else {
             System.out.println("Not work");
-            return res = 1;
+            return bool;
         }
     }
 
     public static void deleteTemplateRoom(String nameTemplate) {
         tRD.deleteTemplateRoom(nameTemplate);
-        if (tRD.getRes() == 0) {
-            System.out.println("The template of room " + nameTemplate + " has been deleted from database");
-        } else {
-            System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
-        }
     }
+
 
     public static TemplateRoom getTemplateRoom(String nameT) throws NullPointerException {
         TemplateRoom tr = null;
-
         try {
             tr = tRD.getTemplateRoom(nameT);
 
@@ -60,28 +54,69 @@ public class TemplateRoomController {
         return tr;
     }
 
-    public static void modifyTemplateRoom(TemplateRoom templateRoom) {
+
+    public Boolean areTwoTemplateRoomsEquals(TemplateRoom tr1, TemplateRoom tr2){
+        Boolean bool = false;
+        String name1 = tr1.getNameTemplate();
+        int seats1 = tr1.getSeats();
+        String board1 = tr1.getBoard();
+        int projectors1 = tr1.getProjectors();
+        int computers1 = tr1.getComputers();
+        Boolean desk1 = tr1.getDesk();
+
+        String name2 = tr2.getNameTemplate();
+        int seats2 = tr2.getSeats();
+        String board2 = tr2.getBoard();
+        int projectors2 = tr2.getProjectors();
+        int computers2 = tr2.getComputers();
+        Boolean desk2 = tr2.getDesk();
+
+        System.out.println(name1);
+        System.out.println(name2);
+
+        if ((name1 == name2)/* & (seats1 == seats2) & (board1 == board2)
+                & (projectors1 == projectors2) & (computers1 == computers2) & (desk1 == desk2)*/){
+            bool = true;
+        }
+        return bool;
+    }
+
+
+    public static int modifyTemplateRoom(TemplateRoom templateRoom) {
+        int res = 0;
         String nameTemplate = templateRoom.getNameTemplate();
         if (tRD.isTemplateRoomPresent(nameTemplate)) {
             TemplateRoom templateRoom2 = tRD.getTemplateRoom(nameTemplate);
-            if(templateRoom2.getBoard() == templateRoom.getBoard() &&
-                    templateRoom2.getSeats() == templateRoom.getSeats() &&
-                    templateRoom2.getProjectors() == templateRoom.getProjectors() &&
-                    templateRoom2.getComputers() == templateRoom.getProjectors() &&
-                    templateRoom2.getDesk() == templateRoom.getDesk()){
-                setValue(0);
+            TemplateRoomController tRC = new TemplateRoomController();
+            if (tRC.areTwoTemplateRoomsEquals(templateRoom, templateRoom2)) {
+
                 System.out.println(0);
                 //The Template Room hasn't been update
-            }else{
+            } else {
                 tRD.updateTemplateRoom(templateRoom);
                 //TemplateRoom not update because the values are equals;
-                setValue(2);
+                res = 2;
                 System.out.println(2);
             }
         } else {
             //TemplateRoom not update because is not present in db
             System.out.println(1);
-            setValue(1);
-        }
+            res = 1;
+        } return res;
+    }
+
+    public static void main(String[] args) {
+        TemplateRoomDao rtd = new TemplateRoomDao();
+        TemplateRoomController tRC = new TemplateRoomController();
+        //rtd.addTemplateRoom("C", 150, "BlackBoard", 2, 0, true);
+        //rtd.deleteTemplateRoom("B");
+        TemplateRoom tR1 = rtd.getTemplateRoom("D");
+        TemplateRoom tR2 = rtd.getTemplateRoom("C");
+        Boolean b = tRC.areTwoTemplateRoomsEquals(tR1, tR2);
+        System.out.println(b);
+        //rtd.getAllTemplateRoom();
+        //TemplateRoom tr = new TemplateRoom("C", 150, "White", 3, 20, false);
+        //rtd.updateTemplateRoom(tr);
+
     }
 }

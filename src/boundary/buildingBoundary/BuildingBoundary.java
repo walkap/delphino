@@ -1,4 +1,4 @@
-package buildingBoundary;
+package boundary.buildingBoundary;
 
 import controller.BuildingController;
 import dao.BuildingDao;
