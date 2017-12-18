@@ -98,7 +98,7 @@ public class ModifyDeleteTemplateRoomUI {
         computers.setText("0");
         desk.setSelected(false);
         */
-
+        name.setText("");
         seats.setText("0");
         projectors.setText("0");
         computers.setText("0");
