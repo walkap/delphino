@@ -14,7 +14,7 @@ public class MainCreateTemplateRoom extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("CreateTemplateRoom.fxml"));
         primaryStage.setTitle("Creazione Modello Stanza");
-        primaryStage.setScene(new Scene(root, 600, 500));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
 
     }

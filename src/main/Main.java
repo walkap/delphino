@@ -19,6 +19,7 @@ public class Main extends Application {
 
     }
 
+    //Todo create a initial db if it is not exist, and populate with random items
 
     public static void main(String[] args) {
         launch(args);
