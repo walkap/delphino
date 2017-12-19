@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Building;
+import exception.BuildingException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,28 +34,29 @@ public class BuildingDao extends AbstractDao {
     }
 
 
-    public void addBuilding(Building building) {
+    public void addBuilding(Building building) throws BuildingException {
 
-            if (!isBuildingPresent(building.getName(),building.getArea())) {
-                StringBuilder sql = new StringBuilder();
-                sql.append("insert into ").append(TABLE_NAME).append("(")
-                        .append(COLUMN_NAME).append(", ")
-                        .append(COLUMN_AREA).append(")")
-                        .append(" values(")
-                        .append("'").append(building.getName()).append("', ")
-                        .append("'").append(building.getArea()).append("')");
-                this.executeUpdate(sql.toString());
-                System.out.println("The building has been added to the database");
-            } else {
-                System.out.println("It's already present a building named " + building.getName() + "in the database");
-            }
+        if (!isBuildingPresent(building.getName(), building.getArea())) {
+            StringBuilder sql = new StringBuilder();
+            sql.append("insert into ").append(TABLE_NAME).append("(")
+                    .append(COLUMN_NAME).append(", ")
+                    .append(COLUMN_AREA).append(")")
+                    .append(" values(")
+                    .append("'").append(building.getName()).append("', ")
+                    .append("'").append(building.getArea()).append("')");
+            this.executeUpdate(sql.toString());
+            System.out.println("The building has been added to the database");
+        } else {
+            System.out.println("It's already present a building named " + building.getName() + "in the database");
+            throw new BuildingException();
         }
+    }
 
     public ArrayList<String> getAreaBuildings(String area) {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
-        ArrayList <String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
@@ -81,20 +83,23 @@ public class BuildingDao extends AbstractDao {
         return list;
     }
 
-    public void updateBuilding(Building oldBuilding, Building newBuilding) {
-            StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE " + TABLE_NAME)
-                    .append(" SET ")
-                    .append(COLUMN_NAME).append(" = '").append(newBuilding.getName()).append("', ")
-                    .append(COLUMN_AREA).append(" = '").append(newBuilding.getArea()).append("'")
-                    .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(oldBuilding.getName()).append("'")
-                    .append (" AND ").append(COLUMN_AREA).append(" = '").append(oldBuilding.getArea()).append("'");
-            System.out.println(sql.toString());
-            this.executeUpdate(sql.toString());
-        }
+    public void updateBuilding(Building oldBuilding, Building newBuilding) throws BuildingException {
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE " + TABLE_NAME)
+                .append(" SET ")
+                .append(COLUMN_NAME).append(" = '").append(newBuilding.getName()).append("', ")
+                .append(COLUMN_AREA).append(" = '").append(newBuilding.getArea()).append("'")
+                .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(oldBuilding.getName()).append("'")
+                .append(" AND ").append(COLUMN_AREA).append(" = '").append(oldBuilding.getArea()).append("'");
+        System.out.println(sql.toString());
+        this.executeUpdate(sql.toString());
+        System.out.println("The building has been updated!");
+
+    }
 
     public void deleteBuilding(Building building) {
-        if (isBuildingPresent(building.getName(), building.getArea())){
+
+        if (isBuildingPresent(building.getName(), building.getArea())) {
             StringBuilder sql = new StringBuilder();
             sql.append("DELETE from ")
                     .append(TABLE_NAME)
@@ -105,14 +110,7 @@ public class BuildingDao extends AbstractDao {
             this.executeUpdate(sql.toString());
             System.out.println("The building has been deleted from the database!");
         } else {
-            System.out.println("We are sorry, the building you wanted to delete it doesn't exist");
+            System.out.println("The building is not in the database");
         }
     }
-
-    public static void main (String args[]) {
-        Building building = new Building("C", "Ingegneria");
-        BuildingDao buildingDao = new BuildingDao();
-        buildingDao.addBuilding(building);
-    }
-
 }

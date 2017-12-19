@@ -13,7 +13,7 @@ public class MainBuilding extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("buildingUI.fxml"));
 
-        primaryStage.setTitle("Crea e Modifica Edificio");
+        primaryStage.setTitle("Building Management");
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
 
