@@ -14,7 +14,14 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="managTRBtn" onAction="#managementTemplateRoomScene" layoutX="23.0" layoutY="129.0" mnemonicParsing="false" text="Managemenent Template Room" AnchorPane.leftAnchor="20.0" />
+      <Button fx:id="managTRBtn" layoutX="23.0" layoutY="129.0" mnemonicParsing="false" onAction="#managementTemplateRoomScene" text="Managemenent Template Room" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0" />
       <Button fx:id="exitBtn" layoutX="542.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" text="Exit" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="20.0" layoutY="192.0" mnemonicParsing="false" text="Management Room" AnchorPane.topAnchor="180.0" />
+      <Button layoutX="20.0" layoutY="251.0" mnemonicParsing="false" text="Management Building" AnchorPane.topAnchor="240.0" />
+      <Label layoutX="269.0" layoutY="125.0" text="&quot;Create, Modify or Delete a Template Room&quot;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

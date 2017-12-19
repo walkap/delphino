@@ -15,5 +15,6 @@
          </font>
       </Label>
       <Button fx:id="exitBtn" layoutX="580.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeWindow" text="Exit" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="homePageBtn" onAction="#mainPrev" layoutX="255.0" layoutY="20.0" mnemonicParsing="false" text="Home Page" AnchorPane.rightAnchor="80.0" />
    </children>
 </AnchorPane>

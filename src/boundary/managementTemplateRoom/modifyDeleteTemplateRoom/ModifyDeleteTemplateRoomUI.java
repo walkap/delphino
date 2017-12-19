@@ -1,5 +1,6 @@
 package boundary.managementTemplateRoom.modifyDeleteTemplateRoom;
 
+import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import controller.TemplateRoomController;
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;
@@ -38,7 +39,7 @@ public class ModifyDeleteTemplateRoomUI {
     @FXML
     private Button startBtn;
     @FXML
-    private Button modify;
+    private Button prevPageBtn;
     @FXML
     private Button delete;
 
@@ -105,6 +106,18 @@ public class ModifyDeleteTemplateRoomUI {
         board.setText("No board");
         desk.setSelected(false);
 
+    }
+
+    public void managementTemplateRoomScene() throws Exception {
+        MainManagementTemplateRoom M = new MainManagementTemplateRoom();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) prevPageBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

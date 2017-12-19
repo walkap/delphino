@@ -5,7 +5,7 @@ import boundary.managementTemplateRoom.modifyDeleteTemplateRoom.MainModifyDelete
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
+import main.Main;
 
 
 public class ManagementTemplateRoomUI {
@@ -16,12 +16,26 @@ public class ManagementTemplateRoomUI {
     private Button createTemplateRoomBtn;
     @FXML
     private Button exitBtn;
+    @FXML
+    private Button homePageBtn;
 
     public void createTemplateRoomScene() throws Exception {
         MainCreateTemplateRoom C = new MainCreateTemplateRoom();
         try {
             C.start(new Stage());
             Stage stage = (Stage) createTemplateRoomBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mainPrev() throws Exception {
+        Main M = new Main();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) homePageBtn.getScene().getWindow();
             stage.close();
 
         } catch (Exception e) {

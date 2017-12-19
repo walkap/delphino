@@ -1,5 +1,6 @@
 package boundary.managementTemplateRoom.createTemplateRoom;
 
+import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -40,6 +41,8 @@ public class CreateTemplateRoomUI {
     private Button quitBtn;
     @FXML
     private Button startBtn;
+    @FXML
+    private Button prePageBtn;
 
     public void initialize() {
         /*
@@ -55,6 +58,18 @@ public class CreateTemplateRoomUI {
         board.setText("No board");
 
 
+    }
+
+    public void managementTemplateRoomScene() throws Exception {
+        MainManagementTemplateRoom M = new MainManagementTemplateRoom();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) prePageBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void mainTemplateRoomScene() throws Exception {
