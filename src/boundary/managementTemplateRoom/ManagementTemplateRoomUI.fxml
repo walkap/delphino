@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.managementTemplateRoom.ManagementTemplateRoomUI">
+   <children>
+      <Button fx:id="modifyTemplateRoomBtn" layoutX="89.0" layoutY="219.0" mnemonicParsing="false" onAction="#modifyTemplateRoomScene" text="Modify Delete Template Room" />
+      <Button fx:id="createTemplateRoomBtn" layoutX="114.0" layoutY="152.0" mnemonicParsing="false" onAction="#createTemplateRoomScene" text="Create Template Room" AnchorPane.leftAnchor="114.0" />
+      <Label layoutX="85.0" layoutY="96.0" text="Management Template Room" underline="true">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="exitBtn" layoutX="580.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeWindow" text="Exit" AnchorPane.rightAnchor="20.0" />
+   </children>
+</AnchorPane>

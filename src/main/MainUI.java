@@ -1,39 +1,23 @@
 package main;
 
-import boundary.managementTemplateRoom.createTemplateRoom.MainCreateTemplateRoom;
-import boundary.managementTemplateRoom.modifyDeleteTemplateRoom.MainModifyDeleteTemplateRoom;
+import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-
 public class MainUI {
 
     @FXML
-    private Button modifyTemplateRoomBtn;
-    @FXML
-    private Button createTemplateRoomBtn;
-    @FXML
     private Button exitBtn;
+    @FXML
+    private Button managTRBtn;
 
-    public void createTemplateRoomScene() throws Exception {
-        MainCreateTemplateRoom C = new MainCreateTemplateRoom();
-        try {
-            C.start(new Stage());
-            Stage stage = (Stage) createTemplateRoomBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void modifyTemplateRoomScene() throws Exception {
-        MainModifyDeleteTemplateRoom M = new MainModifyDeleteTemplateRoom();
+    public void managementTemplateRoomScene() throws Exception {
+        MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());
-            Stage stage = (Stage) modifyTemplateRoomBtn.getScene().getWindow();
+            Stage stage = (Stage) managTRBtn.getScene().getWindow();
             stage.close();
 
         } catch (Exception e) {
@@ -50,12 +34,4 @@ public class MainUI {
             e.printStackTrace();
         }
     }
-
-    public void initialize(){
-
-    }
-
-
-
-
 }
