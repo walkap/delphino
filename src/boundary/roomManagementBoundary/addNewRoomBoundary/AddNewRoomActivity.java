@@ -1,4 +1,4 @@
-package boundary.addNewRoomBoundary;
+package boundary.roomManagementBoundary.addNewRoomBoundary;
 
 import controller.RoomHandlerController;
 import entity.TemplateRoom;
@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import util.Types;
 
-public class addNewRoomActivity {
+public class AddNewRoomActivity {
 
     @FXML
     private TextField roomName;
