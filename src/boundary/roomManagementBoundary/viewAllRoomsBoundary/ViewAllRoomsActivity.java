@@ -1,19 +1,24 @@
 package boundary.roomManagementBoundary.viewAllRoomsBoundary;
 
+import boundary.roomManagementBoundary.viewRoomBoundary.ViewRoomActivity;
 import controller.RoomHandlerController;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
-
+import java.io.IOException;
 import java.util.Vector;
 
 public class ViewAllRoomsActivity {
@@ -41,22 +46,16 @@ public class ViewAllRoomsActivity {
 
     @FXML
     public void initialize() {
-
         //Get all rooms from database
         roomList.addAll(getAllRooms());
-
         //Define table columns
         roomNameColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("Name"));
         roomTypeColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("Type"));
         roomBuilding.setCellValueFactory(new PropertyValueFactory<Room, Integer>("Building"));
-
         //Attach the list to tableView
         roomTable.setItems(roomList);
-
         addButtonToTable();
-
     }
-
 
     /**
      * This method add new column to the table
@@ -73,7 +72,12 @@ public class ViewAllRoomsActivity {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Room room = getTableView().getItems().get(getIndex());
-                            //TODO find a way to get to the room activity
+                            //TODO find a way to get to the room activity, still doesn't work
+                            try{
+                                handleViewRoomButton(room, event);
+                            }catch (IOException e){
+                                e.printStackTrace();
+                            }
                             System.out.println("selectedData: " + room);
                         });
                     }
@@ -94,4 +98,20 @@ public class ViewAllRoomsActivity {
         roomTable.getColumns().add(viewButtonColumn);
     }
 
+    /**
+     * This method start new scene relative to the room selected
+     * @param room - Room
+     * @param e - ActionEvent
+     * @throws IOException
+     */
+    private void handleViewRoomButton(Room room, ActionEvent e) throws IOException{
+        ViewRoomActivity viewRoomActivity = new ViewRoomActivity(room);
+        Parent root = FXMLLoader.load(getClass().getResource("/activity/view_room_activity.fxml"));
+        System.out.println(root);
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        //Create and launch the scene
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
