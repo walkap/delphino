@@ -31,6 +31,8 @@ public class ViewAllRoomsActivity {
     private TableColumn<Room, String> roomTypeColumn;
     @FXML
     private TableColumn<Room, Integer> roomBuilding;
+    @FXML
+    private Button returnButton;
 
     private ObservableList<Room> roomList = FXCollections.observableArrayList();
 
@@ -114,4 +116,21 @@ public class ViewAllRoomsActivity {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void handleButtonAction(ActionEvent e) throws IOException {
+        Parent root;
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        //Check which button has been clicked
+        if (e.getSource() == returnButton) {
+            root = FXMLLoader.load(getClass().getResource("/activity/room_management_activity.fxml"));
+        } else {
+            root = FXMLLoader.load(getClass().getResource("/activity/add_new_room_activity.fxml"));
+        }
+        //Create and launch the scene
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
