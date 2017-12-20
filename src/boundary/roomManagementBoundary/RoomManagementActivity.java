@@ -15,7 +15,9 @@ public class RoomManagementActivity {
     @FXML
     private Button addNewRoom;
     @FXML
-    private Button viewAllRoom;
+    private Button viewAllRooms;
+    @FXML
+    private Button returnButton;
 
     @FXML
     public void initialize() {
@@ -34,8 +36,10 @@ public class RoomManagementActivity {
         //Check which button has been clicked
         if (e.getSource() == addNewRoom) {
             root = FXMLLoader.load(getClass().getResource("/activity/add_new_room_activity.fxml"));
-        } else {
+        } else if(e.getSource() == viewAllRooms) {
             root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
+        }else{
+            root = FXMLLoader.load(getClass().getResource("/main/MainUI.fxml"));
         }
         //Create and launch the scene
         Scene scene = new Scene(root);
