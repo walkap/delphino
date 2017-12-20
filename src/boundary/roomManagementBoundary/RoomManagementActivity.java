@@ -33,9 +33,9 @@ public class RoomManagementActivity {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         //Check which button has been clicked
         if (e.getSource() == addNewRoom) {
-            root = FXMLLoader.load(getClass().getResource("addNewRoomBoundary/add_new_room_activity.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/activity/add_new_room_activity.fxml"));
         } else {
-            root = FXMLLoader.load(getClass().getResource("viewAllRoomsBoundary/view_all_rooms_activity.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
         }
         //Create and launch the scene
         Scene scene = new Scene(root);
