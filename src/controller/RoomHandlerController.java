@@ -27,12 +27,20 @@ public class RoomHandlerController {
         rd.deleteRoom(room);
     }
 
-    public void updateRoom(Room room){
+    public void updateRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers ){
+        RoomDirectorBuilder director = new RoomDirectorBuilder();
+        RoomBuilder builder = director.buildRoom(name, type, building)
+                .setBoard(board)
+                .setTeacherDesk(teacherDesk)
+                .setSeats(seats)
+                .setProjectors(projectors)
+                .setComputers(computers);
+        Room room = builder.getRoom();
         rd.updateRoom(room);
     }
 
-    public Room getRoom(Room room){
-        return rd.getRoom(room);
+    public Room getRoom(int id){
+        return rd.getRoom(id);
     }
 
     public Vector<Room> getAllRooms(){
