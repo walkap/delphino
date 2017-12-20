@@ -7,7 +7,7 @@ import entity.room.builder.RoomDirectorBuilder;
 
 import java.util.Vector;
 
-public class RoomHandlerController {
+public class RoomManagementController {
 
     private RoomDao rd = RoomDao.getInstance();
 
@@ -48,7 +48,7 @@ public class RoomHandlerController {
     }
 
     /*public static void main(String[] args) {
-        RoomHandlerController rhc = new RoomHandlerController();
+        RoomManagementController rhc = new RoomManagementController();
         rhc.addNewRoom("c12", "ClassRoom", 5, "nera", true, 23, 2, 23);
     }*/
 }

@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.addNewRoomBoundary;
 
-import controller.RoomHandlerController;
+import controller.RoomManagementController;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -93,7 +93,7 @@ public class AddNewRoomActivity {
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
 
-        RoomHandlerController roomHandlerController = new RoomHandlerController();
-        roomHandlerController.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
+        RoomManagementController roomManagementController = new RoomManagementController();
+        roomManagementController.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 }

@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.viewRoomBoundary;
 
-import controller.RoomHandlerController;
+import controller.RoomManagementController;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,7 +48,7 @@ public class ViewRoomActivity {
         roomBuilding.setItems(buildingsList);
 
         //TODO get the room from the previous page dynamically
-        RoomHandlerController rhc = new RoomHandlerController();
+        RoomManagementController rhc = new RoomManagementController();
         room = rhc.getRoom(19);
 
         roomName.setText(room.getName());
@@ -75,12 +75,12 @@ public class ViewRoomActivity {
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
 
-        RoomHandlerController rhc = new RoomHandlerController();
+        RoomManagementController rhc = new RoomManagementController();
         rhc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
     public void deleteRoom(){
-        RoomHandlerController rhc = new RoomHandlerController();
+        RoomManagementController rhc = new RoomManagementController();
         rhc.deleteRoom(room);
         //TODO close window or get to the previous page
     }
