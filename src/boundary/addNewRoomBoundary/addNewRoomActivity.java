@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import util.Types;
 
-public class addNewRoomView {
+public class addNewRoomActivity {
 
     @FXML
     private TextField roomName;
@@ -19,11 +19,9 @@ public class addNewRoomView {
     @FXML
     private ComboBox<Integer> roomBuilding;
     private ObservableList<Integer> buildingsList = FXCollections.observableArrayList();
-
     @FXML
     private ComboBox<TemplateRoom> roomTemplate;
     private ObservableList<TemplateRoom> roomTemplateList = FXCollections.observableArrayList();
-
     @FXML
     private TextField roomSeats;
     @FXML
@@ -98,5 +96,4 @@ public class addNewRoomView {
         RoomHandlerController roomHandlerController = new RoomHandlerController();
         roomHandlerController.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
     }
-
 }
