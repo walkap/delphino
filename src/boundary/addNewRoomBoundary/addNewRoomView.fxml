@@ -2,13 +2,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.ComboBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.addNewRoomBoundary.addNewRoomView">
    <children>
+
+       <ComboBox fx:id="roomTemplate" layoutX="232.0" layoutY="44.0" prefWidth="150.0" onAction="#fillFromTemplate"/>
+       <Label layoutX="71.0" layoutY="49.0" text="Fill From Template" />
 
       <Label layoutX="52.0" layoutY="114.0" text="Name" />
       <TextField fx:id="roomName" layoutX="119.0" layoutY="109.0" promptText="Type the room's name" />
@@ -34,7 +37,7 @@
       <Label layoutX="318.0" layoutY="243.0" text="Teacher's Desk" />
       <CheckBox fx:id="roomTeacherDesk" layoutX="450.0" layoutY="243.0" mnemonicParsing="false" text="Has this room a desk?" />
 
-      <Button id="insertRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" text="Insert" onAction="#insertRoom" />
+      <Button id="insertRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" onAction="#insertRoom" text="Insert" />
       <Button id="back" layoutX="467.0" layoutY="329.0" mnemonicParsing="false" text="Return" />
 
    </children>
