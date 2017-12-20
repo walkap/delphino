@@ -5,9 +5,15 @@ import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import util.Types;
+
+import java.io.IOException;
 
 public class AddNewRoomActivity {
 
@@ -32,11 +38,13 @@ public class AddNewRoomActivity {
     private TextField roomComputers;
     @FXML
     private CheckBox roomTeacherDesk;
+    @FXML
+    private Button returnButton;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         String[] types = Types.getTypes();
-        Integer[] buildings = {1,2,3};
+        Integer[] buildings = {1, 2, 3};
 
         //Initialize template combo
         roomTemplateList.add(new TemplateRoom("ciccio", 200, "nera", 2, 20, true));
@@ -46,12 +54,13 @@ public class AddNewRoomActivity {
         roomTemplate.setConverter(new StringConverter<TemplateRoom>() {
             @Override
             public String toString(TemplateRoom object) {
-                if(object == null){
+                if (object == null) {
                     return null;
-                }else{
+                } else {
                     return object.getNameTemplate();
                 }
             }
+
             @Override
             public TemplateRoom fromString(String string) {
                 return null;
@@ -71,7 +80,7 @@ public class AddNewRoomActivity {
      * This template fill most fields
      * to simplify the insert
      */
-    public void fillFromTemplate(){
+    public void fillFromTemplate() {
         TemplateRoom template = roomTemplate.getValue();
         roomSeats.setText(Integer.toString(template.getSeats()));
         roomBoard.setText(template.getBoard());
@@ -83,7 +92,7 @@ public class AddNewRoomActivity {
     /**
      * This method add new room to the database
      */
-    public void insertRoom(){
+    public void insertRoom() {
         String name = roomName.getText();
         String type = roomType.getValue();
         int building = roomBuilding.getValue();
@@ -95,5 +104,17 @@ public class AddNewRoomActivity {
 
         RoomManagementController roomManagementController = new RoomManagementController();
         roomManagementController.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
+    }
+
+    public void returnButton() throws IOException {
+        Parent root;
+        Stage stage = (Stage) returnButton.getScene().getWindow();
+        //Check which button has been clicked
+        root = FXMLLoader.load(getClass().getResource("/activity/room_management_activity.fxml"));
+
+        //Create and launch the scene
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

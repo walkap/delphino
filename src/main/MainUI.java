@@ -4,15 +4,12 @@ import boundary.buildingBoundary.MainBuilding;
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-
 
 public class MainUI {
 
@@ -24,7 +21,7 @@ public class MainUI {
     private Button mRoomButton;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
 
     }
 
@@ -52,7 +49,7 @@ public class MainUI {
         }
     }
 
-    public void managementRoomButton() throws IOException{
+    public void managementRoomButton() throws IOException {
         Parent root;
         Stage stage = (Stage) mRoomButton.getScene().getWindow();
         //Check which button has been clicked
@@ -64,12 +61,12 @@ public class MainUI {
         stage.show();
     }
 
-    public void closeWindow(){
+    public void closeWindow() {
         try {
             Stage stage = (Stage) exitBtn.getScene().getWindow();
             stage.close();
 
-        }catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }

@@ -38,7 +38,7 @@
       <CheckBox fx:id="roomTeacherDesk" layoutX="450.0" layoutY="243.0" mnemonicParsing="false" text="Has this room a desk?" />
 
       <Button id="insertRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" onAction="#insertRoom" text="Insert" />
-      <Button id="back" layoutX="467.0" layoutY="329.0" mnemonicParsing="false" text="Return" />
+      <Button fx:id="returnButton" id="back" layoutX="467.0" layoutY="329.0" mnemonicParsing="false" text="Return" onAction="#returnButton" />
 
    </children>
 </AnchorPane>
