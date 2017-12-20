@@ -7,10 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="boundary.viewRoomBoundary.viewRoomAcvitiy"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="403.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.viewRoomBoundary.viewRoomAcvitiy">
 
     <children>
 
@@ -38,8 +35,9 @@
         <Label layoutX="318.0" layoutY="243.0" text="Teacher's Desk" />
         <CheckBox fx:id="roomTeacherDesk" layoutX="450.0" layoutY="243.0" mnemonicParsing="false" text="Has this room a desk?" />
 
-        <Button id="updateRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" text="Update" onAction="#updateRoom" />
+        <Button id="updateRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" onAction="#updateRoom" text="Update" />
         <Button id="back" layoutX="467.0" layoutY="329.0" mnemonicParsing="false" text="Return" />
+        <Button fx:id="deleteButton" layoutX="35.0" layoutY="328.0" mnemonicParsing="false" onAction="#deleteRoom" text="Delete" textFill="#d71313" />
 
     </children>
 

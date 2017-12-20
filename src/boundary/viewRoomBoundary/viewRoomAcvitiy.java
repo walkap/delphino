@@ -31,6 +31,8 @@ public class viewRoomAcvitiy {
     @FXML
     private CheckBox roomTeacherDesk;
 
+    private Room room;
+
     @FXML
     public void initialize(){
 
@@ -45,8 +47,9 @@ public class viewRoomAcvitiy {
         buildingsList.addAll(buildings);
         roomBuilding.setItems(buildingsList);
 
+        //TODO get the room from the previous page dynamically
         RoomHandlerController rhc = new RoomHandlerController();
-        Room room = rhc.getRoom(6);
+        room = rhc.getRoom(6);
 
         roomName.setText(room.getName());
         roomType.setValue(room.getType());
@@ -56,7 +59,6 @@ public class viewRoomAcvitiy {
         roomProjectors.setText(Integer.toString(room.getProjectors()));
         roomComputers.setText(Integer.toString(room.getComputers()));
         roomTeacherDesk.setSelected(room.hasTeacherDesk());
-
         roomName.setDisable(true);
     }
 
@@ -78,7 +80,9 @@ public class viewRoomAcvitiy {
     }
 
     public void deleteRoom(){
-
+        RoomHandlerController rhc = new RoomHandlerController();
+        rhc.deleteRoom(room);
+        //TODO close window or get to the previous page
     }
 
 }
