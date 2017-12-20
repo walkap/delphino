@@ -6,6 +6,7 @@ import entity.room.builder.concreteBuilder.CongressHallBuilder;
 import entity.room.builder.concreteBuilder.LaboratoryBuilder;
 
 public class RoomDirectorBuilder {
+
     private RoomBuilder myRoomBuilder;
 
     /**
@@ -15,7 +16,8 @@ public class RoomDirectorBuilder {
      * @param building - String
      * @param type     - String
      */
-    public RoomBuilder buildRoom(String name, String building, String type) {
+    public RoomBuilder buildRoom(String name, String type, int building) {
+
         switch (type) {
             case "ClassRoom":
                 myRoomBuilder = new ClassRoomBuilder();
@@ -27,7 +29,8 @@ public class RoomDirectorBuilder {
                 myRoomBuilder = new CongressHallBuilder();
                 break;
         }
-        myRoomBuilder.createRoom(name, building, type);
+
+        myRoomBuilder.createRoom(name, type, building);
         myRoomBuilder.setRoomType();
 
         return myRoomBuilder;
@@ -41,4 +44,11 @@ public class RoomDirectorBuilder {
     public Room getRoom() {
         return myRoomBuilder.getRoom();
     }
+
+
+    /*public static void main(String[] args){
+        RoomDirectorBuilder director = new RoomDirectorBuilder();
+        RoomBuilder builder = director.buildRoom("c12", "ClassRoom", "F");
+    }*/
+
 }

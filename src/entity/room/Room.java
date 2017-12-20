@@ -1,13 +1,11 @@
 package entity.room;
 
-import entity.Building;
-
 public class Room {
 
     //These variables are mandatory
     private int id;
     private String name;
-    private String building;
+    private int building;
     private String type;
 
     //There variable are optional
@@ -17,17 +15,16 @@ public class Room {
     private int computers;
     private Boolean teacherDesk;
 
-
     /**
      * Constructor
      *
      * @param name     - Room's name
      * @param building - Room's building
      */
-    public Room(String name, String building, String type) {
+    public Room(String name, String type, int building) {
         this.name = name;
-        this.building = building;
         this.type = type;
+        this.building = building;
     }
 
     /**
@@ -51,9 +48,9 @@ public class Room {
     /**
      * Get the room's building (place)
      *
-     * @return Building
+     * @return int
      */
-    public String getBuilding() {
+    public int getBuilding() {
         return building;
     }
 
@@ -120,7 +117,7 @@ public class Room {
         this.name = name;
     }
 
-    public void setBuilding(String building) {
+    public void setBuilding(int building) {
         this.building = building;
     }
 
