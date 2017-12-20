@@ -1,4 +1,4 @@
-package boundary.addNewRoomBoundary;
+package boundary.roomManagementBoundary.addNewRoomBoundary;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("addNewRoomActivity.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("add_new_room_activity.fxml"));
         primaryStage.setTitle("Add new room");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
