@@ -162,7 +162,7 @@ public class RoomDao extends AbstractDao {
             ResultSet rs = s.executeQuery(sql.toString());
             if (rs.next()) {
                 RoomDirectorBuilder rdb = new RoomDirectorBuilder();
-                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE), rs.getInt(COLUMN_BUILDING));
                 setAllOptionalAttributes(rb, rs);
                 room = rdb.getRoom();
             }
@@ -195,7 +195,7 @@ public class RoomDao extends AbstractDao {
             ResultSet rs = s.executeQuery(sql.toString());
             RoomDirectorBuilder rdb = new RoomDirectorBuilder();
             while (rs.next()) {
-                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_TYPE));
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE), rs.getInt(COLUMN_BUILDING));
                 setAllOptionalAttributes(rb, rs);
                 Room room = rdb.getRoom();
                 vec.add(room);
@@ -228,10 +228,11 @@ public class RoomDao extends AbstractDao {
     }
 
     /*public static void main(String[] args) {
-        //RoomDao rd = new RoomDao();
-        //rd.addRoom("D6", 4, "ClassRoom", 0, null, 0, 0, null);
+        RoomDao rd = new RoomDao();
+        Room room = new Room("C12", "ClassRoom", "F");
+        //rd.addRoom(room);
         //rd.deleteRoom("C6");
-        //rd.isRoomPresent("C6");
+        rd.isRoomPresent(room.getName());
         //rd.updateRoom();
         //rd.getAllRoom();
         //rd.getRoom("D6");
