@@ -1,4 +1,4 @@
-package boundary.viewRoomBoundary;
+package boundary.roomManagementBoundary.viewRoomBoundary;
 
 import controller.RoomHandlerController;
 import entity.room.Room;
@@ -10,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import util.Types;
 
-public class viewRoomAcvitiy {
+public class ViewRoomActivity {
 
     @FXML
     private TextField roomName;
@@ -49,7 +49,7 @@ public class viewRoomAcvitiy {
 
         //TODO get the room from the previous page dynamically
         RoomHandlerController rhc = new RoomHandlerController();
-        room = rhc.getRoom(6);
+        room = rhc.getRoom(19);
 
         roomName.setText(room.getName());
         roomType.setValue(room.getType());
