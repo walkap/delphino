@@ -33,6 +33,10 @@ public class ViewRoomActivity {
 
     private Room room;
 
+    public ViewRoomActivity(Room room){
+        this.room = room;
+    }
+
     @FXML
     public void initialize(){
 
