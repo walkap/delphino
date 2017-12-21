@@ -30,18 +30,35 @@ public class ViewRoomActivity {
     private TextField roomComputers;
     @FXML
     private CheckBox roomTeacherDesk;
+    //This variable is used to get object from tableView
+    private Room selectedRoom;
 
-    private Room room;
 
-    public ViewRoomActivity(Room room){
-        this.room = room;
+    /**
+     * This method get the room object from the room list
+     *
+     * @param room - Room
+     */
+    public void getRoomIdFromList(Room room) {
+        selectedRoom = room;
+        roomName.setText(selectedRoom.getName());
+        roomType.setValue(selectedRoom.getType());
+        roomBuilding.setValue(selectedRoom.getBuilding());
+        roomSeats.setText(Integer.toString(selectedRoom.getSeats()));
+        roomBoard.setText(selectedRoom.getBoard());
+        roomProjectors.setText(Integer.toString(selectedRoom.getProjectors()));
+        roomComputers.setText(Integer.toString(selectedRoom.getComputers()));
+        roomTeacherDesk.setSelected(selectedRoom.hasTeacherDesk());
+        System.out.println("ViewRoomActivity: getRoomIdFromList " + room.getId());
     }
 
     @FXML
-    public void initialize(){
-
+    public void initialize() {
+        //Initialize the types from util
         String[] types = Types.getTypes();
-        Integer[] buildings = {1,2,3};
+        //TODO we need controller to get all buildings
+        //Initialize the buildings from stub
+        Integer[] buildings = {1, 2, 3};
 
         //Initialize type combo
         typesList.addAll(types);
@@ -50,26 +67,14 @@ public class ViewRoomActivity {
         //Initialize building combo
         buildingsList.addAll(buildings);
         roomBuilding.setItems(buildingsList);
-
-        //TODO get the room from the previous page dynamically
-        RoomManagementController rhc = new RoomManagementController();
-        room = rhc.getRoom(19);
-
-        roomName.setText(room.getName());
-        roomType.setValue(room.getType());
-        roomBuilding.setValue(room.getBuilding());
-        roomSeats.setText(Integer.toString(room.getSeats()));
-        roomBoard.setText(room.getBoard());
-        roomProjectors.setText(Integer.toString(room.getProjectors()));
-        roomComputers.setText(Integer.toString(room.getComputers()));
-        roomTeacherDesk.setSelected(room.hasTeacherDesk());
+        //Disable the user to modify the name field
         roomName.setDisable(true);
     }
 
     /**
      * This method update a room in database
      */
-    public void updateRoom(){
+    public void updateRoom() {
         String name = roomName.getText();
         String type = roomType.getValue();
         int building = roomBuilding.getValue();
@@ -78,15 +83,16 @@ public class ViewRoomActivity {
         int projectors = Integer.parseInt(roomProjectors.getText());
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
-
+        //Call the controller and update the room
         RoomManagementController rhc = new RoomManagementController();
         rhc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
-    public void deleteRoom(){
+    public void deleteRoom() {
         RoomManagementController rhc = new RoomManagementController();
-        rhc.deleteRoom(room);
+        rhc.deleteRoom(selectedRoom);
         //TODO close window or get to the previous page
     }
+
 
 }
