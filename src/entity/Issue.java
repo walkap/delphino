@@ -8,6 +8,38 @@ public class Issue implements Serializable {
 
     private String name;
     private String area;
+    private Building building;
+    private Room room;
+    private String description;
+    private String state;
+
+    private static final long serialVersionUID = 1L;
+
+
+    public Issue (String name, String area, Building building, Room room, String description) {
+        this.name = name;
+        this.area = area;
+        this.building = building;
+        this.room = room;
+        this.description = description;
+        this.state = "New";
+    }
+
+
+    public boolean isEqualTo(Issue i) {
+
+        if (i == null){
+            return false;
+        }
+        if (this.getName().equalsIgnoreCase(i.getName()) && this.getArea().equalsIgnoreCase(i.getArea()) &&
+                this.getBuilding().getName().equalsIgnoreCase(i.getBuilding().getName()) &&
+                this.getRoom().getName().equalsIgnoreCase(i.getRoom().getName())) {
+            return true;
+        }
+        return false;
+
+
+    }
 
     public String getName() {
         return name;
@@ -55,39 +87,6 @@ public class Issue implements Serializable {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    private Building building;
-    private Room room;
-    private String description;
-    private String state;
-
-    private static final long serialVersionUID = 1L;
-
-
-    public Issue (String name, String area, Building building, Room room, String description) {
-        this.name = name;
-        this.area = area;
-        this.building = building;
-        this.room = room;
-        this.description = description;
-        this.state = "New";
-    }
-
-
-    public boolean isEqualTo(Issue i) {
-
-        if (i == null){
-            return false;
-        }
-        if (this.getName().equalsIgnoreCase(i.getName()) && this.getArea().equalsIgnoreCase(i.getArea()) &&
-                this.getBuilding().getName().equalsIgnoreCase(i.getBuilding().getName()) &&
-                this.getRoom().getName().equalsIgnoreCase(i.getRoom().getName())) {
-            return true;
-        }
-        return false;
-
-
     }
 
 }
