@@ -28,9 +28,11 @@ public class FeatureDao extends AbstractDao {
     }
 
     public void deleteFeature(String name) {
-        if(!isFeaturePresent(name)) {
+        if(isFeaturePresent(name)) {
             StringBuilder sql = new StringBuilder();
-            sql.append("DELETE from ").append(TABLE_NAME).append(" WHERE ").append(COLUMN_NAME).append(" = '").append(name).append("'");
+            sql.append("DELETE from ").append(TABLE_NAME)
+                    .append(" WHERE ").append(COLUMN_NAME)
+                    .append(" = '").append(name).append("'");
             this.executeUpdate(sql.toString());
             System.out.println("The feature" + name + "has been deleted from database");
         }else{
@@ -47,6 +49,8 @@ public class FeatureDao extends AbstractDao {
 
     public static void main(String[] args) {
         FeatureDao f = new FeatureDao();
-        f.addFeature("Lavagna Interattiva", "Gli studenti ed il professore sono in grado di interagire con la lavagna in diretta");
+        //f.isFeaturePresent("Lavagna Interattiva");
+        f.deleteFeature("Lavagna Interattiva");
+        //f.addFeature("Lavagna Interattiva", "Gli studenti ed il professore sono in grado di interagire con la lavagna in diretta");
     }
 }
