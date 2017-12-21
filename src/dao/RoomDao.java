@@ -175,7 +175,7 @@ public class RoomDao extends AbstractDao {
             System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
-        System.out.println(room.getName());
+        System.out.println("RoomDao getRoom(): " + room);
         return room;
     }
 
@@ -230,13 +230,13 @@ public class RoomDao extends AbstractDao {
 
     /*public static void main(String[] args) {
         RoomDao rd = new RoomDao();
-        Room room = new Room("C12", "ClassRoom", "F");
+        //Room room = new Room("C12", "ClassRoom", "F");
         //rd.addRoom(room);
         //rd.deleteRoom("C6");
-        rd.isRoomPresent(room.getName());
+        //rd.isRoomPresent(room.getName());
         //rd.updateRoom();
         //rd.getAllRoom();
-        //rd.getRoom("D6");
+        //rd.getRoom(19);
         //Room room = new Room("D6", "5", "Laboratory");
         //room.setBoard("bianca");
         //rd.updateRoom(room);
