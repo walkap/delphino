@@ -19,18 +19,28 @@ import java.io.IOException;
 
 public class ViewRoomActivity {
 
-    @FXML private TextField roomName;
-    @FXML private ComboBox<String> roomType;
+    @FXML
+    private TextField roomName;
+    @FXML
+    private ComboBox<String> roomType;
     private ObservableList<String> typesList = FXCollections.observableArrayList();
-    @FXML private ComboBox<Integer> roomBuilding;
+    @FXML
+    private ComboBox<Integer> roomBuilding;
     private ObservableList<Integer> buildingsList = FXCollections.observableArrayList();
-    @FXML private TextField roomSeats;
-    @FXML private TextField roomBoard;
-    @FXML private TextField roomProjectors;
-    @FXML private TextField roomComputers;
-    @FXML private CheckBox roomTeacherDesk;
-    @FXML private Button deleteButton;
-    @FXML private Button returnButton;
+    @FXML
+    private TextField roomSeats;
+    @FXML
+    private TextField roomBoard;
+    @FXML
+    private TextField roomProjectors;
+    @FXML
+    private TextField roomComputers;
+    @FXML
+    private CheckBox roomTeacherDesk;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button returnButton;
     //This variable is used to get object from tableView
     private Room selectedRoom;
 
@@ -92,7 +102,7 @@ public class ViewRoomActivity {
      * This method is used to delete a room
      * and get to the previous scene
      */
-    public void deleteRoom() throws IOException{
+    public void deleteRoom() throws IOException {
         //Call controller
         RoomManagementController rhc = new RoomManagementController();
         //Call the method to delete the room
@@ -107,7 +117,13 @@ public class ViewRoomActivity {
         stage.show();
     }
 
-    public void returnButton() throws IOException{
+    /**
+     * This method is called from return button,
+     * to get back to the previous scene
+     *
+     * @throws IOException
+     */
+    public void returnButton() throws IOException {
         Parent root;
         Stage stage = (Stage) returnButton.getScene().getWindow();
         //Check which button has been clicked
