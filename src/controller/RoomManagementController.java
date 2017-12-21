@@ -40,6 +40,7 @@ public class RoomManagementController {
     }
 
     public Room getRoom(int id){
+        System.out.println("RoomManagementController getRoom(int " + id + "): " + rd.getRoom(id));
         return rd.getRoom(id);
     }
 
@@ -48,7 +49,7 @@ public class RoomManagementController {
     }
 
     /*public static void main(String[] args) {
-        RoomManagementController rhc = new RoomManagementController();
-        rhc.addNewRoom("c12", "ClassRoom", 5, "nera", true, 23, 2, 23);
+        //RoomManagementController rhc = new RoomManagementController();
+        //rhc.getRoom(14);
     }*/
 }
