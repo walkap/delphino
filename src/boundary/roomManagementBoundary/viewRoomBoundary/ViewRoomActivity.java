@@ -5,34 +5,33 @@ import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import util.Types;
+
+import java.io.IOException;
 
 public class ViewRoomActivity {
 
-    @FXML
-    private TextField roomName;
-    @FXML
-    private ComboBox<String> roomType;
+    @FXML private TextField roomName;
+    @FXML private ComboBox<String> roomType;
     private ObservableList<String> typesList = FXCollections.observableArrayList();
-    @FXML
-    private ComboBox<Integer> roomBuilding;
+    @FXML private ComboBox<Integer> roomBuilding;
     private ObservableList<Integer> buildingsList = FXCollections.observableArrayList();
-    @FXML
-    private TextField roomSeats;
-    @FXML
-    private TextField roomBoard;
-    @FXML
-    private TextField roomProjectors;
-    @FXML
-    private TextField roomComputers;
-    @FXML
-    private CheckBox roomTeacherDesk;
+    @FXML private TextField roomSeats;
+    @FXML private TextField roomBoard;
+    @FXML private TextField roomProjectors;
+    @FXML private TextField roomComputers;
+    @FXML private CheckBox roomTeacherDesk;
+    @FXML private Button deleteButton;
     //This variable is used to get object from tableView
     private Room selectedRoom;
-
 
     /**
      * This method get the room object from the room list
@@ -88,11 +87,22 @@ public class ViewRoomActivity {
         rhc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
-    public void deleteRoom() {
+    /**
+     * This method is used to delete a room
+     * and get to the previous scene
+     */
+    public void deleteRoom() throws IOException{
+        //Call controller
         RoomManagementController rhc = new RoomManagementController();
+        //Call the method to delete the room
         rhc.deleteRoom(selectedRoom);
-        //TODO close window or get to the previous page
+        //Get back to the table view
+        Parent root;
+        Stage stage = (Stage) deleteButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
+        //Create and launch the scene
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-
-
 }

@@ -37,7 +37,7 @@
 
         <Button id="updateRoom" layoutX="555.0" layoutY="328.0" mnemonicParsing="false" onAction="#updateRoom" text="Update" />
         <Button id="back" layoutX="467.0" layoutY="329.0" mnemonicParsing="false" text="Return" />
-        <Button fx:id="deleteButton" layoutX="35.0" layoutY="328.0" mnemonicParsing="false" onAction="#deleteRoom" text="Delete" textFill="#d71313" />
+        <Button fx:id="deleteButton" onAction="#deleteRoom" layoutX="35.0" layoutY="328.0" mnemonicParsing="false" text="Delete" textFill="#d71313" />
 
     </children>
 
