@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class BuildingBoundary implements Initializable {
+public class BuildingBoundary  {
 
     @FXML
     private TextField name;
@@ -36,8 +36,8 @@ public class BuildingBoundary implements Initializable {
     @FXML
     private ComboBox<String> listBuildings;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
 
 
         //initialization combobox
@@ -73,8 +73,8 @@ public class BuildingBoundary implements Initializable {
                 modifyArea.setText(area);
                 modifyArea.setVisible(true);
 
-                BuildingDao buildingDao = new BuildingDao();
-                ArrayList <String> list = buildingDao.getAreaBuildings(area);
+                BuildingController contrl = new BuildingController();
+                ArrayList <String> list = contrl.getAreaBuildings(area);
 
                 int len = list.size();
                 int i = 0;

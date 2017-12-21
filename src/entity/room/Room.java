@@ -1,6 +1,8 @@
 package entity.room;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable{
 
     //These variables are mandatory
     private int id;
@@ -25,6 +27,10 @@ public class Room {
         this.name = name;
         this.type = type;
         this.building = building;
+    }
+
+    public Room(String name) {
+        this.name = name;
     }
 
     /**

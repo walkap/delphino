@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.IssueManagement.addNewIssue.viewIssue.viewIssueBoundary">
+<children>
+      <TableView fx:id="table" layoutX="40.0" layoutY="15.0" onMousePressed="#onIssueClicked" prefHeight="200.0" prefWidth="513.0">
+         <columns>
+            <TableColumn fx:id="titleColumn" prefWidth="130.0" text="Title" />
+            <TableColumn fx:id="roomColumn" prefWidth="65.0" text="Room" />
+            <TableColumn fx:id="bldColumn" prefWidth="109.0" text="Building" />
+            <TableColumn fx:id="areaColumn" prefWidth="165.0" text="Macroarea" />
+         </columns></TableView>
+      <TextArea fx:id="description" layoutX="95.0" layoutY="247.0" prefHeight="128.0" prefWidth="178.0" />
+      <Label fx:id="labelState" layoutX="336.0" layoutY="253.0" text="change state" />
+      <Button fx:id="confirmBtn" layoutX="472.0" layoutY="285.0" mnemonicParsing="false" onAction="#onConfirm" text="Apply changes" />
+      <ComboBox fx:id="states" layoutX="309.0" layoutY="285.0" prefWidth="150.0" />
+      <Label fx:id="labelDesc" layoutX="95.0" layoutY="222.0" text="description:" />
+      <Button fx:id="deleteBtn" onAction ="#onDeleteIssue" layoutX="428.0" layoutY="349.0" mnemonicParsing="false" text="Delete selected Issue" />
+   </children>
+</AnchorPane>

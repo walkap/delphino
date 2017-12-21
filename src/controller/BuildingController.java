@@ -4,6 +4,8 @@ import dao.BuildingDao;
 import entity.Building;
 import exception.BuildingException;
 
+import java.util.ArrayList;
+
 public class BuildingController {
 
     public void createNewBuilding (String name, String area) throws BuildingException{
@@ -32,6 +34,13 @@ public class BuildingController {
         buildingDao.deleteBuilding(building);
 
 
+    }
+
+    public ArrayList<String> getAreaBuildings(String area){
+
+        BuildingDao buildingDao = new BuildingDao();
+        ArrayList<String> list = buildingDao.getAreaBuildings(area);
+        return list;
     }
 
 }
