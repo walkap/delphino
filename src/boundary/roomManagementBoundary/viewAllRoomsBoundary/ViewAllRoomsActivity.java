@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+
 import java.io.IOException;
 import java.util.Vector;
 
@@ -71,18 +72,20 @@ public class ViewAllRoomsActivity {
             public TableCell<Room, Void> call(final TableColumn<Room, Void> param) {
                 final TableCell<Room, Void> cell = new TableCell<Room, Void>() {
                     private final Button btn = new Button("View Room");
+
                     {
                         btn.setOnAction((ActionEvent event) -> {
+                            //Get the room object from selected in tableView
                             Room room = getTableView().getItems().get(getIndex());
-                            //TODO find a way to get to the room activity, still doesn't work
-                            try{
+                            try {
                                 handleViewRoomButton(room, event);
-                            }catch (IOException e){
+                            } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             System.out.println("selectedData: " + room);
                         });
                     }
+
                     @Override
                     public void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
@@ -102,21 +105,33 @@ public class ViewAllRoomsActivity {
 
     /**
      * This method start new scene relative to the room selected
-     * @param room - Room
-     * @param e - ActionEvent
+     *
      * @throws IOException
      */
-    private void handleViewRoomButton(Room room, ActionEvent e) throws IOException{
-        ViewRoomActivity viewRoomActivity = new ViewRoomActivity(room);
-        Parent root = FXMLLoader.load(getClass().getResource("/activity/view_room_activity.fxml"));
-        System.out.println(root);
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        //Create and launch the scene
+
+    private void handleViewRoomButton(Room room, ActionEvent e) throws IOException {
+        //Load the fxml file
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/activity/view_room_activity.fxml"));
+        Parent root = loader.load();
+        //Create new scene
         Scene scene = new Scene(root);
+        //Invoke the right activity
+        ViewRoomActivity viewRoomActivity = loader.getController();
+        //Call method to pass the room object to the room detail scene
+        viewRoomActivity.getRoomIdFromList(room);
+        //Launch the scene
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
+    /**
+     * This method handle the buttons
+     *
+     * @param e - ActionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleButtonAction(ActionEvent e) throws IOException {
         Parent root;
@@ -132,5 +147,4 @@ public class ViewAllRoomsActivity {
         stage.setScene(scene);
         stage.show();
     }
-
 }
