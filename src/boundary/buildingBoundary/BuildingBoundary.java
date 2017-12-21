@@ -107,7 +107,7 @@ public class BuildingBoundary  {
         String nameBuilding = name.getText();
         String area = listAreas.getValue();
 
-        if (area.equals("Macroarea") || area.isEmpty() || nameBuilding.isEmpty() || nameBuilding.length() > 20) {
+        if (area.equalsIgnoreCase("Macroarea") || area.isEmpty() || nameBuilding.isEmpty() || nameBuilding.length() > 20) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(null);

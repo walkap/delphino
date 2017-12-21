@@ -8,20 +8,21 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.IssueManagement.viewIssue.viewIssueBoundary">
+<AnchorPane prefHeight="427.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.IssueManagement.viewIssue.viewIssueBoundary">
 <children>
-      <TableView fx:id="table" layoutX="40.0" layoutY="15.0" onMousePressed="#onIssueClicked" prefHeight="200.0" prefWidth="513.0">
+      <TableView fx:id="table" layoutX="19.0" layoutY="47.0" onMousePressed="#onIssueClicked" prefHeight="200.0" prefWidth="501.0">
          <columns>
             <TableColumn fx:id="titleColumn" prefWidth="130.0" text="Title" />
             <TableColumn fx:id="roomColumn" prefWidth="65.0" text="Room" />
             <TableColumn fx:id="bldColumn" prefWidth="109.0" text="Building" />
             <TableColumn fx:id="areaColumn" prefWidth="165.0" text="Macroarea" />
          </columns></TableView>
-      <TextArea fx:id="description" layoutX="95.0" layoutY="247.0" prefHeight="128.0" prefWidth="178.0" />
+      <TextArea fx:id="description" layoutX="59.0" layoutY="263.0" prefHeight="128.0" prefWidth="178.0" />
       <Label fx:id="labelState" layoutX="336.0" layoutY="253.0" text="change state" />
       <Button fx:id="confirmBtn" layoutX="472.0" layoutY="285.0" mnemonicParsing="false" onAction="#onConfirm" text="Apply changes" />
       <ComboBox fx:id="states" layoutX="309.0" layoutY="285.0" prefWidth="150.0" />
       <Label fx:id="labelDesc" layoutX="95.0" layoutY="222.0" text="description:" />
-      <Button fx:id="deleteBtn" onAction ="#onDeleteIssue" layoutX="428.0" layoutY="349.0" mnemonicParsing="false" text="Delete selected Issue" />
+      <Button fx:id="deleteBtn" layoutX="428.0" layoutY="349.0" mnemonicParsing="false" onAction="#onDeleteIssue" text="Delete selected Issue" />
+      <Button onAction="#onMenuIssue" layoutX="516.0" layoutY="15.0" mnemonicParsing="false" text="Go Back" />
    </children>
 </AnchorPane>

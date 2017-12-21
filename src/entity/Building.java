@@ -6,13 +6,6 @@ import java.io.Serializable;
 
 public class Building implements Serializable{
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
 
     private String name;
     private String area;
@@ -30,6 +23,13 @@ public class Building implements Serializable{
         return area;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
 
 
 }

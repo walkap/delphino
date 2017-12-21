@@ -73,6 +73,16 @@ public class IssueDao {
                 if (myList.get(j).isEqualTo(i)) {
                     myList.remove(j);
                     System.out.println("Issue removed!");
+                    if (myList.size() == 0) {
+                       try {
+                           PrintWriter writer = new PrintWriter(fileName);
+                           writer.print("");
+                           writer.close();
+                           return;
+                       }catch (FileNotFoundException e){
+                           e.printStackTrace();
+                       }
+                    }
                     this.serialize(myList);
                     return;
                 }
