@@ -92,13 +92,7 @@ public class ModifyDeleteTemplateRoomUI {
     }
 
     public void clearInputFields(){
-        /*name.setText("Name");
-        seats.setText("000");
-        board.setText("Board");
-        projectors.setText("0");
-        computers.setText("0");
-        desk.setSelected(false);
-        */
+
         name.setText("");
         seats.setText("0");
         projectors.setText("0");
@@ -142,7 +136,9 @@ public class ModifyDeleteTemplateRoomUI {
                 alert.showAndWait();
                 System.out.println(res);
 
-            }else{
+            }
+            /*
+            else{
                 if (res == 0) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle(null);
@@ -151,7 +147,9 @@ public class ModifyDeleteTemplateRoomUI {
                     alert.showAndWait();
                     System.out.println(res);
 
-                } else if (res == 1){
+                }
+                */
+                else if (res == 1){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle(null);
                     alert.setHeaderText(null);
@@ -160,8 +158,7 @@ public class ModifyDeleteTemplateRoomUI {
                     System.out.println(res);
 
                 }
-            }
-        }else{
+            }else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("Error with name of Template");

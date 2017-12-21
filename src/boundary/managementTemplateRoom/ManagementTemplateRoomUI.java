@@ -1,5 +1,6 @@
 package boundary.managementTemplateRoom;
 
+import boundary.managementTemplateRoom.createAndViewTemplateRoomJAVA.MainCreateAndViewTemplateRoomJAVA;
 import boundary.managementTemplateRoom.createTemplateRoom.MainCreateTemplateRoom;
 import boundary.managementTemplateRoom.modifyDeleteTemplateRoom.MainModifyDeleteTemplateRoom;
 import javafx.fxml.FXML;
@@ -13,7 +14,9 @@ public class ManagementTemplateRoomUI {
     @FXML
     private Button modifyTemplateRoomBtn;
     @FXML
-    private Button createTemplateRoomBtn;
+    private Button createTemplateRoomBtnBD;
+    @FXML
+    private Button createTemplateRoomBtnJAVA;
     @FXML
     private Button exitBtn;
     @FXML
@@ -23,7 +26,19 @@ public class ManagementTemplateRoomUI {
         MainCreateTemplateRoom C = new MainCreateTemplateRoom();
         try {
             C.start(new Stage());
-            Stage stage = (Stage) createTemplateRoomBtn.getScene().getWindow();
+            Stage stage = (Stage) createTemplateRoomBtnBD.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createTemplateRoomSceneJAVA() throws Exception {
+        MainCreateAndViewTemplateRoomJAVA m = new MainCreateAndViewTemplateRoomJAVA();
+        try {
+            m.start(new Stage());
+            Stage stage = (Stage) createTemplateRoomBtnJAVA.getScene().getWindow();
             stage.close();
 
         } catch (Exception e) {

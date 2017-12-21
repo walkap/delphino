@@ -11,18 +11,6 @@ import javafx.stage.Stage;
 import main.Main;
 
 
-/**
- * https://stackoverflow.com/questions/26962788/fxmlloader-how-to-access-the-components-by-fxid
- * https://stackoverflow.com/questions/33881046/how-to-connect-fx-controller-with-main-app
- * https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm
- * http://code.makery.ch/library/javafx-8-tutorial/it/part1/
- * https://examples.javacodegeeks.com/desktop-java/javafx/fxml/javafx-fxml-controller-example/
- * https://blog.idrsolutions.com/2015/05/how-to-create-a-javafx-gui-using-scene-builder-in-netbeans/
- * http://javajdk.net/tutorial/javafx-button-example/
- * <p>
- * https://www.jetbrains.com/help/idea/javafx.html
- */
-
 public class CreateTemplateRoomUI {
 
     @FXML
