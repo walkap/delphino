@@ -25,14 +25,14 @@ public class viewIssueBoundary {
     @FXML
     private Button confirmBtn;
     @FXML
-    private TableColumn<Issue, String> titleColumn, areaColumn,roomColumn, bldColumn;
+    private TableColumn<Issue, String> titleColumn, areaColumn, roomColumn, bldColumn;
     @FXML
     private Label labelDesc, labelState;
     @FXML
     private Button deleteBtn;
 
     private ObservableList<IssueBean> items;
-    private ArrayList <IssueBean> listIssues;
+    private ArrayList<IssueBean> listIssues;
 
 
     @FXML
@@ -75,67 +75,6 @@ public class viewIssueBoundary {
 
         table.setItems(items);
 
-//        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Issue>() {
-//
-//                    // Here's the key part. See how I specify that the
-//                    // parameters are of type student. Now you can use the
-//                    // instance methods from Student.
-//                    @Override
-//                    public void changed(ObservableValue<? extends Issue> observable,
-//                                        Issue oldValue, Issue newValue) {
-//
-//
-//                        confirmBtn.setVisible(true);
-//                        description.setVisible(true);
-//                        labelDesc.setVisible(true);
-//                        labelState.setVisible(true);
-//                        states.setVisible(true);
-//
-//                        description.setText(table.getSelectionModel().getSelectedItem().getDescription());
-//                        states.setValue(table.getSelectionModel().getSelectedItem().getState());
-//
-//
-//                    }
-//                });
-
-//        states.valueProperty().addListener((obs, oldItem, newItem) -> {
-//            String name = table.getSelectionModel().getSelectedItem().getName();
-//            String area = table.getSelectionModel().getSelectedItem().getArea();
-//            String bld = table.getSelectionModel().getSelectedItem().getBuilding();
-//            String room = table.getSelectionModel().getSelectedItem().getRoom();
-//            String d = table.getSelectionModel().getSelectedItem().getDescription();
-//
-//            String value = states.getPromptText();
-//
-//
-//            IssueHandlerController contrl = new IssueHandlerController();
-//            contrl.updateIssue(name, area, bld, room, d, value);
-//
-//        });
-
-
-//        states.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-//            @Override
-//            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//
-//                String name = table.getSelectionModel().getSelectedItem().getName();
-//                String area = table.getSelectionModel().getSelectedItem().getArea();
-//                String bld = table.getSelectionModel().getSelectedItem().getBuilding();
-//                String room = table.getSelectionModel().getSelectedItem().getRoom();
-//                String d = table.getSelectionModel().getSelectedItem().getDescription();
-//
-//                String value = states.getValue();
-//
-//                IssueHandlerController contrl = new IssueHandlerController();
-//                contrl.updateIssue(name, area, bld, room, d, value);
-//
-//                //refreshTable();
-//
-//
-//            }
-//        });
-
-
     }
 
     public void onConfirm() {
@@ -171,7 +110,7 @@ public class viewIssueBoundary {
         labelState.setVisible(false);
     }
 
-    public void onIssueClicked(){
+    public void onIssueClicked() {
 
         confirmBtn.setVisible(true);
         description.setVisible(true);
@@ -184,7 +123,8 @@ public class viewIssueBoundary {
         description.setText(bean.getDescription());
         states.setValue(bean.getState());
     }
-    public void onDeleteIssue(){
+
+    public void onDeleteIssue() {
 
 
         IssueBean selectedItem = table.getSelectionModel().getSelectedItem();
@@ -199,14 +139,4 @@ public class viewIssueBoundary {
         labelState.setVisible(false);
 
     }
-
-//   public void refreshTable() {
-//
-//       IssueHandlerController controller = new IssueHandlerController();
-//      ArrayList<Issue> list = controller.getIssues();
-//      ObservableList<Issue> item = table.getItems();
-//
-//      item.setAll(list);
-//
-//    }
 }
