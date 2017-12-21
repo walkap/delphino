@@ -35,19 +35,6 @@ public class IssueBean {
         this.state = state;
     }
 
-//    public boolean equals(Object obj) {
-//
-//        IssueBean other = (IssueBean) obj;
-//        if (obj == null){
-//            return false;
-//        }
-//        if (this.getName().equals(other.getName()) && this.getArea().equals(other.getArea()) &&
-//                this.getBuilding().equals(other.getBuilding()) &&
-//                this.getRoom().equals(other.getRoom())) {
-//            return true;
-//        }
-//        return false;
-//    }
     public static IssueBean getBean(Issue i) {
         return new IssueBean( i.getName(), i.getArea(),i.getBuilding().getName(),
                 i.getRoom().getName(), i.getDescription(), i.getState());

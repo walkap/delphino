@@ -1,5 +1,6 @@
 package main;
 
+import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
 import boundary.buildingBoundary.MainBuilding;
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.fxml.FXML;
@@ -61,6 +62,19 @@ public class MainUI {
         stage.show();
     }
 
+    public void onIssueManagement(){
+
+        IssueMenu M = new IssueMenu();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) managTRBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     public void closeWindow() {
         try {
             Stage stage = (Stage) exitBtn.getScene().getWindow();

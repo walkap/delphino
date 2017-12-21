@@ -1,6 +1,7 @@
 package boundary.IssueManagement.addNewIssue;
 
 import bean.IssueBean;
+import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
 import controller.BuildingController;
 import controller.IssueHandlerController;
 import dao.BuildingDao;
@@ -10,10 +11,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import util.Area;
 import util.Rooms;
 import java.util.ArrayList;
@@ -95,6 +94,7 @@ public class IssueBoundary{
 
     public void onCreateIssue(){
 
+    try {
         String nameIssue = name.getText();
         String descr = description.getText();
         String bld = listBuildings.getValue();
@@ -106,11 +106,42 @@ public class IssueBoundary{
         IssueHandlerController cntrl = new IssueHandlerController();
         cntrl.addNewIssue(bean);
 
+    } catch (NullPointerException e) {
+
+        alert("invalid input, issue not created!");
+        return;
+    }
+
+
         name.clear();
         description.clear();
         listBuildings.setValue("Building");
         listAreas.setValue("Macroarea");
         listRooms.setValue("Room");
 
+    }
+
+    public void alert(String s) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(null);
+        alert.setHeaderText(null);
+        alert.setContentText(s);
+        alert.showAndWait();
+        return;
+
+    }
+
+    public void onMenuIssue(){
+
+        IssueMenu M = new IssueMenu();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) name.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

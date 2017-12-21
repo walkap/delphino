@@ -1,6 +1,7 @@
 package boundary.IssueManagement.viewIssue;
 
 import bean.IssueBean;
+import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
 import controller.IssueHandlerController;
 import entity.Issue;
 import javafx.beans.value.ChangeListener;
@@ -9,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import util.IssueStates;
 import util.Rooms;
 
@@ -138,5 +140,18 @@ public class viewIssueBoundary {
         labelDesc.setVisible(false);
         labelState.setVisible(false);
 
+    }
+
+    public void onMenuIssue(){
+
+        IssueMenu M = new IssueMenu();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) confirmBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
