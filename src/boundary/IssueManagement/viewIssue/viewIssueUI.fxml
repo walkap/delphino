@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.IssueManagement.addNewIssue.viewIssue.viewIssueBoundary">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.IssueManagement.viewIssue.viewIssueBoundary">
 <children>
       <TableView fx:id="table" layoutX="40.0" layoutY="15.0" onMousePressed="#onIssueClicked" prefHeight="200.0" prefWidth="513.0">
          <columns>

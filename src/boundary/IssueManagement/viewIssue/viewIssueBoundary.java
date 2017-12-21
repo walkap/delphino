@@ -1,4 +1,4 @@
-package boundary.IssueManagement.addNewIssue.viewIssue;
+package boundary.IssueManagement.viewIssue;
 
 import bean.IssueBean;
 import controller.IssueHandlerController;
