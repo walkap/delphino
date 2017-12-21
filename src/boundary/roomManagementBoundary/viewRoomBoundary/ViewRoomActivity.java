@@ -30,6 +30,7 @@ public class ViewRoomActivity {
     @FXML private TextField roomComputers;
     @FXML private CheckBox roomTeacherDesk;
     @FXML private Button deleteButton;
+    @FXML private Button returnButton;
     //This variable is used to get object from tableView
     private Room selectedRoom;
 
@@ -99,6 +100,17 @@ public class ViewRoomActivity {
         //Get back to the table view
         Parent root;
         Stage stage = (Stage) deleteButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
+        //Create and launch the scene
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void returnButton() throws IOException{
+        Parent root;
+        Stage stage = (Stage) returnButton.getScene().getWindow();
+        //Check which button has been clicked
         root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
         //Create and launch the scene
         Scene scene = new Scene(root);

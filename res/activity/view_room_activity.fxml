@@ -16,7 +16,7 @@
       <HBox alignment="CENTER_RIGHT" layoutY="305.0" prefHeight="100.0" prefWidth="671.0">
          <children>
               <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteRoom" text="Delete" textFill="#d71313" />
-              <Button id="back" mnemonicParsing="false" text="Return">
+              <Button fx:id="returnButton" id="back" mnemonicParsing="false" text="Return" onAction="#returnButton">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
