@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.roomManagementBoundary.searchRoomBoundary.SearchRoomActivity">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
+         <children>
+            <Label text="Search room by name">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></Label>
+            <TextField fx:id="tfRoomName" promptText="Type the room's name" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchRoom" text="Search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutY="100.0" prefHeight="200.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Name">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="roomName" text="Name">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Building">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="roomBuilding" text="Building">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Board">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="roomBoard" text="Board">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Computers">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="roomComputers" text="Computer">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Label>
+                     </children>
+                  </HBox>
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Type">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="roomType" text="Type" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Seats">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="roomSeats" text="Seats" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Projectors">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="roomProjectors" text="Projectors" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Has desk">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="roomDesk" text="Desk" />
+                     </children>
+                  </HBox>
+               </children></VBox>
+         </children></HBox>
+      <HBox alignment="CENTER_RIGHT" layoutY="300" prefHeight="100.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="returnButton" mnemonicParsing="false" text="Return" onAction="#returnButton" />
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

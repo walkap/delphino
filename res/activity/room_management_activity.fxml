@@ -19,6 +19,11 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
+            <Button mnemonicParsing="false" text="Search Room" fx:id="searchRoomButton" onAction="#handleButtonAction">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
             <Button fx:id="returnButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Return" />
          </children>
       </VBox>

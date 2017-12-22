@@ -17,6 +17,8 @@ public class RoomManagementActivity {
     @FXML
     private Button viewAllRooms;
     @FXML
+    private Button searchRoomButton;
+    @FXML
     private Button returnButton;
 
     @FXML
@@ -38,6 +40,8 @@ public class RoomManagementActivity {
             root = FXMLLoader.load(getClass().getResource("/activity/add_new_room_activity.fxml"));
         } else if(e.getSource() == viewAllRooms) {
             root = FXMLLoader.load(getClass().getResource("/activity/view_all_rooms_activity.fxml"));
+        }else if(e.getSource() == searchRoomButton){
+            root = FXMLLoader.load(getClass().getResource("/activity/search_room_activity.fxml"));
         }else{
             root = FXMLLoader.load(getClass().getResource("/main/MainUI.fxml"));
         }
