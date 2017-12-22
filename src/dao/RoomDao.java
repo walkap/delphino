@@ -143,10 +143,10 @@ public class RoomDao extends AbstractDao {
     /**
      * This method is used to get an existing room
      *
-     * @param id - int
+     * @param name - String
      * @return
      */
-    public Room getRoom(int id) {
+    public Room getRoom(String name) {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
@@ -156,9 +156,9 @@ public class RoomDao extends AbstractDao {
             StringBuilder sql = new StringBuilder();
             sql.append("SELECT * FROM ").append(TABLE_NAME)
                     .append(" WHERE ")
-                    .append(COLUMN_ID)
+                    .append(COLUMN_NAME)
                     .append("='")
-                    .append(id)
+                    .append(name)
                     .append("'");
             ResultSet rs = s.executeQuery(sql.toString());
             if (rs.next()) {

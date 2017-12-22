@@ -68,12 +68,12 @@ public class RoomManagementController {
 
     /**
      * This method get a room from database passing an id as parameter
-     * @param id - id
+     * @param name - String
      * @return
      */
-    public Room getRoom(int id){
-        System.out.println("RoomManagementController getRoom(int " + id + "): " + rd.getRoom(id));
-        return rd.getRoom(id);
+    public Room getRoomByName(String name){
+        System.out.println("RoomManagementController getRoom(int " + name + "): " + rd.getRoom(name));
+        return rd.getRoom(name);
     }
 
     /**
