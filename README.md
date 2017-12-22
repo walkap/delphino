@@ -13,7 +13,6 @@ Postgres JDBC Driver
 3. Now you are ready to go, with our application.
 
 #### config.properties Example
-  #Database configuration file
   
   USER = postgres
   
