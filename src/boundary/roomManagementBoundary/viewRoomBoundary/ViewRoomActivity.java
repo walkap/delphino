@@ -19,6 +19,9 @@ import java.io.IOException;
 
 public class ViewRoomActivity {
 
+    //Get the controller instance
+    private RoomManagementController rmc = RoomManagementController.getInstance();
+
     @FXML
     private TextField roomName;
     @FXML
@@ -93,9 +96,7 @@ public class ViewRoomActivity {
         int projectors = Integer.parseInt(roomProjectors.getText());
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
-        //Call the controller and update the room
-        RoomManagementController rhc = new RoomManagementController();
-        rhc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
+        rmc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
     /**
@@ -103,10 +104,8 @@ public class ViewRoomActivity {
      * and get to the previous scene
      */
     public void deleteRoom() throws IOException {
-        //Call controller
-        RoomManagementController rhc = new RoomManagementController();
         //Call the method to delete the room
-        rhc.deleteRoom(selectedRoom);
+        rmc.deleteRoom(selectedRoom);
         //Get back to the table view
         Parent root;
         Stage stage = (Stage) deleteButton.getScene().getWindow();

@@ -24,6 +24,9 @@ import java.util.Vector;
 
 public class ViewAllRoomsActivity {
 
+    //Get the controller instance
+    private RoomManagementController rmc = RoomManagementController.getInstance();
+
     @FXML
     private TableView<Room> roomTable;
     @FXML
@@ -43,8 +46,7 @@ public class ViewAllRoomsActivity {
      * @return Vector
      */
     private Vector<Room> getAllRooms() {
-        RoomManagementController rhc = new RoomManagementController();
-        return rhc.getAllRooms();
+        return rmc.getAllRooms();
     }
 
     @FXML

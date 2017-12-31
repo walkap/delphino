@@ -17,6 +17,9 @@ import java.io.IOException;
 
 public class AddNewRoomActivity {
 
+    //Get the controller instance
+    private RoomManagementController rmc = RoomManagementController.getInstance();
+
     @FXML
     private TextField roomName;
     @FXML
@@ -102,8 +105,7 @@ public class AddNewRoomActivity {
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
 
-        RoomManagementController roomManagementController = new RoomManagementController();
-        roomManagementController.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
+        rmc.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
     public void returnButton() throws IOException {
