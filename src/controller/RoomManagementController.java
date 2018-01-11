@@ -5,6 +5,7 @@ import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
 
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class RoomManagementController {
@@ -53,7 +54,11 @@ public class RoomManagementController {
                 .setProjectors(projectors)
                 .setComputers(computers);
         Room room = builder.getRoom();
-        rd.addRoom(room);
+        try{
+            rd.addRoom(room);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -62,7 +67,11 @@ public class RoomManagementController {
      * @param room - Room
      */
     public void deleteRoom(Room room) {
-        rd.deleteRoom(room);
+        try{
+            rd.deleteRoom(room);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -86,18 +95,27 @@ public class RoomManagementController {
                 .setProjectors(projectors)
                 .setComputers(computers);
         Room room = builder.getRoom();
-        rd.updateRoom(room);
+        try {
+            rd.updateRoom(room);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
     /**
      * This method get a room from database passing an id as parameter
      *
      * @param name - String
-     * @return
+     * @return Room
      */
     public Room getRoomByName(String name) {
-        System.out.println("RoomManagementController getRoom(int " + name + "): " + rd.getRoom(name));
-        return rd.getRoom(name);
+        Room room = null;
+        try{
+            room = rd.getRoom(name);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return room;
     }
 
     /**
@@ -109,8 +127,8 @@ public class RoomManagementController {
         return rd.getAllRooms();
     }
 
-    /*public static void main(String[] args) {
-        //RoomManagementController rhc = new RoomManagementController();
-        //rhc.getRoom(14);
-    }*/
+    public static void main(String[] args) {
+
+        RoomManagementController.getInstance().deleteRoom(RoomDao.getInstance().getRoom("D15"));
+    }
 }

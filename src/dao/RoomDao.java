@@ -3,6 +3,7 @@ package dao;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
+import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,7 +50,7 @@ public class RoomDao extends AbstractDao {
      * in the database using the room's id as parameter
      *
      * @param name - String
-     * @return
+     * @return Boolean
      */
     private Boolean isRoomPresent(String name) {
         StringBuilder sql = new StringBuilder();
@@ -59,7 +60,6 @@ public class RoomDao extends AbstractDao {
                 .append(COLUMN_NAME)
                 .append(" = '")
                 .append(name).append("'");
-        System.out.println(sql.toString());
         return this.isPresent(sql.toString());
     }
 
@@ -67,9 +67,9 @@ public class RoomDao extends AbstractDao {
      * This method is used to add a new room to the database
      *
      * @param room - Room
+     * @throws SQLException
      */
-    public void addRoom(Room room) {
-        if (!isRoomPresent(room.getName())) {
+    public void addRoom(Room room) throws SQLException {
             StringBuilder sql = new StringBuilder();
             sql.append("insert into ").append(TABLE_NAME).append("(")
                     .append(COLUMN_NAME).append(", ")
@@ -90,10 +90,6 @@ public class RoomDao extends AbstractDao {
                     .append("'").append(room.hasTeacherDesk()).append("', ")
                     .append("'").append(room.getBuilding()).append("')");
             this.executeUpdate(sql.toString());
-            System.out.println("Yay! The room has been added to the database!");
-        } else {
-            System.out.println("It's already present a room named " + room.getName() + "in the database");
-        }
     }
 
     /**
@@ -101,19 +97,15 @@ public class RoomDao extends AbstractDao {
      * from database
      *
      * @param room - Room
+     * @throws NullPointerException
      */
-    public void deleteRoom(Room room) {
-        if (isRoomPresent(room.getName())) {
+    public void deleteRoom(Room room) throws NullPointerException {
             StringBuilder sql = new StringBuilder();
             sql.append("DELETE from ")
                     .append(TABLE_NAME)
                     .append(" WHERE ")
                     .append(COLUMN_ID).append(" = '").append(room.getId()).append("'");
             this.executeUpdate(sql.toString());
-            System.out.println("The room has been deleted from the database!");
-        } else {
-            System.out.println("We are sorry, the room you wanted to delete it doesn't exist");
-        }
     }
 
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
@@ -122,8 +114,9 @@ public class RoomDao extends AbstractDao {
      * This method is used to update a room
      *
      * @param room
+     * @throws NullPointerException
      */
-    public void updateRoom(Room room) {
+    public void updateRoom(Room room) throws NullPointerException{
         StringBuilder sql = new StringBuilder();
         sql.append("UPDATE " + TABLE_NAME)
                 .append(" SET ")
@@ -136,7 +129,6 @@ public class RoomDao extends AbstractDao {
                 .append(COLUMN_PROJECTORS).append(" = ").append(room.getProjectors()).append(", ")
                 .append(COLUMN_COMPUTERS).append(" = ").append(room.getComputers())
                 .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(room.getName()).append("'");
-        System.out.println(sql.toString());
         this.executeUpdate(sql.toString());
     }
 
@@ -144,9 +136,10 @@ public class RoomDao extends AbstractDao {
      * This method is used to get an existing room
      *
      * @param name - String
-     * @return
+     * @return Room
+     * @throws NullPointerException
      */
-    public Room getRoom(String name) {
+    public Room getRoom(String name) throws NullPointerException{
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
@@ -175,7 +168,6 @@ public class RoomDao extends AbstractDao {
             System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
-        System.out.println("RoomDao getRoom(): " + room);
         return room;
     }
 
@@ -188,7 +180,7 @@ public class RoomDao extends AbstractDao {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
-        Vector<Room> vec = new Vector<Room>();
+        Vector<Room> vec = new Vector<>();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
@@ -228,11 +220,14 @@ public class RoomDao extends AbstractDao {
                 .setComputers(rs.getInt(COLUMN_COMPUTERS));
     }
 
-    /*public static void main(String[] args) {
-        RoomDao rd = new RoomDao();
-        //Room room = new Room("C12", "ClassRoom", "F");
-        //rd.addRoom(room);
-        //rd.deleteRoom("C6");
+    public static void main(String[] args) {
+        //RoomDao rd = new RoomDao();
+        try {
+            RoomDao.getInstance().addRoom(getInstance().getRoom("D15"));
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        //rd.deleteRoom(getInstance().getRoom("D15"));
         //rd.isRoomPresent(room.getName());
         //rd.updateRoom();
         //rd.getAllRoom();
@@ -240,5 +235,5 @@ public class RoomDao extends AbstractDao {
         //Room room = new Room("D6", "5", "Laboratory");
         //room.setBoard("bianca");
         //rd.updateRoom(room);
-    }*/
+    }
 }
