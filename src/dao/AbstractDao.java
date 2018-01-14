@@ -4,12 +4,12 @@ import java.sql.*;
 
 public abstract class AbstractDao {
 
-
     /**
      * This method is used to close the statement
+     *
      * @param s - Statement
      */
-    protected void closeStatement(Statement s){
+    protected void closeStatement(Statement s) {
         try {
             if (s != null) {
                 System.out.println("Closing statement...");
@@ -22,14 +22,15 @@ public abstract class AbstractDao {
 
     /**
      * This method is used to close the result set
+     *
      * @param rs - ResultSet
      */
-    protected void closeResultSet(ResultSet rs){
-        try{
-            if(rs != null) {
+    protected void closeResultSet(ResultSet rs) {
+        try {
+            if (rs != null) {
                 rs.close();
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -50,9 +51,7 @@ public abstract class AbstractDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Closing statement...");
             this.closeStatement(s);
-            System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
     }
@@ -68,11 +67,12 @@ public abstract class AbstractDao {
     protected Boolean isPresent(String sql) {
         Boolean bool = false;
         Statement s = null;
+        ResultSet rs = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = s.executeQuery(sql);
+            rs = s.executeQuery(sql);
             if (!rs.first()) {
                 System.out.println("The room you're looking for is not present...");
             } else {
@@ -82,12 +82,10 @@ public abstract class AbstractDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Closing statement...");
+            this.closeResultSet(rs);
             this.closeStatement(s);
-            System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
         return bool;
     }
-
 }
