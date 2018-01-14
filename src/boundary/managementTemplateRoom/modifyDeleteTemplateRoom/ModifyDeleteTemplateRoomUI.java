@@ -1,7 +1,7 @@
 package boundary.managementTemplateRoom.modifyDeleteTemplateRoom;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
-import controller.TemplateRoomController;
+import control.TemplateRoomController;
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
@@ -78,7 +78,7 @@ public class ModifyDeleteTemplateRoomUI {
             public void handle(MouseEvent event) {
                 List<String> list = ListViewTemplateRooms.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                tr = controller.TemplateRoomController.getTemplateRoom(item);
+                tr = control.TemplateRoomController.getTemplateRoom(item);
                 name.setText(tr.getNameTemplate());
                 seats.setText(Integer.toString(tr.getSeats()));
                 board.setText(tr.getBoard());
@@ -178,7 +178,7 @@ public class ModifyDeleteTemplateRoomUI {
         String nameT = name.getText();
 
         if(!nameT.isEmpty()){
-            controller.TemplateRoomController.deleteTemplateRoom(nameT);
+            control.TemplateRoomController.deleteTemplateRoom(nameT);
             if(tRD.getRes() == 0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);

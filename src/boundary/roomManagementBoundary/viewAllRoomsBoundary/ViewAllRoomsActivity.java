@@ -1,7 +1,7 @@
 package boundary.roomManagementBoundary.viewAllRoomsBoundary;
 
 import boundary.roomManagementBoundary.viewRoomBoundary.ViewRoomActivity;
-import controller.RoomManagementController;
+import control.RoomManagementController;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +24,7 @@ import java.util.Vector;
 
 public class ViewAllRoomsActivity {
 
-    //Get the controller instance
+    //Get the control instance
     private RoomManagementController rmc = RoomManagementController.getInstance();
 
     @FXML

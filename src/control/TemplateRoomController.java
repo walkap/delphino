@@ -1,4 +1,4 @@
-package controller;
+package control;
 
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;

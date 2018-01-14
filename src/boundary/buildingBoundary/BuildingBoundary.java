@@ -1,24 +1,19 @@
 package boundary.buildingBoundary;
 
-import controller.BuildingController;
-import dao.BuildingDao;
+import control.BuildingController;
 import exception.BuildingException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Main;
 import util.Area;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 
 public class BuildingBoundary  {

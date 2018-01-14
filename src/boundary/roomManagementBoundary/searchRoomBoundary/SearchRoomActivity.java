@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.searchRoomBoundary;
 
-import controller.RoomManagementController;
+import control.RoomManagementController;
 import entity.room.Room;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class SearchRoomActivity {
 
-    //Get the controller instance
+    //Get the control instance
     private RoomManagementController rmc = RoomManagementController.getInstance();
 
     @FXML

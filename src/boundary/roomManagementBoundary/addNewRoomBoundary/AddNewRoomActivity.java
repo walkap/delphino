@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.addNewRoomBoundary;
 
-import controller.RoomManagementController;
+import control.RoomManagementController;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class AddNewRoomActivity {
 
-    //Get the controller instance
+    //Get the control instance
     private RoomManagementController rmc = RoomManagementController.getInstance();
 
     @FXML

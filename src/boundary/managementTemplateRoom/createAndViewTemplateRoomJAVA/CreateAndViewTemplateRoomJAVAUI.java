@@ -1,7 +1,7 @@
 package boundary.managementTemplateRoom.createAndViewTemplateRoomJAVA;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
-import controller.ReaderDataController;
+import control.ReaderDataController;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,7 +53,7 @@ public class CreateAndViewTemplateRoomJAVAUI {
                 boardsT, projectorsT, computersT, deskT);
 
         if (!nameT.isEmpty()) {
-            if(controller.WriterDataController.writeTemplateRoom(tr))            {
+            if(control.WriterDataController.writeTemplateRoom(tr))            {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
                 alert.setHeaderText(null);
@@ -155,7 +155,7 @@ public class CreateAndViewTemplateRoomJAVAUI {
             public void handle(MouseEvent event) {
                 List<String> list = listView.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                tr = controller.TemplateRoomController.getTemplateRoom(item);
+                tr = control.TemplateRoomController.getTemplateRoom(item);
                 name.setText(tr.getNameTemplate());
                 seats.setText(Integer.toString(tr.getSeats()));
                 board.setText(tr.getBoard());

@@ -2,17 +2,14 @@ package boundary.IssueManagement.viewIssue;
 
 import bean.IssueBean;
 import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
-import controller.IssueHandlerController;
+import control.IssueHandlerController;
 import entity.Issue;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import util.IssueStates;
-import util.Rooms;
 
 import java.util.ArrayList;
 

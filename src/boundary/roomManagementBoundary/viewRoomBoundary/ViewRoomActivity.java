@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.viewRoomBoundary;
 
-import controller.RoomManagementController;
+import control.RoomManagementController;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class ViewRoomActivity {
 
-    //Get the controller instance
+    //Get the control instance
     private RoomManagementController rmc = RoomManagementController.getInstance();
 
     @FXML
@@ -69,7 +69,7 @@ public class ViewRoomActivity {
     public void initialize() {
         //Initialize the types from util
         String[] types = Types.getTypes();
-        //TODO we need controller to get all buildings
+        //TODO we need control to get all buildings
         //Initialize the buildings from stub
         Integer[] buildings = {1, 2, 3};
 

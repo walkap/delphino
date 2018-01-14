@@ -109,7 +109,7 @@ public class CreateTemplateRoomUI {
         Boolean deskT = desk.isSelected();
 
         if (!nameT.isEmpty()) {
-            if (controller.TemplateRoomController.createTemplateRoom(nameT, seatsT,
+            if (control.TemplateRoomController.createTemplateRoom(nameT, seatsT,
                     boardsT, projectorsT, computersT, deskT)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);

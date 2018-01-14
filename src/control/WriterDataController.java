@@ -1,9 +1,8 @@
-package controller;
+package control;
 
 import entity.TemplateRoom;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class WriterDataController {
 

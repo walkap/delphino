@@ -1,4 +1,4 @@
-package controller;
+package control;
 
 import bean.IssueBean;
 import dao.IssueDao;

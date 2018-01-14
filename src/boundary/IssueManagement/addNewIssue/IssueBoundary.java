@@ -2,15 +2,12 @@ package boundary.IssueManagement.addNewIssue;
 
 import bean.IssueBean;
 import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
-import controller.BuildingController;
-import controller.IssueHandlerController;
-import dao.BuildingDao;
-import entity.Issue;
+import control.BuildingController;
+import control.IssueHandlerController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import util.Area;

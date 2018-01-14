@@ -1,4 +1,4 @@
-package controller;
+package control;
 
 import dao.room.RoomDao;
 import dao.room.RoomDaoDb;

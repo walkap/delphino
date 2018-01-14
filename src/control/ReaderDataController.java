@@ -1,10 +1,8 @@
-package controller;
+package control;
 
 import entity.TemplateRoom;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 

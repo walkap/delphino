@@ -1,4 +1,4 @@
-package controller;
+package control;
 
 import dao.BuildingDao;
 import entity.Building;
