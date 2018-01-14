@@ -48,7 +48,7 @@ public class RoomManagementController {
      */
     public void addNewRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name, type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
@@ -89,7 +89,7 @@ public class RoomManagementController {
      */
     public void updateRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name, type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)

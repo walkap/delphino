@@ -105,7 +105,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         StringBuilder sql = new StringBuilder();
         sql.append("UPDATE " + TABLE_NAME)
                 .append(" SET ")
-                .append(COLUMN_NAME).append(" = '").append(room.getName()).append("', ")
+                .append(COLUMN_NAME).append(" = '").append(room.getName().toUpperCase()).append("', ")
                 .append(COLUMN_TYPE).append(" = '").append(room.getType()).append("', ")
                 .append(COLUMN_BUILDING).append(" = '").append(room.getBuilding()).append("', ")
                 .append(COLUMN_BOARD).append(" = '").append(room.getBoard()).append("', ")
@@ -113,7 +113,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                 .append(COLUMN_SEATS).append(" = ").append(room.getSeats()).append(", ")
                 .append(COLUMN_PROJECTORS).append(" = ").append(room.getProjectors()).append(", ")
                 .append(COLUMN_COMPUTERS).append(" = ").append(room.getComputers())
-                .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(room.getName()).append("'");
+                .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(room.getName().toUpperCase()).append("'");
         this.executeUpdate(sql.toString());
     }
 

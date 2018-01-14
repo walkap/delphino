@@ -42,16 +42,16 @@ public abstract class AbstractDao {
      */
 
     protected void executeUpdate(String sql) {
-        Statement s = null;
+        PreparedStatement ps = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
         try {
-            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            s.executeUpdate(sql);
+            ps = c.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            this.closeStatement(s);
+            this.closeStatement(ps);
             ds.closeConnection(c);
         }
     }
