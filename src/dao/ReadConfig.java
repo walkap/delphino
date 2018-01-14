@@ -15,18 +15,17 @@ public class ReadConfig {
      * Private Default constructor avoid instantiation
      * from external class
      */
-
-    private ReadConfig(){
+    private ReadConfig() {
 
     }
 
     /**
      * Signleton Pattern used to have a single instance of this class
+     *
      * @return ReadConfig
      */
-
-    private static ReadConfig getInstance(){
-        if(instance == null){
+    private static ReadConfig getInstance() {
+        if (instance == null) {
             instance = new ReadConfig();
         }
         return instance;
@@ -38,7 +37,6 @@ public class ReadConfig {
      * @return FileInputStream
      * @throws IOException
      */
-
     private FileInputStream openStream() throws IOException {
         fileInputStream = new FileInputStream(FILE);
         return fileInputStream;
@@ -46,14 +44,12 @@ public class ReadConfig {
 
     /**
      * Close the file stream
-     *
      */
-
     private void closeStream() {
-        try{
+        try {
             if (fileInputStream != null)
                 fileInputStream.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +60,6 @@ public class ReadConfig {
      *
      * @return Properties
      */
-
     public static Properties getProperties() {
         try {
             properties = new Properties();
