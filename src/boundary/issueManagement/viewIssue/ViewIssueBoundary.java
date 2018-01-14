@@ -1,7 +1,7 @@
-package boundary.IssueManagement.viewIssue;
+package boundary.issueManagement.viewIssue;
 
 import bean.IssueBean;
-import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
+import boundary.issueManagement.issueMenuManagement.IssueMenu;
 import control.IssueHandlerController;
 import entity.Issue;
 import javafx.collections.ObservableList;
@@ -13,7 +13,7 @@ import util.IssueStates;
 
 import java.util.ArrayList;
 
-public class viewIssueBoundary {
+public class ViewIssueBoundary {
 
     @FXML
     private TableView<IssueBean> table;

@@ -1,4 +1,4 @@
-package boundary.IssueManagement.addNewIssue;
+package boundary.issueManagement.addNewIssue;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

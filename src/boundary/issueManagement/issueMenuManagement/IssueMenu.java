@@ -1,7 +1,7 @@
-package boundary.IssueManagement.IssueMenuManagement;
+package boundary.issueManagement.issueMenuManagement;
 
-import boundary.IssueManagement.addNewIssue.NewIssueMain;
-import boundary.IssueManagement.viewIssue.viewIssueMain;
+import boundary.issueManagement.addNewIssue.NewIssueMain;
+import boundary.issueManagement.viewIssue.ViewIssueMain;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +41,7 @@ public class IssueMenu extends Application {
 
     public void onIssueManage(){
 
-        viewIssueMain M = new viewIssueMain();
+        ViewIssueMain M = new ViewIssueMain();
         try {
             M.start(new Stage());
             Stage stage = (Stage) issueCreate.getScene().getWindow();

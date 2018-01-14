@@ -1,7 +1,7 @@
-package boundary.IssueManagement.addNewIssue;
+package boundary.issueManagement.addNewIssue;
 
 import bean.IssueBean;
-import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
+import boundary.issueManagement.issueMenuManagement.IssueMenu;
 import control.BuildingController;
 import control.IssueHandlerController;
 import javafx.beans.value.ChangeListener;

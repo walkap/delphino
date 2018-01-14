@@ -1,6 +1,6 @@
 package main;
 
-import boundary.IssueManagement.IssueMenuManagement.IssueMenu;
+import boundary.issueManagement.issueMenuManagement.IssueMenu;
 import boundary.buildingBoundary.MainBuilding;
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.fxml.FXML;

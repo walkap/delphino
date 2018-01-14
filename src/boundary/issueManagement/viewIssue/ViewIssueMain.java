@@ -1,4 +1,4 @@
-package boundary.IssueManagement.viewIssue;
+package boundary.issueManagement.viewIssue;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class viewIssueMain extends Application{
+public class ViewIssueMain extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("viewIssueUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ViewIssueUI.fxml"));
 
         primaryStage.setTitle("View and Modify Issue");
         primaryStage.setScene(new Scene(root, 800, 500));
