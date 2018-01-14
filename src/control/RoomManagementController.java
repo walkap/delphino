@@ -11,8 +11,6 @@ import java.util.Vector;
 
 public class RoomManagementController {
 
-    //private RoomDao daoDb = RoomDao.getInstance();
-
     private RoomDao daoDb = new RoomDaoDb();
 
     private static RoomManagementController instance = null;
