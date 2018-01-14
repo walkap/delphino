@@ -13,9 +13,9 @@ public class WriterDataController {
     private int computers;
     private Boolean desk;
     private static File file = new File("src/util/templateRoom.txt");
-    static ReaderDataController rDT = new ReaderDataController();
+    private ReaderDataController rDT = new ReaderDataController();
 
-    public static Boolean writeTemplateRoom(TemplateRoom tR) {
+    public Boolean writeTemplateRoom(TemplateRoom tR) {
 
         Boolean bool = false;
         String nameTemplate = tR.getNameTemplate();
@@ -95,7 +95,7 @@ public class WriterDataController {
             }
         }
     */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
         TemplateRoom templateRoom = new TemplateRoom("b", 150,
                 "Nera", 2, 0, true);

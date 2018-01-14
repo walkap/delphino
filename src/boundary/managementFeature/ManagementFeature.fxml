@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.managementFeature.ManagementFeatureUI">
+   <children>
+      <Label layoutX="210.0" layoutY="71.0" text="Management Feature" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="242.0" layoutY="146.0" mnemonicParsing="false" text="Create Feature" />
+      <Button layoutX="219.0" layoutY="209.0" mnemonicParsing="false" text="Modify Delete Featue" />
+      <Button layoutX="444.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="521.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

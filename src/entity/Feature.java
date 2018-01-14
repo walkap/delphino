@@ -1,10 +1,13 @@
 package entity;
 
-public class Feature {
+import java.io.Serializable;
+
+public class Feature implements Serializable {
 
     private String name;
     private String description;
 
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructor
@@ -17,6 +20,22 @@ public class Feature {
         this.description = description;
 
 
+    }
+
+    public Feature(String name){
+        this.name = name;
+    }
+
+    public boolean isEqualTo(Feature f) {
+
+        if (f == null){
+            return false;
+        }
+        if (this.name.equalsIgnoreCase(f.getName()) &&
+                this.description.equalsIgnoreCase(f.getDescription())){
+            return true;
+        }
+        return false;
     }
 
 

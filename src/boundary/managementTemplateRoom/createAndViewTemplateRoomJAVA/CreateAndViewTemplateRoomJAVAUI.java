@@ -2,6 +2,8 @@ package boundary.managementTemplateRoom.createAndViewTemplateRoomJAVA;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import control.ReaderDataController;
+import control.TemplateRoomController;
+import control.WriterDataController;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,8 +41,11 @@ public class CreateAndViewTemplateRoomJAVAUI {
     @FXML
     private ListView<String> listView;
 
-    private static ReaderDataController rDC = new ReaderDataController();
-    private static TemplateRoom tr = null;
+    private ReaderDataController rDC = new ReaderDataController();
+    private TemplateRoom tr = null;
+    private TemplateRoomController tRC = new TemplateRoomController();
+    private WriterDataController wDC = new WriterDataController();
+
 
     public void createTemplateRoom() {
         String nameT = name.getText();
@@ -53,12 +58,16 @@ public class CreateAndViewTemplateRoomJAVAUI {
                 boardsT, projectorsT, computersT, deskT);
 
         if (!nameT.isEmpty()) {
-            if(control.WriterDataController.writeTemplateRoom(tr))            {
+            if(wDC.writeTemplateRoom(tr))            {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
                 alert.setHeaderText(null);
                 alert.setContentText("The Template " + nameT + " has been created");
                 alert.showAndWait();
+                CreateAndViewTemplateRoomJAVAUI dTO = new CreateAndViewTemplateRoomJAVAUI();
+
+                ObservableList<String> values = FXCollections.observableArrayList(dTO.createListOfName());
+                listView.setItems(values);
             }else{
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle(null);
@@ -104,7 +113,7 @@ public class CreateAndViewTemplateRoomJAVAUI {
 
     }
 
-    public void managementTemplateRoomScene() throws Exception {
+    public void managementTemplateRoomScene(){
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());
@@ -116,7 +125,7 @@ public class CreateAndViewTemplateRoomJAVAUI {
         }
     }
 
-    public void mainTemplateRoomScene() throws Exception {
+    public void mainTemplateRoomScene(){
         Main M = new Main();
         try {
             M.start(new Stage());
@@ -155,7 +164,7 @@ public class CreateAndViewTemplateRoomJAVAUI {
             public void handle(MouseEvent event) {
                 List<String> list = listView.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                tr = control.TemplateRoomController.getTemplateRoom(item);
+                tr = tRC.getTemplateRoom(item);
                 name.setText(tr.getNameTemplate());
                 seats.setText(Integer.toString(tr.getSeats()));
                 board.setText(tr.getBoard());

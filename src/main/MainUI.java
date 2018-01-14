@@ -38,7 +38,7 @@ public class MainUI {
         }
     }
 
-    public void managementTemplateRoomScene() throws Exception {
+    public void managementTemplateRoomScene(){
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());

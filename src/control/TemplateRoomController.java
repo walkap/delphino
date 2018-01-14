@@ -5,7 +5,7 @@ import entity.TemplateRoom;
 
 public class TemplateRoomController {
 
-    private static TemplateRoomDao tRD = new TemplateRoomDao();
+    private TemplateRoomDao tRD = new TemplateRoomDao();
     private String nameTemplate;
     private int seats;
     private String board;
@@ -24,26 +24,26 @@ public class TemplateRoomController {
     }
 
 
-    public static Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
+    public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
         //createTemplateRoom(nT, sT, bT, pT, cT, dT);
         //TemplateRoom boundary.templateRoom = new TemplateRoom(nT, sT, bT, pT, cT, dT);
         Boolean bool = false;
         tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
         if (tRD.getRes() == 0) {
             System.out.println("Ok Template Room created");
-            return bool = true;
+            bool = true;
         } else {
             System.out.println("Not work");
-            return bool;
         }
+        return bool;
     }
 
-    public static void deleteTemplateRoom(String nameTemplate) {
+    public void deleteTemplateRoom(String nameTemplate) {
         tRD.deleteTemplateRoom(nameTemplate);
     }
 
 
-    public static TemplateRoom getTemplateRoom(String nameT) throws NullPointerException {
+    public TemplateRoom getTemplateRoom(String nameT) throws NullPointerException {
         TemplateRoom tr = null;
         try {
             tr = tRD.getTemplateRoom(nameT);
@@ -55,7 +55,7 @@ public class TemplateRoomController {
     }
 
 
-    public Boolean areTwoTemplateRoomsEquals(TemplateRoom tr1, TemplateRoom tr2){
+    private Boolean areTwoTemplateRoomsEquals(TemplateRoom tr1, TemplateRoom tr2){
         Boolean bool = false;
         String name1 = tr1.getNameTemplate();
         int seats1 = tr1.getSeats();
@@ -74,7 +74,7 @@ public class TemplateRoomController {
         System.out.println(name1);
         System.out.println(name2);
 
-        if ((name1 == name2)/* & (seats1 == seats2) & (board1 == board2)
+        if ((name1.equals(name2))/* & (seats1 == seats2) & (board1 == board2)
                 & (projectors1 == projectors2) & (computers1 == computers2) & (desk1 == desk2)*/){
             bool = true;
         }
@@ -82,7 +82,7 @@ public class TemplateRoomController {
     }
 
 
-    public static int modifyTemplateRoom(TemplateRoom templateRoom) {
+    public int modifyTemplateRoom(TemplateRoom templateRoom) {
         int res = 0;
         String nameTemplate = templateRoom.getNameTemplate();
         if (tRD.isTemplateRoomPresent(nameTemplate)) {

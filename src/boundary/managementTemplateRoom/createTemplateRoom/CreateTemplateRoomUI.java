@@ -1,6 +1,7 @@
 package boundary.managementTemplateRoom.createTemplateRoom;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
+import control.TemplateRoomController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -48,7 +49,14 @@ public class CreateTemplateRoomUI {
 
     }
 
-    public void managementTemplateRoomScene() throws Exception {
+    private TemplateRoomController tRC = new TemplateRoomController();
+
+
+    /**
+     * This method use a button for return Management Template Room window;
+     *
+     */
+    public void managementTemplateRoomScene(){
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());
@@ -60,7 +68,12 @@ public class CreateTemplateRoomUI {
         }
     }
 
-    public void mainTemplateRoomScene() throws Exception {
+    /**
+     * This method use a button for return Home Page window;
+     *
+     */
+
+    public void mainTemplateRoomScene(){
         Main M = new Main();
         try {
             M.start(new Stage());
@@ -93,9 +106,6 @@ public class CreateTemplateRoomUI {
         desk.setSelected(false);
     }
 
-    public void controlInputEmpty() {
-    }
-
     /**
      * createTemplateRoom is activated with onAction of Confirm Button
      */
@@ -109,7 +119,7 @@ public class CreateTemplateRoomUI {
         Boolean deskT = desk.isSelected();
 
         if (!nameT.isEmpty()) {
-            if (control.TemplateRoomController.createTemplateRoom(nameT, seatsT,
+            if (tRC.createTemplateRoom(nameT, seatsT,
                     boardsT, projectorsT, computersT, deskT)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
@@ -132,6 +142,11 @@ public class CreateTemplateRoomUI {
         }
 
     }
+
+    /**
+     * This method is activated by Button;
+     *
+     */
 
     public void closeWindow() {
 

@@ -43,8 +43,9 @@ public class ModifyDeleteTemplateRoomUI {
     @FXML
     private Button delete;
 
-    private static TemplateRoomDao tRD = new TemplateRoomDao();
-    private static TemplateRoom tr = null;
+    private TemplateRoomDao tRD = new TemplateRoomDao();
+    private TemplateRoom tr = null;
+    private TemplateRoomController tRC = new TemplateRoomController();
 
 
 
@@ -78,7 +79,7 @@ public class ModifyDeleteTemplateRoomUI {
             public void handle(MouseEvent event) {
                 List<String> list = ListViewTemplateRooms.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                tr = control.TemplateRoomController.getTemplateRoom(item);
+                tr = tRC.getTemplateRoom(item);
                 name.setText(tr.getNameTemplate());
                 seats.setText(Integer.toString(tr.getSeats()));
                 board.setText(tr.getBoard());
@@ -102,7 +103,7 @@ public class ModifyDeleteTemplateRoomUI {
 
     }
 
-    public void managementTemplateRoomScene() throws Exception {
+    public void managementTemplateRoomScene(){
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());
@@ -127,7 +128,7 @@ public class ModifyDeleteTemplateRoomUI {
 
         if (!nTR.isEmpty()){
             TemplateRoom tr = new TemplateRoom(nTR, sTR, bTR, pTR, cTR, dTR);
-            int res = TemplateRoomController.modifyTemplateRoom(tr);
+            int res = tRC.modifyTemplateRoom(tr);
             if(res == 2){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
@@ -178,7 +179,7 @@ public class ModifyDeleteTemplateRoomUI {
         String nameT = name.getText();
 
         if(!nameT.isEmpty()){
-            control.TemplateRoomController.deleteTemplateRoom(nameT);
+            tRC.deleteTemplateRoom(nameT);
             if(tRD.getRes() == 0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
@@ -207,7 +208,7 @@ public class ModifyDeleteTemplateRoomUI {
         }
     }
 
-    public void mainTemplateRoomScene() throws Exception {
+    public void mainTemplateRoomScene(){
         Main M = new Main();
         try {
             M.start(new Stage());
