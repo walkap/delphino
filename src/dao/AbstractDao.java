@@ -9,13 +9,27 @@ public abstract class AbstractDao {
      * This method is used to close the statement
      * @param s - Statement
      */
-    public void closeStatement(Statement s){
+    protected void closeStatement(Statement s){
         try {
             if (s != null) {
                 System.out.println("Closing statement...");
                 s.close();
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method is used to close the result set
+     * @param rs - ResultSet
+     */
+    protected void closeResultSet(ResultSet rs){
+        try{
+            if(rs != null) {
+                rs.close();
+            }
+        }catch (SQLException e){
             e.printStackTrace();
         }
     }
