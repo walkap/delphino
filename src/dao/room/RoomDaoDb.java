@@ -1,9 +1,10 @@
-package dao;
+package dao.room;
 
+import dao.AbstractDao;
+import dao.DataSource;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
-import org.postgresql.util.PSQLException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class RoomDao extends AbstractDao {
+public class RoomDaoDb extends AbstractDao implements RoomDao {
 
     private static final String TABLE_NAME = "room";
     private static final String COLUMN_ID = "id";
@@ -23,27 +24,6 @@ public class RoomDao extends AbstractDao {
     private static final String COLUMN_SEATS = "seats";
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
-
-    private static RoomDao instance = null;
-
-    /**
-     * Default constructor
-     */
-    private RoomDao() {
-
-    }
-
-    /**
-     * This is a singleton, it returns an instance of this class
-     *
-     * @return RoomDao
-     */
-    public static RoomDao getInstance() {
-        if (instance == null) {
-            instance = new RoomDao();
-        }
-        return instance;
-    }
 
     /**
      * This method checks if a room is present
@@ -70,26 +50,26 @@ public class RoomDao extends AbstractDao {
      * @throws SQLException
      */
     public void addRoom(Room room) throws SQLException {
-            StringBuilder sql = new StringBuilder();
-            sql.append("insert into ").append(TABLE_NAME).append("(")
-                    .append(COLUMN_NAME).append(", ")
-                    .append(COLUMN_TYPE).append(", ")
-                    .append(COLUMN_SEATS).append(", ")
-                    .append(COLUMN_BOARD).append(", ")
-                    .append(COLUMN_PROJECTORS).append(", ")
-                    .append(COLUMN_COMPUTERS).append(", ")
-                    .append(COLUMN_TEACHER_DESK).append(", ")
-                    .append(COLUMN_BUILDING).append(")")
-                    .append(" values(")
-                    .append("'").append(room.getName()).append("', ")
-                    .append("'").append(room.getType()).append("', ")
-                    .append("'").append(room.getSeats()).append("', ")
-                    .append("'").append(room.getBoard()).append("', ")
-                    .append("'").append(room.getProjectors()).append("', ")
-                    .append("'").append(room.getComputers()).append("', ")
-                    .append("'").append(room.hasTeacherDesk()).append("', ")
-                    .append("'").append(room.getBuilding()).append("')");
-            this.executeUpdate(sql.toString());
+        StringBuilder sql = new StringBuilder();
+        sql.append("insert into ").append(TABLE_NAME).append("(")
+                .append(COLUMN_NAME).append(", ")
+                .append(COLUMN_TYPE).append(", ")
+                .append(COLUMN_SEATS).append(", ")
+                .append(COLUMN_BOARD).append(", ")
+                .append(COLUMN_PROJECTORS).append(", ")
+                .append(COLUMN_COMPUTERS).append(", ")
+                .append(COLUMN_TEACHER_DESK).append(", ")
+                .append(COLUMN_BUILDING).append(")")
+                .append(" values(")
+                .append("'").append(room.getName()).append("', ")
+                .append("'").append(room.getType()).append("', ")
+                .append("'").append(room.getSeats()).append("', ")
+                .append("'").append(room.getBoard()).append("', ")
+                .append("'").append(room.getProjectors()).append("', ")
+                .append("'").append(room.getComputers()).append("', ")
+                .append("'").append(room.hasTeacherDesk()).append("', ")
+                .append("'").append(room.getBuilding()).append("')");
+        this.executeUpdate(sql.toString());
     }
 
     /**
@@ -100,12 +80,12 @@ public class RoomDao extends AbstractDao {
      * @throws NullPointerException
      */
     public void deleteRoom(Room room) throws NullPointerException {
-            StringBuilder sql = new StringBuilder();
-            sql.append("DELETE from ")
-                    .append(TABLE_NAME)
-                    .append(" WHERE ")
-                    .append(COLUMN_ID).append(" = '").append(room.getId()).append("'");
-            this.executeUpdate(sql.toString());
+        StringBuilder sql = new StringBuilder();
+        sql.append("DELETE from ")
+                .append(TABLE_NAME)
+                .append(" WHERE ")
+                .append(COLUMN_ID).append(" = '").append(room.getId()).append("'");
+        this.executeUpdate(sql.toString());
     }
 
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
@@ -113,7 +93,7 @@ public class RoomDao extends AbstractDao {
     /**
      * This method is used to update a room
      *
-     * @param room
+     * @param room - Room
      * @throws NullPointerException
      */
     public void updateRoom(Room room) throws NullPointerException{
@@ -222,11 +202,11 @@ public class RoomDao extends AbstractDao {
 
     public static void main(String[] args) {
         //RoomDao rd = new RoomDao();
-        try {
-            RoomDao.getInstance().addRoom(getInstance().getRoom("D15"));
+        /*try {
+            //RoomDao.getInstance().addRoom(getInstance().getRoom("D15"));
         }catch (SQLException e){
             e.printStackTrace();
-        }
+        }*/
         //rd.deleteRoom(getInstance().getRoom("D15"));
         //rd.isRoomPresent(room.getName());
         //rd.updateRoom();
@@ -236,4 +216,5 @@ public class RoomDao extends AbstractDao {
         //room.setBoard("bianca");
         //rd.updateRoom(room);
     }
+
 }

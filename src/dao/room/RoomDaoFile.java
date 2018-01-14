@@ -1,11 +1,11 @@
-package dao;
+package dao.room;
 
 import entity.room.Room;
 
 import java.io.*;
 import java.util.Vector;
 
-public class RoomFileDao {
+public class RoomDaoFile implements RoomDao{
 
     private static final String FILE_PATH = "room.ser";
 
@@ -78,7 +78,7 @@ public class RoomFileDao {
      * @param name - String
      * @return
      */
-    public Boolean isRoomPresent(String name) {
+    private Boolean isRoomPresent(String name) {
         Vector<Room> vec = deserialization();
         for (Room room : vec) {
             if (room.getName().equals(name)) {
@@ -167,11 +167,19 @@ public class RoomFileDao {
         return null;
     }
 
+    /**
+     * This method returns all rooms in the persistence file
+     * @return Vector<Room>
+     */
+    public Vector<Room> getAllRooms(){
+        Vector<Room> vec = deserialization();
+        return vec;
+    }
+
     public static void main(String[] args) {
-        Room room = new Room("B45", "CongressHall", 3);
-        Vector<Room> vector = new Vector<Room>();
-        vector.add(room);
-        RoomFileDao roomFileDao = new RoomFileDao();
+        //Room room = new Room("B45", "CongressHall", 3);
+        //Vector<Room> vector = new Vector<Room>();
+        //vector.add(room);
         //roomFileDao.serialization(vector);
         //roomFileDao.deserialization();
         //roomFileDao.isRoomPresent("B45");
@@ -180,4 +188,5 @@ public class RoomFileDao {
         //roomFileDao.updateRoom(room);
         //roomFileDao.getRoom("B45");
     }
+
 }

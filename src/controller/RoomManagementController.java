@@ -1,6 +1,7 @@
 package controller;
 
-import dao.RoomDao;
+import dao.room.RoomDao;
+import dao.room.RoomDaoDb;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
@@ -10,7 +11,9 @@ import java.util.Vector;
 
 public class RoomManagementController {
 
-    private RoomDao rd = RoomDao.getInstance();
+    //private RoomDao daoDb = RoomDao.getInstance();
+
+    private RoomDao daoDb = new RoomDaoDb();
 
     private static RoomManagementController instance = null;
 
@@ -55,7 +58,7 @@ public class RoomManagementController {
                 .setComputers(computers);
         Room room = builder.getRoom();
         try{
-            rd.addRoom(room);
+            daoDb.addRoom(room);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -68,7 +71,7 @@ public class RoomManagementController {
      */
     public void deleteRoom(Room room) {
         try{
-            rd.deleteRoom(room);
+            daoDb.deleteRoom(room);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -96,7 +99,7 @@ public class RoomManagementController {
                 .setComputers(computers);
         Room room = builder.getRoom();
         try {
-            rd.updateRoom(room);
+            daoDb.updateRoom(room);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -111,7 +114,7 @@ public class RoomManagementController {
     public Room getRoomByName(String name) {
         Room room = null;
         try{
-            room = rd.getRoom(name);
+            room = daoDb.getRoom(name);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -124,11 +127,10 @@ public class RoomManagementController {
      * @return Vector
      */
     public Vector<Room> getAllRooms() {
-        return rd.getAllRooms();
+        return daoDb.getAllRooms();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
-        RoomManagementController.getInstance().deleteRoom(RoomDao.getInstance().getRoom("D15"));
-    }
+    }*/
 }
