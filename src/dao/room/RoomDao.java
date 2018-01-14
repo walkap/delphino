@@ -17,4 +17,6 @@ public interface RoomDao {
 
     Vector<Room> getAllRooms();
 
+    Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers);
+
 }
