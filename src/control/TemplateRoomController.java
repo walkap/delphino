@@ -3,9 +3,12 @@ package control;
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;
 
+import java.util.Vector;
+
 public class TemplateRoomController {
 
     private TemplateRoomDao tRD = new TemplateRoomDao();
+    private Vector<TemplateRoom> vec;
 
 
     public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
@@ -34,6 +37,12 @@ public class TemplateRoomController {
             System.exit(1);
         }
         return tr;
+    }
+
+    public Vector<TemplateRoom> getTemplateRooms(){
+
+        vec = tRD.getAllTemplateRoom();
+        return vec;
     }
 
 
