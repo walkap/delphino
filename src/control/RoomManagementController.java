@@ -12,7 +12,7 @@ import java.util.Vector;
 public class RoomManagementController {
 
     private RoomDao daoDb = new RoomDaoDb();
-
+    private Room myRoom;
     private static RoomManagementController instance = null;
 
     /**
@@ -54,9 +54,9 @@ public class RoomManagementController {
                 .setSeats(seats)
                 .setProjectors(projectors)
                 .setComputers(computers);
-        Room room = builder.getRoom();
+        myRoom = builder.getRoom();
         try{
-            daoDb.addRoom(room);
+            daoDb.addRoom(myRoom);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -95,9 +95,9 @@ public class RoomManagementController {
                 .setSeats(seats)
                 .setProjectors(projectors)
                 .setComputers(computers);
-        Room room = builder.getRoom();
+        myRoom = builder.getRoom();
         try {
-            daoDb.updateRoom(room);
+            daoDb.updateRoom(myRoom);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -110,13 +110,12 @@ public class RoomManagementController {
      * @return Room
      */
     public Room getRoomByName(String name) {
-        Room room = null;
         try{
-            room = daoDb.getRoom(name);
+            myRoom = daoDb.getRoom(name);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        return room;
+        return myRoom;
     }
 
     /**
