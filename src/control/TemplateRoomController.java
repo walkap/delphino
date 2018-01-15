@@ -6,27 +6,9 @@ import entity.TemplateRoom;
 public class TemplateRoomController {
 
     private TemplateRoomDao tRD = new TemplateRoomDao();
-    private String nameTemplate;
-    private int seats;
-    private String board;
-    private int projectors;
-    private int computers;
-    private Boolean desk;
-    private static int value;
-
-
-    public static int getValue() {
-        return value;
-    }
-
-    private static void setValue(int v) {
-        value = v;
-    }
 
 
     public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
-        //createTemplateRoom(nT, sT, bT, pT, cT, dT);
-        //TemplateRoom boundary.templateRoom = new TemplateRoom(nT, sT, bT, pT, cT, dT);
         Boolean bool = false;
         tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
         if (tRD.getRes() == 0) {
