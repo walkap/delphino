@@ -1,7 +1,7 @@
 package boundary.managementTemplateRoom.createAndViewTemplateRoomJAVA;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
-import dao.templateRoom.ReaderData;
+import dao.ReaderData;
 import control.TemplateRoomController;
 import dao.templateRoom.WriterData;
 import entity.TemplateRoom;

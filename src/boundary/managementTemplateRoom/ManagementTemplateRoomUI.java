@@ -22,7 +22,7 @@ public class ManagementTemplateRoomUI {
     @FXML
     private Button homePageBtn;
 
-    public void createTemplateRoomScene() throws Exception {
+    public void createTemplateRoomScene(){
         MainCreateTemplateRoom C = new MainCreateTemplateRoom();
         try {
             C.start(new Stage());
@@ -34,7 +34,7 @@ public class ManagementTemplateRoomUI {
         }
     }
 
-    public void createTemplateRoomSceneJAVA() throws Exception {
+    public void createTemplateRoomSceneJAVA(){
         MainCreateAndViewTemplateRoomJAVA m = new MainCreateAndViewTemplateRoomJAVA();
         try {
             m.start(new Stage());
@@ -46,7 +46,7 @@ public class ManagementTemplateRoomUI {
         }
     }
 
-    public void mainPrev() throws Exception {
+    public void mainPrev(){
         Main M = new Main();
         try {
             M.start(new Stage());
@@ -58,7 +58,7 @@ public class ManagementTemplateRoomUI {
         }
     }
 
-    public void modifyTemplateRoomScene() throws Exception {
+    public void modifyTemplateRoomScene(){
         MainModifyDeleteTemplateRoom M = new MainModifyDeleteTemplateRoom();
         try {
             M.start(new Stage());
@@ -83,8 +83,4 @@ public class ManagementTemplateRoomUI {
     public void initialize(){
 
     }
-
-
-
-
 }

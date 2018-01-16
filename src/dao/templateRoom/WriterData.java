@@ -1,6 +1,6 @@
 package dao.templateRoom;
 
-import dao.templateRoom.ReaderData;
+import dao.ReaderData;
 import entity.TemplateRoom;
 
 import java.io.*;
