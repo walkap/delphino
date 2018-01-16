@@ -52,7 +52,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
      * @throws SQLException
      */
     @Override
-    public void addRoom(Room room){
+    public void insertRoom(Room room){
         StringBuilder sql = new StringBuilder();
         sql.append("insert into ").append(TABLE_NAME).append("(")
                 .append(COLUMN_NAME).append(", ")

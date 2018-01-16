@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public interface RoomDao {
 
-    void addRoom(Room room) throws SQLException;
+    void insertRoom(Room room) throws SQLException;
 
     void deleteRoom(Room room);
 

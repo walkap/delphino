@@ -46,7 +46,7 @@ public class RoomManagementController {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void addNewRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public void insertRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         RoomDirectorBuilder director = new RoomDirectorBuilder();
         RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
@@ -56,7 +56,7 @@ public class RoomManagementController {
                 .setComputers(computers);
         myRoom = builder.getRoom();
         try{
-            daoDb.addRoom(myRoom);
+            daoDb.insertRoom(myRoom);
         }catch (SQLException e){
             e.printStackTrace();
         }

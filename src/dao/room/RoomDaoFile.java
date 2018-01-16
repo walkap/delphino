@@ -96,12 +96,12 @@ public class RoomDaoFile implements RoomDao{
      * @param room - String
      */
     @Override
-    public void addRoom(Room room) {
+    public void insertRoom(Room room) {
         if (!isRoomPresent(room.getName())) {
             Vector<Room> vec = deserialization();
             vec.add(room);
             this.serialization(vec);
-            System.out.println("RoomFileDao addRoom(): yay your room has been added to the file!");
+            System.out.println("RoomFileDao insertRoom(): yay your room has been added to the file!");
         }
     }
 

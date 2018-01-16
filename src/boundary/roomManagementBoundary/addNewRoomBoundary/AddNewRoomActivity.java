@@ -105,7 +105,7 @@ public class AddNewRoomActivity {
         int computers = Integer.parseInt(roomComputers.getText());
         Boolean desk = roomTeacherDesk.isSelected();
 
-        rmc.addNewRoom(name, type, building, board, desk, seats, projectors, computers);
+        rmc.insertRoom(name, type, building, board, desk, seats, projectors, computers);
     }
 
     public void returnButton() throws IOException {
