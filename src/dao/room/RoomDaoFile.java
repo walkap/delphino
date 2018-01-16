@@ -76,7 +76,7 @@ public class RoomDaoFile implements RoomDao{
      * This method is used to ensure that a room is present in a file
      *
      * @param name - String
-     * @return
+     * @return Boolean
      */
     private Boolean isRoomPresent(String name) {
         Vector<Room> vec = deserialization();
@@ -95,6 +95,7 @@ public class RoomDaoFile implements RoomDao{
      *
      * @param room - String
      */
+    @Override
     public void addRoom(Room room) {
         if (!isRoomPresent(room.getName())) {
             Vector<Room> vec = deserialization();
@@ -109,6 +110,7 @@ public class RoomDaoFile implements RoomDao{
      *
      * @param room - Room
      */
+    @Override
     public void deleteRoom(Room room) {
         if (isRoomPresent(room.getName())) {
             Vector<Room> vec = deserialization();
@@ -128,6 +130,7 @@ public class RoomDaoFile implements RoomDao{
      *
      * @param room - Room
      */
+    @Override
     public void updateRoom(Room room) {
         if (isRoomPresent(room.getName())) {
             Vector<Room> vec = deserialization();
@@ -152,8 +155,9 @@ public class RoomDaoFile implements RoomDao{
      * This methof is used to get an existing room in a file
      *
      * @param name - String
-     * @return
+     * @return Room
      */
+    @Override
     public Room getRoom(String name) {
         Room room;
         Vector<Room> vec = deserialization();
@@ -171,22 +175,14 @@ public class RoomDaoFile implements RoomDao{
      * This method returns all rooms in the persistence file
      * @return Vector<Room>
      */
+    @Override
     public Vector<Room> getAllRooms(){
         Vector<Room> vec = deserialization();
         return vec;
     }
 
-    public static void main(String[] args) {
-        //Room room = new Room("B45", "CongressHall", 3);
-        //Vector<Room> vector = new Vector<Room>();
-        //vector.add(room);
-        //roomFileDao.serialization(vector);
-        //roomFileDao.deserialization();
-        //roomFileDao.isRoomPresent("B45");
-        //roomFileDao.addRoom(room);
-        //roomFileDao.deleteRoom(room);
-        //roomFileDao.updateRoom(room);
-        //roomFileDao.getRoom("B45");
+    @Override
+    public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+        return null;
     }
-
 }

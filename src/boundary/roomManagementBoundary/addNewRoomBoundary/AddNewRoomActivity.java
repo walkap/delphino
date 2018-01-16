@@ -96,7 +96,7 @@ public class AddNewRoomActivity {
      * This method add new room to the database
      */
     public void insertRoom() {
-        String name = roomName.getText();
+        String name = roomName.getText().toUpperCase();
         String type = roomType.getValue();
         int building = roomBuilding.getValue();
         int seats = Integer.parseInt(roomSeats.getText());

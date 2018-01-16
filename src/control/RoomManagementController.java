@@ -48,7 +48,7 @@ public class RoomManagementController {
      */
     public void addNewRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name, type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
@@ -89,7 +89,7 @@ public class RoomManagementController {
      */
     public void updateRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name, type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
@@ -125,6 +125,21 @@ public class RoomManagementController {
      */
     public Vector<Room> getAllRooms() {
         return daoDb.getAllRooms();
+    }
+
+    /**
+     * This method get the vector of all rooms selected by the filter
+     * @param type - String
+     * @param building - int
+     * @param board - String
+     * @param teacherDesk - Boolean
+     * @param seats - int
+     * @param projectors - int
+     * @param computers - int
+     * @return Vector
+     */
+    public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers){
+        return daoDb.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
     /*public static void main(String[] args) {
