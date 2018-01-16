@@ -45,8 +45,8 @@ public interface RoomDao {
     Vector<Room> getAllRooms();
 
     /**
-     * This abstract methof returns a vector of rooms from the persistence
-     * where some conditions are satisfied
+     * This abstract method filter rooms from persistence and returns
+     * a vector of rooms
      *
      * @param type        - String
      * @param building    - int
