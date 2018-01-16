@@ -1,5 +1,7 @@
-package dao;
+package dao.templateRoom;
 
+import dao.AbstractDao;
+import dao.DataSource;
 import entity.TemplateRoom;
 
 import java.sql.Connection;
@@ -23,32 +25,40 @@ public class TemplateRoomDao extends AbstractDao {
     private static final String COLUMN_PROJECTORS = "projectors";
     private static final String COLUMN_COMPUTERS = "computers";
     private static int res;
+    private TemplateRoom tr = null;
+    private Statement s = null;
+    private DataSource ds = new DataSource();
+    private Connection c = ds.getConnection();
 
-    public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) {
+    public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) throws SQLException {
 
-        if (!isTemplateRoomPresent(nameTemplate)) {
-            StringBuilder sql = new StringBuilder();
-            sql.append("insert into " + TABLE_NAME + "(");
-            sql.append(COLUMN_NAME).append(", ");
-            sql.append(COLUMN_SEATS).append(", ");
-            sql.append(COLUMN_BOARD).append(", ");
-            sql.append(COLUMN_PROJECTORS).append(", ");
-            sql.append(COLUMN_COMPUTERS).append(", ");
-            sql.append(COLUMN_TEACHER_DESK).append(")");
-            sql.append(" values(");
-            sql.append("'").append(nameTemplate).append("', ");
-            sql.append("'").append(seats).append("', ");
-            sql.append("'").append(board).append("', ");
-            sql.append("'").append(projectors).append("', ");
-            sql.append("'").append(computers).append("', ");
-            sql.append("'").append(desk).append("')");
-            this.executeUpdate(sql.toString());
+        try {
+            if (!isTemplateRoomPresent(nameTemplate)) {
+                StringBuilder sql = new StringBuilder();
+                sql.append("insert into " + TABLE_NAME + "(");
+                sql.append(COLUMN_NAME).append(", ");
+                sql.append(COLUMN_SEATS).append(", ");
+                sql.append(COLUMN_BOARD).append(", ");
+                sql.append(COLUMN_PROJECTORS).append(", ");
+                sql.append(COLUMN_COMPUTERS).append(", ");
+                sql.append(COLUMN_TEACHER_DESK).append(")");
+                sql.append(" values(");
+                sql.append("'").append(nameTemplate).append("', ");
+                sql.append("'").append(seats).append("', ");
+                sql.append("'").append(board).append("', ");
+                sql.append("'").append(projectors).append("', ");
+                sql.append("'").append(computers).append("', ");
+                sql.append("'").append(desk).append("')");
+                this.executeUpdate(sql.toString());
 
-            setRes(0);
-            System.out.println("The Template of Room has been added to the database");
-        } else {
-            setRes(1);
-            System.out.println("Ops! " + nameTemplate + " already exists in the system");
+                setRes(0);
+                System.out.println("The Template of Room has been added to the database");
+            } else {
+                setRes(1);
+                System.out.println("Ops! " + nameTemplate + " already exists in the system");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -68,20 +78,26 @@ public class TemplateRoomDao extends AbstractDao {
      * @param nameTemplate - {@code string}
      */
 
-    public void deleteTemplateRoom(String nameTemplate) {
-        if (isTemplateRoomPresent(nameTemplate)) {
-            StringBuilder sql = new StringBuilder();
-            sql.append("DELETE from ").append(TABLE_NAME)
-                    .append(" WHERE ").append(COLUMN_NAME)
-                    .append(" = '").append(nameTemplate).append("'");
-            this.executeUpdate(sql.toString());
-            setRes(0);
-            System.out.println("The template of room " + nameTemplate + " has been deleted from database");
-        } else {
-            setRes(1);
-            System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
+    public void deleteTemplateRoom(String nameTemplate) throws SQLException {
+
+        try {
+            if (isTemplateRoomPresent(nameTemplate)) {
+                StringBuilder sql = new StringBuilder();
+                sql.append("DELETE from ").append(TABLE_NAME)
+                        .append(" WHERE ").append(COLUMN_NAME)
+                        .append(" = '").append(nameTemplate).append("'");
+                this.executeUpdate(sql.toString());
+                setRes(0);
+                System.out.println("The template of room " + nameTemplate + " has been deleted from database");
+            } else {
+                setRes(1);
+                System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+
 
 
     /**
@@ -92,10 +108,6 @@ public class TemplateRoomDao extends AbstractDao {
      */
 
     public TemplateRoom getTemplateRoom(String nameTemplate) throws NullPointerException {
-        TemplateRoom tr = null;
-        Statement s = null;
-        DataSource ds = new DataSource();
-        Connection c = ds.getConnection();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
@@ -136,7 +148,7 @@ public class TemplateRoomDao extends AbstractDao {
      * @param templateRoom
      */
 
-    public void updateTemplateRoom(TemplateRoom templateRoom){
+    public void updateTemplateRoom(TemplateRoom templateRoom) throws SQLException{
         StringBuilder sql = new StringBuilder();
         sql.append("UPDATE " + TABLE_NAME)
                 .append(" SET ")
@@ -158,10 +170,6 @@ public class TemplateRoomDao extends AbstractDao {
      */
 
     public Vector<TemplateRoom> getAllTemplateRoom() {
-
-        Statement s = null;
-        DataSource ds = new DataSource();
-        Connection c = ds.getConnection();
         Vector<TemplateRoom> vec = new Vector<>();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -206,7 +214,7 @@ public class TemplateRoomDao extends AbstractDao {
      * @return Boolean
      */
 
-    public Boolean isTemplateRoomPresent(String nameTemplate) {
+    public Boolean isTemplateRoomPresent(String nameTemplate) throws Exception {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT from ")
                 .append(TABLE_NAME)

@@ -1,9 +1,9 @@
 package boundary.managementTemplateRoom.createAndViewTemplateRoomJAVA;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
-import control.ReaderDataController;
+import dao.templateRoom.ReaderData;
 import control.TemplateRoomController;
-import control.WriterDataController;
+import dao.templateRoom.WriterData;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,10 +41,10 @@ public class CreateAndViewTemplateRoomJAVAUI {
     @FXML
     private ListView<String> listView;
 
-    private ReaderDataController rDC = new ReaderDataController();
+    private ReaderData rDC = new ReaderData();
     private TemplateRoom tr = null;
     private TemplateRoomController tRC = new TemplateRoomController();
-    private WriterDataController wDC = new WriterDataController();
+    private WriterData wDC = new WriterData();
 
 
     public void createTemplateRoom() {

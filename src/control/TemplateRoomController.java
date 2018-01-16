@@ -1,8 +1,9 @@
 package control;
 
-import dao.TemplateRoomDao;
+import dao.templateRoom.TemplateRoomDao;
 import entity.TemplateRoom;
 
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class TemplateRoomController {
@@ -13,18 +14,28 @@ public class TemplateRoomController {
 
     public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
         Boolean bool = false;
-        tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
-        if (tRD.getRes() == 0) {
-            System.out.println("Ok Template Room created");
-            bool = true;
-        } else {
-            System.out.println("Not work");
+        try {
+            tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
+        }catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (tRD.getRes() == 0) {
+                System.out.println("Ok Template Room created");
+                bool = true;
+            } else {
+                System.out.println("Not work");
+            }
+            return bool;
         }
-        return bool;
+
     }
 
-    public void deleteTemplateRoom(String nameTemplate) {
-        tRD.deleteTemplateRoom(nameTemplate);
+    public void deleteTemplateRoom(String nameTemplate) throws SQLException{
+        try {
+            tRD.deleteTemplateRoom(nameTemplate);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -76,24 +87,32 @@ public class TemplateRoomController {
     public int modifyTemplateRoom(TemplateRoom templateRoom) {
         int res = 0;
         String nameTemplate = templateRoom.getNameTemplate();
-        if (tRD.isTemplateRoomPresent(nameTemplate)) {
-            TemplateRoom templateRoom2 = tRD.getTemplateRoom(nameTemplate);
-            TemplateRoomController tRC = new TemplateRoomController();
-            if (tRC.areTwoTemplateRoomsEquals(templateRoom, templateRoom2)) {
+        try {
+            if (tRD.isTemplateRoomPresent(nameTemplate)) {
+                TemplateRoom templateRoom2 = tRD.getTemplateRoom(nameTemplate);
+                TemplateRoomController tRC = new TemplateRoomController();
+                if (tRC.areTwoTemplateRoomsEquals(templateRoom, templateRoom2)) {
 
-                System.out.println(0);
-                //The Template Room hasn't been update
+                    System.out.println(0);
+                    //The Template Room hasn't been update
+                } else {
+                    try {
+                        tRD.updateTemplateRoom(templateRoom);
+                    } catch (SQLException e){
+                        e.printStackTrace();
+                    }
+                    //TemplateRoom not update because the values are equals;
+                    res = 2;
+                    System.out.println(2);
+                }
             } else {
-                tRD.updateTemplateRoom(templateRoom);
-                //TemplateRoom not update because the values are equals;
-                res = 2;
-                System.out.println(2);
+                //TemplateRoom not update because is not present in db
+                System.out.println(1);
+                res = 1;
             }
-        } else {
-            //TemplateRoom not update because is not present in db
-            System.out.println(1);
-            res = 1;
-        } return res;
+        }catch (Exception e){
+            e.printStackTrace();
+        }return res;
     }
 
     public static void main(String[] args) {

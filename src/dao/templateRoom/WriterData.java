@@ -1,10 +1,11 @@
-package control;
+package dao.templateRoom;
 
+import dao.templateRoom.ReaderData;
 import entity.TemplateRoom;
 
 import java.io.*;
 
-public class WriterDataController {
+public class WriterData {
 
     private String nameT;
     private int seats;
@@ -13,7 +14,7 @@ public class WriterDataController {
     private int computers;
     private Boolean desk;
     private static File file = new File("src/util/templateRoom.txt");
-    private ReaderDataController rDT = new ReaderDataController();
+    private ReaderData rDT = new ReaderData();
 
     public Boolean writeTemplateRoom(TemplateRoom tR) {
 
@@ -99,7 +100,7 @@ public class WriterDataController {
 
         TemplateRoom templateRoom = new TemplateRoom("b", 150,
                 "Nera", 2, 0, true);
-        WriterDataController wDC = new WriterDataController();
+        WriterData wDC = new WriterData();
         //wDC.writeTemplateRoom(templateRoom);
         //wDC.deleteTemplateRoom("c");
 

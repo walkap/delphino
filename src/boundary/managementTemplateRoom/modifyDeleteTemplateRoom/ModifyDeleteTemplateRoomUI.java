@@ -2,7 +2,7 @@ package boundary.managementTemplateRoom.modifyDeleteTemplateRoom;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import control.TemplateRoomController;
-import dao.TemplateRoomDao;
+import dao.templateRoom.TemplateRoomDao;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.Main;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -179,7 +180,11 @@ public class ModifyDeleteTemplateRoomUI {
         String nameT = name.getText();
 
         if(!nameT.isEmpty()){
-            tRC.deleteTemplateRoom(nameT);
+            try {
+                tRC.deleteTemplateRoom(nameT);
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
             if(tRD.getRes() == 0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
