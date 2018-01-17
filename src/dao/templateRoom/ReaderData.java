@@ -16,7 +16,7 @@ public class ReaderData {
     private int projectors;
     private int computers;
     private Boolean desk;
-    File file = new File("src/util/templateRoom.txt");
+    private File file = new File("src/util/templateRoom.txt");
 
     public Boolean isPresentTemplateRoom(String nameTemplate) {
 

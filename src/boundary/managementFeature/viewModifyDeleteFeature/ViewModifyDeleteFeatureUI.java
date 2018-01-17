@@ -49,14 +49,17 @@ public class ViewModifyDeleteFeatureUI {
 
         ArrayList<String> array = new ArrayList<>();
         int i = 0;
-        List list = fD.getFeatures();
-        int l = list.size();
-        while (i < l) {
-            Feature f = (Feature) list.get(i);
-            String n = f.getName();
-            i++;
-            array.add(n);
-
+        try {
+            List list = fD.getFeatures();
+            int l = list.size();
+            while (i < l) {
+                Feature f = (Feature) list.get(i);
+                String n = f.getName();
+                i++;
+                array.add(n);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
         System.out.println(array);
         return array;
@@ -69,7 +72,7 @@ public class ViewModifyDeleteFeatureUI {
             public void handle(MouseEvent event) {
                 List<String> list = listView.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                Feature f = fC.getFeatureController(item);
+                Feature f = fC.getFeature(item);
                 nameFeature.setText(f.getName());
                 descriptionFeature.setText(f.getDescription());
                 }

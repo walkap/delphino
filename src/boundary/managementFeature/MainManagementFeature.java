@@ -13,7 +13,7 @@ public class MainManagementFeature extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("ManagementFeature.fxml"));
-        primaryStage.setTitle("Creazione Modello Stanza");
+        primaryStage.setTitle("Gestione Feature");
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
 
