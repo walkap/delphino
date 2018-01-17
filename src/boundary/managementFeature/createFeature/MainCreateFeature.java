@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainCreateFeatureUI extends Application {
+public class MainCreateFeature extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -12,9 +12,9 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="242.0" layoutY="146.0" mnemonicParsing="false" text="Create Feature" />
-      <Button layoutX="219.0" layoutY="209.0" mnemonicParsing="false" text="Modify Delete Featue" />
-      <Button layoutX="444.0" layoutY="30.0" mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="95.0" />
-      <Button layoutX="521.0" layoutY="30.0" mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="createFBtn" layoutX="242.0" layoutY="146.0" mnemonicParsing="false" onAction="#createFeatureScene" text="Create Feature" />
+      <Button fx:id="modifyDBtn" layoutX="219.0" layoutY="209.0" mnemonicParsing="false" onAction="#modifyDeleteFeatureScene" text="Modify Delete Featue" />
+      <Button fx:id="homePageBtn" layoutX="444.0" layoutY="30.0" mnemonicParsing="false" onAction="#mainPrev" text="Home Page" AnchorPane.rightAnchor="80.0" />
+      <Button fx:id="exitBtn" layoutX="521.0" layoutY="30.0" mnemonicParsing="false" onAction="#closeWindow" text="Exit" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>

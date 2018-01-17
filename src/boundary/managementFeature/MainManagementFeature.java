@@ -14,7 +14,7 @@ public class MainManagementFeature extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("ManagementFeature.fxml"));
         primaryStage.setTitle("Gestione Feature");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
 
     }

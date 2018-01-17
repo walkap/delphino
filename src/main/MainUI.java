@@ -2,6 +2,7 @@ package main;
 
 import boundary.issueManagement.issueMenuManagement.IssueMenu;
 import boundary.buildingBoundary.MainBuilding;
+import boundary.managementFeature.MainManagementFeature;
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ public class MainUI {
     private Button managTRBtn;
     @FXML
     private Button mRoomButton;
+    @FXML
+    private Button managFBtn;
 
     @FXML
     public void initialize() {
@@ -49,6 +52,18 @@ public class MainUI {
             e.printStackTrace();
         }
     }
+    public void managementFeatureScene(){
+        MainManagementFeature M = new MainManagementFeature();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) managFBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void managementRoomButton() throws IOException {
         Parent root;
