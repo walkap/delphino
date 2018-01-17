@@ -108,18 +108,28 @@ public class AddNewRoomActivity {
      */
     public void insertRoom() {
 
+        Alert warning = new Alert(Alert.AlertType.WARNING);
+
+        //TODO alert user when a room already exists
         if(!roomName.getText().isEmpty()){
             name = roomName.getText().toUpperCase();
+        }else{
+            warning.setContentText("Name is mandatory!");
+            warning.showAndWait();
         }
 
         if(roomType.getValue() != null){
             type = roomType.getValue();
+        }else{
+            warning.setContentText("Type is mandatory!");
+            warning.showAndWait();
         }
-
-        type = roomType.getValue();
 
         if (roomBuilding.getValue() != null) {
             building = roomBuilding.getValue();
+        }else{
+            warning.setContentText("Building is mandatory!");
+            warning.showAndWait();
         }
 
         if (!roomSeats.getText().isEmpty()) {
