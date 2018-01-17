@@ -2,6 +2,7 @@ package boundary.roomManagementBoundary.viewRoomBoundary;
 
 import control.RoomManagementController;
 import entity.room.Room;
+import exception.room.InsertRoomException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,6 +48,15 @@ public class ViewRoomActivity {
     //This variable is used to get object from tableView
     private Room selectedRoom;
 
+    private String name;
+    private String type;
+    private int building;
+    private int seats;
+    private String board;
+    private int projectors;
+    private int computers;
+    private Boolean desk;
+
     /**
      * This method get the room object from the room list
      *
@@ -88,15 +98,43 @@ public class ViewRoomActivity {
      * This method update a room in database
      */
     public void updateRoom() {
-        String name = roomName.getText();
-        String type = roomType.getValue();
-        int building = roomBuilding.getValue();
-        int seats = Integer.parseInt(roomSeats.getText());
-        String board = roomBoard.getText();
-        int projectors = Integer.parseInt(roomProjectors.getText());
-        int computers = Integer.parseInt(roomComputers.getText());
-        Boolean desk = roomTeacherDesk.isSelected();
-        rmc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
+        if(!roomName.getText().isEmpty()){
+            name = roomName.getText().toUpperCase();
+        }
+
+        if(roomType.getValue() != null){
+            type = roomType.getValue();
+        }
+
+        type = roomType.getValue();
+
+        if (roomBuilding.getValue() != null) {
+            building = roomBuilding.getValue();
+        }
+
+        if (!roomSeats.getText().isEmpty()) {
+            seats = Integer.parseInt(roomSeats.getText());
+        }
+
+        if (!roomBoard.getText().isEmpty()) {
+            board = roomBoard.getText();
+        }
+
+        if (!roomProjectors.getText().isEmpty()) {
+            projectors = Integer.parseInt(roomProjectors.getText());
+        }
+
+        if (!roomComputers.getText().isEmpty()) {
+            computers = Integer.parseInt(roomComputers.getText());
+        }
+
+        desk = roomTeacherDesk.isSelected();
+
+        try {
+            rmc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
+        }catch (InsertRoomException e){
+            e.printStackTrace();
+        }
     }
 
     /**
