@@ -2,6 +2,7 @@ package boundary.roomManagementBoundary.addNewRoomBoundary;
 
 import control.RoomManagementController;
 import entity.TemplateRoom;
+import exception.room.InsertRoomException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,6 +44,16 @@ public class AddNewRoomActivity {
     private CheckBox roomTeacherDesk;
     @FXML
     private Button returnButton;
+
+    private String name;
+    private String type;
+    private int building;
+    private int seats;
+    private String board;
+    private int projectors;
+    private int computers;
+    private Boolean desk;
+
 
     @FXML
     public void initialize() {
@@ -96,16 +107,44 @@ public class AddNewRoomActivity {
      * This method add new room to the database
      */
     public void insertRoom() {
-        String name = roomName.getText().toUpperCase();
-        String type = roomType.getValue();
-        int building = roomBuilding.getValue();
-        int seats = Integer.parseInt(roomSeats.getText());
-        String board = roomBoard.getText();
-        int projectors = Integer.parseInt(roomProjectors.getText());
-        int computers = Integer.parseInt(roomComputers.getText());
-        Boolean desk = roomTeacherDesk.isSelected();
 
-        rmc.insertRoom(name, type, building, board, desk, seats, projectors, computers);
+        if(!roomName.getText().isEmpty()){
+            name = roomName.getText().toUpperCase();
+        }
+
+        if(roomType.getValue() != null){
+            type = roomType.getValue();
+        }
+
+        type = roomType.getValue();
+
+        if (roomBuilding.getValue() != null) {
+            building = roomBuilding.getValue();
+        }
+
+        if (!roomSeats.getText().isEmpty()) {
+            seats = Integer.parseInt(roomSeats.getText());
+        }
+
+        if (!roomBoard.getText().isEmpty()) {
+            board = roomBoard.getText();
+        }
+
+        if (!roomProjectors.getText().isEmpty()) {
+            projectors = Integer.parseInt(roomProjectors.getText());
+        }
+
+        if (!roomComputers.getText().isEmpty()) {
+            computers = Integer.parseInt(roomComputers.getText());
+        }
+
+        desk = roomTeacherDesk.isSelected();
+
+        try {
+            rmc.insertRoom(name, type, building, board, desk, seats, projectors, computers);
+        } catch (InsertRoomException e) {
+            e.printStackTrace();
+        }
     }
 
     public void returnButton() throws IOException {
