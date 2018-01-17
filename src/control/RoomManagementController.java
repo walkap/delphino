@@ -5,6 +5,7 @@ import dao.room.RoomDaoDb;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
+import exception.room.InsertRoomException;
 
 import java.sql.SQLException;
 import java.util.Vector;
@@ -46,7 +47,12 @@ public class RoomManagementController {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void insertRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public void insertRoom(String name, String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
+
+        if(name == null || type == null || building == 0){
+            throw new InsertRoomException("Name, type and building are mandatory!");
+        }
+
         RoomDirectorBuilder director = new RoomDirectorBuilder();
         RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
                 .setBoard(board)
