@@ -1,7 +1,5 @@
-package dao.templateRoom;
+package dao;
 
-import dao.AbstractDao;
-import dao.DataSource;
 import entity.TemplateRoom;
 
 import java.sql.Connection;
@@ -26,9 +24,7 @@ public class TemplateRoomDao extends AbstractDao {
     private static final String COLUMN_COMPUTERS = "computers";
     private static int res;
     private TemplateRoom tr = null;
-    private Statement s = null;
     private DataSource ds = new DataSource();
-    private Connection c = ds.getConnection();
 
     public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) throws SQLException {
 
@@ -108,6 +104,9 @@ public class TemplateRoomDao extends AbstractDao {
      */
 
     public TemplateRoom getTemplateRoom(String nameTemplate) throws NullPointerException {
+        Connection c = ds.getConnection();
+        Statement s = null;
+
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
@@ -170,6 +169,9 @@ public class TemplateRoomDao extends AbstractDao {
      */
 
     public Vector<TemplateRoom> getAllTemplateRoom() {
+        Connection c = ds.getConnection();
+        Statement s = null;
+
         Vector<TemplateRoom> vec = new Vector<>();
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

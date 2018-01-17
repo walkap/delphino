@@ -2,7 +2,7 @@ package boundary.managementTemplateRoom.modifyDeleteTemplateRoom;
 
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import control.TemplateRoomController;
-import dao.templateRoom.TemplateRoomDao;
+import dao.TemplateRoomDao;
 import entity.TemplateRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,6 +1,6 @@
 package control;
 
-import dao.templateRoom.TemplateRoomDao;
+import dao.TemplateRoomDao;
 import entity.TemplateRoom;
 
 import java.sql.SQLException;

@@ -139,7 +139,6 @@ public class FeatureDaoFileJava {
 
     private ArrayList<Feature> deserialize() {
 
-
         ArrayList<Feature> myList = new ArrayList<>();
         File file = new File(fileName);
         if(!file.exists()) {
@@ -156,12 +155,13 @@ public class FeatureDaoFileJava {
 
         }
 
-        System.out.println("Begin list");
+        System.out.println("BEGIN LIST...");
         for (int j = 0; j < myList.size(); j++) {
 
+            System.out.println(myList.get(j).getName());
             System.out.println(myList.get(j).getDescription());
         }
-        System.out.println("end list");
+        System.out.println("...END LIST");
 
         return myList;
 
@@ -178,22 +178,17 @@ public class FeatureDaoFileJava {
     }
 
 
-    public Feature getFeature(String name) throws Exception {
+    public Feature getFeature(String nameF) throws NullPointerException {
         FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
         ArrayList<Feature> myList = fDFJ.deserialize();
-        Feature f = new Feature(name);
-
         for (int j = 0; j < myList.size(); j++) {
 
-            if (myList.get(j).isEqualTo(f)) {
-
+            if ((myList.get(j).getName()).equals(nameF)) {
                 Feature newFeature = new Feature(myList.get(j).getName()
                         , myList.get(j).getDescription());
                 return newFeature;
-            }else{
-                f = null;
             }
         }
-        return f;
+        return null;
     }
 }

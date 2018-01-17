@@ -14,7 +14,7 @@
       </Label>
       <Button layoutX="242.0" layoutY="146.0" mnemonicParsing="false" text="Create Feature" />
       <Button layoutX="219.0" layoutY="209.0" mnemonicParsing="false" text="Modify Delete Featue" />
-      <Button layoutX="444.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="521.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="444.0" layoutY="30.0" mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="95.0" />
+      <Button layoutX="521.0" layoutY="30.0" mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>

@@ -8,7 +8,14 @@ public class FeatureController {
 
     private FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
 
-
+    public void updateFeature(String nameFeature, String descriptionFeature){
+        Feature f = new Feature(nameFeature, descriptionFeature);
+        try {
+            fDFJ.updateFeature(f);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void createFeature(String nameFeature, String descriptionFeature){
 
@@ -30,12 +37,12 @@ public class FeatureController {
     }
     }
 
-    public Feature getFeature(String name){
+    public Feature getFeature(String name) throws NullPointerException{
         try {
             Feature f = fDFJ.getFeature(name);
             return f;
-        } catch (Exception e){
-        e.printStackTrace();
+        } catch (NullPointerException n){
+        n.printStackTrace();
         }
         return null;
     }

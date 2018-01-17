@@ -65,17 +65,30 @@ public class ViewModifyDeleteFeatureUI {
         return array;
     }
 
-    public void chooseTemplateRoomAndFillTV(){
+    public void chooseFeatureAndFillTV(){
 
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 List<String> list = listView.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                Feature f = fC.getFeature(item);
-                nameFeature.setText(f.getName());
-                descriptionFeature.setText(f.getDescription());
+                try {
+                    Feature f = fC.getFeature(item);
+                    nameFeature.setText(f.getName());
+                    if(f.getDescription()!= null) {
+                        descriptionFeature.setText(f.getDescription());
+                    }else{
+                        descriptionFeature.setText("NO DESCRIPTION");
+                    }
+                }catch (NullPointerException n){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Empty List");
+                    alert.setContentText("Sorry list is empty!");
+                    alert.showAndWait();
+                    n.printStackTrace();
                 }
+            }
         });
     }
 
@@ -101,19 +114,26 @@ public class ViewModifyDeleteFeatureUI {
 
         String nameF = nameFeature.getText();
         String descriptionF = descriptionFeature.getText();
-        if (!nameF.isEmpty() && !descriptionF.isEmpty()){
-            fC.deleteFeature(nameF, descriptionF);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(null);
-            alert.setHeaderText(null);
-            alert.setContentText("The feature has been deleted from database");
-            alert.showAndWait();
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error with name of Feature");
-            alert.setContentText("You don't choose any Feature!");
-            alert.showAndWait();
+        try {
+            if (!nameF.isEmpty() && !descriptionF.isEmpty()){
+                fC.deleteFeature(nameF, descriptionF);
+                nameFeature.setText("");
+                descriptionFeature.setText("");
+                listView.getItems().remove(nameF);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("The feature has been deleted from database");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error with name of Feature");
+                alert.setContentText("You don't choose any Feature!");
+                alert.showAndWait();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }
