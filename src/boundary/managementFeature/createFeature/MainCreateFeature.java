@@ -14,7 +14,7 @@ public class MainCreateFeature extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("CreatureFeature.fxml"));
         primaryStage.setTitle("Creazione Feature");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
 
     }

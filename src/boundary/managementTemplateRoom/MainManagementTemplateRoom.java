@@ -13,7 +13,7 @@ public class MainManagementTemplateRoom extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("ManagementTemplateRoomUI.fxml"));
         primaryStage.setTitle("ManagementTemplateRoom");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
 
     }

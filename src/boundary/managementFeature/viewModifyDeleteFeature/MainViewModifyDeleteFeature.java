@@ -13,7 +13,7 @@ public class MainViewModifyDeleteFeature extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("ViewModifyDeleteFeature.fxml"));
         primaryStage.setTitle("Visualizza Feature");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
 
     }

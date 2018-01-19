@@ -1,5 +1,6 @@
 package boundary.managementFeature.createFeature;
 
+import boundary.managementFeature.MainManagementFeature;
 import boundary.managementTemplateRoom.MainManagementTemplateRoom;
 import control.FeatureController;
 import javafx.fxml.FXML;
@@ -26,11 +27,11 @@ public class CreateFeatureUI {
 
 
     /**
-     * This method use a button for return Management Template Room window;
+     * This method use a button for return Management Feature window;
      *
      */
-    public void managementTemplateRoomScene(){
-        MainManagementTemplateRoom M = new MainManagementTemplateRoom();
+    public void managementFeatureScene(){
+        MainManagementFeature M = new MainManagementFeature();
         try {
             M.start(new Stage());
             Stage stage = (Stage) previousPageBtn.getScene().getWindow();
@@ -46,7 +47,7 @@ public class CreateFeatureUI {
      *
      */
 
-    public void mainTemplateRoomScene(){
+    public void mainScene(){
         Main M = new Main();
         try {
             M.start(new Stage());

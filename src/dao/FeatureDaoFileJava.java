@@ -33,7 +33,7 @@ public class FeatureDaoFileJava {
             if(isFeaturePresent(f)){
                 ArrayList<Feature> list = deserialize();
                 for (int j=0; j < list.size(); j++){
-                    if(list.get(j).isEqualTo(f)){
+                    if(list.get(j).getName().equals(f.getName())){
                         list.get(j).setName(nameF);
                         list.get(j).setDescription(descriptionF);
                         this.serialize(list);
@@ -55,7 +55,7 @@ public class FeatureDaoFileJava {
         ArrayList<Feature> myList = deserialize();
 
         for (int j = 0; j < myList.size(); j++) {
-            if (myList.get(j).isEqualTo(f)) {
+            if (myList.get(j).getName().equals(f.getName())) {
                 return true;
             }
         }
