@@ -64,7 +64,6 @@ public class ModifyDeleteTemplateRoomUI {
             array.add(n);
 
         }
-        System.out.println(array);
         return array;
     }
 
@@ -125,8 +124,6 @@ public class ModifyDeleteTemplateRoomUI {
         int cTR = Integer.parseInt(computers.getText());
         Boolean dTR = desk.isSelected();
 
-        System.out.println(nTR);
-
         if (!nTR.isEmpty()){
             TemplateRoom tr = new TemplateRoom(nTR, sTR, bTR, pTR, cTR, dTR);
             int res = tRC.modifyTemplateRoom(tr);
@@ -136,7 +133,6 @@ public class ModifyDeleteTemplateRoomUI {
                 alert.setHeaderText(null);
                 alert.setContentText("The Template Room has been update");
                 alert.showAndWait();
-                System.out.println(res);
 
             }
             /*
@@ -147,7 +143,6 @@ public class ModifyDeleteTemplateRoomUI {
                     alert.setHeaderText(null);
                     alert.setContentText("Changes at least a value for modify the Template Room");
                     alert.showAndWait();
-                    System.out.println(res);
 
                 }
                 */
@@ -157,7 +152,6 @@ public class ModifyDeleteTemplateRoomUI {
                     alert.setHeaderText(null);
                     alert.setContentText("Error in db");
                     alert.showAndWait();
-                    System.out.println(res);
 
                 }
             }else{

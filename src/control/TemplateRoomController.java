@@ -20,10 +20,7 @@ public class TemplateRoomController {
             e.printStackTrace();
         } finally {
             if (tRD.getRes() == 0) {
-                System.out.println("Ok Template Room created");
                 bool = true;
-            } else {
-                System.out.println("Not work");
             }
             return bool;
         }
@@ -73,8 +70,6 @@ public class TemplateRoomController {
         int computers2 = tr2.getComputers();
         Boolean desk2 = tr2.getDesk();
 
-        System.out.println(name1);
-        System.out.println(name2);
 
         if ((name1.equals(name2))/* & (seats1 == seats2) & (board1 == board2)
                 & (projectors1 == projectors2) & (computers1 == computers2) & (desk1 == desk2)*/){
@@ -92,8 +87,7 @@ public class TemplateRoomController {
                 TemplateRoom templateRoom2 = tRD.getTemplateRoom(nameTemplate);
                 TemplateRoomController tRC = new TemplateRoomController();
                 if (tRC.areTwoTemplateRoomsEquals(templateRoom, templateRoom2)) {
-
-                    System.out.println(0);
+                    return res;
                     //The Template Room hasn't been update
                 } else {
                     try {
@@ -103,11 +97,9 @@ public class TemplateRoomController {
                     }
                     //TemplateRoom not update because the values are equals;
                     res = 2;
-                    System.out.println(2);
                 }
             } else {
                 //TemplateRoom not update because is not present in db
-                System.out.println(1);
                 res = 1;
             }
         }catch (Exception e){

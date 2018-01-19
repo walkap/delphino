@@ -48,10 +48,8 @@ public class TemplateRoomDao extends AbstractDao {
                 this.executeUpdate(sql.toString());
 
                 setRes(0);
-                System.out.println("The Template of Room has been added to the database");
             } else {
                 setRes(1);
-                System.out.println("Ops! " + nameTemplate + " already exists in the system");
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -84,10 +82,8 @@ public class TemplateRoomDao extends AbstractDao {
                         .append(" = '").append(nameTemplate).append("'");
                 this.executeUpdate(sql.toString());
                 setRes(0);
-                System.out.println("The template of room " + nameTemplate + " has been deleted from database");
             } else {
                 setRes(1);
-                System.out.println("We are sorry, the template of room " + nameTemplate + " you wanted to delete it doesn't exist");
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -123,21 +119,15 @@ public class TemplateRoomDao extends AbstractDao {
                         rs.getBoolean(COLUMN_TEACHER_DESK));
             } catch (NullPointerException n) {
                 n.printStackTrace();
-                System.out.println("The " + nameTemplate + " template room doesn't exist");
                 System.exit(0);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Closing statement...");
             this.closeStatement(s);
-            System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
-        System.out.println(tr.getNameTemplate() + tr.getSeats() + tr.getBoard() + tr.getProjectors()
-        + tr.getComputers() + tr.getDesk());
-        System.out.println(tr);
         return tr;
     }
 
@@ -158,7 +148,6 @@ public class TemplateRoomDao extends AbstractDao {
                 .append(COLUMN_PROJECTORS).append(" = ").append(templateRoom.getProjectors()).append(", ")
                 .append(COLUMN_COMPUTERS).append(" = ").append(templateRoom.getComputers())
                 .append(" WHERE ").append(COLUMN_NAME).append(" = '").append(templateRoom.getNameTemplate()).append("'");
-        System.out.println(sql.toString());
         this.executeUpdate(sql.toString());
     }
 
@@ -187,21 +176,17 @@ public class TemplateRoomDao extends AbstractDao {
                             rs.getInt(COLUMN_COMPUTERS),
                             rs.getBoolean(COLUMN_TEACHER_DESK));
                     vec.add(tr);
-                    System.out.println(tr.getNameTemplate());
 
                 }catch (NullPointerException n){
 
                     n.printStackTrace();
-                    System.out.println("The database is empty");
                     System.exit(0);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Closing statement...");
             this.closeStatement(s);
-            System.out.println("Closing connection...");
             ds.closeConnection(c);
         }
         return vec;
@@ -224,7 +209,6 @@ public class TemplateRoomDao extends AbstractDao {
                 .append(COLUMN_NAME)
                 .append(" = '")
                 .append(nameTemplate).append("'");
-        System.out.println(sql.toString());
         return this.isPresent(sql.toString());
 
     }
