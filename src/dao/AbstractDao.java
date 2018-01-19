@@ -12,7 +12,6 @@ public abstract class AbstractDao {
     protected void closeStatement(Statement s) {
         try {
             if (s != null) {
-                System.out.println("Closing statement...");
                 s.close();
             }
         } catch (SQLException e) {
@@ -73,12 +72,9 @@ public abstract class AbstractDao {
         try {
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = s.executeQuery(sql);
-            if (!rs.first()) {
-                System.out.println("The room you're looking for is not present...");
-            } else {
+            if (rs.first()) {
                 bool = true;
-                System.out.println("Yay! We found the room you're looking for...");
-            }
+                }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

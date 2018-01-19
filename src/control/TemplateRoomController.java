@@ -71,8 +71,8 @@ public class TemplateRoomController {
         Boolean desk2 = tr2.getDesk();
 
 
-        if ((name1.equals(name2))/* & (seats1 == seats2) & (board1 == board2)
-                & (projectors1 == projectors2) & (computers1 == computers2) & (desk1 == desk2)*/){
+        if ((name1.equals(name2)) & ((seats1==seats2)) & (board1.equals(board2))
+                & (projectors1 == projectors2) & (computers1 == computers2) & (desk1.equals(desk2))){
             bool = true;
         }
         return bool;
