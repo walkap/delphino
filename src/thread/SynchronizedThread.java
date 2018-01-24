@@ -1,8 +1,6 @@
-package Thread;
+package thread;
 
 import entity.TemplateRoom;
-
-import java.util.List;
 
 class MakeSomething {
     private TemplateRoom tR;
