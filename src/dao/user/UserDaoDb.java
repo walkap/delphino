@@ -17,6 +17,7 @@ public class UserDaoDb extends AbstractDao implements UserDao{
     private static final String COLUMN_SURNAME = "surname";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_TYPE = "type";
+    private static final String COLUMN_PASSWORD = "password";
 
     private DataSource ds = new DataSource();
 
@@ -56,7 +57,7 @@ public class UserDaoDb extends AbstractDao implements UserDao{
     }
 
     @Override
-    public User getUser(String email, String password) {
+    public User getUser(String email, String password) throws NullPointerException {
         Statement s = null;
         Connection c = ds.getConnection();
         ResultSet rs = null;
@@ -64,12 +65,15 @@ public class UserDaoDb extends AbstractDao implements UserDao{
         try{
             s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             StringBuilder sql = new StringBuilder();
-            sql.append("SELECT * FROM ").append(TABLE_NAME)
+            sql.append("SELECT * FROM ").append("\"").append(TABLE_NAME).append("\"")
                     .append(" WHERE ")
                     .append(COLUMN_EMAIL)
-                    .append("='")
-                    .append(email)
-                    .append("'");
+                    .append(" = '").append(email).append("'")
+                    .append(" AND ")
+                    .append("\"").append(COLUMN_PASSWORD).append("\"")
+                    .append(" = '").append(password).append("'");
+
+            System.out.println(sql.toString());
             rs = s.executeQuery(sql.toString());
             if(rs.next()){
                 user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
