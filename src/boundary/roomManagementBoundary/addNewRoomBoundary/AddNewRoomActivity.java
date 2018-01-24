@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import util.Types;
+import util.RoomTypes;
 
 import java.io.IOException;
 
@@ -53,7 +53,7 @@ public class AddNewRoomActivity {
 
     @FXML
     public void initialize() {
-        String[] types = Types.getTypes();
+        String[] types = RoomTypes.getTypes();
         Integer[] buildings = {1, 2, 3};
 
         //Initialize template combo

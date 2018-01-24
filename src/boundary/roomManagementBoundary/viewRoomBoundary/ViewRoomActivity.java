@@ -14,7 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import util.Types;
+import util.RoomTypes;
 
 import java.io.IOException;
 
@@ -75,7 +75,7 @@ public class ViewRoomActivity {
     @FXML
     public void initialize() {
         //Initialize the types from util
-        String[] types = Types.getTypes();
+        String[] types = RoomTypes.getTypes();
         //TODO we need control to get all buildings
         //Initialize the buildings from stub
         Integer[] buildings = {1, 2, 3};

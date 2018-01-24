@@ -1,6 +1,6 @@
 package util;
 
-public class Types {
+public class RoomTypes {
 
     private static final String[] TYPES = { "ClassRoom", "Laboratory", "CongressHall" };
 
