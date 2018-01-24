@@ -12,7 +12,7 @@ import java.util.Vector;
 
 public class RoomManagementController {
 
-    private RoomDao daoDb = new RoomDaoDb();
+    private RoomDao roomDao = new RoomDaoDb();
     private Room myRoom;
 
     /**
@@ -43,7 +43,7 @@ public class RoomManagementController {
                 .setComputers(computers);
         myRoom = builder.getRoom();
         try{
-            daoDb.insertRoom(myRoom);
+            roomDao.insertRoom(myRoom);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class RoomManagementController {
      */
     public void deleteRoom(Room room) {
         try{
-            daoDb.deleteRoom(room);
+            roomDao.deleteRoom(room);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -89,7 +89,7 @@ public class RoomManagementController {
                 .setComputers(computers);
         myRoom = builder.getRoom();
         try {
-            daoDb.updateRoom(myRoom);
+            roomDao.updateRoom(myRoom);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -103,7 +103,7 @@ public class RoomManagementController {
      */
     public Room getRoomByName(String name) {
         try{
-            myRoom = daoDb.getRoom(name);
+            myRoom = roomDao.getRoom(name);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -116,7 +116,7 @@ public class RoomManagementController {
      * @return Vector
      */
     public Vector<Room> getAllRooms() {
-        return daoDb.getAllRooms();
+        return roomDao.getAllRooms();
     }
 
     /**
@@ -131,7 +131,7 @@ public class RoomManagementController {
      * @return Vector
      */
     public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers){
-        return daoDb.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
+        return roomDao.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
 }
