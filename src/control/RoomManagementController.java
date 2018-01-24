@@ -14,25 +14,6 @@ public class RoomManagementController {
 
     private RoomDao daoDb = new RoomDaoDb();
     private Room myRoom;
-    private static RoomManagementController instance = null;
-
-    /**
-     * Default private constructor
-     */
-    private RoomManagementController() {
-    }
-
-    /**
-     * This is a singleton, it returns an instance of this class
-     *
-     * @return - RoomManagementController
-     */
-    public static RoomManagementController getInstance() {
-        if (instance == null) {
-            instance = new RoomManagementController();
-        }
-        return instance;
-    }
 
     /**
      * This method insert new room in the database, getting parameter

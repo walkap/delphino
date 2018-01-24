@@ -18,9 +18,6 @@ import java.io.IOException;
 
 public class AddNewRoomActivity {
 
-    //Get the control instance
-    private RoomManagementController rmc = RoomManagementController.getInstance();
-
     @FXML
     private TextField roomName;
     @FXML
@@ -53,7 +50,6 @@ public class AddNewRoomActivity {
     private int projectors;
     private int computers;
     private Boolean desk;
-
 
     @FXML
     public void initialize() {
@@ -147,9 +143,8 @@ public class AddNewRoomActivity {
         if (!roomComputers.getText().isEmpty()) {
             computers = Integer.parseInt(roomComputers.getText());
         }
-
         desk = roomTeacherDesk.isSelected();
-
+        RoomManagementController rmc = new RoomManagementController();
         try {
             rmc.insertRoom(name, type, building, board, desk, seats, projectors, computers);
         } catch (InsertRoomException e) {

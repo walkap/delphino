@@ -15,9 +15,6 @@ import java.io.IOException;
 
 public class SearchRoomActivity {
 
-    //Get the control instance
-    private RoomManagementController rmc = RoomManagementController.getInstance();
-
     @FXML
     private TextField tfRoomName;
     @FXML
@@ -45,9 +42,8 @@ public class SearchRoomActivity {
      * typed in the text field
      */
     public void searchRoom() {
-
         String name = tfRoomName.getText();
-
+        RoomManagementController rmc = new RoomManagementController();
         Room room = rmc.getRoomByName(name);
 
         if (room != null) {
