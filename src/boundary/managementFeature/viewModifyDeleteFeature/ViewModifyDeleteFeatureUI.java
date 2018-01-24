@@ -1,5 +1,6 @@
 package boundary.managementFeature.viewModifyDeleteFeature;
 
+import boundary.managementFeature.MainManagementFeature;
 import control.FeatureController;
 import dao.FeatureDaoFileJava;
 import entity.Feature;
@@ -65,6 +66,24 @@ public class ViewModifyDeleteFeatureUI {
         return array;
     }
 
+    public void modifyFeature(){
+        String nameF = nameFeature.getText();
+        String descriptionF = descriptionFeature.getText();
+        try {
+            if(fC.getFeature(nameF) != null){
+                fC.updateFeature(nameF, descriptionF);
+            }
+        }catch (NullPointerException n){
+            n.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Error Name of feature");
+            alert.setContentText("Sorry feature can't be update because name of feature dosen't match any feature in db!");
+            alert.showAndWait();
+            n.printStackTrace();
+        }
+    }
+
     public void chooseFeatureAndFillTV(){
 
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -92,7 +111,28 @@ public class ViewModifyDeleteFeatureUI {
         });
     }
 
-    public void mainTemplateRoomScene(){
+    /**
+     * This method use a button for return Management Feature window;
+     *
+     */
+    public void managementFeatureScene(){
+        MainManagementFeature M = new MainManagementFeature();
+        try {
+            M.start(new Stage());
+            Stage stage = (Stage) prevPageBtn.getScene().getWindow();
+            stage.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method use a button for return Home Page window;
+     *
+     */
+
+    public void mainScene(){
         Main M = new Main();
         try {
             M.start(new Stage());

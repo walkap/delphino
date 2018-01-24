@@ -6,14 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainViewModifyDeleteFeatureUI extends Application {
+public class MainViewModifyDeleteFeature extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("ViewModifyDeleteFeature.fxml"));
         primaryStage.setTitle("Visualizza Feature");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
 
     }

@@ -33,16 +33,14 @@ public class FeatureDaoFileJava {
             if(isFeaturePresent(f)){
                 ArrayList<Feature> list = deserialize();
                 for (int j=0; j < list.size(); j++){
-                    if(list.get(j).isEqualTo(f)){
+                    if(list.get(j).getName().equals(f.getName())){
                         list.get(j).setName(nameF);
                         list.get(j).setDescription(descriptionF);
                         this.serialize(list);
-                        System.out.println("Feature updated!");
                         return;
                     }
                 }
             }else {
-                System.out.println("Feature not found!");
                 return;
             }
         } catch (Exception e) {
@@ -55,7 +53,7 @@ public class FeatureDaoFileJava {
         ArrayList<Feature> myList = deserialize();
 
         for (int j = 0; j < myList.size(); j++) {
-            if (myList.get(j).isEqualTo(f)) {
+            if (myList.get(j).getName().equals(f.getName())) {
                 return true;
             }
         }
@@ -72,13 +70,11 @@ public class FeatureDaoFileJava {
                 myList = deserialize();
                 myList.add(f);
                 this.serialize(myList);
-                System.out.println("Feature added");
                 return;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println("Feature exist");
 
     }
 
@@ -95,7 +91,6 @@ public class FeatureDaoFileJava {
                 for (int j = 0; j < myList.size(); j++) {
                     if (myList.get(j).isEqualTo(f)) {
                         myList.remove(j);
-                        System.out.println("Feature deleted");
                         if (myList.size() == 0) {
                             try {
                                 PrintWriter writer = new PrintWriter(fileName);
@@ -115,7 +110,6 @@ public class FeatureDaoFileJava {
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println("Feature not present");
     }
 
 
@@ -131,7 +125,6 @@ public class FeatureDaoFileJava {
             o.writeObject(list);
             o.close();
             fileOS.close();
-            System.out.println("Object List has been serialized");
         } catch (IOException e) {
             e.printStackTrace();
         }

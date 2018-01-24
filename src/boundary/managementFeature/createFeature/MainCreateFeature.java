@@ -7,14 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainCreateFeatureUI extends Application {
+public class MainCreateFeature extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("CreatureFeature.fxml"));
         primaryStage.setTitle("Creazione Feature");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
 
     }
