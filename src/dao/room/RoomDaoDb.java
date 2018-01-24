@@ -45,12 +45,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         return this.isPresent(sql.toString());
     }
 
-    /**
-     * This method is used to add a new room to the database
-     *
-     * @param room - Room
-     * @throws SQLException
-     */
     @Override
     public void insertRoom(Room room){
         StringBuilder sql = new StringBuilder();
@@ -75,13 +69,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         this.executeUpdate(sql.toString());
     }
 
-    /**
-     * This method is used to delete {@code room} object
-     * from database
-     *
-     * @param room - Room
-     * @throws NullPointerException
-     */
     @Override
     public void deleteRoom(Room room) throws NullPointerException {
         StringBuilder sql = new StringBuilder();
@@ -94,12 +81,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
 
     //TODO This should be improved I think isn't working very well. An option could be split each update in a method
 
-    /**
-     * This method is used to update a room
-     *
-     * @param room - Room
-     * @throws NullPointerException
-     */
     @Override
     public void updateRoom(Room room) throws NullPointerException {
         StringBuilder sql = new StringBuilder();
@@ -117,13 +98,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         this.executeUpdate(sql.toString());
     }
 
-    /**
-     * This method is used to get an existing room
-     *
-     * @param name - String
-     * @return Room
-     * @throws NullPointerException
-     */
     @Override
     public Room getRoom(String name) throws NullPointerException {
         Statement s = null;
@@ -156,11 +130,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         return room;
     }
 
-    /**
-     * This method returns all room present in the database
-     *
-     * @return Vector
-     */
     @Override
     public Vector<Room> getAllRooms() {
         Statement s = null;
@@ -187,17 +156,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         return vec;
     }
 
-    /**
-     * This method returns a vector of rooms as a result of search
-     * @param type - String
-     * @param building - int
-     * @param board - String
-     * @param teacherDesk - Boolean
-     * @param seats - int
-     * @param projectors - int
-     * @param computers - int
-     * @return Vector
-     */
     @Override
     public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         Statement s = null;
@@ -241,14 +199,6 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         return vec;
     }
 
-    /**
-     * This method build a room
-     *
-     * @param rdb - RoomBuilderDirector
-     * @param rs  - Result Set
-     * @return Room
-     * @throws SQLException
-     */
     private Room buildRoom(RoomDirectorBuilder rdb, ResultSet rs) throws SQLException {
         RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE), rs.getInt(COLUMN_BUILDING));
         setAllOptionalAttributes(rb, rs);
@@ -272,11 +222,4 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                 .setComputers(rs.getInt(COLUMN_COMPUTERS));
     }
 
-    /*public static void main(String[] args) {
-        RoomDaoDb roomDaoDb = new RoomDaoDb();
-        Vector<Room> rooms = roomDaoDb.getRooms("", 2, "", true, -1, -1, -1);
-        for (Room room : rooms) {
-            System.out.println(room.getName());
-        }
-    }*/
 }
