@@ -134,7 +134,4 @@ public class RoomManagementController {
         return daoDb.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
-    /*public static void main(String[] args) {
-
-    }*/
 }
