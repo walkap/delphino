@@ -3,7 +3,9 @@ package control;
 import dao.user.UserDao;
 import dao.user.UserDaoDb;
 import entity.user.User;
+import exception.user.LoginException;
 import javafx.fxml.LoadException;
+import util.EmailValidator;
 
 public class LoginController {
 
@@ -17,10 +19,16 @@ public class LoginController {
      * @return User
      * @throws LoadException
      */
-    public User getUserIfPresent(String email, String password) throws LoadException {
+    public User getUserIfPresent(String email, String password) throws LoginException {
         if (email == null || password == null) {
-            throw new LoadException("Email and password are mandatory!");
+            throw new LoginException("Email and password are mandatory!");
         }
+
+        EmailValidator emailValidator = new EmailValidator();
+        if(!emailValidator.isValidEmail(email)){
+            throw new LoginException("Invalid email address!");
+        }
+
         User user = null;
         try {
             user = userDao.getUser(email, password);
