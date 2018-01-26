@@ -163,7 +163,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     }
 
     @Override
-    public Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         Statement s = null;
         Connection c = ds.getConnection();
         ResultSet rs = null;
