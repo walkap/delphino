@@ -63,7 +63,7 @@ public class IssueBoundary{
                 String area = listAreas.getValue();
 
                 BuildingController ctrl = new BuildingController();
-                ArrayList<String> list = ctrl.getAreaBuildings(area);
+                ArrayList<String> list = ctrl.getBuildings(area);
 
                 int len = list.size();
                 int i = 0;
