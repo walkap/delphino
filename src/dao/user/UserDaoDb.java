@@ -114,4 +114,5 @@ public class UserDaoDb extends AbstractDao implements UserDao{
         }
         return vec;
     }
+
 }

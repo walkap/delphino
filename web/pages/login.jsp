@@ -1,3 +1,33 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+
+<!-- Si dichiara la variabile loginBean e istanzia un oggetto LoginBean -->
+<jsp:useBean id="loginBean" scope="request"
+             class="bean.LoginBean"/>
+
+<!-- Mappa automaticamente tutti gli attributi dell'oggetto loginBean e le proprietà JSP -->
+<jsp:setProperty name="loginBean" property="*"/>
+
+<%
+    if (request.getParameter("email") != null && request.getParameter("password") != null) {
+        if (loginBean.validate()) {
+%>
+<!-- Passa il controllo alla nuova pagina -->
+<jsp:forward page="RiassuntoLogin.jsp"/>
+<%
+} else {
+%>
+<p style="text-color:red;">Dati errati</p>
+<%
+    }
+} else {
+%>
+<p class="text-info">Accesso non effettuato</p>
+<%
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +72,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" action="login.jsp" method="POST">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
