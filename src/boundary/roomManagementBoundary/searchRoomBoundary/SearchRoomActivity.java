@@ -48,7 +48,7 @@ public class SearchRoomActivity {
 
         if (room != null) {
             roomName.setText(room.getName());
-            roomBuilding.setText(Integer.toString(room.getBuilding()));
+            roomBuilding.setText(room.getBuilding().getName());
             roomBoard.setText(room.getBoard());
             roomComputers.setText(Integer.toString(room.getComputers()));
             roomType.setText(room.getType());

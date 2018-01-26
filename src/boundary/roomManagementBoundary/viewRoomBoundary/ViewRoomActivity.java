@@ -47,7 +47,7 @@ public class ViewRoomActivity {
 
     private String name;
     private String type;
-    private int building;
+    private String building;
     private int seats;
     private String board;
     private int projectors;
@@ -63,7 +63,7 @@ public class ViewRoomActivity {
         selectedRoom = room;
         roomName.setText(selectedRoom.getName());
         roomType.setValue(selectedRoom.getType());
-        roomBuilding.setValue(selectedRoom.getBuilding());
+        //roomBuilding.setText(selectedRoom.getBuilding().getName());
         roomSeats.setText(Integer.toString(selectedRoom.getSeats()));
         roomBoard.setText(selectedRoom.getBoard());
         roomProjectors.setText(Integer.toString(selectedRoom.getProjectors()));
@@ -106,7 +106,7 @@ public class ViewRoomActivity {
         type = roomType.getValue();
 
         if (roomBuilding.getValue() != null) {
-            building = roomBuilding.getValue();
+            building = roomBuilding.getValue().toString();
         }
 
         if (!roomSeats.getText().isEmpty()) {
@@ -129,7 +129,7 @@ public class ViewRoomActivity {
 
         RoomManagementController rmc = new RoomManagementController();
         try {
-            rmc.updateRoom(name, type, building, board, desk, seats, projectors, computers);
+            rmc.updateRoom(name, type, building, "area", board, desk, seats, projectors, computers);
         }catch (InsertRoomException e){
             e.printStackTrace();
         }

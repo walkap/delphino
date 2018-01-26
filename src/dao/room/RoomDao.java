@@ -58,6 +58,6 @@ public interface RoomDao {
      * @param computers   - int
      * @return Vector
      */
-    Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers);
+    Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers);
 
 }

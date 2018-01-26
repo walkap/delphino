@@ -29,14 +29,14 @@ public class RoomManagementController {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void insertRoom(String name, String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
+    public void insertRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
 
         if(name == null || type == null || building == null){
             throw new InsertRoomException("Name, type and building are mandatory!");
         }
 
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, new Building(building, area))
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
@@ -75,14 +75,14 @@ public class RoomManagementController {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void updateRoom(String name, String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
+    public void updateRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
 
         if(name == null || type == null || building == null){
             throw new InsertRoomException("Name, type and building are mandatory!");
         }
 
         RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, building)
+        RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, new Building(building, area))
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
@@ -131,22 +131,8 @@ public class RoomManagementController {
      * @param computers - int
      * @return Vector
      */
-    public Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers){
+    public Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers){
         return roomDao.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
-
-    public static void main(String args[]){
-
-        RoomManagementController roomManagementController = new RoomManagementController();
-
-        try {
-            roomManagementController.insertRoom("ciccio", "ClassRoom", new Building("cane", "paolo"),
-                    "board", true, 4, 4, 4);
-        }
-        catch (InsertRoomException e){
-            e.printStackTrace();
-        }
-
-    }
 }

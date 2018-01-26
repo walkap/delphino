@@ -69,7 +69,7 @@ public class BuildingBoundary  {
                 modifyArea.setVisible(true);
 
                 BuildingController contrl = new BuildingController();
-                ArrayList <String> list = contrl.getAreaBuildings(area);
+                ArrayList <String> list = contrl.getBuildings(area);
 
                 int len = list.size();
                 int i = 0;
