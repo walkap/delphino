@@ -10,7 +10,7 @@ public class LoginBean {
     private String email;
     private String password;
 
-    public LoginBean(String email, String password){
+    public LoginBean(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -23,12 +23,16 @@ public class LoginBean {
         return password;
     }
 
-    public boolean validate() throws LoginException {
+    /**
+     * This method validate a user once has tried to login
+     * @return boolean
+     */
+    public boolean validate() {
         LoginController loginController = new LoginController();
         User user = null;
         try {
             user = loginController.getUserIfPresent(getEmail(), getPassword());
-                    }catch (LoginException e){
+        } catch (LoginException e) {
             e.printStackTrace();
         }
         return (user != null);
