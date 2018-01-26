@@ -11,6 +11,8 @@ import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import main.Main;
 
+import java.io.IOException;
+
 
 public class CreateTemplateRoomUI {
 
@@ -54,9 +56,8 @@ public class CreateTemplateRoomUI {
 
     /**
      * This method use a button for return Management Template Room window;
-     *
      */
-    public void managementTemplateRoomScene(){
+    public void managementTemplateRoomScene() {
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
         try {
             M.start(new Stage());
@@ -70,10 +71,9 @@ public class CreateTemplateRoomUI {
 
     /**
      * This method use a button for return Home Page window;
-     *
      */
 
-    public void mainTemplateRoomScene(){
+    public void mainTemplateRoomScene() {
         Main M = new Main();
         try {
             M.start(new Stage());
@@ -111,41 +111,50 @@ public class CreateTemplateRoomUI {
      */
 
     public void createTemplateRoom() {
-        String nameT = name.getText();
-        int seatsT = Integer.parseInt(seats.getText());
-        String boardsT = board.getText();
-        int projectorsT = Integer.parseInt(projectors.getText());
-        int computersT = Integer.parseInt(computers.getText());
-        Boolean deskT = desk.isSelected();
-
-        if (!nameT.isEmpty()) {
-            if (tRC.createTemplateRoom(nameT, seatsT,
-                    boardsT, projectorsT, computersT, deskT)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(null);
-                alert.setHeaderText(null);
-                alert.setContentText("The Template " + nameT + " has been created");
-                alert.showAndWait();
+        try {
+            String nameT = name.getText();
+            int seatsT = Integer.parseInt(seats.getText());
+            String boardsT = board.getText();
+            int projectorsT = Integer.parseInt(projectors.getText());
+            int computersT = Integer.parseInt(computers.getText());
+            Boolean deskT = desk.isSelected();
+            if (!nameT.isEmpty()) {
+                if (tRC.createTemplateRoom(nameT, seatsT,
+                        boardsT, projectorsT, computersT, deskT)) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle(null);
+                    alert.setHeaderText(null);
+                    alert.setContentText("The Template " + nameT + " has been created");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle(null);
+                    alert.setHeaderText(null);
+                    alert.setContentText("The Template '" + nameT + "' is present yet");
+                    alert.showAndWait();
+                }
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle(null);
                 alert.setHeaderText(null);
-                alert.setContentText("The Template '" + nameT + "' is present yet");
+                alert.setContentText("Name can't be null");
                 alert.showAndWait();
             }
-        } else {
+
+        } catch (NumberFormatException n) {
+            n.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle(null);
             alert.setHeaderText(null);
-            alert.setContentText("Name can't be null");
+            alert.setContentText("Seats, Projectors, Computers must be an integer");
             alert.showAndWait();
         }
+
 
     }
 
     /**
      * This method is activated by Button;
-     *
      */
 
     public void closeWindow() {
