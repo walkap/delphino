@@ -47,22 +47,23 @@ CREATE TABLE features
 CREATE UNIQUE INDEX features_name_uindex
   ON features (name);
 
-CREATE TABLE room
+create table if not exists room
 (
-  id           SERIAL      NOT NULL
-    CONSTRAINT room_pkey
-    PRIMARY KEY,
-  name         VARCHAR(20) NOT NULL,
-  type         VARCHAR(20) NOT NULL,
-  seats        INTEGER,
-  board        VARCHAR(20),
-  projectors   INTEGER,
-  computers    INTEGER,
-  teacher_desk BOOLEAN,
-  building     INTEGER     NOT NULL,
-  CONSTRAINT room_id_name_pk
-  UNIQUE (name, building)
-);
+	id serial not null
+		constraint room_pkey
+			primary key,
+	name varchar(20) not null,
+	type varchar(20) not null,
+	seats integer,
+	board varchar(20),
+	projectors integer,
+	computers integer,
+	teacher_desk boolean,
+	building varchar(30) not null,
+	area varchar(20)
+)
+;
+
 
 CREATE TABLE room_feature
 (
