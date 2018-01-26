@@ -44,7 +44,7 @@ public class AddNewRoomActivity {
 
     private String name;
     private String type;
-    private int building;
+    private String building;
     private int seats;
     private String board;
     private int projectors;
@@ -122,7 +122,7 @@ public class AddNewRoomActivity {
         }
 
         if (roomBuilding.getValue() != null) {
-            building = roomBuilding.getValue();
+            building = roomBuilding.getValue().toString();
         }else{
             warning.setContentText("Building is mandatory!");
             warning.showAndWait();
@@ -146,7 +146,7 @@ public class AddNewRoomActivity {
         desk = roomTeacherDesk.isSelected();
         RoomManagementController rmc = new RoomManagementController();
         try {
-            rmc.insertRoom(name, type, building, board, desk, seats, projectors, computers);
+            rmc.insertRoom(name, type, building, "area", board, desk, seats, projectors, computers);
         } catch (InsertRoomException e) {
             e.printStackTrace();
         }
