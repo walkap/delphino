@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import java.awt.Button?>
+<?import java.awt.Insets?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boundary.roomManagementBoundary.RoomManagementActivity">
    <children>
       <VBox alignment="CENTER" layoutX="206.0" layoutY="81.0" prefHeight="238.0" prefWidth="189.0">

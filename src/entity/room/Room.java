@@ -1,5 +1,7 @@
 package entity.room;
 
+import entity.Building;
+
 import java.io.Serializable;
 
 public class Room implements Serializable{
@@ -7,7 +9,7 @@ public class Room implements Serializable{
     //These variables are mandatory
     private int id;
     private String name;
-    private int building;
+    private Building building;
     private String type;
 
     //There variable are optional
@@ -23,7 +25,7 @@ public class Room implements Serializable{
      * @param name     - Room's name
      * @param building - Room's building
      */
-    public Room(String name, String type, int building) {
+    public Room(String name, String type, Building building) {
         this.name = name;
         this.type = type;
         this.building = building;
@@ -54,9 +56,9 @@ public class Room implements Serializable{
     /**
      * Get the room's building (place)
      *
-     * @return int
+     * @return Building
      */
-    public int getBuilding() {
+    public Building getBuilding() {
         return building;
     }
 
@@ -123,7 +125,7 @@ public class Room implements Serializable{
         this.name = name;
     }
 
-    public void setBuilding(int building) {
+    public void setBuilding(Building building) {
         this.building = building;
     }
 

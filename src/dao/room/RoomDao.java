@@ -1,5 +1,6 @@
 package dao.room;
 
+import entity.Building;
 import entity.room.Room;
 
 import java.sql.SQLException;
@@ -57,6 +58,6 @@ public interface RoomDao {
      * @param computers   - int
      * @return Vector
      */
-    Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers);
+    Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers);
 
 }

@@ -1,5 +1,6 @@
 package entity.room.builder;
 
+import entity.Building;
 import entity.room.Room;
 import entity.room.builder.concreteBuilder.ClassRoomBuilder;
 import entity.room.builder.concreteBuilder.CongressHallBuilder;
@@ -16,7 +17,7 @@ public class RoomDirectorBuilder {
      * @param building - String
      * @param type     - String
      */
-    public RoomBuilder buildRoom(String name, String type, int building) {
+    public RoomBuilder buildRoom(String name, String type, Building building) {
 
         switch (type) {
             case "ClassRoom":

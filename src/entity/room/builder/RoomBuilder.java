@@ -1,12 +1,13 @@
 package entity.room.builder;
 
+import entity.Building;
 import entity.room.Room;
 
 public abstract class RoomBuilder {
 
     private Room myRoom;
 
-    public void createRoom(String name, String type, int building){
+    public void createRoom(String name, String type, Building building){
         myRoom = new Room(name, type, building);
     }
 

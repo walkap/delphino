@@ -2,6 +2,7 @@ package dao.room;
 
 import dao.AbstractDao;
 import dao.DataSource;
+import entity.Building;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
@@ -19,6 +20,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_BUILDING = "building";
+    private static final String COLUMN_AREA = "area";
     private static final String COLUMN_BOARD = "board";
     private static final String COLUMN_TEACHER_DESK = "teacher_desk";
     private static final String COLUMN_SEATS = "seats";
@@ -56,6 +58,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                 .append(COLUMN_PROJECTORS).append(", ")
                 .append(COLUMN_COMPUTERS).append(", ")
                 .append(COLUMN_TEACHER_DESK).append(", ")
+                .append(COLUMN_AREA).append(", ")
                 .append(COLUMN_BUILDING).append(")")
                 .append(" values(")
                 .append("'").append(room.getName()).append("', ")
@@ -65,7 +68,8 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                 .append("'").append(room.getProjectors()).append("', ")
                 .append("'").append(room.getComputers()).append("', ")
                 .append("'").append(room.hasTeacherDesk()).append("', ")
-                .append("'").append(room.getBuilding()).append("')");
+                .append("'").append(room.getBuilding().getArea()).append("', ")
+                .append("'").append(room.getBuilding().getName()).append("')");
         this.executeUpdate(sql.toString());
     }
 
@@ -88,7 +92,8 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                 .append(" SET ")
                 .append(COLUMN_NAME).append(" = '").append(room.getName().toUpperCase()).append("', ")
                 .append(COLUMN_TYPE).append(" = '").append(room.getType()).append("', ")
-                .append(COLUMN_BUILDING).append(" = '").append(room.getBuilding()).append("', ")
+                .append(COLUMN_BUILDING).append(" = '").append(room.getBuilding().getName()).append("', ")
+                .append(COLUMN_AREA).append(" = '").append(room.getBuilding().getArea()).append("', ")
                 .append(COLUMN_BOARD).append(" = '").append(room.getBoard()).append("', ")
                 .append(COLUMN_TEACHER_DESK).append(" = ").append(room.hasTeacherDesk()).append(", ")
                 .append(COLUMN_SEATS).append(" = ").append(room.getSeats()).append(", ")
@@ -116,7 +121,8 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
             rs = s.executeQuery(sql.toString());
             if (rs.next()) {
                 RoomDirectorBuilder rdb = new RoomDirectorBuilder();
-                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE), rs.getInt(COLUMN_BUILDING));
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE),
+                        new Building(rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_AREA)));
                 setAllOptionalAttributes(rb, rs);
                 room = rdb.getRoom();
             }
@@ -157,7 +163,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     }
 
     @Override
-    public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         Statement s = null;
         Connection c = ds.getConnection();
         ResultSet rs = null;
@@ -171,7 +177,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
             if (!type.isEmpty()) {
                 sql.append(" AND ").append(COLUMN_TYPE).append(" = '").append(type).append("' ");
             }
-            if (building != -1) {
+            if (building != null) {
                 sql.append(" AND ").append(COLUMN_BUILDING).append(" = '").append(building).append("' ");
             }
             if (seats != -1) {
@@ -200,7 +206,8 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     }
 
     private Room buildRoom(RoomDirectorBuilder rdb, ResultSet rs) throws SQLException {
-        RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE), rs.getInt(COLUMN_BUILDING));
+        RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE),
+                new Building(rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_AREA)));
         setAllOptionalAttributes(rb, rs);
         Room room = rdb.getRoom();
         return room;

@@ -5,6 +5,7 @@ import entity.Building;
 import exception.BuildingException;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class BuildingController {
 
@@ -36,11 +37,12 @@ public class BuildingController {
 
     }
 
-    public ArrayList<String> getAreaBuildings(String area){
+    public ArrayList<String> getBuildings(String area){
 
         BuildingDao buildingDao = new BuildingDao();
         ArrayList<String> list = buildingDao.getAreaBuildings(area);
         return list;
     }
+
 
 }

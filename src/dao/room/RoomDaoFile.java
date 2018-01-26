@@ -1,5 +1,6 @@
 package dao.room;
 
+import entity.Building;
 import entity.room.Room;
 
 import java.io.*;
@@ -164,7 +165,6 @@ public class RoomDaoFile implements RoomDao{
         for (Room currentRoom : vec) {
             if (currentRoom.getName().equals(name)) {
                 room = currentRoom;
-                System.out.println("RoomFileDao getRoom(): " + room.getName() + room.getType() + room.getBuilding());
                 return room;
             }
         }
@@ -182,7 +182,7 @@ public class RoomDaoFile implements RoomDao{
     }
 
     @Override
-    public Vector<Room> getRooms(String type, int building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public Vector<Room> getRooms(String type, Building building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         return null;
     }
 }
