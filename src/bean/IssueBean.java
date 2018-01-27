@@ -36,7 +36,7 @@ public class IssueBean {
     }
 
     public static IssueBean getBean(Issue i) {
-        return new IssueBean( i.getName(), i.getArea(),i.getBuilding().getName(),
+        return new IssueBean(i.getName(), i.getRoom().getBuilding().getArea(), i.getRoom().getBuilding().getName(),
                 i.getRoom().getName(), i.getDescription(), i.getState());
 
     }
