@@ -1,6 +1,5 @@
 package bean;
 
-
 import control.LoginController;
 import entity.user.User;
 import exception.user.LoginException;
@@ -37,6 +36,7 @@ public class LoginBean {
 
     /**
      * This method validate a user once has tried to login
+     *
      * @return boolean
      */
     public boolean validate(String email, String password) {
