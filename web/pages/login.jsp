@@ -3,18 +3,21 @@
          pageEncoding="ISO-8859-1" %>
 
 <!-- Si dichiara la variabile loginBean e istanzia un oggetto LoginBean -->
-<jsp:useBean id="loginBean" scope="request"
-             class="bean.LoginBean"/>
+<jsp:useBean id="loginBean" scope="session"
+             class="bean.LoginBean">
+</jsp:useBean>
 
-<!-- Mappa automaticamente tutti gli attributi dell'oggetto loginBean e le proprietà JSP -->
+    <!-- Mappa automaticamente tutti gli attributi dell'oggetto loginBean e le proprietà JSP -->
+
 <jsp:setProperty name="loginBean" property="*"/>
 
 <%
     if (request.getParameter("email") != null && request.getParameter("password") != null) {
-        if (loginBean.validate()) {
+        System.out.println(request.getParameter("email"));
+        if (loginBean.validate(request.getParameter("email"),request.getParameter("password"))) {
 %>
 <!-- Passa il controllo alla nuova pagina -->
-<jsp:forward page="RiassuntoLogin.jsp"/>
+<jsp:forward page="grid.html"/>
 <%
 } else {
 %>
@@ -72,21 +75,18 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="login.jsp" method="POST">
+                        <form role="form" action="login.jsp" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" id = "email" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
+                                    <input class="form-control" placeholder="Password" id ="password" name="password" type="password">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.jsp" class="btn btn-lg btn-success btn-block">Login</a>
+                                <div>
+                                    <input value = "Login" class="btn btn-lg btn-success btn-block" type="submit">
+                                </div>
                             </fieldset>
                         </form>
                     </div>
