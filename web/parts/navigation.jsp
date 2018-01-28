@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.jsp">SB Admin v2.0</a>
+        <a class="navbar-brand" href="index.jsp">Delphino</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -238,6 +238,28 @@
                 <li>
                     <a href="index.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
+
+                <li>
+
+                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Rooms<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+
+                            <a href="#">All rooms</a>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#">Add new room</a>
+
+                        </li>
+
+                    </ul>
+
+                </li>
+
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
