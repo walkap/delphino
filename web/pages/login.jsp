@@ -13,7 +13,7 @@
 
 <%
     if (request.getParameter("email") != null && request.getParameter("password") != null) {
-        System.out.println(request.getParameter("email"));
+
         if (loginBean.validate(request.getParameter("email"),request.getParameter("password"))) {
 %>
 <!-- Passa il controllo alla nuova pagina -->
