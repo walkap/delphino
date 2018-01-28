@@ -40,6 +40,7 @@ public class LoginBean {
      * @return boolean
      */
     public boolean validate(String email, String password) {
+
         LoginController loginController = new LoginController();
         User user = null;
         try {

@@ -3,4 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+    <servlet>
+        <servlet-name>BuildingServlet</servlet-name>
+        <servlet-class>servlet.BuildingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetBuildingsServlet</servlet-name>
+        <servlet-class>servlet.GetBuildingsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuildingServlet</servlet-name>
+        <url-pattern>/BuildingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetBuildingsServlet</servlet-name>
+        <url-pattern>/GetBuildingsServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -24,10 +24,10 @@ public class LoginController {
             throw new LoginException("Email and password are mandatory!");
         }
 
-//       EmailValidator emailValidator = new EmailValidator();
-//        if(!emailValidator.isValidEmail(email)){
-//            throw new LoginException("Invalid email address!");
-//        }
+        EmailValidator emailValidator = new EmailValidator();
+        if (!emailValidator.isValidEmail(email)) {
+            throw new LoginException("Invalid email address!");
+        }
 
         User user = null;
         try {
