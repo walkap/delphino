@@ -6,8 +6,20 @@ import exception.user.LoginException;
 
 public class LoginBean {
 
-    private String email;
-    private String password;
+    public String email;
+    public String password;
+
+    private void setEmail(String email) {
+        this.email = email;
+    }
+
+   private void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LoginBean(){
+
+    }
 
     public LoginBean(String email, String password) {
         this.email = email;
@@ -18,7 +30,7 @@ public class LoginBean {
         return email;
     }
 
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 
@@ -27,11 +39,11 @@ public class LoginBean {
      *
      * @return boolean
      */
-    public boolean validate() {
+    public boolean validate(String email, String password) {
         LoginController loginController = new LoginController();
         User user = null;
         try {
-            user = loginController.getUserIfPresent(getEmail(), getPassword());
+            user = loginController.getUserIfPresent(email, password);
         } catch (LoginException e) {
             e.printStackTrace();
         }
