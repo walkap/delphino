@@ -76,7 +76,7 @@ public class UserDaoDb extends AbstractDao implements UserDao{
             System.out.println(sql.toString());
             rs = s.executeQuery(sql.toString());
             if(rs.next()){
-                user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
+                //user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
                 user.setType(rs.getString(COLUMN_TYPE));
             }
         }catch (SQLException e){
@@ -101,9 +101,9 @@ public class UserDaoDb extends AbstractDao implements UserDao{
             sql.append("SELECT * FROM " + TABLE_NAME);
             rs = s.executeQuery(sql.toString());
             while (rs.next()) {
-                User user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
-                user.setType(COLUMN_TYPE);
-                vec.add(user);
+               // User user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
+                //user.setType(COLUMN_TYPE);
+                //vec.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();

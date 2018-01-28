@@ -146,7 +146,7 @@ public class CreateTemplateRoomUI {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle(null);
             alert.setHeaderText(null);
-            alert.setContentText("Seats, Projectors, Computers must be an integer");
+            alert.setContentText("Seats, Projectors, Computers must be an integer and not null");
             alert.showAndWait();
         }
 

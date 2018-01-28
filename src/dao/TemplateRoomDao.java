@@ -157,7 +157,7 @@ public class TemplateRoomDao extends AbstractDao {
      * @return Vector
      */
 
-    public Vector<TemplateRoom> getAllTemplateRoom() {
+    public Vector<TemplateRoom> getAllTemplateRoom() throws NullPointerException {
         Connection c = ds.getConnection();
         Statement s = null;
 
