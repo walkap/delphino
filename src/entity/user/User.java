@@ -8,10 +8,11 @@ public class User {
     private String password;
     private String type;
 
-    public User(String name, String surname, String email){
+    public User(String name, String surname, String email, String type){
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.type = type;
     }
 
     public String getName() {
