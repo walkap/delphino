@@ -27,10 +27,12 @@ public class UserDaoDb extends AbstractDao implements UserDao{
         sql.append("insert into ").append(TABLE_NAME).append("(")
                 .append(COLUMN_NAME).append(", ")
                 .append(COLUMN_SURNAME).append(", ")
+                .append(COLUMN_TYPE).append(", ")
                 .append(COLUMN_EMAIL).append(")")
                 .append(" values(")
                 .append("'").append(user.getName()).append("', ")
                 .append("'").append(user.getSurname()).append("', ")
+                .append("'").append(user.getType()).append("', ")
                 .append("'").append(user.getEmail()).append("')");
         this.executeUpdate(sql.toString());
     }
@@ -76,8 +78,12 @@ public class UserDaoDb extends AbstractDao implements UserDao{
             System.out.println(sql.toString());
             rs = s.executeQuery(sql.toString());
             if(rs.next()){
-                //user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL));
-                user.setType(rs.getString(COLUMN_TYPE));
+                user = new User(rs.getString(COLUMN_NAME), rs.getString(COLUMN_SURNAME), rs.getString(COLUMN_EMAIL),rs.getString(COLUMN_TYPE));
+
+                if(rs.getString(COLUMN_SURNAME).isEmpty()){
+                    user.setSurname(rs.getString(COLUMN_SURNAME));
+                }
+
             }
         }catch (SQLException e){
             e.printStackTrace();

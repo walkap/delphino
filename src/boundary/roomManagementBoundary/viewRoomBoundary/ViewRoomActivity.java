@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.viewRoomBoundary;
 
-import control.RoomManagementController;
+import control.HandleRoom;
 import entity.room.Room;
 import exception.room.InsertRoomException;
 import javafx.collections.FXCollections;
@@ -127,7 +127,7 @@ public class ViewRoomActivity {
 
         desk = roomTeacherDesk.isSelected();
 
-        RoomManagementController rmc = new RoomManagementController();
+        HandleRoom rmc = new HandleRoom();
         try {
             rmc.updateRoom(name, type, building, "area", board, desk, seats, projectors, computers);
         }catch (InsertRoomException e){
@@ -140,7 +140,7 @@ public class ViewRoomActivity {
      * and get to the previous scene
      */
     public void deleteRoom() throws IOException {
-        RoomManagementController rmc = new RoomManagementController();
+        HandleRoom rmc = new HandleRoom();
         //Call the method to delete the room
         rmc.deleteRoom(selectedRoom);
         //Get back to the table view

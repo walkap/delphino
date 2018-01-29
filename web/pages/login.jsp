@@ -18,6 +18,7 @@
 
         <div class="col-md-4 col-md-offset-4">
 
+            <hr style="background: transparent">
             <%
                 if (request.getParameter("email") != null && request.getParameter("password") != null) {
 
