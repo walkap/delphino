@@ -11,7 +11,7 @@ import exception.room.InsertRoomException;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class RoomManagementController {
+public class HandleRoom {
 
     private RoomDao roomDao = new RoomDaoDb();
     private Room myRoom;

@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.searchRoomBoundary;
 
-import control.RoomManagementController;
+import control.HandleRoom;
 import entity.room.Room;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +43,7 @@ public class SearchRoomActivity {
      */
     public void searchRoom() {
         String name = tfRoomName.getText();
-        RoomManagementController rmc = new RoomManagementController();
+        HandleRoom rmc = new HandleRoom();
         Room room = rmc.getRoomByName(name);
 
         if (room != null) {

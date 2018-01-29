@@ -1,7 +1,7 @@
 package boundary.roomManagementBoundary.viewAllRoomsBoundary;
 
 import boundary.roomManagementBoundary.viewRoomBoundary.ViewRoomActivity;
-import control.RoomManagementController;
+import control.HandleRoom;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +43,7 @@ public class ViewAllRoomsActivity {
      * @return Vector
      */
     private Vector<Room> getAllRooms() {
-        RoomManagementController rmc = new RoomManagementController();
+        HandleRoom rmc = new HandleRoom();
         return rmc.getAllRooms();
     }
 

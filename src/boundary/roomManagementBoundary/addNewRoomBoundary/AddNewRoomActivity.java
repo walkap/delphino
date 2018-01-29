@@ -1,6 +1,6 @@
 package boundary.roomManagementBoundary.addNewRoomBoundary;
 
-import control.RoomManagementController;
+import control.HandleRoom;
 import entity.TemplateRoom;
 import exception.room.InsertRoomException;
 import javafx.collections.FXCollections;
@@ -144,7 +144,7 @@ public class AddNewRoomActivity {
             computers = Integer.parseInt(roomComputers.getText());
         }
         desk = roomTeacherDesk.isSelected();
-        RoomManagementController rmc = new RoomManagementController();
+        HandleRoom rmc = new HandleRoom();
         try {
             rmc.insertRoom(name, type, building, "area", board, desk, seats, projectors, computers);
         } catch (InsertRoomException e) {
