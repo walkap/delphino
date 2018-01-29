@@ -12,6 +12,14 @@
         <servlet-name>GetBuildingsServlet</servlet-name>
         <servlet-class>servlet.GetBuildingsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyBuildingServlet</servlet-name>
+        <servlet-class>servlet.ModifyBuildingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBuildingServlet</servlet-name>
+        <servlet-class>servlet.DeleteBuildingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
         <url-pattern>/BuildingServlet</url-pattern>
@@ -19,6 +27,14 @@
     <servlet-mapping>
         <servlet-name>GetBuildingsServlet</servlet-name>
         <url-pattern>/GetBuildingsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyBuildingServlet</servlet-name>
+        <url-pattern>/ModifyBuildingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBuildingServlet</servlet-name>
+        <url-pattern>/DeleteBuildingServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -15,28 +15,28 @@ import java.io.PrintWriter;
 @WebServlet(name = "BuildingServlet")
 public class BuildingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
 
-        PrintWriter out = response.getWriter();
 
-        String area=request.getParameter("area");
-        String name=request.getParameter("name");
+            String area = request.getParameter("area");
+            String name = request.getParameter("name");
+
+                try {
+
+                    BuildingController controller = new BuildingController();
+                    controller.createNewBuilding(name, area);
+                    //RequestDispatcher rd=request.getRequestDispatcher("/pages/createBuilding.jsp");
+                    //rd.forward(request, response);
+                    response.sendRedirect("/pages/createBuilding.jsp");
+
+                } catch (BuildingException e) {
+                    e.printStackTrace();
+                }
 
 
-        try {
 
-            BuildingController controller = new BuildingController();
-            controller.createNewBuilding(name, area);
-            //RequestDispatcher rd=request.getRequestDispatcher("/pages/createBuilding.jsp");
-            //rd.forward(request, response);
-            response.sendRedirect("/pages/createBuilding.jsp");
-
-        } catch (BuildingException e) {
-            e.printStackTrace();
         }
-
-        out.close();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

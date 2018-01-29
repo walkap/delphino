@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="/GetBuildingsServlet"/>
+<%--<jsp:include page="/GetBuildingsServlet"/>--%>
+
+<%--
+<% request.setAttribute("area", " ");
+    request.setAttribute("newarea", "");
+    request.setAttribute("building", "");
+    request.setAttribute("newbuilding","");
+    request.setAttribute("changes", "");
+    request.setAttribute("create","");
+    request.setAttribute("delete","");
+%>--%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -416,7 +427,7 @@
                                         </select>
                                     </div>
 
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
+                                    <button type="submit" name="create" id="create" class="btn btn-default">Submit Button</button>
 
                                 </form>
 
@@ -467,5 +478,6 @@
 <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
+
 
 </html>
