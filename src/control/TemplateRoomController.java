@@ -40,15 +40,13 @@ public class TemplateRoomController {
         TemplateRoom tr = null;
         try {
             tr = tRD.getTemplateRoom(nameT);
-
         } catch (NullPointerException n) {
-            System.exit(1);
+            n.printStackTrace();
         }
         return tr;
     }
 
-    public Vector<TemplateRoom> getTemplateRooms(){
-
+    public Vector<TemplateRoom> getTemplateRooms() throws NullPointerException{
         vec = tRD.getAllTemplateRoom();
         return vec;
     }

@@ -53,15 +53,23 @@ public class ModifyDeleteTemplateRoomUI {
 
         ArrayList<String> array = new ArrayList<>();
         int i = 0;
-        Vector vec = tRD.getAllTemplateRoom();
-        int l = vec.size();
-        List list = null;
-        while (i < l) {
-            TemplateRoom tR = (TemplateRoom) vec.elementAt(i);
-            String n = tR.getNameTemplate();
-            i++;
-            array.add(n);
-
+        try {
+            Vector vec = tRD.getAllTemplateRoom();
+            int l = vec.size();
+            while (i < l) {
+                TemplateRoom tR = (TemplateRoom) vec.elementAt(i);
+                String n = tR.getNameTemplate();
+                i++;
+                array.add(n);
+            }
+        } catch (NullPointerException n) {
+            n.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("Templates Room are not present in DB ");
+            alert.showAndWait();
+            ListViewTemplateRooms.setDisable(true);
         }
         return array;
     }
@@ -78,13 +86,24 @@ public class ModifyDeleteTemplateRoomUI {
             public void handle(MouseEvent event) {
                 List<String> list = ListViewTemplateRooms.getSelectionModel().getSelectedItems();
                 String item = list.get(0);
-                tr = tRC.getTemplateRoom(item);
-                name.setText(tr.getNameTemplate());
-                seats.setText(Integer.toString(tr.getSeats()));
-                board.setText(tr.getBoard());
-                projectors.setText(Integer.toString(tr.getProjectors()));
-                computers.setText(Integer.toString(tr.getComputers()));
-                desk.setSelected(tr.getDesk());
+                try {
+                    tr = tRC.getTemplateRoom(item);
+                    name.setText(tr.getNameTemplate());
+                    seats.setText(Integer.toString(tr.getSeats()));
+                    board.setText(tr.getBoard());
+                    projectors.setText(Integer.toString(tr.getProjectors()));
+                    computers.setText(Integer.toString(tr.getComputers()));
+                    desk.setSelected(tr.getDesk());
+
+                } catch (NullPointerException n) {
+                    n.printStackTrace();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("DB is empty");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You haven't choose any Template");
+                    alert.showAndWait();
+                }
+
 
             }
         });
@@ -116,44 +135,53 @@ public class ModifyDeleteTemplateRoomUI {
 
 
     public void modifyTemplateRoom() {
-        String nTR = name.getText();
-        int sTR = Integer.parseInt(seats.getText());
-        String bTR = board.getText();
-        int pTR = Integer.parseInt(projectors.getText());
-        int cTR = Integer.parseInt(computers.getText());
-        Boolean dTR = desk.isSelected();
+        try {
+            String nTR = name.getText();
+            int sTR = Integer.parseInt(seats.getText());
+            String bTR = board.getText();
+            int pTR = Integer.parseInt(projectors.getText());
+            int cTR = Integer.parseInt(computers.getText());
+            Boolean dTR = desk.isSelected();
 
-        if (!nTR.isEmpty()) {
-            TemplateRoom tr = new TemplateRoom(nTR, sTR, bTR, pTR, cTR, dTR);
-            int res = tRC.modifyTemplateRoom(tr);
-            if (res == 2) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(null);
-                alert.setHeaderText(null);
-                alert.setContentText("The Template Room has been update");
-                alert.showAndWait();
-            } else {
-                if (res == 0) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+            if (!nTR.isEmpty()) {
+                TemplateRoom tr = new TemplateRoom(nTR, sTR, bTR, pTR, cTR, dTR);
+                int res = tRC.modifyTemplateRoom(tr);
+                if (res == 2) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle(null);
                     alert.setHeaderText(null);
-                    alert.setContentText("Changes at least a value for modify the Template Room");
+                    alert.setContentText("The Template Room has been update");
                     alert.showAndWait();
+                } else {
+                    if (res == 0) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle(null);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Changes at least a value for modify the Template Room");
+                        alert.showAndWait();
 
-                } else if (res == 1) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle(null);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Error in db");
-                    alert.showAndWait();
+                    } else if (res == 1) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle(null);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Error in db");
+                        alert.showAndWait();
 
+                    }
                 }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error with name of Template");
+                alert.setContentText("You don't choose any Template!");
+                alert.showAndWait();
             }
-        } else {
+        } catch (NumberFormatException n) {
+            n.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error with name of Template");
-            alert.setContentText("You don't choose any Template!");
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("Seats, Projectors, Computers must be an integer and not null");
             alert.showAndWait();
         }
     }

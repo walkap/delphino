@@ -1,6 +1,9 @@
-package entity;
+package bean;
 
-public class TemplateRoom {
+import control.TemplateRoomController;
+
+public class TemplateRoomBean {
+
 
     private String nameTemplate;
     private int seats;
@@ -8,6 +11,7 @@ public class TemplateRoom {
     private int projectors;
     private int computers;
     private Boolean desk;
+    private TemplateRoomController tRC = new TemplateRoomController();
 
 
     /**
@@ -21,7 +25,7 @@ public class TemplateRoom {
      * @param desk - TemplateRoom's desk
      */
 
-    public TemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk){
+    public TemplateRoomBean(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk){
         this.nameTemplate = nameTemplate;
         this.seats = seats;
         this.board = board;
@@ -32,7 +36,7 @@ public class TemplateRoom {
     }
 
     /**
-     * Setter and getter of TemplateRoom
+     * Setter and getter of TemplateRoomBean
      */
 
     public String getNameTemplate() {
@@ -82,4 +86,13 @@ public class TemplateRoom {
     public void setDesk(Boolean desk) {
         this.desk = desk;
     }
+
+    public void createTemplateRoom(){
+        try {
+            tRC.createTemplateRoom(nameTemplate, seats, board, projectors, computers, desk);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
+
