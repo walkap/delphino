@@ -1,4 +1,4 @@
-package bean;
+package bean.room;
 
 import control.HandleRoom;
 import entity.room.Room;
@@ -10,11 +10,8 @@ public class AllRoomsBean {
     private Vector<Room> rooms;
 
     public Vector<Room> getRooms() {
-
         HandleRoom handleRoom = new HandleRoom();
-
         rooms = handleRoom.getAllRooms();
-
         return rooms;
     }
 

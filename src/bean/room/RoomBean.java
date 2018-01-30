@@ -1,4 +1,4 @@
-package bean;
+package bean.room;
 
 import control.HandleRoom;
 import entity.Building;
@@ -17,13 +17,9 @@ public class RoomBean {
     private int computers;
     private Boolean teacherDesk;
 
-
     public Room getRoom(int id) {
-
         HandleRoom handleRoom = new HandleRoom();
-
         room = handleRoom.getRoomById(id);
-
         return room;
     }
 
