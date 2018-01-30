@@ -39,9 +39,10 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" name="name"
-                                               placeholder="Type the room's name..." required
+                                        <input type="text" id="name" class="form-control"
+                                               placeholder="Type the room's name..." disabled
                                                value="<%=room.getName()%>">
+                                        <input type="hidden" name="name" value="<%=room.getName()%>">
                                         <p class="help-block">This is the room's name</p>
                                     </div>
                                     <div class="form-group">
@@ -83,8 +84,6 @@
                                         </select>
                                         <p class="help-block">This is the kind of rooms</p>
                                     </div>
-
-                                    <!-- TODO dynamic list -->
                                     <div class="form-group">
                                         <label for="building">Building</label>
                                         <select id="building" class="form-control" name="building"
@@ -127,16 +126,12 @@
                                     </div>
                                 </div>
                             </form>
-
-
                             <div class="col-sm-12 col-lg-2 pull-left">
-
                                 <!-- Button trigger modal -->
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                                     Delete
                                 </button>
                             </div>
-
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
@@ -153,15 +148,10 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 10px">Close</button>
-
                                             <form class="pull-right" action="/DeleteRoomServlet" method="post">
-
                                                 <input type="hidden" name="id" value="<%=room.getId()%>">
-
                                                 <button type="submit" class="btn btn-danger">Delete</button>
-
                                             </form>
-
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -169,8 +159,6 @@
                                 <!-- /.modal-dialog -->
                             </div>
                             <!-- /.modal -->
-
-
                         </div>
                     </div>
                     <!-- /.panel-body -->
