@@ -25,7 +25,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="javafx-src" level="project" />
-    <orderEntry type="library" exported="" name="taglibs-standard-impl-1.2.5" level="project" />
     <orderEntry type="library" exported="" name="postgresql-42.1.4" level="project" />
     <orderEntry type="library" exported="" name="javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" exported="" name="Tomcat 9.0.4" level="application_server_libraries" />
@@ -41,5 +40,16 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/web/WEB-INF/lib/jstl.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="jstl" level="project" />
+    <orderEntry type="library" exported="" name="taglibs-standard-impl-1.2.5" level="project" />
   </component>
 </module>
