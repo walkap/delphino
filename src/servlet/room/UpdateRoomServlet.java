@@ -18,6 +18,7 @@ public class UpdateRoomServlet extends HttpServlet {
         int seats = 0;
         int projectors = 0;
         boolean hasDesk;
+        String board = "";
 
         response.setContentType("text/html");
         String name = request.getParameter("name");
@@ -25,30 +26,26 @@ public class UpdateRoomServlet extends HttpServlet {
         String area = request.getParameter("area");
         String type = request.getParameter("type");
 
-        String board = request.getParameter("board");
-
+        if (!request.getParameter("board").isEmpty()) {
+            board = request.getParameter("board");
+        }
         if (!request.getParameter("computers").isEmpty()) {
             computers = Integer.parseInt(request.getParameter("computers"));
         }
-
         if (!request.getParameter("seats").isEmpty()) {
             seats = Integer.parseInt(request.getParameter("seats"));
         }
         if (!request.getParameter("projectors").isEmpty()) {
             projectors = Integer.parseInt(request.getParameter("projectors"));
         }
-
         hasDesk = request.getParameter("hasDesk") != null;
-
         HandleRoom handleRoom = new HandleRoom();
-
-        try{
+        try {
             handleRoom.updateRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
             response.sendRedirect("/pages/single-room.jsp?id=" + handleRoom.getRoomByName(name).getId());
-        }catch (InsertRoomException e){
+        } catch (InsertRoomException e) {
             e.printStackTrace();
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
