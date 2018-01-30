@@ -31,8 +31,9 @@ public class Room implements Serializable{
         this.building = building;
     }
 
-    public Room(String name) {
+    public Room(String name, Building building) {
         this.name = name;
+        this.building = building;
     }
 
     /**
