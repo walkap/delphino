@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="../parts/head.jsp" %>
+
 <body>
 <div id="wrapper">
     <%@include file="../parts/navigation.jsp" %>
@@ -30,7 +31,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -46,17 +47,13 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
-
                                 <%
                                     AllRoomsBean allRoomsBean = new AllRoomsBean();
                                     int i = 1;
                                     for (Room room : allRoomsBean.getRooms()) {
                                 %>
-
                                 <tr>
-
                                     <td><%= i %>
                                     </td>
 
@@ -89,7 +86,7 @@
 
                                     <td>
                                         <a href="single-room.jsp?id=<%= room.getId() %>" type="button"
-                                           class="btn btn-info">Info</a>
+                                           class="btn btn-info btn-block">Edit</a>
                                     </td>
 
                                 </tr>
@@ -99,6 +96,8 @@
 
                                 </tbody>
                             </table>
+                            <!-- /.table-responsive -->
+
                         </div>
                         <!-- /.table-responsive -->
                     </div>
