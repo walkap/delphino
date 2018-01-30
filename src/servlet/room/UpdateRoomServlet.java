@@ -44,6 +44,7 @@ public class UpdateRoomServlet extends HttpServlet {
 
         try{
             handleRoom.updateRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
+            response.sendRedirect("/pages/single-room.jsp?id=" + handleRoom.getRoomByName(name).getId());
         }catch (InsertRoomException e){
             e.printStackTrace();
         }
