@@ -21,12 +21,12 @@
         <servlet-class>servlet.DeleteBuildingServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AllRoomsServlet</servlet-name>
-        <servlet-class>servlet.room.AllRoomsServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddNewRoomServlet</servlet-name>
         <servlet-class>servlet.room.AddNewRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRoomServlet</servlet-name>
+        <servlet-class>servlet.room.UpdateRoomServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
@@ -45,12 +45,12 @@
         <url-pattern>/DeleteBuildingServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AllRoomsServlet</servlet-name>
-        <url-pattern>/AllRoomsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddNewRoomServlet</servlet-name>
         <url-pattern>/AddNewRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRoomServlet</servlet-name>
+        <url-pattern>/UpdateRoomServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

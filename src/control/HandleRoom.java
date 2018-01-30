@@ -104,7 +104,16 @@ public class HandleRoom {
      */
     public Room getRoomByName(String name) {
         try{
-            myRoom = roomDao.getRoom(name);
+            myRoom = roomDao.getRoomByName(name);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return myRoom;
+    }
+
+    public Room getRoomById(int id){
+        try{
+            myRoom = roomDao.getRoomById(id);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
