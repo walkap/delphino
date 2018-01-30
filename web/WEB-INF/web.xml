@@ -40,6 +40,14 @@
         <servlet-name>ModifyIssueServlet</servlet-name>
         <servlet-class>servlet.ModifyIssueServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteRoomServlet</servlet-name>
+        <servlet-class>servlet.room.DeleteRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRoomServlet</servlet-name>
+        <servlet-class>servlet.room.UpdateRoomServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
         <url-pattern>/BuildingServlet</url-pattern>
@@ -75,6 +83,14 @@
     <servlet-mapping>
         <servlet-name>ModifyIssueServlet</servlet-name>
         <url-pattern>/ModifyIssueServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRoomServlet</servlet-name>
+        <url-pattern>/DeleteRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRoomServlet</servlet-name>
+        <url-pattern>/UpdateRoomServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
