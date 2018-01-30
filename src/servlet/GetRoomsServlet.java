@@ -11,23 +11,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetBuildingsServlet")
-public class GetBuildingsServlet extends HttpServlet {
+@WebServlet(name = "GetRoomsServlet")
+public class GetRoomsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String area = request.getParameter("area");
+        String building = request.getParameter("building");
 
         BuildingController buildingController = new BuildingController();
 
-        ArrayList<String> buildings = buildingController.getBuildingsFromArea(area);
-        out.print("<option value=\"\" disabled selected>--Select--</option>");
+        ArrayList<String> rooms = buildingController.getRoomsFromBuilding(area, building);
 
         try {
-            for (int i = 0; i < buildings.size(); i++) {
+            out.print("<option value=\" \" disabled selected>--Select--</option>");
+            for (int i = 0; i < rooms.size(); i++) {
 
-                out.print("<option value = " + buildings.get(i) + ">" + buildings.get(i) + "</option>");
+                out.print("<option value = " + rooms.get(i) + ">" + rooms.get(i) + "</option>");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,7 +37,6 @@ public class GetBuildingsServlet extends HttpServlet {
             out.close();
         }
     }
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

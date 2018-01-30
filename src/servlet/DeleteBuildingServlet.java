@@ -21,8 +21,7 @@ public class DeleteBuildingServlet extends HttpServlet {
 
         BuildingController controller = new BuildingController();
         controller.deleteBuilding(name, area);
-        //RequestDispatcher rd=request.getRequestDispatcher("/pages/createBuilding.jsp");
-        //rd.forward(request, response);
+
         response.sendRedirect("/pages/selectBuilding.jsp");
     }
 

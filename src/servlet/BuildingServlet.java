@@ -26,8 +26,7 @@ public class BuildingServlet extends HttpServlet {
 
                     BuildingController controller = new BuildingController();
                     controller.createNewBuilding(name, area);
-                    //RequestDispatcher rd=request.getRequestDispatcher("/pages/createBuilding.jsp");
-                    //rd.forward(request, response);
+
                     response.sendRedirect("/pages/createBuilding.jsp");
 
                 } catch (BuildingException e) {
