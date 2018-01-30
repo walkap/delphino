@@ -12,7 +12,7 @@ public class IssueHandlerController {
 
     public void addNewIssue(IssueBean bean){
 
-        Issue i = new Issue (bean.getName(), new Room(bean.getRoom(), bean.getBuilding(),
+        Issue i = new Issue (bean.getName(), new Room(bean.getRoom(),
                 new Building(bean.getBuilding(),bean.getArea())),bean.getDescription());
         IssueDao dao = new IssueDao();
         dao.addIssue(i);
@@ -21,7 +21,7 @@ public class IssueHandlerController {
 
     public void updateIssue(IssueBean bean, String state) {
 
-        Issue i = new Issue (bean.getName(), new Room(bean.getRoom(), bean.getBuilding(),
+        Issue i = new Issue (bean.getName(), new Room(bean.getRoom(),
                 new Building(bean.getBuilding(),bean.getArea())),bean.getDescription());
         IssueDao dao = new IssueDao();
         dao.updateIssue(i, state);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class IssueDao {
 
-    private static final String fileName = "Issue.ser";
+    private static final String fileName = "/home/riccardo/IdeaProjects/delphino/Issue.ser";
 
     public boolean isIssuePresent(Issue i) {
 
@@ -67,29 +67,25 @@ public class IssueDao {
     public void deleteIssue(Issue i) {
         ArrayList<Issue> myList = new ArrayList<>();
 
-        if (isIssuePresent(i)) {
             myList = deserialize();
             for (int j = 0; j < myList.size(); j++) {
                 if (myList.get(j).isEqualTo(i)) {
                     myList.remove(j);
                     System.out.println("Issue removed!");
                     if (myList.size() == 0) {
-                       try {
-                           PrintWriter writer = new PrintWriter(fileName);
-                           writer.print("");
-                           writer.close();
-                           return;
-                       }catch (FileNotFoundException e){
-                           e.printStackTrace();
-                       }
+                        try {
+                            PrintWriter writer = new PrintWriter(fileName);
+                            writer.print("");
+                            writer.close();
+                            return;
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
                     }
                     this.serialize(myList);
                     return;
                 }
-
             }
-        }
-        System.out.println("Issue not present!");
     }
 
     public void serialize(Issue i) {
@@ -133,10 +129,14 @@ public class IssueDao {
 
     public void updateIssue (Issue i, String state) {
 
+        System.out.println(i.getName()+ "" + i.getRoom().getName());
+
         System.out.println("old state :"+ i.getState());
-        if (isIssuePresent(i)) {
             ArrayList<Issue> list = deserialize();
             for (int j = 0; j < list.size(); j++) {
+
+                System.out.println(list.get(j).getName()+ "" + list.get(j).getRoom().getName());
+
                 if (list.get(j).isEqualTo(i)) {
                     list.get(j).setState(state);
                     this.serialize(list);
@@ -144,12 +144,7 @@ public class IssueDao {
                     System.out.println("Issue updated!");
                     return;
                 }
-            }
         }
-        else{
-            System.out.println("Issue not found!");
-            return;
-            }
     }
 
     public ArrayList<Issue> deserialize() {

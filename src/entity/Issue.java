@@ -27,12 +27,14 @@ public class Issue implements Serializable {
         if (i == null){
             return false;
         }
-        return (this.getName().equalsIgnoreCase(i.getName()));
+        return (this.getName().equals(i.getName()) && this.getRoom().getName().equals(i.getRoom().getName())
+                 && this.getRoom().getBuilding().getName().equals(i.getRoom().getBuilding().getName())
+                  && this.getRoom().getBuilding().getArea().equals(i.getRoom().getBuilding().getArea()));
 
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -40,7 +42,7 @@ public class Issue implements Serializable {
     }
 
     public Room getRoom() {
-        return room;
+        return this.room;
     }
 
     public void setRoom(Room room) {

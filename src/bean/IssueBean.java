@@ -69,7 +69,7 @@ public class IssueBean {
     }
 
     public String getArea() {
-        return area;
+        return this.area;
     }
 
     public void setArea(String area) {
@@ -77,7 +77,7 @@ public class IssueBean {
     }
 
     public String getBuilding() {
-        return building;
+        return this.building;
     }
 
     public void setBuilding(String building) {
@@ -93,7 +93,7 @@ public class IssueBean {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
