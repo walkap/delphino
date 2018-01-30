@@ -16,7 +16,7 @@ public class AddNewRoomServlet extends HttpServlet {
         int computers = 0;
         int seats = 0;
         int projectors = 0;
-        boolean hasDesk = false;
+        boolean hasDesk;
 
         response.setContentType("text/html");
         String name = request.getParameter("name");
