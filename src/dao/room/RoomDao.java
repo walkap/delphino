@@ -1,6 +1,5 @@
 package dao.room;
 
-import entity.Building;
 import entity.room.Room;
 
 import java.sql.SQLException;
@@ -36,7 +35,15 @@ public interface RoomDao {
      * @param name - String
      * @return Room
      */
-    Room getRoom(String name);
+    Room getRoomByName(String name);
+
+    /**
+     * This abstract method returns a room from the persistence if present
+     * by id
+     * @param id int
+     * @return Room
+     */
+    Room getRoomById(int id);
 
     /**
      * This abstract method returns a vector of rooms from the persistence

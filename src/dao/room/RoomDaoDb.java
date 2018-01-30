@@ -104,7 +104,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     }
 
     @Override
-    public Room getRoom(String name) throws NullPointerException {
+    public Room getRoomByName(String name) throws NullPointerException {
         Statement s = null;
         Connection c = ds.getConnection();
         ResultSet rs = null;
@@ -117,6 +117,39 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
                     .append(COLUMN_NAME)
                     .append("='")
                     .append(name)
+                    .append("'");
+            rs = s.executeQuery(sql.toString());
+            if (rs.next()) {
+                RoomDirectorBuilder rdb = new RoomDirectorBuilder();
+                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE),
+                        new Building(rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_AREA)));
+                setAllOptionalAttributes(rb, rs);
+                room = rdb.getRoom();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.closeResultSet(rs);
+            this.closeStatement(s);
+            ds.closeConnection(c);
+        }
+        return room;
+    }
+
+    @Override
+    public Room getRoomById(int id) throws NullPointerException {
+        Statement s = null;
+        Connection c = ds.getConnection();
+        ResultSet rs = null;
+        Room room = null;
+        try {
+            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT * FROM ").append(TABLE_NAME)
+                    .append(" WHERE ")
+                    .append(COLUMN_ID)
+                    .append("='")
+                    .append(id)
                     .append("'");
             rs = s.executeQuery(sql.toString());
             if (rs.next()) {

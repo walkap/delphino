@@ -159,7 +159,7 @@ public class RoomDaoFile implements RoomDao{
      * @return Room
      */
     @Override
-    public Room getRoom(String name) {
+    public Room getRoomByName(String name) {
         Room room;
         Vector<Room> vec = deserialization();
         for (Room currentRoom : vec) {
@@ -168,6 +168,12 @@ public class RoomDaoFile implements RoomDao{
                 return room;
             }
         }
+        return null;
+    }
+
+
+    @Override
+    public Room getRoomById(int id){
         return null;
     }
 
