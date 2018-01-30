@@ -21,10 +21,6 @@
         <servlet-class>servlet.DeleteBuildingServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AllRoomsServlet</servlet-name>
-        <servlet-class>servlet.room.AllRoomsServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddNewRoomServlet</servlet-name>
         <servlet-class>servlet.room.AddNewRoomServlet</servlet-class>
     </servlet>
@@ -59,10 +55,6 @@
     <servlet-mapping>
         <servlet-name>DeleteBuildingServlet</servlet-name>
         <url-pattern>/DeleteBuildingServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AllRoomsServlet</servlet-name>
-        <url-pattern>/AllRoomsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddNewRoomServlet</servlet-name>
