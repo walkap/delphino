@@ -52,7 +52,7 @@ public class BuildingDao extends AbstractDao {
         }
     }
 
-    public ArrayList<String> getAreaBuildings(String area) {
+    public ArrayList<String> getBuildingsFromArea(String area) {
         Statement s = null;
         DataSource ds = new DataSource();
         Connection c = ds.getConnection();
@@ -71,6 +71,44 @@ public class BuildingDao extends AbstractDao {
             while (rs.next()) {
                 String nameBuilding = rs.getString(COLUMN_NAME);
                 list.add(nameBuilding);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Closing statement...");
+            this.closeStatement(s);
+            System.out.println("Closing connection...");
+            ds.closeConnection(c);
+        }
+        return list;
+    }
+
+
+    public ArrayList<String> getRoomsFromBuilding(String area, String building) {
+        Statement s = null;
+        DataSource ds = new DataSource();
+        Connection c = ds.getConnection();
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT * FROM room")
+                    .append(" WHERE ")
+                    .append("area")
+                    .append(" = ")
+                    .append("'")
+                    .append(area)
+                    .append("'")
+                    .append(" AND ")
+                    .append("building")
+                    .append(" = ")
+                    .append("'")
+                    .append(building)
+                    .append("'");
+            ResultSet rs = s.executeQuery(sql.toString());
+            while (rs.next()) {
+                String nameRoom = rs.getString("name");
+                list.add(nameRoom);
             }
         } catch (SQLException e) {
             e.printStackTrace();

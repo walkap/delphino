@@ -1,17 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<jsp:include page="/GetBuildingsServlet"/>--%>
-
-<%--
-<% request.setAttribute("area", " ");
-    request.setAttribute("newarea", "");
-    request.setAttribute("building", "");
-    request.setAttribute("newbuilding","");
-    request.setAttribute("changes", "");
-    request.setAttribute("create","");
-    request.setAttribute("delete","");
-%>--%>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -411,13 +399,14 @@
                                 <form role="form" action="/BuildingServlet" method="post">
 
                                     <div class="form-group">
-                                        <label>Text Input</label>
+                                        <label>Select Name</label>
                                         <input name="name" class="form-control">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Selects</label>
+                                        <label>Select Area</label>
                                         <select class="form-control" name="area">
+                                            <option value="" disabled selected>--Select--</option>
                                             <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                             <option value="Ingegneria">Ingegneria</option>
                                             <option value="Scienze Matematiche">Scienze Matematiche</option>
@@ -434,16 +423,6 @@
                             </div>
 
 
-                            <div>
-
-                                <table>
-                                    <c:forEach items="${buildings}" var="building">
-                                        <tr>
-                                            <td>${building}</td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                            </div>
                         </div>
 
                     </div>
