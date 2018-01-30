@@ -55,7 +55,7 @@ public class HandleRoom {
      *
      * @param room - Room
      */
-    public void deleteRoom(Room room) {
+    public void deleteRoom(Room room) throws NullPointerException {
         try{
             roomDao.deleteRoom(room);
         }catch (NullPointerException e){
