@@ -2,45 +2,27 @@
          pageEncoding="ISO-8859-1" %>
 
 <jsp:useBean id="loginBean" scope="session" class="bean.LoginBean"/>
-
 <jsp:setProperty name="loginBean" property="*"/>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <%@include file="/parts/head.jsp"%>
-
 <body>
-
 <div class="container">
-
     <div class="row">
-
         <div class="col-md-4 col-md-offset-4">
-
             <hr style="background: transparent">
             <%
                 if (request.getParameter("email") != null && request.getParameter("password") != null) {
-
                     if (loginBean.validate(request.getParameter("email"), request.getParameter("password"))) {
-
                         %><jsp:forward page="index.jsp"/><%
-
                     } else {
-
                         %><div class="alert alert-danger">Wrong data</div><%
-
                     }
-
                 } else {
-
                     %><div class="alert alert-warning mt-2">Not logged in</div><%
-
                 }
             %>
-
             <div class="login-panel panel panel-default">
-
                 <div class="panel-heading">
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
@@ -66,9 +48,6 @@
         </div>
     </div>
 </div>
-
 <%@include file="/parts/footer-scripts.jsp"%>
-
 </body>
-
 </html>
