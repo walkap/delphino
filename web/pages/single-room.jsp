@@ -1,15 +1,17 @@
-<%@ page import="bean.room.RoomBean" %>
 <%@ page import="entity.room.Room" %>
 <%@ page import="util.RoomTypes" %>
 <%@ page import="util.Area" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<jsp:useBean id="roomBean" scope="session" class="bean.room.RoomBean"/>
+<jsp:setProperty name="roomBean" property="*"/>
 
 <%
-    RoomBean roomBean = new RoomBean();
-    Room room = roomBean.getRoom(Integer.parseInt(request.getParameter("id")));
     String[] types = RoomTypes.getTypes();
     String[] areas = Area.getAreas();
+    Room room = roomBean.getRoom(Integer.parseInt(request.getParameter("id")));
+
 %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Update room <%=room.getName()%>
+                <h1 class="page-header">Update room <%= room.getName() %>
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -89,7 +91,7 @@
                                         <select id="building" class="form-control" name="building"
                                                 onchange="setOptionValue(value, this.id)" required>
                                             <option value="<%=room.getBuilding().getName()%>"
-                                                    selected><%=room.getBuilding().getArea()%>
+                                                    selected><%=room.getBuilding().getName()%>
                                             </option>
                                         </select>
                                         <p class="help-block">This is the building where the room is located inside the
