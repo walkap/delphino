@@ -1,11 +1,6 @@
 <%@ page import="entity.room.Room" %>
-<%@ page import="bean.AllRoomsBean" %>
+<%@ page import="bean.room.AllRoomsBean" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<jsp:useBean id="rooms" class="bean.AllRoomsBean"/>
-
-<jsp:setProperty name="rooms" property="*"/>
 
 <!DOCTYPE html>
 <html lang="en">
