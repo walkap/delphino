@@ -1,6 +1,8 @@
 <%@ page import="entity.room.Room" %>
-<%@ page import="bean.room.AllRoomsBean" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<jsp:useBean id="rooms" scope="session" class="bean.room.AllRoomsBean"/>
+<jsp:setProperty name="rooms" property="*"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,9 +46,8 @@
                                 </thead>
                                 <tbody>
                                 <%
-                                    AllRoomsBean allRoomsBean = new AllRoomsBean();
                                     int i = 1;
-                                    for (Room room : allRoomsBean.getRooms()) {
+                                    for (Room room : rooms.getRooms()) {
                                 %>
                                 <tr>
                                     <td><%= i %>
