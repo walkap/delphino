@@ -1,4 +1,4 @@
-<%@ page import="bean.RoomBean" %>
+<%@ page import="bean.room.RoomBean" %>
 <%@ page import="entity.room.Room" %>
 <%@ page import="util.RoomTypes" %>
 <%@ page import="util.Area" %>
