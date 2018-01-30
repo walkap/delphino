@@ -88,14 +88,14 @@
                                     </td>
 
                                     <td>
-
-                                        <a href="single-room.jsp?id=<%= room.getId() %>" type="button" class="btn btn-info">Info</a>
-
+                                        <a href="single-room.jsp?id=<%= room.getId() %>" type="button"
+                                           class="btn btn-info">Info</a>
                                     </td>
 
                                 </tr>
 
-                                <% i++; } %>
+                                <% i++;
+                                } %>
 
                                 </tbody>
                             </table>
