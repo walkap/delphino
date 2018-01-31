@@ -1,5 +1,9 @@
+        <%@ page import="entity.TemplateRoom" %>
+<%@ page import="control.TemplateRoomController" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
+        <jsp:setProperty name="templateRooms" property="*"/>
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="../parts/head.jsp" %>
@@ -30,11 +34,10 @@
                                 <div class="form-group">
                                     <label for="template">Template Room</label>
                                     <select id="template" class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        <%
+                                            for (TemplateRoom templateRoom : templateRooms.viewAllTemplateRooms()) {%>
+                                        <option><%=templateRoom.getNameTemplate()%></option>
+                                        <% } %>
                                     </select>
                                 </div>
                             </div>
