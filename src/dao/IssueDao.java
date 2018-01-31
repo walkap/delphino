@@ -163,7 +163,7 @@ public class IssueDao {
 
         }catch(EOFException ex)
                 {
-                    System.out.println("IOException is caught reeeee");
+                    System.out.println("deserialization");
 
                 }
         catch(IOException e){
