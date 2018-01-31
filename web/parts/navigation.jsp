@@ -1,5 +1,3 @@
-<% boolean isAdmin = request.getSession().getAttribute("userType").equals("admin");%>
-
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -25,7 +23,7 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="logout.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -58,15 +56,23 @@
                             <a href="all-rooms.jsp">All rooms</a>
                         </li>
 
-                        <% if(isAdmin){ %>
+
+                        <%
+                            if(request.getSession().getAttribute("userType") != null){
+
+                                if(request.getSession().getAttribute("userType").equals("admin")){ %>
                         <li>
                             <a href="add-new-room.jsp">Add new room</a>
                         </li>
-                        <% } %>
+                        <%      }
+                            } %>
                     </ul>
                 </li>
 
-                <% if(isAdmin){ %>
+                <%
+                    if(request.getSession().getAttribute("userType") != null){
+
+                    if(request.getSession().getAttribute("userType").equals("admin")){ %>
                 <li>
                     <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -90,7 +96,7 @@
                     </ul>
                 </li>
 
-                <% } %>
+                <% } } %>
 
             </ul>
         </div>
