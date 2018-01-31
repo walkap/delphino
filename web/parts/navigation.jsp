@@ -61,6 +61,17 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Template Rooms<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="createTemplateRoom.jsp">Create Template Room</a>
+                        </li>
+                        <li>
+                            <a href="viewTemplateRooms.jsp">View, Modify, Delete a Template Room</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
