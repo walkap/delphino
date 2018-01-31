@@ -20,6 +20,7 @@
         <servlet-name>DeleteBuildingServlet</servlet-name>
         <servlet-class>servlet.DeleteBuildingServlet</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>AddNewRoomServlet</servlet-name>
         <servlet-class>servlet.room.AddNewRoomServlet</servlet-class>
@@ -41,6 +42,11 @@
         <servlet-class>servlet.ModifyIssueServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CreateTemplateRoomServlet</servlet-name>
+        <servlet-class>servlet.templateRoomServlet.CreateTemplateRoomServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>DeleteRoomServlet</servlet-name>
         <servlet-class>servlet.room.DeleteRoomServlet</servlet-class>
     </servlet>
@@ -48,6 +54,15 @@
         <servlet-name>UpdateRoomServlet</servlet-name>
         <servlet-class>servlet.room.UpdateRoomServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyTemplateRoomServlet</servlet-name>
+        <servlet-class>servlet.templateRoomServlet.ModifyTemplateRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteTemplateRoomServlet</servlet-name>
+        <servlet-class>servlet.templateRoomServlet.DeleteTemplateRoomServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
         <url-pattern>/BuildingServlet</url-pattern>
@@ -85,6 +100,10 @@
         <url-pattern>/ModifyIssueServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CreateTemplateRoomServlet</servlet-name>
+        <url-pattern>/CreateTemplateRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DeleteRoomServlet</servlet-name>
         <url-pattern>/DeleteRoomServlet</url-pattern>
     </servlet-mapping>
@@ -92,5 +111,14 @@
         <servlet-name>UpdateRoomServlet</servlet-name>
         <url-pattern>/UpdateRoomServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyTemplateRoomServlet</servlet-name>
+        <url-pattern>/ModifyTemplateRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTemplateRoomServlet</servlet-name>
+        <url-pattern>/DeleteTemplateRoomServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
