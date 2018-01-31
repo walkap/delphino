@@ -149,5 +149,17 @@ public class BuildingDao extends AbstractDao {
         } else {
             System.out.println("The building is not in the database");
         }
+
+        StringBuilder sql = new StringBuilder();
+        sql.append("DELETE from ")
+                .append("room")
+                .append(" WHERE ")
+                .append("building").append(" = '").append(building.getName()).append("'")
+                .append(" AND ").append("area").append(" = '").append(building.getArea())
+                .append("'");
+        this.executeUpdate(sql.toString());
+        System.out.println("Rooms in the building deleted!");
+
+
     }
 }
