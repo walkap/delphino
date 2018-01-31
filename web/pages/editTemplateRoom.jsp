@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <div class="checkbox">
                                             <label for="desk">
-                                                <input type="checkbox" name="hasDesk" id="desk"
+                                                <input type="checkbox" name="desk" id="desk"
                                                        value="true"
                                                     <%if(templateRoom.getDesk()) out.print("checked");%> >desk
                                             </label>

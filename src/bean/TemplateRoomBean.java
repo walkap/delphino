@@ -32,6 +32,8 @@ public class TemplateRoomBean {
         Vector<TemplateRoom> templateRooms = tRC.getTemplateRooms();
         return templateRooms;
     }
+
+
     /**
      * Setter and getter of TemplateRoomBean
      */

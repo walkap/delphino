@@ -62,7 +62,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <form role="form" action="<c:url value="/CreateTemplateRoomServlet"/>" method="post">
                                     <div class="form-group">
                                         <label>Name</label>
@@ -99,7 +99,7 @@
 
                                     </div>
                                     <button type="reset" class="btn btn-default">Cancel</button>
-                                    <button type="submit" class="btn btn-default">Confirm</button>
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
 
 
                                 </form>

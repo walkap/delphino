@@ -62,6 +62,18 @@
         <servlet-name>DeleteTemplateRoomServlet</servlet-name>
         <servlet-class>servlet.templateRoomServlet.DeleteTemplateRoomServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateFeatureServlet</servlet-name>
+        <servlet-class>servlet.feature.CreateFeatureServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFeatureServlet</servlet-name>
+        <servlet-class>servlet.feature.DeleteFeatureServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifyFeatureServlet</servlet-name>
+        <servlet-class>servlet.feature.ModifyFeatureServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
@@ -118,6 +130,18 @@
     <servlet-mapping>
         <servlet-name>DeleteTemplateRoomServlet</servlet-name>
         <url-pattern>/DeleteTemplateRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateFeatureServlet</servlet-name>
+        <url-pattern>/CreateFeatureServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFeatureServlet</servlet-name>
+        <url-pattern>/DeleteFeatureServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyFeatureServlet</servlet-name>
+        <url-pattern>/ModifyFeatureServlet</url-pattern>
     </servlet-mapping>
 
 

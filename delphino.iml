@@ -21,6 +21,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/jUnitTest" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/jUnitTest/dao" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -49,7 +50,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" exported="" name="taglibs-standard-impl-1.2.5" level="project" />
   </component>
 </module>

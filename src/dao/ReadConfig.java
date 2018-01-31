@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class ReadConfig {
 
-    private static final String FILE = "/home/riccardo/IdeaProjects/delphino/config.properties";
+    private static final String FILE = "C:\\Projects\\delphino\\config.properties";
     private static Properties properties;
     private FileInputStream fileInputStream;
     private static ReadConfig instance = null;
