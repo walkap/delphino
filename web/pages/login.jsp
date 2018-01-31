@@ -14,6 +14,8 @@
             <%
                 if (request.getParameter("email") != null && request.getParameter("password") != null) {
                     if (loginBean.validate(request.getParameter("email"), request.getParameter("password"))) {
+                        HttpSession s = request.getSession();
+                        s.setAttribute("userType", loginBean.getUser().getType());
                         %><jsp:forward page="index.jsp"/><%
                     } else {
                         %><div class="alert alert-danger">Wrong data</div><%
