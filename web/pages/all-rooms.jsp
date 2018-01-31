@@ -1,13 +1,10 @@
+<%@include file="/parts/header-scripts.jsp"%>
 <%@ page import="entity.room.Room" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <jsp:useBean id="rooms" scope="session" class="bean.room.AllRoomsBean"/>
 <jsp:setProperty name="rooms" property="*"/>
-
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="../parts/head.jsp" %>
-
 <body>
 <div id="wrapper">
     <%@include file="../parts/navigation.jsp" %>
