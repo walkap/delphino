@@ -1,3 +1,4 @@
+<%@include file="/parts/header-scripts.jsp" %>
 <%@ page import="entity.room.Room" %>
 <%@ page import="util.RoomTypes" %>
 <%@ page import="util.Area" %>
@@ -11,7 +12,6 @@
     Room room = roomBean.getRoom(Integer.parseInt(request.getParameter("id")));
 
 %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
