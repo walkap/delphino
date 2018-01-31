@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class RoomDaoFile implements RoomDao{
 
-    private static final String FILE_PATH = "/home/riccardo/IdeaProjects/delphino/room.ser";
+    private static final String FILE_PATH = "/delphino/room.ser";
 
     /**
      * This method is used to serialize an object vector in a file
