@@ -1,6 +1,9 @@
 package bean;
 
 import control.TemplateRoomController;
+import entity.TemplateRoom;
+
+import java.util.Vector;
 
 public class TemplateRoomBean {
 
@@ -14,27 +17,21 @@ public class TemplateRoomBean {
     private TemplateRoomController tRC = new TemplateRoomController();
 
 
-    /**
-     * Constructor
-     *
-     * @param nameTemplate - TemplateRoom's name
-     * @param seats - TemplateRoom's seats
-     * @param board - TemplateRoom's board
-     * @param projectors - TemplateRoom's projectors
-     * @param computers - TemplateRoom's computers
-     * @param desk - TemplateRoom's desk
-     */
 
-    public TemplateRoomBean(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk){
-        this.nameTemplate = nameTemplate;
-        this.seats = seats;
-        this.board = board;
-        this.projectors = projectors;
-        this.computers = computers;
-        this.desk = desk;
+
+    public TemplateRoomBean(){
 
     }
 
+    public TemplateRoom viewTemplateRoom(String nT){
+        TemplateRoom templateRoom = tRC.getTemplateRoom(nT);
+        return templateRoom;
+    }
+
+    public Vector<TemplateRoom> viewAllTemplateRooms(){
+        Vector<TemplateRoom> templateRooms = tRC.getTemplateRooms();
+        return templateRooms;
+    }
     /**
      * Setter and getter of TemplateRoomBean
      */
@@ -87,9 +84,9 @@ public class TemplateRoomBean {
         this.desk = desk;
     }
 
-    public void createTemplateRoom(){
+    public void createTemplateRoom(String n, int s, String b, int p, int c, Boolean d){
         try {
-            tRC.createTemplateRoom(nameTemplate, seats, board, projectors, computers, desk);
+            tRC.createTemplateRoom(n, s, b, p, c, d);
         }catch (Exception e){
             e.printStackTrace();
         }
