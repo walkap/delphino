@@ -114,7 +114,7 @@
                             <input type="text" id="description" name="description" readonly>  </input>
                             <div class="form-group">
                                 <label>Change State</label>
-                                <select class="form-control" id="newstate" name="newstate">
+                                <select class="form-control" id="newstate" name="newstate" required>
                                     <option value="" disabled selected>--Select--</option>
                                     <option value="New">New</option>
                                     <option value="Assigned">Assigned</option>

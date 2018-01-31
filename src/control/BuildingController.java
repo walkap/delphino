@@ -10,8 +10,12 @@ public class BuildingController {
 
     public void createNewBuilding (String name, String area) throws BuildingException{
 
-        BuildingDao buildingDao = new BuildingDao();
-        buildingDao.addBuilding(new Building(name, area));
+        try {
+            BuildingDao buildingDao = new BuildingDao();
+            buildingDao.addBuilding(new Building(name, area));
+        }catch(BuildingException e){
+            System.out.println("building already present");
+        }
 
 
     }

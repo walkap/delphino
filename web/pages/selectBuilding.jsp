@@ -38,13 +38,13 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Create Building</h1>
+                <h1 class="page-header">Modify building</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
 
                 <div class="panel panel-default">
 
@@ -61,7 +61,7 @@
                         <fieldset>
                             <div class="form-group">
                                 <label>Seleziona MacroArea</label>
-                                <select class="form-control" name = "area" id="area">
+                                <select class="form-control" name = "area" id="area" required>
                                     <option value="" disabled selected>--Select--</option>
                                     <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                     <option value="Ingegneria">Ingegneria</option>
@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>Seleziona Edificio</label>
-                                        <select class="form-control" name = "building" id="building">
+                                        <select class="form-control" name = "building" id="building" required>
                                         </select>
                                     </div>
                             </div>
@@ -94,9 +94,9 @@
                                     <input type="text" id="oldname" name="oldname" readonly><br>
 
                                 Select new name :
-                                <input type="text" name="newname" id ="newname" placeholder="Enter new name"> </br>
+                                <input type="text" name="newname" id ="newname" required> </br>
                                 Select new Area :<br>
-                            <select class="form-control" name = "newarea" id="newarea">
+                            <select class="form-control" name = "newarea" id="newarea" required>
                                 <option value="" disabled selected>--Select--</option>
                                 <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                 <option value="Ingegneria">Ingegneria</option>
