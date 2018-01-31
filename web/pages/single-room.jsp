@@ -185,5 +185,22 @@
     }
 </script>
 
+<script type="text/javascript">
+
+    $area=$("#area");
+    $area.change (
+        function()  {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/GetBuildingsServlet",
+                data: {"area" : $('#area').val()},
+                success: function(data){
+                    $("#building").html(data)
+                }
+            });
+        }
+    );
+</script>
+
 </body>
 </html>
