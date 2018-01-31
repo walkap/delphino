@@ -12,17 +12,13 @@ public class TemplateRoomController {
     private Vector<TemplateRoom> vec;
 
 
-    public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
-        Boolean bool = false;
+    public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT){
         try {
             tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
+            return true;
         }catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            if (tRD.getRes() == 0) {
-                bool = true;
-            }
-            return bool;
+            return false;
         }
 
     }
@@ -77,7 +73,7 @@ public class TemplateRoomController {
     }
 
 
-    public int modifyTemplateRoom(TemplateRoom templateRoom) {
+    public int modifyTemplateRoom(TemplateRoom templateRoom){
         int res = 0;
         String nameTemplate = templateRoom.getNameTemplate();
         try {

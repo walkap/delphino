@@ -26,7 +26,7 @@ public class TemplateRoomDao extends AbstractDao {
     private TemplateRoom tr = null;
     private DataSource ds = new DataSource();
 
-    public void addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) throws SQLException {
+    public boolean addTemplateRoom(String nameTemplate, int seats, String board, int projectors, int computers, Boolean desk) throws SQLException {
 
         try {
             if (!isTemplateRoomPresent(nameTemplate)) {
@@ -47,12 +47,13 @@ public class TemplateRoomDao extends AbstractDao {
                 sql.append("'").append(desk).append("')");
                 this.executeUpdate(sql.toString());
 
-                setRes(0);
+                return true;
             } else {
-                setRes(1);
+                return false;
             }
         }catch (Exception e){
             e.printStackTrace();
+            return false;
         }
     }
 
