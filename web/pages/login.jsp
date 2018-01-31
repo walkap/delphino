@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-
 <jsp:useBean id="loginBean" scope="session" class="bean.LoginBean"/>
 <jsp:setProperty name="loginBean" property="*"/>
 <!DOCTYPE html>
@@ -16,6 +15,7 @@
                     if (loginBean.validate(request.getParameter("email"), request.getParameter("password"))) {
                         HttpSession s = request.getSession();
                         s.setAttribute("userType", loginBean.getUser().getType());
+                        s.setAttribute("isLoggedIn", "true");
                         %><jsp:forward page="index.jsp"/><%
                     } else {
                         %><div class="alert alert-danger">Wrong data</div><%
