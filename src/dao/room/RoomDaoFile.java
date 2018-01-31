@@ -4,11 +4,12 @@ import entity.Building;
 import entity.room.Room;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class RoomDaoFile implements RoomDao{
 
-    private static final String FILE_PATH = "room.ser";
+    private static final String FILE_PATH = "/home/riccardo/IdeaProjects/delphino/room.ser";
 
     /**
      * This method is used to serialize an object vector in a file
@@ -98,12 +99,12 @@ public class RoomDaoFile implements RoomDao{
      */
     @Override
     public void insertRoom(Room room) {
-        if (!isRoomPresent(room.getName())) {
+        //if (!isRoomPresent(room.getName())) {
             Vector<Room> vec = deserialization();
             vec.add(room);
             this.serialization(vec);
             System.out.println("RoomFileDao insertRoom(): yay your room has been added to the file!");
-        }
+       // }
     }
 
     /**

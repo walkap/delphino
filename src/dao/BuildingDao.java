@@ -47,8 +47,7 @@ public class BuildingDao extends AbstractDao {
             this.executeUpdate(sql.toString());
             System.out.println("The building has been added to the database");
         } else {
-            System.out.println("It's already present a building named " + building.getName() + "in the database");
-            throw new BuildingException();
+            throw new BuildingException("It's already present a building named " + building.getName() + "in the database");
         }
     }
 
