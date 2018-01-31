@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class IssueDao {
 
-    private static final String fileName = "/home/riccardo/IdeaProjects/delphino/Issue.ser";
+    private static final String fileName = "/delphino/Issue.ser";
 
     public boolean isIssuePresent(Issue i) {
 
