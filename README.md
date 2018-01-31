@@ -92,3 +92,15 @@ CREATE TABLE template_room
   teacher_desk  BOOLEAN
 );
 
+CREATE TABLE "user"
+(
+  name     VARCHAR(30) NOT NULL,
+  surname  VARCHAR(30) NOT NULL,
+  email    VARCHAR(30) NOT NULL
+    CONSTRAINT user_pkey
+    PRIMARY KEY,
+  password VARCHAR(30) NOT NULL,
+  type     VARCHAR(20) NOT NULL
+);
+
+
