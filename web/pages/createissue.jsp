@@ -60,7 +60,7 @@
                                 <form role="form" method="post" action ="/AddNewIssueServlet">
                                     <div class="form-group">
                                         <label>Select Area</label>
-                                        <select class="form-control" name = "area" id="area">
+                                        <select class="form-control" name = "area" id="area" required>
                                             <option value="" disabled selected>--Select--</option>
                                             <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                             <option value="Ingegneria">Ingegneria</option>
@@ -72,17 +72,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Select Building</label>
-                                        <select class="form-control" name = "building" id="building">
+                                        <select class="form-control" name = "building" id="building" required>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Selects Room</label>
-                                        <select class="form-control" name = "room" id = "room">
+                                        <select class="form-control" name = "room" id = "room" required>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Insert title</label>
-                                        <input class="form-control" name ="name">
+                                        <input class="form-control" name ="name" required>
                                         <p class="help-block">Example block-level help text here.</p>
                                     </div>
                                     <div class="form-group">

@@ -4,6 +4,13 @@
          pageEncoding="UTF-8" %>
 <jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
         <jsp:setProperty name="templateRooms" property="*"/>
+<%@include file="/parts/header-scripts.jsp"%>
+<%
+    if(!isAdmin){
+        response.sendRedirect("index.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="../parts/head.jsp" %>
@@ -54,6 +61,7 @@
                                     <div class="form-group">
                                         <label for="area">Area</label>
                                         <select id="area" class="form-control" name="area" required>
+                                            <option value="" disabled selected>--Select--</option>
                                             <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                             <option value="Ingegneria">Ingegneria</option>
                                             <option value="Scienze Matematiche">Scienze Matematiche</option>
@@ -92,9 +100,6 @@
                                     <div class="form-group">
                                         <label for="building">Building</label>
                                         <select id="building" class="form-control" name="building" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
                                         </select>
                                         <p class="help-block">Select the building you want to relate the room</p>
                                     </div>
@@ -140,5 +145,22 @@
 </div>
 <!-- /#wrapper -->
 <%@include file="../parts/footer-scripts.jsp" %>
+
+<script type="text/javascript">
+
+    $area=$("#area");
+    $area.change (
+        function()  {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/GetBuildingsServlet",
+                data: {"area" : $('#area').val()},
+                success: function(data){
+                    $("#building").html(data)
+                }
+            });
+        }
+    );
+</script>
 </body>
 </html>

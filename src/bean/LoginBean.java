@@ -6,8 +6,9 @@ import exception.user.LoginException;
 
 public class LoginBean {
 
-    public String email;
-    public String password;
+    private String email;
+    private String password;
+    private User user;
 
     public String getEmail() {
         return email;
@@ -33,7 +34,7 @@ public class LoginBean {
     public boolean validate(String email, String password) {
 
         LoginController loginController = new LoginController();
-        User user = null;
+        user = null;
         try {
             user = loginController.getUserIfPresent(email, password);
         } catch (LoginException e) {
@@ -41,4 +42,13 @@ public class LoginBean {
         }
         return (user != null);
     }
+
+    /**
+     * This method get the current user from this class
+     * @return User
+     */
+    public User getUser(){
+        return user;
+    }
+
 }

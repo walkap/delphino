@@ -63,18 +63,18 @@
 
                         <div class="row">
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
 
                                 <form role="form" action="/BuildingServlet" method="post">
 
                                     <div class="form-group">
                                         <label>Select Name</label>
-                                        <input name="name" class="form-control">
+                                        <input name="name" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Select Area</label>
-                                        <select class="form-control" name="area">
+                                        <select class="form-control" name="area" required>
                                             <option value="" disabled selected>--Select--</option>
                                             <option value="Lettere e Filosofia">Lettere e Filosofia</option>
                                             <option value="Ingegneria">Ingegneria</option>
