@@ -1,11 +1,11 @@
-package dao;
+package dao.feature;
 
 import entity.Feature;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class FeatureDaoFileJava {
+public class FeatureDaoFile implements FeatureDao{
 
     private static final String fileName = "feature.ser";
 
@@ -48,7 +48,7 @@ public class FeatureDaoFileJava {
         }
     }
 
-    private boolean isFeaturePresent(Feature f) throws Exception{
+    public boolean isFeaturePresent(Feature f){
 
         ArrayList<Feature> myList = deserialize();
 
@@ -60,7 +60,7 @@ public class FeatureDaoFileJava {
         return false;
     }
 
-    public void addFeature(Feature f) throws Exception {
+    public void insertFeature(Feature f)  {
 
         ArrayList<Feature> myList = new ArrayList<>();
 
@@ -78,11 +78,11 @@ public class FeatureDaoFileJava {
 
     }
 
-    public void deleteFeature(Feature f) throws Exception {
+    public void deleteFeature(Feature f) {
         ArrayList<Feature> myList = new ArrayList<>();
         File file = new File(fileName);
         if(!file.exists()) {
-            FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
+            FeatureDaoFile fDFJ = new FeatureDaoFile();
             fDFJ.newFeatureFile();
         }
         try {
@@ -117,7 +117,7 @@ public class FeatureDaoFileJava {
         try {
             File file = new File(fileName);
             if(!file.exists()) {
-                FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
+                FeatureDaoFile fDFJ = new FeatureDaoFile();
                 fDFJ.newFeatureFile();
             }
             FileOutputStream fileOS = new FileOutputStream(fileName);
@@ -135,7 +135,7 @@ public class FeatureDaoFileJava {
         ArrayList<Feature> myList = new ArrayList<>();
         File file = new File(fileName);
         if(!file.exists()) {
-            FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
+            FeatureDaoFile fDFJ = new FeatureDaoFile();
             fDFJ.newFeatureFile();
         }
         try {
@@ -143,7 +143,10 @@ public class FeatureDaoFileJava {
             ObjectInputStream in = new ObjectInputStream(fileOS);
             myList = (ArrayList<Feature>) in.readObject();
 
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (EOFException e){
+
+            System.out.println("EOF reached!");
+        }catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
 
         }
@@ -160,7 +163,7 @@ public class FeatureDaoFileJava {
 
     }
 
-    public ArrayList<Feature> getFeatures() throws Exception {
+    public ArrayList<Feature> getFeatures() {
 
         ArrayList<Feature> list = new ArrayList<>();
 
@@ -171,8 +174,8 @@ public class FeatureDaoFileJava {
     }
 
 
-    public Feature getFeature(String nameF) throws NullPointerException {
-        FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
+    public Feature getFeature(String nameF) {
+        FeatureDaoFile fDFJ = new FeatureDaoFile();
         ArrayList<Feature> myList = fDFJ.deserialize();
         for (int j = 0; j < myList.size(); j++) {
 

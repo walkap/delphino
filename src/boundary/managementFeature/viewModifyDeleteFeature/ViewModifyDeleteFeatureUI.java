@@ -2,7 +2,7 @@ package boundary.managementFeature.viewModifyDeleteFeature;
 
 import boundary.managementFeature.MainManagementFeature;
 import control.FeatureController;
-import dao.FeatureDaoFileJava;
+import dao.feature.FeatureDaoFile;
 import entity.Feature;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +36,7 @@ public class ViewModifyDeleteFeatureUI {
     @FXML
     private ListView<String> listView;
 
-    private FeatureDaoFileJava fD = new FeatureDaoFileJava();
+    private FeatureDaoFile fD = new FeatureDaoFile();
     private FeatureController fC = new FeatureController();
 
 

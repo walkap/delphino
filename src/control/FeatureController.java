@@ -1,12 +1,12 @@
 package control;
 
-import dao.FeatureDaoFileJava;
+import dao.feature.FeatureDaoFile;
 import entity.Feature;
 
 
 public class FeatureController {
 
-    private FeatureDaoFileJava fDFJ = new FeatureDaoFileJava();
+    private FeatureDaoFile fDFJ = new FeatureDaoFile();
 
     public void updateFeature(String nameFeature, String descriptionFeature){
         Feature f = new Feature(nameFeature, descriptionFeature);
@@ -21,7 +21,7 @@ public class FeatureController {
 
         Feature f = new Feature(nameFeature, descriptionFeature);
         try {
-            fDFJ.addFeature(f);
+            fDFJ.insertFeature(f);
         } catch (Exception e){
             e.printStackTrace();
         }
