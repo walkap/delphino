@@ -74,6 +74,10 @@
         <servlet-name>ModifyFeatureServlet</servlet-name>
         <servlet-class>servlet.feature.ModifyFeatureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetTemplateRoomJSONServlet</servlet-name>
+        <servlet-class>servlet.templateRoomServlet.GetTemplateRoomJSONServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>BuildingServlet</servlet-name>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>ModifyFeatureServlet</servlet-name>
         <url-pattern>/ModifyFeatureServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetTemplateRoomJSONServlet</servlet-name>
+        <url-pattern>/GetTemplateRoomJSONServlet</url-pattern>
     </servlet-mapping>
 
 
