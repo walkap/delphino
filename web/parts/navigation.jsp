@@ -61,19 +61,26 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="flot.html">Flot Charts</a>
+                            <a href="createBuilding.jsp">Add new building</a>
                         </li>
                         <li>
-                            <a href="morris.html">Morris.js Charts</a>
+                            <a href="selectBuilding.jsp">Modify buildings</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Issues<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="createissue.jsp">Add new issue</a>
+                        </li>
+                        <li>
+                            <a href="viewissue.jsp">Update issues</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
