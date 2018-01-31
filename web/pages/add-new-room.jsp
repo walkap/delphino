@@ -3,7 +3,7 @@
 <jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
 <jsp:setProperty name="templateRooms" property="*"/>
 <%
-    if(!isAdmin){
+    if(!isAdmin && request.getSession().getAttribute("isLoggedIn") != null){
         response.sendRedirect("index.jsp");
     }
 %>
@@ -31,17 +31,15 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-
-                                <!-- TODO dynamic list -->
-
                                 <div class="form-group">
                                     <label for="template">Template Room</label>
-                                    <select id="template" class="form-control">
+                                    <select id="template" class="form-control" name="template">
                                         <%
                                             for (TemplateRoom templateRoom : templateRooms.viewAllTemplateRooms()) {%>
-                                        <option><%=templateRoom.getNameTemplate()%></option>
+                                        <option value="<%=templateRoom.getNameTemplate()%>"><%=templateRoom.getNameTemplate()%></option>
                                         <% } %>
                                     </select>
+                                    <p class="help-block">Please select a template room if you want to pre-fill the some fields below</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +89,6 @@
                                         </select>
                                         <p class="help-block">Select the type of the room</p>
                                     </div>
-
-                                    <!-- TODO dynamic list -->
                                     <div class="form-group">
                                         <label for="building">Building</label>
                                         <select id="building" class="form-control" name="building" required>
@@ -143,9 +139,28 @@
 <%@include file="../parts/footer-scripts.jsp" %>
 
 <script type="text/javascript">
+    $("#template").change(function () {
+       $.ajax({
+           type: "POST",
+           url: "http://localhost:8080/GetTemplateRoomJSONServlet",
+           data: {"template" : $('#template').val()},
+           success: function (data) {
+               var obj = JSON.parse(data);
+               $("#board").val(obj.board);
+               $("#computers").val(obj.computers);
+               $("#seats").val(obj.seats);
+               $("#projectors").val(obj.projectors);
 
-    $area=$("#area");
-    $area.change (
+               if(obj.hasDesk){
+                   $("#hasDesk").attr("checked", true);
+               }else{
+                   $("#hasDesk").attr("checked", false);
+               }
+           }
+       })
+    });
+
+    $("#area").change (
         function()  {
             $.ajax({
                 type: "POST",
