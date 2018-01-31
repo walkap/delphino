@@ -1,16 +1,12 @@
-        <%@ page import="entity.TemplateRoom" %>
-<%@ page import="control.TemplateRoomController" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@include file="/parts/header-scripts.jsp" %>
+<%@ page import="entity.TemplateRoom" %>
 <jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
-        <jsp:setProperty name="templateRooms" property="*"/>
-<%@include file="/parts/header-scripts.jsp"%>
+<jsp:setProperty name="templateRooms" property="*"/>
 <%
     if(!isAdmin){
         response.sendRedirect("index.jsp");
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en">
 <%@include file="../parts/head.jsp" %>
