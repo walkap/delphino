@@ -50,10 +50,5 @@ public class IssueHandlerController {
         dao.deleteIssue(i);
     }
 
-    public static void main(String args[]) {
-
-        System.out.println("o");
-
-        }
 
 }
