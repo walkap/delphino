@@ -1,6 +1,5 @@
 package dao.factory;
 
-import com.sun.istack.internal.Nullable;
 import dao.feature.FeatureDao;
 import dao.room.RoomDao;
 
@@ -12,11 +11,13 @@ public abstract class DaoFactory {
     public abstract RoomDao getRoomDao();
     public abstract FeatureDao getFeatureDao();
 
-
-    public static DaoFactory getDaoFactory(
-            String whichFactory) {
-
-        switch (whichFactory) {
+    /**
+     * This method instantiate a concrete factory dao
+     * @param factory
+     * @return DaoFactory
+     */
+    public static DaoFactory getDaoFactory(String factory) {
+        switch (factory) {
             case DATABASE:
                 return new DbDaoFactory();
             case FILE:
