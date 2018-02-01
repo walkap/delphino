@@ -23,7 +23,6 @@ public class AddNewRoomServlet extends HttpServlet {
         String building = request.getParameter("building");
         String area = request.getParameter("area");
         String type = request.getParameter("type");
-
         String board = request.getParameter("board");
 
         if (!request.getParameter("computers").isEmpty()) {
@@ -36,11 +35,8 @@ public class AddNewRoomServlet extends HttpServlet {
         if (!request.getParameter("projectors").isEmpty()) {
             projectors = Integer.parseInt(request.getParameter("projectors"));
         }
-
         hasDesk = request.getParameter("hasDesk") != null;
-
         HandleRoom handleRoom = new HandleRoom();
-
         try {
             handleRoom.insertRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
             response.sendRedirect("/pages/add-new-room.jsp");
