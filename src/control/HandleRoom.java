@@ -1,7 +1,7 @@
 package control;
 
+import dao.factory.DaoFactory;
 import dao.room.RoomDao;
-import dao.room.RoomDaoDb;
 import entity.Building;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
@@ -12,9 +12,8 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class HandleRoom {
-
-    private RoomDao roomDao = new RoomDaoDb();
     private Room myRoom;
+    private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
 
     /**
      * This method insert new room in the database, getting parameter
@@ -30,22 +29,27 @@ public class HandleRoom {
      * @param computers   - int
      */
     public void insertRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
-
-        if(name == null || type == null || building == null){
-            throw new InsertRoomException("Name, type and building are mandatory!");
+        //This exception checks if all mandatory fields have benn filled
+        if (name == null || type == null || building == null || area == null) {
+            throw new InsertRoomException("Name, type, building and area are mandatory!");
         }
-
+        //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
+        //The builder create a room
         RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, new Building(building, area))
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
                 .setProjectors(projectors)
                 .setComputers(computers);
+        //The builder create a room
         myRoom = builder.getRoom();
-        try{
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
+        try {
+            //Get the method to insert the room in the persistence
             roomDao.insertRoom(myRoom);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -56,9 +60,12 @@ public class HandleRoom {
      * @param room - Room
      */
     public void deleteRoom(Room room) throws NullPointerException {
-        try{
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
+        try {
+            //Get the method to delete the room from the persistence
             roomDao.deleteRoom(room);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
@@ -76,45 +83,62 @@ public class HandleRoom {
      * @param computers   - int
      */
     public void updateRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
-
-        if(name == null || type == null || building == null){
-            throw new InsertRoomException("Name, type and building are mandatory!");
+        //This exception checks if all mandatory fields have benn filled
+        if (name == null || type == null || building == null || area == null) {
+            throw new InsertRoomException("Name, type, building and area are mandatory!");
         }
-
+        //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
+        //The builder create a room
         RoomBuilder builder = director.buildRoom(name.toUpperCase(), type, new Building(building, area))
                 .setBoard(board)
                 .setTeacherDesk(teacherDesk)
                 .setSeats(seats)
                 .setProjectors(projectors)
                 .setComputers(computers);
+        //The builder create a room
         myRoom = builder.getRoom();
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
         try {
+            //Get the method to update the current room
             roomDao.updateRoom(myRoom);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * This method get a room from database passing an id as parameter
+     * This method get a room from the persistence by its name
      *
      * @param name - String
      * @return Room
      */
     public Room getRoomByName(String name) {
-        try{
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
+        try {
+            //Get the method to get the room from the persistence by name
             myRoom = roomDao.getRoomByName(name);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return myRoom;
     }
 
-    public Room getRoomById(int id){
-        try{
+    /**
+     * This method get a room from the persistence by its id
+     *
+     * @param id int
+     * @return Room
+     */
+    public Room getRoomById(int id) {
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
+        try {
+            //Get the method to get the room from the persistence by id
             myRoom = roomDao.getRoomById(id);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return myRoom;
@@ -126,21 +150,26 @@ public class HandleRoom {
      * @return Vector
      */
     public Vector<Room> getAllRooms() {
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
         return roomDao.getAllRooms();
     }
 
     /**
      * This method get the vector of all rooms selected by the filter
-     * @param type - String
-     * @param building - int
-     * @param board - String
+     *
+     * @param type        - String
+     * @param building    - int
+     * @param board       - String
      * @param teacherDesk - Boolean
-     * @param seats - int
-     * @param projectors - int
-     * @param computers - int
+     * @param seats       - int
+     * @param projectors  - int
+     * @param computers   - int
      * @return Vector
      */
-    public Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers){
+    public Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+        //Get the DAO to access the persistence
+        RoomDao roomDao = dbFactory.getRoomDao();
         return roomDao.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
