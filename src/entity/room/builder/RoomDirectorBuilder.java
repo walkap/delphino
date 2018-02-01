@@ -45,11 +45,4 @@ public class RoomDirectorBuilder {
     public Room getRoom() {
         return myRoomBuilder.getRoom();
     }
-
-
-    /*public static void main(String[] args){
-        RoomDirectorBuilder director = new RoomDirectorBuilder();
-        RoomBuilder builder = director.buildRoom("c12", "ClassRoom", "F");
-    }*/
-
 }
