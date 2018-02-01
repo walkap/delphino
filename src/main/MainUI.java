@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static util.ChangeScene.changeScene;
+
 public class MainUI {
 
     @FXML
@@ -43,14 +45,7 @@ public class MainUI {
 
     public void managementTemplateRoomScene(){
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) managTRBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, managTRBtn.getScene());
     }
     public void managementFeatureScene(){
         MainManagementFeature M = new MainManagementFeature();
