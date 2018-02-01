@@ -2,6 +2,7 @@ package dao.factory;
 
 import dao.feature.FeatureDao;
 import dao.room.RoomDao;
+import dao.user.UserDao;
 
 public abstract class DaoFactory {
 
@@ -10,6 +11,7 @@ public abstract class DaoFactory {
 
     public abstract RoomDao getRoomDao();
     public abstract FeatureDao getFeatureDao();
+    public abstract UserDao getUserDao();
 
     /**
      * This method instantiate a concrete factory dao
