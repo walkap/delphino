@@ -99,7 +99,7 @@
 
                     if(request.getSession().getAttribute("userType").equals("admin")){ %>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Template Rooms<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-file-text fa-fw"></i> Template Rooms<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="createTemplateRoom.jsp">Create Template Room</a>
@@ -110,7 +110,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Buildings<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-building fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="createBuilding.jsp">Add new building</a>
@@ -121,7 +121,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Issues<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-wrench fa-fw"></i> Issues<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="createissue.jsp">Add new issue</a>
