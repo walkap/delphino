@@ -1,3 +1,5 @@
+<%@include file="/parts/header-scripts.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
