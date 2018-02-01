@@ -1,3 +1,5 @@
+<%@ page import="thread.ThreadManutentore" %>
+<%@ page import="thread.ThreadSegretario" %>
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -72,7 +74,11 @@
                 <%
                     if(request.getSession().getAttribute("userType") != null){
 
-                        if(request.getSession().getAttribute("userType").equals("manutentore")){ %>
+                        if(request.getSession().getAttribute("userType").equals("manutentore")){
+
+                            new ThreadManutentore().start();
+                            new ThreadSegretario().start();
+                %>
 
                 <li>
                     <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Issues<span class="fa arrow"></span></a>
