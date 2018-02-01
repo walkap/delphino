@@ -3,6 +3,8 @@ package control;
 import dao.feature.FeatureDaoFile;
 import entity.Feature;
 
+import java.util.List;
+
 
 public class FeatureController {
 
@@ -45,5 +47,25 @@ public class FeatureController {
         n.printStackTrace();
         }
         return null;
+    }
+
+    public List<Feature> getAllFeatures(){
+        List<Feature> features = null;
+        try {
+            features = fDFJ.getFeatures();
+        }catch (NullPointerException n){
+            n.printStackTrace();
+        }return features;
+    }
+    public static void main(String[] args){
+        FeatureController fC = new FeatureController();
+        fC.deleteFeature("Nuova","AltraProva");
+        fC.createFeature("Nuova", "Prova");
+        System.out.println(fC.getFeature("Nuova").getDescription());
+        fC.updateFeature("Nuova", "AltraProva");
+        System.out.println(fC.getFeature("Nuova").getDescription());
+
+
+
     }
 }

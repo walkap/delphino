@@ -1,12 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="entity.TemplateRoom" %>
+<%@ page import="entity.Feature" %>
 
 
-<jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
-<jsp:setProperty name="templateRooms" property="*"/>
+<jsp:useBean id="features" scope="session" class="bean.FeatureBean"/>
+<jsp:setProperty name="features" property="*"/>
 
 <%
-    TemplateRoom templateRoom = templateRooms.viewTemplateRoom(request.getParameter("name"));
+    Feature feature = features.getFeature(request.getParameter("name"));
+    //System.out.println(feature.getName());
+    System.out.println(feature.getDescription());
 
 %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -20,7 +22,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Update Template Room "<%= templateRoom.getNameTemplate() %>"
+                <h1 class="page-header">Update Feature "<%= feature.getName() %>"
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -33,45 +35,18 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form role="form" action="<c:url value="/ModifyTemplateRoomServlet"/>" method="post">
+                                <form role="form" action="<c:url value="/ModifyFeatureServlet"/>" method="post">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" id="name" class="form-control" disabled
-                                               value="<%=templateRoom.getNameTemplate()%>">
-                                        <input type="hidden" name="name" value="<%=templateRoom.getNameTemplate()%>">
+                                               value="<%=feature.getName()%>">
+                                        <input type="hidden" name="name" value="<%=feature.getName()%>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="board">Board</label>
-                                        <input type="text" id="board" class="form-control" name="board"
-                                               placeholder="Board"
-                                               value="<%= templateRoom.getBoard()%>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="computers">Computers</label>
-                                        <input type="number" id="computers" class="form-control" name="computers"
-                                               placeholder="Number of computers"
-                                               value="<%=templateRoom.getComputers()%>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="seats">Seats</label>
-                                        <input type="number" id="seats" class="form-control" name="seats"
-                                               placeholder="Number of seats"
-                                               value="<%=templateRoom.getSeats()%>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="projectors">Projectors</label>
-                                        <input type="number" id="projectors" class="form-control" name="projectors"
-                                               placeholder="Number of projectors"
-                                               value="<%=templateRoom.getProjectors()%>">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label for="desk">
-                                                <input type="checkbox" name="desk" id="desk"
-                                                       value="true"
-                                                    <%if(templateRoom.getDesk()) out.print("checked");%> >desk
-                                            </label>
-                                        </div>
+                                        <label for="description">Description</label>
+                                        <input type="text" id="description" class="form-control" name="description"
+                                               placeholder="Description"
+                                               value="<%=feature.getDescription()%>">
                                     </div>
                                     <div class="col-sm-12 col-lg-10 pull-right">
                                         <div class="pull-right">
@@ -95,22 +70,24 @@
                                                         aria-hidden="true">
                                                     &times;
                                                 </button>
-                                                <h4 class="modal-title" id="myModalLabel">Delete Template
-                                                    Room <%=templateRoom.getNameTemplate()%>
+                                                <h4 class="modal-title" id="myModalLabel">Delete Feature
+                                                    Room <%=feature.getName()%>
                                                 </h4>
                                             </div>
                                             <div class="modal-body">
-                                                Delete the Template Room <%=templateRoom.getNameTemplate()%> ?
+                                                Delete the Feature <%=feature.getName()%> ?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal"
                                                         style="margin-right: 10px">Close
                                                 </button>
                                                 <form class="pull-right"
-                                                      action="<c:url value="/DeleteTemplateRoomServlet"/>"
+                                                      action="<c:url value="/DeleteFeatureServlet"/>"
                                                       method="post">
                                                     <input type="hidden" name="name"
-                                                           value="<%=templateRoom.getNameTemplate()%>">
+                                                           value="<%=feature.getName()%>">
+                                                    <input type="hidden" name="description"
+                                                            value="<%=feature.getDescription()%>">
                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                 </form>
                                             </div>

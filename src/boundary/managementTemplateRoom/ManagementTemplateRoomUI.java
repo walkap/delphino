@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import main.Main;
+import static util.ChangeScene.changeScene;
+
 
 
 public class ManagementTemplateRoomUI {
@@ -14,8 +16,6 @@ public class ManagementTemplateRoomUI {
     private Button modifyTemplateRoomBtn;
     @FXML
     private Button createTemplateRoomBtnBD;
-    @FXML
-    private Button createTemplateRoomBtnJAVA;
     @FXML
     private Button exitBtn;
     @FXML
@@ -33,28 +33,15 @@ public class ManagementTemplateRoomUI {
         }
     }
 
+
     public void mainPrev(){
         Main M = new Main();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) homePageBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, homePageBtn.getScene());
     }
 
     public void modifyTemplateRoomScene(){
         MainModifyDeleteTemplateRoom M = new MainModifyDeleteTemplateRoom();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) modifyTemplateRoomBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, modifyTemplateRoomBtn.getScene());
     }
 
     public void closeWindow(){

@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import main.Main;
+import static util.ChangeScene.changeScene;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,6 +50,11 @@ public class ModifyDeleteTemplateRoomUI {
     private TemplateRoomController tRC = new TemplateRoomController();
 
 
+    /**
+     * This method take object in system for fill the ListView in initialize
+     *
+     * @return array;
+     */
     private ArrayList<String> createListOfName() {
 
         ArrayList<String> array = new ArrayList<>();
@@ -74,11 +80,11 @@ public class ModifyDeleteTemplateRoomUI {
         return array;
     }
 
-    public void setText(TextField textField, String text) {
-        textField.setText(text);
-    }
 
-
+    /**
+     * This method take the values of template room in list view
+     * and set text in text fields have same scope
+     */
     public void chooseTemplateRoomAndFillTV() {
 
         ListViewTemplateRooms.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -110,6 +116,9 @@ public class ModifyDeleteTemplateRoomUI {
 
     }
 
+    /**
+     * This method set default values in textfield;
+     */
     public void clearInputFields() {
 
         name.setText("");
@@ -123,14 +132,7 @@ public class ModifyDeleteTemplateRoomUI {
 
     public void managementTemplateRoomScene() {
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) prevPageBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, prevPageBtn.getScene());
     }
 
 
@@ -232,14 +234,7 @@ public class ModifyDeleteTemplateRoomUI {
 
     public void mainTemplateRoomScene() {
         Main M = new Main();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) startBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, startBtn.getScene());
     }
 
     public void initialize() {

@@ -2,6 +2,8 @@ package control;
 
 import dao.TemplateRoomDao;
 import entity.TemplateRoom;
+import exception.templateRoom.TRequals;
+import exception.templateRoom.TemplateRoomPresentException;
 
 import java.sql.SQLException;
 import java.util.Vector;
@@ -12,26 +14,50 @@ public class TemplateRoomController {
     private Vector<TemplateRoom> vec;
 
 
-    public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT){
+    /**
+     * This method with create a template room in persistence
+     *
+     * @param nT
+     * @param sT
+     * @param bT
+     * @param pT
+     * @param cT
+     * @param dT
+     * @return boolean;
+     */
+    public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
         try {
             tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
 
     }
 
-    public void deleteTemplateRoom(String nameTemplate) throws SQLException{
+    /**
+     * This method delete template room from persistence
+     *
+     * @param nameTemplate
+     * @throws SQLException
+     */
+    public void deleteTemplateRoom(String nameTemplate) throws SQLException {
         try {
             tRD.deleteTemplateRoom(nameTemplate);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
 
+    /**
+     * This method take template room from persistence
+     *
+     * @param nameT
+     * @return
+     * @throws NullPointerException
+     */
     public TemplateRoom getTemplateRoom(String nameT) throws NullPointerException {
         TemplateRoom tr = null;
         try {
@@ -42,13 +68,21 @@ public class TemplateRoomController {
         return tr;
     }
 
-    public Vector<TemplateRoom> getTemplateRooms() throws NullPointerException{
+    public Vector<TemplateRoom> getTemplateRooms() throws NullPointerException {
         vec = tRD.getAllTemplateRoom();
         return vec;
     }
 
 
-    private Boolean areTwoTemplateRoomsEquals(TemplateRoom tr1, TemplateRoom tr2){
+    /**
+     * This method check if template room's values in UI and in db are equals
+     * if check is true the update is rejected
+     *
+     * @param tr1
+     * @param tr2
+     * @return bool;
+     */
+    private Boolean areTwoTemplateRoomsEquals(TemplateRoom tr1, TemplateRoom tr2) throws TRequals {
         Boolean bool = false;
         String name1 = tr1.getNameTemplate();
         int seats1 = tr1.getSeats();
@@ -65,15 +99,21 @@ public class TemplateRoomController {
         Boolean desk2 = tr2.getDesk();
 
 
-        if ((name1.equals(name2)) & ((seats1==seats2)) & (board1.equals(board2))
-                & (projectors1 == projectors2) & (computers1 == computers2) & (desk1.equals(desk2))){
+        if ((name1.equals(name2)) & ((seats1 == seats2)) & (board1.equals(board2))
+                & (projectors1 == projectors2) & (computers1 == computers2) & (desk1.equals(desk2))) {
             bool = true;
         }
         return bool;
     }
 
 
-    public int modifyTemplateRoom(TemplateRoom templateRoom){
+    /**
+     * This method modify template room with values passed by UI
+     *
+     * @param templateRoom
+     * @return an int for check the result in UI;
+     */
+    public int modifyTemplateRoom(TemplateRoom templateRoom) {
         int res = 0;
         String nameTemplate = templateRoom.getNameTemplate();
         try {
@@ -82,23 +122,24 @@ public class TemplateRoomController {
                 TemplateRoomController tRC = new TemplateRoomController();
                 if (tRC.areTwoTemplateRoomsEquals(templateRoom, templateRoom2)) {
                     return res;
-                    //The Template Room hasn't been update
+                    //TemplateRoom not update because the values are equals;
                 } else {
                     try {
                         tRD.updateTemplateRoom(templateRoom);
-                    } catch (SQLException e){
-                        e.printStackTrace();
+                        //TemplateRoom Update
+                        res = 2;
+                    } catch (SQLException s) {
+                        s.printStackTrace();
                     }
-                    //TemplateRoom not update because the values are equals;
-                    res = 2;
                 }
             } else {
                 //TemplateRoom not update because is not present in db
                 res = 1;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }return res;
+        } catch (TemplateRoomPresentException | TRequals tRoomPresent) {
+            tRoomPresent.printStackTrace();
+        }
+        return res;
     }
 
     public static void main(String[] args) {
@@ -108,8 +149,8 @@ public class TemplateRoomController {
         //rtd.deleteTemplateRoom("B");
         TemplateRoom tR1 = rtd.getTemplateRoom("D");
         TemplateRoom tR2 = rtd.getTemplateRoom("C");
-        Boolean b = tRC.areTwoTemplateRoomsEquals(tR1, tR2);
-        System.out.println(b);
+        //Boolean b = tRC.areTwoTemplateRoomsEquals(tR1, tR2);
+        //System.out.println(b);
         //rtd.getAllTemplateRoom();
         //TemplateRoom tr = new TemplateRoom("C", 150, "White", 3, 20, false);
         //rtd.updateTemplateRoom(tr);

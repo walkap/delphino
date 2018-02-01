@@ -1,6 +1,7 @@
 package dao;
 
 import entity.TemplateRoom;
+import exception.templateRoom.TemplateRoomPresentException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -67,7 +68,7 @@ public class TemplateRoomDao extends AbstractDao {
 
 
     /**
-     * This method is used to delete {@code boundary.templateRoom} object
+     * This method is used to delete templateRoom object
      * from database
      *
      * @param nameTemplate - {@code string}
@@ -94,7 +95,7 @@ public class TemplateRoomDao extends AbstractDao {
 
 
     /**
-     * This method is used to get an existing boundary.templateRoom
+     * This method is used to get an existing templateRoom
      *
      * @param nameTemplate - String
      * @return Room
@@ -133,7 +134,7 @@ public class TemplateRoomDao extends AbstractDao {
     }
 
     /**
-     * This method is used to update a boundary.templateRoom
+     * This method is used to update a templateRoom
      *
      * @param templateRoom
      */
@@ -153,7 +154,7 @@ public class TemplateRoomDao extends AbstractDao {
     }
 
     /**
-     * This method returns all room present in the database
+     * This method returns all template rooms present in the database
      *
      * @return Vector
      */
@@ -195,14 +196,13 @@ public class TemplateRoomDao extends AbstractDao {
 
 
     /**
-     * This method checks if a room is present
-     * in the database using the room's id as parameter
+     * This method checks if a template room is present
      *
      * @param nameTemplate - TemplateRoom's name
      * @return Boolean
      */
 
-    public Boolean isTemplateRoomPresent(String nameTemplate) throws Exception {
+    public Boolean isTemplateRoomPresent(String nameTemplate) throws TemplateRoomPresentException {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT from ")
                 .append(TABLE_NAME)

@@ -1,8 +1,8 @@
-<%@ page import="entity.TemplateRoom" %>
+<%@ page import="entity.Feature" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<jsp:useBean id="templateRooms" scope="session" class="bean.TemplateRoomBean"/>
-<jsp:setProperty name="templateRooms" property="*"/>
+<jsp:useBean id="features" scope="session" class="bean.FeatureBean"/>
+<jsp:setProperty name="features" property="*"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,43 +31,27 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Seats</th>
-                                    <th>Board</th>
-                                    <th>Projectors</th>
-                                    <th>Computers</th>
-                                    <th>Desk</th>
+                                    <th>Description</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <%
                                     int i = 1;
-                                    for (TemplateRoom templateRoom : templateRooms.viewAllTemplateRooms()) {
+                                    for (Feature feature : features.getAllFeatures()) {
                                 %>
                                 <tr>
                                     <td><%= i %>
                                     </td>
 
-                                    <td><%= templateRoom.getNameTemplate()%>
+                                    <td><%= feature.getName()%>
                                     </td>
 
-                                    <td><%= templateRoom.getSeats() %>
-                                    </td>
-
-                                    <td><%= templateRoom.getBoard() %>
-                                    </td>
-
-                                    <td><%= templateRoom.getProjectors() %>
-                                    </td>
-
-                                    <td><%= templateRoom.getComputers() %>
-                                    </td>
-
-                                    <td><%= templateRoom.getDesk()%>
+                                    <td><%= feature.getDescription() %>
                                     </td>
 
                                     <td>
-                                        <a href="editTemplateRoom.jsp?name=<%= templateRoom.getNameTemplate() %>" type="button"
+                                        <a href="editFeature.jsp?name=<%= feature.getName() %>" type="button"
                                            class="btn btn-default">Edit</a>
                                     </td>
 

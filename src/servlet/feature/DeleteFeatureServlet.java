@@ -1,5 +1,7 @@
 package servlet.feature;
 
+import control.FeatureController;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,25 @@ import java.io.IOException;
 @WebServlet(name = "DeleteFeatureServlet")
 public class DeleteFeatureServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+/*
+        if(!request.getParameter("description").isEmpty()){
+            description = request.getParameter("description");
+        }*/
+        System.out.println("DESCRIZIONE" + description);
+
+        FeatureController fC = new FeatureController();
+
+        try {
+            fC.deleteFeature(name, description);
+            System.out.println("NOME" + name);
+            System.out.println("DESCRIZIONE" + description);
+            response.sendRedirect("/pages/viewFeatures.jsp");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
