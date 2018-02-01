@@ -11,7 +11,8 @@ import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import main.Main;
 
-import java.io.IOException;
+
+import static util.ChangeScene.changeScene;
 
 
 public class CreateTemplateRoomUI {
@@ -51,6 +52,7 @@ public class CreateTemplateRoomUI {
 
     }
 
+
     private TemplateRoomController tRC = new TemplateRoomController();
 
 
@@ -59,15 +61,10 @@ public class CreateTemplateRoomUI {
      */
     public void managementTemplateRoomScene() {
         MainManagementTemplateRoom M = new MainManagementTemplateRoom();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) prePageBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, prePageBtn.getScene());
     }
+
+
 
     /**
      * This method use a button for return Home Page window;
@@ -75,14 +72,7 @@ public class CreateTemplateRoomUI {
 
     public void mainTemplateRoomScene() {
         Main M = new Main();
-        try {
-            M.start(new Stage());
-            Stage stage = (Stage) startBtn.getScene().getWindow();
-            stage.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene(M, startBtn.getScene());
     }
 
     /**
@@ -109,6 +99,7 @@ public class CreateTemplateRoomUI {
     /**
      * createTemplateRoom is activated with onAction of Confirm Button
      */
+
 
     public void createTemplateRoom() {
         try {
@@ -142,12 +133,12 @@ public class CreateTemplateRoomUI {
             }
 
         } catch (NumberFormatException n) {
-            n.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText("Seats, Projectors, Computers must be an integer and not null");
             alert.showAndWait();
+            n.printStackTrace();
         }
 
 
@@ -158,7 +149,6 @@ public class CreateTemplateRoomUI {
      */
 
     public void closeWindow() {
-
         Stage stage = (Stage) quitBtn.getScene().getWindow();
         stage.close();
     }

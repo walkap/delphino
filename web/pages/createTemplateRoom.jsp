@@ -1,45 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%--
-<jsp:useBean id="templateRoomBean" scope="request" class="bean.TemplateRoomBean"/>
+<%@include file="/parts/header-scripts.jsp" %>
 
-<jsp:setProperty name="templateRoomBean" property="*"/>
-
-<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%/*
-    if(request.getParameter("name") != null){
-        String n = request.getParameter("name");
-        int s = Integer.parseInt(request.getParameter("seats"));
-        String b = request.getParameter("board");
-        int p = Integer.parseInt(request.getParameter("projectors"));
-        int c = Integer.parseInt(request.getParameter("computers"));
-        Boolean d = Boolean.valueOf(request.getParameter("desk"));
-        templateRoomBean.createTemplateRoom(n, s, b, p, c, d);
+<%
+    if(!isAdmin && request.getSession().getAttribute("isLoggedIn") != null){
+        response.sendRedirect("index.jsp");
     }
-*/
 %>
-
-
-<script>
-
-        function create(){
-            if(request.getParameter("name") != null){
-                n = request.getParameter("name");
-                s = Integer.parseInt(request.getParameter("seats"));
-                b = request.getParameter("board");
-                p = Integer.parseInt(request.getParameter("projectors"));
-                c = Integer.parseInt(request.getParameter("computers"));
-                d = Boolean.valueOf(request.getParameter("desk"));
-                templateRoomBean.createTemplateRoom(n, s, b, p, c, d);
-            }
-        }
-
-
-</script>
-
---%>
-
-
 <html>
 <%@include file="../parts/head.jsp" %>
 <body>

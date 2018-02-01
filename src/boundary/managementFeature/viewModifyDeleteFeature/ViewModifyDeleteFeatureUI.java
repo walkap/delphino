@@ -36,7 +36,6 @@ public class ViewModifyDeleteFeatureUI {
     @FXML
     private ListView<String> listView;
 
-    private FeatureDaoFile fD = new FeatureDaoFile();
     private FeatureController fC = new FeatureController();
 
 
@@ -51,7 +50,7 @@ public class ViewModifyDeleteFeatureUI {
         ArrayList<String> array = new ArrayList<>();
         int i = 0;
         try {
-            List list = fD.getFeatures();
+            List list = fC.getAllFeatures();
             int l = list.size();
             while (i < l) {
                 Feature f = (Feature) list.get(i);

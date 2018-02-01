@@ -54,6 +54,7 @@ public class CreateTemplateRoomServlet extends HttpServlet {
                 System.out.println(tRC.createTemplateRoom(name, seats, board, projectors, computers, desk));
             }else {
                 response.sendRedirect("/pages/index.jsp");
+                //request.getSession().setAttribute();
 
             }
 

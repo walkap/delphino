@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class FeatureDaoFile implements FeatureDao{
 
-    private static final String fileName = "feature.ser";
+    private static final String fileName = "C:\\Projects\\delphino\\feature.ser";
 
     public void newFeatureFile() {
-        String path = "src/feature.ser";
+        String path = "C:\\Projects\\delphino\\feature.ser";
         try {
             File file = new File(path);
 
@@ -37,11 +37,8 @@ public class FeatureDaoFile implements FeatureDao{
                         list.get(j).setName(nameF);
                         list.get(j).setDescription(descriptionF);
                         this.serialize(list);
-                        return;
                     }
                 }
-            }else {
-                return;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +67,6 @@ public class FeatureDaoFile implements FeatureDao{
                 myList = deserialize();
                 myList.add(f);
                 this.serialize(myList);
-                return;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -145,19 +141,14 @@ public class FeatureDaoFile implements FeatureDao{
 
         } catch (EOFException e){
 
-            System.out.println("EOF reached!");
         }catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
 
         }
 
-        System.out.println("BEGIN LIST...");
         for (int j = 0; j < myList.size(); j++) {
 
-            System.out.println(myList.get(j).getName());
-            System.out.println(myList.get(j).getDescription());
         }
-        System.out.println("...END LIST");
 
         return myList;
 
@@ -175,16 +166,17 @@ public class FeatureDaoFile implements FeatureDao{
 
 
     public Feature getFeature(String nameF) {
+        Feature newFeature = null;
         FeatureDaoFile fDFJ = new FeatureDaoFile();
         ArrayList<Feature> myList = fDFJ.deserialize();
         for (int j = 0; j < myList.size(); j++) {
 
             if ((myList.get(j).getName()).equals(nameF)) {
-                Feature newFeature = new Feature(myList.get(j).getName()
+
+                newFeature = new Feature(myList.get(j).getName()
                         , myList.get(j).getDescription());
-                return newFeature;
             }
         }
-        return null;
+        return newFeature;
     }
 }

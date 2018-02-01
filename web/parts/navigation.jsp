@@ -58,7 +58,6 @@
                             <a href="all-rooms.jsp">All rooms</a>
                         </li>
 
-
                         <%
                             if(request.getSession().getAttribute("userType") != null){
 
@@ -106,6 +105,17 @@
                         </li>
                         <li>
                             <a href="viewTemplateRooms.jsp">View, Modify, Delete a Template Room</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Feature<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="createFeature.jsp">Create Feature</a>
+                        </li>
+                        <li>
+                            <a href="viewFeatures.jsp">View, Modify, Delete a Feature</a>
                         </li>
                     </ul>
                 </li>
