@@ -1,5 +1,4 @@
 <%@include file="/parts/header-scripts.jsp" %>
-
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="/AllIssuesServlet"/>
 <jsp:include page="/ModifyIssueServlet"/>
@@ -65,6 +64,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
+                        <div class="table-responsive">
                         <table width="100%" class="table table-striped table-bordered table-hover" id="datatable">
                             <thead>
                             <tr>
@@ -105,6 +105,7 @@
 
                             </tbody>
                         </table>
+                        </div>
                         <div id="modify"  style="display:none;" >
                         <form role="form" method="post" action="/ModifyIssueServlet">
                             <input type="text" id="title" name="title" readonly>  </input>
@@ -114,7 +115,7 @@
                             <input type="text" id="area" name="area" readonly>  </input>
                             <input type="text" id="description" name="description" readonly>  </input>
                             <div class="form-group">
-                                <label>Change State</label>
+                                <label>Change State or Delete</label>
                                 <select class="form-control" id="newstate" name="newstate" required>
                                     <option value="" disabled selected>--Select--</option>
                                     <option value="New">New</option>
