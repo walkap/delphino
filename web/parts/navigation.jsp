@@ -20,10 +20,6 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                </li>
                 <li class="divider"></li>
                 <li><a href="logout.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
@@ -37,17 +33,7 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
-                <li class="sidebar-search">
-                    <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                    </div>
-                    <!-- /input-group -->
-                </li>
+
                 <li>
                     <a href="index.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
@@ -59,21 +45,21 @@
                         </li>
 
                         <%
-                            if(request.getSession().getAttribute("userType") != null){
+                            if (request.getSession().getAttribute("userType") != null) {
 
-                                if(request.getSession().getAttribute("userType").equals("admin")){ %>
+                                if (request.getSession().getAttribute("userType").equals("admin")) { %>
                         <li>
                             <a href="add-new-room.jsp">Add new room</a>
                         </li>
-                        <%      }
-                            } %>
+                        <% }
+                        } %>
                     </ul>
                 </li>
 
                 <%
-                    if(request.getSession().getAttribute("userType") != null){
+                    if (request.getSession().getAttribute("userType") != null) {
 
-                        if(request.getSession().getAttribute("userType").equals("manutentore")){
+                        if (request.getSession().getAttribute("userType").equals("manutentore")) {
 
                             new ThreadManutentore().start();
                             new ThreadSegretario().start();
@@ -91,14 +77,16 @@
                     </ul>
                 </li>
 
-                <% } } %>
+                <% }
+                } %>
 
                 <%
-                    if(request.getSession().getAttribute("userType") != null){
+                    if (request.getSession().getAttribute("userType") != null) {
 
-                    if(request.getSession().getAttribute("userType").equals("admin")){ %>
+                        if (request.getSession().getAttribute("userType").equals("admin")) { %>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-file-text fa-fw"></i> Template Rooms<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-file-text fa-fw"></i> Template Rooms<span
+                            class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="createTemplateRoom.jsp">Create Template Room</a>
@@ -109,7 +97,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-building fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Feature<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
@@ -121,7 +108,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="index.jsp"><i class="fa fa-cube fa-fw"></i> Buildings<span class="fa arrow"></span></a>
+                    <a href="index.jsp"><i class="fa fa-building fa-fw"></i> Buildings<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="createBuilding.jsp">Add new building</a>
@@ -143,7 +130,8 @@
                     </ul>
                 </li>
 
-                <% } } %>
+                <% }
+                } %>
 
             </ul>
         </div>
