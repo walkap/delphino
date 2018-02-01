@@ -6,7 +6,8 @@
         response.sendRedirect("index.jsp");
     }
 %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <%@include file="../parts/head.jsp" %>
 <body>
 
