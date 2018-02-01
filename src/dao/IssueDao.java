@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Issue;
+import exception.IssueException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class IssueDao {
 
     }
 
-    public void addIssue(Issue i) {
+    public void addIssue(Issue i) throws IssueException{
 
         ArrayList<Issue> myList = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class IssueDao {
             return;
         }
 
-        System.out.println("Issue already present!");
+        throw new IssueException("Issue already present!");
 
     }
 
