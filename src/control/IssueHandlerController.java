@@ -5,12 +5,13 @@ import dao.IssueDao;
 import entity.Building;
 import entity.Issue;
 import entity.room.Room;
+import exception.IssueException;
 
 import java.util.ArrayList;
 
 public class IssueHandlerController {
 
-    public void addNewIssue(IssueBean bean){
+    public void addNewIssue(IssueBean bean) throws IssueException{
 
         Issue i = new Issue (bean.getName(), new Room(bean.getRoom(),
                 new Building(bean.getBuilding(),bean.getArea())),bean.getDescription());

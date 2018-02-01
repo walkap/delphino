@@ -1,5 +1,6 @@
 package dao.factory;
 
+import com.sun.istack.internal.Nullable;
 import dao.feature.FeatureDao;
 import dao.room.RoomDao;
 
@@ -21,7 +22,7 @@ public abstract class DaoFactory {
             case FILE:
                 return new FileDaoFactory();
             default:
-                return null;
+                return new DbDaoFactory();
         }
     }
 }

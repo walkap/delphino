@@ -4,6 +4,7 @@ import dao.IssueDao;
 import entity.Building;
 import entity.Issue;
 import entity.room.Room;
+import exception.IssueException;
 
 public class ThreadSegretario extends Thread{
 
@@ -13,6 +14,10 @@ public class ThreadSegretario extends Thread{
         Issue i = new Issue("name", new Room("room",
                 new Building("building","area")),"Created by ThreadSegretario");
         IssueDao dao = new IssueDao();
-        dao.addIssue(i);
+        try {
+            dao.addIssue(i);
+        }catch(IssueException e){
+            e.printStackTrace();
+        }
     }
 }

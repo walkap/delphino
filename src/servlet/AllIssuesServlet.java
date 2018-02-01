@@ -22,7 +22,6 @@ public class AllIssuesServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("Servlet");
         response.setContentType("text/html;charset=UTF-8");
 
         IssueHandlerController controller = new IssueHandlerController();
@@ -31,7 +30,5 @@ public class AllIssuesServlet extends HttpServlet {
 
         request.setAttribute("issues", issueBeans);
 
-       /* RequestDispatcher view = request.getRequestDispatcher("/pages/viewissue.jsp");
-        view.forward(request, response);*/
     }
 }

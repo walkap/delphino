@@ -1,5 +1,7 @@
 <%@include file="/parts/header-scripts.jsp" %>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="/BuildingServlet"/>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +87,7 @@
                                         </select>
                                     </div>
 
-                                    <button type="submit" name="create" id="create" class="btn btn-default">Submit Button</button>
+                                    <button type="submit" name="create" id="create" data-toggle="modal" data-target="#myModal" class="btn btn-default">Submit Button</button>
 
                                 </form>
 
@@ -126,6 +128,19 @@
 <script src="../dist/js/sb-admin-2.js"></script>
 
 </body>
+
+
+<script>
+
+
+    if (<%=request.getSession().getAttribute("alertBuilding")%> != null)
+    {
+        window.alert("Building already created!");
+    }
+    <% request.getSession().setAttribute("alertBuilding",""); %>
+
+</script>
+
 
 
 </html>

@@ -4,6 +4,7 @@ import bean.IssueBean;
 import boundary.issueManagement.issueMenuManagement.IssueMenu;
 import control.BuildingController;
 import control.IssueHandlerController;
+import exception.IssueException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -107,6 +108,9 @@ public class IssueBoundary{
 
         alert("invalid input, issue not created!");
         return;
+    }catch(IssueException e){
+        alert("invalid input, issue not created!");
+
     }
 
 

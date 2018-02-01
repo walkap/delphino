@@ -153,6 +153,15 @@
         }
     );
 
+
+</script>
+
+<script>
+    if (<%=request.getSession().getAttribute("alertIssue")%> != null)
+    {
+        window.alert("Issue already created!");
+    }
+    <% request.getSession().setAttribute("alertIssue",""); %>
 </script>
 
 </html>

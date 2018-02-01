@@ -2,6 +2,7 @@ package servlet;
 
 import bean.IssueBean;
 import control.IssueHandlerController;
+import exception.IssueException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +27,12 @@ public class AddNewIssueServlet extends HttpServlet {
         IssueBean bean = new IssueBean(name,area,building,room,description);
 
         IssueHandlerController controller = new IssueHandlerController();
-        controller.addNewIssue(bean);
-            //RequestDispatcher rd=request.getRequestDispatcher("/pages/createBuilding.jsp");
-            //rd.forward(request, response);
+        try {
+            controller.addNewIssue(bean);
+        }catch(IssueException e) {
+            request.getSession().setAttribute("alertIssue", "true");
+        }
+
         response.sendRedirect("/pages/createissue.jsp");
 
 

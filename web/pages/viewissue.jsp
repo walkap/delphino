@@ -204,13 +204,6 @@
 
     });
 
-    // $("td").on("click", function () {
-    //     $("tr").each(function () {
-    //         $(this).removeClass('highlight');
-    //     })
-    //     $(this).parent().addClass('highlight');
-    // });
-
 </script>
 
 </html>

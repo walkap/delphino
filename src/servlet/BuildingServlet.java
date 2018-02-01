@@ -17,9 +17,10 @@ public class BuildingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
 
-            String area = request.getParameter("area");
+        String area = request.getParameter("area");
             String name = request.getParameter("name");
 
                 try {
@@ -27,15 +28,22 @@ public class BuildingServlet extends HttpServlet {
                     BuildingController controller = new BuildingController();
                     controller.createNewBuilding(name, area);
 
-                    response.sendRedirect("/pages/createBuilding.jsp");
 
                 } catch (BuildingException e) {
-                    e.printStackTrace();
+
+                    request.getSession().setAttribute("alertBuilding","true");
+                   /* RequestDispatcher rd = getServletContext().getRequestDispatcher("/pages/createBuilding.jsp");
+                    rd.forward(request, response);*/
+
+                }finally {
+
+                    response.sendRedirect("/pages/createBuilding.jsp");
+                    out.close();
+
                 }
 
 
-
-        }
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

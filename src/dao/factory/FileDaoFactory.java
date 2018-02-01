@@ -1,5 +1,6 @@
 package dao.factory;
 
+import com.sun.istack.internal.Nullable;
 import dao.feature.FeatureDao;
 import dao.feature.FeatureDaoFile;
 import dao.room.RoomDao;
@@ -29,6 +30,7 @@ public class FileDaoFactory extends DaoFactory{
 
         FeatureDao featureDaoDb =
                 dbFactory.getFeatureDao();
+
        FeatureDao featureDaoFile = fileFactory.getFeatureDao();
 
         Feature f = new Feature("proiettore","dddd");
