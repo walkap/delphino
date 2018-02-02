@@ -5,6 +5,8 @@ import dao.feature.FeatureDao;
 import dao.feature.FeatureDaoFile;
 import dao.room.RoomDao;
 import dao.room.RoomDaoFile;
+import dao.user.UserDao;
+import dao.user.UserDaoDb;
 import entity.Building;
 import entity.Feature;
 import entity.room.Room;
@@ -19,23 +21,9 @@ public class FileDaoFactory extends DaoFactory{
     public FeatureDao getFeatureDao() {
         return new FeatureDaoFile();
     }
-
-    public static void main(String args[]){
-
-        DaoFactory dbFactory =
-                DaoFactory.getDaoFactory(DaoFactory.DATABASE);
-        DaoFactory fileFactory =
-                DaoFactory.getDaoFactory(DaoFactory.FILE);
+    public UserDao getUserDao() {
+        return new UserDaoDb();
+    }
 
 
-        FeatureDao featureDaoDb =
-                dbFactory.getFeatureDao();
-
-       FeatureDao featureDaoFile = fileFactory.getFeatureDao();
-
-        Feature f = new Feature("proiettore","dddd");
-            featureDaoDb.insertFeature(f);
-
-         featureDaoFile.insertFeature(f);
-        }
 }
