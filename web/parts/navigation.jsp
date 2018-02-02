@@ -49,6 +49,23 @@
                 </li>
                 <%
                     if (request.getSession().getAttribute("userType") != null) {
+                        if (request.getSession().getAttribute("userType").equals("manutentore")) { %>
+
+                <li>
+                    <a href="index.jsp"><i class="fa fa-wrench fa-fw"></i> Issues<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="createissue.jsp">Add new issue</a>
+                        </li>
+                        <li>
+                            <a href="viewissue.jsp">Update issues</a>
+                        </li>
+                    </ul>
+                </li>
+                <% }
+                } %>
+                <%
+                    if (request.getSession().getAttribute("userType") != null) {
                         if (request.getSession().getAttribute("userType").equals("admin")) { %>
                 <li>
                     <a href="index.jsp"><i class="fa fa-file-text fa-fw"></i> Template Rooms<span
