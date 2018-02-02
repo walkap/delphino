@@ -1,4 +1,4 @@
-package thread;
+package thread.issue;
 
 import dao.IssueDao;
 import entity.Building;
