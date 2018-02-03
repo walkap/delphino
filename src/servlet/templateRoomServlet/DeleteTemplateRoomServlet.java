@@ -16,9 +16,12 @@ public class DeleteTemplateRoomServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         TemplateRoomController tRC = new TemplateRoomController();
+        int res;
 
         try {
             tRC.deleteTemplateRoom(name);
+            res = 3;
+            request.getSession().setAttribute("res",res);
             response.sendRedirect("/pages/viewTemplateRooms.jsp");
         } catch (SQLException e) {
             e.printStackTrace();

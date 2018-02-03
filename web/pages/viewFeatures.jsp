@@ -41,17 +41,17 @@
                                     for (Feature feature : features.getAllFeatures()) {
                                 %>
                                 <tr>
-                                    <td><%= i %>
+                                    <td><%=i%>
                                     </td>
 
-                                    <td><%= feature.getName()%>
+                                    <td><%=feature.getName()%>
                                     </td>
 
-                                    <td><%= feature.getDescription() %>
+                                    <td><%=feature.getDescription()%>
                                     </td>
 
                                     <td>
-                                        <a href="editFeature.jsp?name=<%= feature.getName() %>" type="button"
+                                        <a href="editFeature.jsp?name=<%=feature.getName()%>" type="button"
                                            class="btn btn-default">Edit</a>
                                     </td>
 
@@ -80,4 +80,28 @@
 <!-- /#wrapper -->
 <%@include file="../parts/footer-scripts.jsp" %>
 </body>
+
+<script>
+
+    <%
+    int res;
+    if (request.getSession().getAttribute("res")!= null){
+        res = (int) request.getSession().getAttribute("res");
+    }else{
+        res = 0;
+    }
+    if (res == 1)
+    { %>
+    window.alert('Feature deleted');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+    <%
+    if (res == 2)
+    { %>
+    window.alert('Feature updated');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+
+
+</script>
 </html>

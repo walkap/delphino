@@ -5,6 +5,7 @@ import dao.feature.FeatureDao;
 import dao.feature.FeatureDaoFile;
 import dao.room.RoomDao;
 import dao.room.RoomDaoFile;
+import dao.user.UserDao;
 import entity.Building;
 import entity.Feature;
 import entity.room.Room;
@@ -18,6 +19,11 @@ public class FileDaoFactory extends DaoFactory{
     }
     public FeatureDao getFeatureDao() {
         return new FeatureDaoFile();
+    }
+
+    @Override
+    public UserDao getUserDao() {
+        return null;
     }
 
     public static void main(String args[]){

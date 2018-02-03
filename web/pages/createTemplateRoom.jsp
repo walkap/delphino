@@ -87,4 +87,28 @@
 
 
 </body>
+
+<script>
+
+    <%
+    int res;
+    if (request.getSession().getAttribute("res")!= null){
+        res = (int) request.getSession().getAttribute("res");
+    }else{
+        res = 0;
+    }
+    if (res == 1)
+    { %>
+    window.alert('Template Room created!');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+    <%
+    if (res == 2)
+    { %>
+    window.alert('Template Room present in system, change name!');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+
+
+</script>
 </html>

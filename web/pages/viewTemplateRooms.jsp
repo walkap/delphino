@@ -14,7 +14,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Feature</h1>
+                <h1 class="page-header">Template Room</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -96,4 +96,22 @@
 <!-- /#wrapper -->
 <%@include file="../parts/footer-scripts.jsp" %>
 </body>
+
+<script>
+
+    <%
+    int res;
+    if (request.getSession().getAttribute("res")!= null){
+        res = (int) request.getSession().getAttribute("res");
+    }else{
+        res = 4;
+    }
+    if (res == 3)
+    { %>
+    window.alert('Template Room deleted');
+    <%}%>
+    <% request.getSession().setAttribute("res",4); %>
+
+
+</script>
 </html>

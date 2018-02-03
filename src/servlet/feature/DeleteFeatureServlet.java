@@ -15,10 +15,8 @@ public class DeleteFeatureServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String description = request.getParameter("description");
-/*
-        if(!request.getParameter("description").isEmpty()){
-            description = request.getParameter("description");
-        }*/
+        int res;
+
         System.out.println("DESCRIZIONE" + description);
 
         FeatureController fC = new FeatureController();
@@ -27,7 +25,11 @@ public class DeleteFeatureServlet extends HttpServlet {
             fC.deleteFeature(name, description);
             System.out.println("NOME" + name);
             System.out.println("DESCRIZIONE" + description);
+            res = 1;
+            request.getSession().setAttribute("res",res);
             response.sendRedirect("/pages/viewFeatures.jsp");
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
