@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class HandleRoom {
+    //Get the persistence
     private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
-
     private Room myRoom;
     /**
      * This method insert new room in the database, getting parameter
@@ -33,11 +33,10 @@ public class HandleRoom {
         if (name == null || type == null || building == null || area == null) {
             throw new InsertRoomException("Name, type, building and area are mandatory!");
         }
-
+        //If the room already exists then throws an exception
         if(dbFactory.getRoomDao().getRoomByName(name)!= null){
             throw new InsertRoomException("The room you're trying to insert already exists!");
         }
-
         //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
         //The builder create a room
