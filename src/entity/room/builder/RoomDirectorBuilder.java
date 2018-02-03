@@ -26,7 +26,7 @@ public class RoomDirectorBuilder {
             case "Laboratory":
                 myRoomBuilder = new LaboratoryBuilder();
                 break;
-            case "Congress Hall":
+            case "CongressHall":
                 myRoomBuilder = new CongressHallBuilder();
                 break;
         }
