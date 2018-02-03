@@ -43,6 +43,9 @@
                                 </thead>
                                 <tbody>
                                 <%
+
+                                    if(rooms.getRooms() != null || rooms.getRooms().size() > 0){
+
                                     int i = 1;
                                     for (Room room : rooms.getRooms()) {
                                 %>
@@ -85,7 +88,13 @@
                                 </tr>
 
                                 <% i++;
-                                } %>
+                                }
+
+                                    }else{
+
+                                        out.print("There are no rooms present. Please Add one!");
+
+                                }%>
 
                                 </tbody>
                             </table>
