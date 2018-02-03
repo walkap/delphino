@@ -7,9 +7,16 @@
 <jsp:setProperty name="roomBean" property="*"/>
 
 <%
+    if(!isAdmin && request.getSession().getAttribute("isLoggedIn") != null){
+        response.sendRedirect("index.jsp");
+    }
+%>
+
+<%
     String[] types = RoomTypes.getTypes();
     String[] areas = Area.getAreas();
-    Room room = roomBean.getRoom(Integer.parseInt(request.getParameter("id")));
+    roomBean.setMyRoom(Integer.parseInt(request.getParameter("id")));
+    Room room = roomBean.getMyRoom();
 
 %>
 
@@ -22,7 +29,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Update room <%= room.getName() %>
+                <h1 class="page-header">Update room <%=room.getName()%>
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -186,9 +193,7 @@
 </script>
 
 <script type="text/javascript">
-
-    $area=$("#area");
-    $area.change (
+    $("#area").change (
         function()  {
             $.ajax({
                 type: "POST",
