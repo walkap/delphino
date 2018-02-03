@@ -26,8 +26,8 @@ public class ViewRoomActivity {
     private ComboBox<String> roomType;
     private ObservableList<String> typesList = FXCollections.observableArrayList();
     @FXML
-    private ComboBox<Integer> roomBuilding;
-    private ObservableList<Integer> buildingsList = FXCollections.observableArrayList();
+    private ComboBox<String> roomBuilding;
+    private ObservableList<String> buildingsList = FXCollections.observableArrayList();
     @FXML
     private TextField roomSeats;
     @FXML
@@ -63,7 +63,7 @@ public class ViewRoomActivity {
         selectedRoom = room;
         roomName.setText(selectedRoom.getName());
         roomType.setValue(selectedRoom.getType());
-        //roomBuilding.setText(selectedRoom.getBuilding().getName());
+        roomBuilding.setValue(selectedRoom.getBuilding().getName());
         roomSeats.setText(Integer.toString(selectedRoom.getSeats()));
         roomBoard.setText(selectedRoom.getBoard());
         roomProjectors.setText(Integer.toString(selectedRoom.getProjectors()));
@@ -78,7 +78,7 @@ public class ViewRoomActivity {
         String[] types = RoomTypes.getTypes();
         //TODO we need control to get all buildings
         //Initialize the buildings from stub
-        Integer[] buildings = {1, 2, 3};
+        String[] buildings = {"Didattica", "Informazione", "Civile"};
 
         //Initialize type combo
         typesList.addAll(types);
@@ -106,7 +106,7 @@ public class ViewRoomActivity {
         type = roomType.getValue();
 
         if (roomBuilding.getValue() != null) {
-            building = roomBuilding.getValue().toString();
+            building = roomBuilding.getValue();
         }
 
         if (!roomSeats.getText().isEmpty()) {
