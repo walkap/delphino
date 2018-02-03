@@ -137,4 +137,33 @@
     <%@include file="../parts/footer-scripts.jsp" %>
 
 </body>
+<script>
+
+    <%
+    int res;
+    if (request.getSession().getAttribute("res")!= null){
+        res = (int) request.getSession().getAttribute("res");
+    }else{
+        res = 4;
+    }
+    if (res == 0)
+    { %>
+    window.alert('TemplateRoom not update because the values are equals;');
+    <%}%>
+    <% request.getSession().setAttribute("res",4); %>
+    <%
+    if (res == 1)
+    { %>
+    window.alert('TemplateRoom not update because is not present in db');
+    <%}%>
+    <% request.getSession().setAttribute("res",4); %>
+    <%
+    if (res == 2)
+    { %>
+    window.alert('TemplateRoom Update');
+    <%}%>
+    <% request.getSession().setAttribute("res",4); %>
+
+
+</script>
 </html>

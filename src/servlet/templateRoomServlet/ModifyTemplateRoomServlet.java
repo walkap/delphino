@@ -20,6 +20,9 @@ public class ModifyTemplateRoomServlet extends HttpServlet {
         int computers = 0;
         boolean desk;
         TemplateRoomController tRC = new TemplateRoomController();
+        int res;
+
+
 
         response.setContentType("text/html");
         String name = request.getParameter("name");
@@ -42,7 +45,8 @@ public class ModifyTemplateRoomServlet extends HttpServlet {
         try {
             TemplateRoom templateRoom = new TemplateRoom(name, seats, board,
                     projectors, computers, desk);
-            tRC.modifyTemplateRoom(templateRoom);
+            res = tRC.modifyTemplateRoom(templateRoom);
+            request.getSession().setAttribute("res",res);
             response.sendRedirect("/pages/editTemplateRoom.jsp?name=" + tRC.getTemplateRoom(name).getNameTemplate());
 
         }catch (Exception e){

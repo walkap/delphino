@@ -75,7 +75,7 @@
                             <a href="createTemplateRoom.jsp">Create Template Room</a>
                         </li>
                         <li>
-                            <a href="viewTemplateRooms.jsp">View, Modify, Delete a Template Room</a>
+                            <a href="viewTemplateRooms.jsp">All Template Rooms</a>
                         </li>
                     </ul>
                 </li>
@@ -86,7 +86,7 @@
                             <a href="createFeature.jsp">Create Feature</a>
                         </li>
                         <li>
-                            <a href="viewFeatures.jsp">View, Modify, Delete a Feature</a>
+                            <a href="viewFeatures.jsp">All Features</a>
                         </li>
                     </ul>
                 </li>

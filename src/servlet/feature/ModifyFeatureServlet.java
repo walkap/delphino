@@ -16,6 +16,7 @@ public class ModifyFeatureServlet extends HttpServlet {
         response.setContentType("text/html");
         String name = request.getParameter("name");
         String description = request.getParameter("description");
+        int res;
 
         FeatureController featureController = new FeatureController();
 
@@ -23,7 +24,8 @@ public class ModifyFeatureServlet extends HttpServlet {
             featureController.updateFeature(name, description);
             System.out.println(featureController.getFeature(name).getName());
             System.out.println(featureController.getFeature(name).getDescription());
-
+            res = 2;
+            request.getSession().setAttribute("res",res);
             //response.sendRedirect("/pages/editFeature.jsp?=" + featureController.getFeature(name).getName());
             response.sendRedirect("/pages/viewFeatures.jsp");
         }catch (Exception e){

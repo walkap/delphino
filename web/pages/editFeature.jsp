@@ -8,7 +8,7 @@
 <%
     Feature feature = features.getFeature(request.getParameter("name"));
     //System.out.println(feature.getName());
-    System.out.println(feature.getDescription());
+    //System.out.println(feature.getDescription());
 
 %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -22,7 +22,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Update Feature "<%= feature.getName() %>"
+                <h1 class="page-header">Update Feature "<%=feature.getName()%>"
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -114,4 +114,6 @@
     <%@include file="../parts/footer-scripts.jsp" %>
 
 </body>
+
+
 </html>

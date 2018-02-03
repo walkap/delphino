@@ -19,6 +19,7 @@ public class CreateTemplateRoomServlet extends HttpServlet {
         int computers = 0;
         int projectors = 0;
         boolean desk;
+        int res;
 
         response.setContentType("text/html");
         String name = request.getParameter("name");
@@ -47,13 +48,17 @@ public class CreateTemplateRoomServlet extends HttpServlet {
 
 
         try {
-            if(tRC.createTemplateRoom(name, seats, board, projectors, computers, desk)){
-            response.sendRedirect("/pages/createTemplateRoom.jsp");
-            //RequestDispatcher rd=request.getRequestDispatcher("/pages/createTemplateRoom.jsp");
-            //rd.forward(request, response);
+            if (tRC.createTemplateRoom(name, seats, board, projectors, computers, desk)) {
+                res = 1;
+                request.getSession().setAttribute("res", res);
+                response.sendRedirect("/pages/createTemplateRoom.jsp");
+                //RequestDispatcher rd=request.getRequestDispatcher("/pages/createTemplateRoom.jsp");
+                //rd.forward(request, response);
                 System.out.println(tRC.createTemplateRoom(name, seats, board, projectors, computers, desk));
-            }else {
-                response.sendRedirect("/pages/index.jsp");
+            } else {
+                res = 2;
+                request.getSession().setAttribute("res", res);
+                response.sendRedirect("/pages/createTemplateRoom.jsp");
                 //request.getSession().setAttribute();
 
             }

@@ -26,14 +26,15 @@ public class TemplateRoomController {
      * @return boolean;
      */
     public Boolean createTemplateRoom(String nT, int sT, String bT, int pT, int cT, Boolean dT) {
+        boolean bool = false;
         try {
-            tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT);
-            return true;
+            if (tRD.addTemplateRoom(nT, sT, bT, pT, cT, dT)){
+                bool = true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
-
+        return bool;
     }
 
     /**

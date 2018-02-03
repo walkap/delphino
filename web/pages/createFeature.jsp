@@ -42,6 +42,7 @@
                                     </div>
                                     <button type="reset" class="btn btn-default">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Confirm</button>
+
                                 </form>
                             </div>
                         </div>
@@ -60,4 +61,28 @@
 
 
 </body>
+
+<script>
+
+    <%
+    int res;
+    if (request.getSession().getAttribute("res")!= null){
+        res = (int) request.getSession().getAttribute("res");
+    }else{
+        res = 0;
+    }
+    if (res == 1)
+    { %>
+            window.alert('Feature created');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+
+    <%if (res == 2)
+    { %>
+            alert('Feature is present in System, change name');
+    <%}%>
+    <% request.getSession().setAttribute("res",0); %>
+
+
+</script>
 </html>
