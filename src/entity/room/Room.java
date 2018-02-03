@@ -38,84 +38,38 @@ public class Room implements Serializable{
         this.building = building;
     }
 
-    /**
-     * Get the room's id
-     *
-     * @return int
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * Get the room's name
-     *
-     * @return String
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Get the room's building (place)
-     *
-     * @return Building
-     */
     public Building getBuilding() {
         return building;
     }
 
-    /**
-     * Get the room's seats
-     * This is an optional variable
-     * @return int
-     */
     public int getSeats() {
         return seats;
     }
 
-    /**
-     * Get the room's type of board (e.g. blackboard)
-     * This is an optional variable
-     * @return String
-     */
     public String getBoard() {
         return board;
     }
 
-    /**
-     * Get the room's projector type
-     * This is an optional variable
-     * @return String
-     */
     public int getProjectors() {
         return projectors;
     }
 
-    /**
-     * Get the number of computers present
-     * in the room
-     *
-     * @return int
-     */
     public int getComputers() {
         return computers;
     }
 
-    /**
-     * Boolean to know if the desk is present or not
-     *
-     * @return Boolean
-     */
     public Boolean hasTeacherDesk() {
         return teacherDesk;
     }
 
-    /**
-     * Get the room's type
-     *
-     * @return String
-     */
     public String getType() {
         return type;
     }
