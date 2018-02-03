@@ -12,8 +12,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class HandleRoom {
-    private Room myRoom;
-    private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
+    private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.FILE);
 
     /**
      * This method insert new room in the database, getting parameter
@@ -43,7 +42,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        myRoom = builder.getRoom();
+        Room myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -97,7 +96,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        myRoom = builder.getRoom();
+        Room myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -117,6 +116,7 @@ public class HandleRoom {
     public Room getRoomByName(String name) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
+        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by name
             myRoom = roomDao.getRoomByName(name);
@@ -135,6 +135,7 @@ public class HandleRoom {
     public Room getRoomById(int id) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
+        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by id
             myRoom = roomDao.getRoomById(id);
@@ -167,10 +168,10 @@ public class HandleRoom {
      * @param computers   - int
      * @return Vector
      */
-    public Vector<Room> getRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
+    public Vector<Room> searchRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
-        return roomDao.getRooms(type, building, board, teacherDesk, seats, projectors, computers);
+        return roomDao.searchRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
 }
