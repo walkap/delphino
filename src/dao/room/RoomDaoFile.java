@@ -2,14 +2,12 @@ package dao.room;
 
 import entity.Building;
 import entity.room.Room;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class RoomDaoFile implements RoomDao{
 
-    private static final String FILE_PATH = "/delphino/room.ser";
+    private static final String FILE_PATH = "/Users/robertocapannelli/Projects/delphino/room.ser";
 
     /**
      * This method is used to serialize an object vector in a file
@@ -20,6 +18,10 @@ public class RoomDaoFile implements RoomDao{
         FileOutputStream fileOutput = null;
         ObjectOutputStream objectOutput = null;
         try {
+            File file = new File(FILE_PATH);
+            if(file.createNewFile()){
+                System.out.println("The file has been create!");
+            }
             //Open file stream
             fileOutput = new FileOutputStream(FILE_PATH);
             //Open object stream
@@ -55,6 +57,10 @@ public class RoomDaoFile implements RoomDao{
     private Vector<Room> deserialization() {
         Vector<Room> vec = null;
         try {
+            File file = new File(FILE_PATH);
+            if(file.createNewFile()){
+                System.out.println("The file has been create!");
+            }
             //Open file stream
             FileInputStream fileOutput = new FileInputStream(FILE_PATH);
             //Open object stream
@@ -166,6 +172,7 @@ public class RoomDaoFile implements RoomDao{
         for (Room currentRoom : vec) {
             if (currentRoom.getName().equals(name)) {
                 room = currentRoom;
+                System.out.println("Room: " + room.getName() + " found!");
                 return room;
             }
         }
@@ -185,6 +192,7 @@ public class RoomDaoFile implements RoomDao{
     @Override
     public Vector<Room> getAllRooms(){
         Vector<Room> vec = deserialization();
+        System.out.println("All rooms found!");
         return vec;
     }
 
@@ -192,4 +200,22 @@ public class RoomDaoFile implements RoomDao{
     public Vector<Room> searchRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         return null;
     }
+
+    public static void main(String[] args) {
+        //RoomDaoFile roomDaoFile = new RoomDaoFile();
+
+        //Room room = new Room("B5", new Building("Didattica", "Ingegneria"));
+        //Vector<Room> vector = new Vector<Room>();
+        //vector.add(room);
+        //roomDaoFile.serialization(vector);
+        //roomDaoFile.deserialization();
+        //roomDaoFile.isRoomPresent("B1");
+        //roomDaoFile.insertRoom(room);
+        //roomDaoFile.deleteRoom(room);
+        //roomDaoFile.updateRoom(room);
+        //roomDaoFile.getRoomByName("B5");
+        //roomDaoFile.getAllRooms();
+
+    }
+
 }
