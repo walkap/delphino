@@ -103,8 +103,15 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
         this.executeUpdate(sql.toString());
     }
 
-    @Override
-    public Room getRoomByName(String name) throws NullPointerException {
+
+    /**
+     * Helper method to avoid repeated code
+     * @param column String
+     * @param param T
+     * @param <T> T
+     * @return Room
+     */
+    private <T> Room getRoom(String column, T param){
         Statement s = null;
         Connection c = ds.getConnection();
         ResultSet rs = null;
@@ -114,9 +121,9 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
             StringBuilder sql = new StringBuilder();
             sql.append("SELECT * FROM ").append(TABLE_NAME)
                     .append(" WHERE ")
-                    .append(COLUMN_NAME)
+                    .append(column)
                     .append("='")
-                    .append(name)
+                    .append(param)
                     .append("'");
             rs = s.executeQuery(sql.toString());
             if (rs.next()) {
@@ -137,36 +144,13 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
     }
 
     @Override
+    public Room getRoomByName(String name) throws NullPointerException {
+        return getRoom(COLUMN_NAME, name);
+    }
+
+    @Override
     public Room getRoomById(int id) throws NullPointerException {
-        Statement s = null;
-        Connection c = ds.getConnection();
-        ResultSet rs = null;
-        Room room = null;
-        try {
-            s = c.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            StringBuilder sql = new StringBuilder();
-            sql.append("SELECT * FROM ").append(TABLE_NAME)
-                    .append(" WHERE ")
-                    .append(COLUMN_ID)
-                    .append("='")
-                    .append(id)
-                    .append("'");
-            rs = s.executeQuery(sql.toString());
-            if (rs.next()) {
-                RoomDirectorBuilder rdb = new RoomDirectorBuilder();
-                RoomBuilder rb = rdb.buildRoom(rs.getString(COLUMN_NAME), rs.getString(COLUMN_TYPE),
-                        new Building(rs.getString(COLUMN_BUILDING), rs.getString(COLUMN_AREA)));
-                setAllOptionalAttributes(rb, rs);
-                room = rdb.getRoom();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            this.closeResultSet(rs);
-            this.closeStatement(s);
-            ds.closeConnection(c);
-        }
-        return room;
+        return getRoom(COLUMN_NAME, id);
     }
 
     @Override
