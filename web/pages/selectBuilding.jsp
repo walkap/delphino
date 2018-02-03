@@ -82,14 +82,14 @@
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <div>
-                                <input name = "delete" value ="delete" id="delete" class="btn btn-lg btn-success btn-block" onclick="deletePressed" type="submit">
+                                <input name = "delete" value ="Delete" id="delete"  onclick="deletePressed" type="submit">
                             </div>
                             </fieldset>
                     </form>
                 <!-- Change this to a button or input when using this as a form -->
                 <div>
                 </div>
-                            <input value = "modify" class="btn btn-lg btn-success btn-block" type="button" onclick="showDiv()">
+                            <input value = "Modify"  type="button" onclick="showDiv()">
                             <div id="modify"  style="display:none;" >
                                 <form role="form" action="/ModifyBuildingServlet" method="post">
                                     <input type="text" id="oldarea" name="oldarea" readonly><br>

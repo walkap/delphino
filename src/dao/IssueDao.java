@@ -61,7 +61,6 @@ public class IssueDao {
         catch(IOException ex)
         {
             ex.printStackTrace();
-            System.out.println("IOException is caught");
         }
     }
 
@@ -113,7 +112,6 @@ public class IssueDao {
         catch(IOException ex)
         {
             ex.printStackTrace();
-            System.out.println("IOException is caught");
         }
     }
 
@@ -172,12 +170,10 @@ public class IssueDao {
 
         }
 
-        System.out.println("Begin list");
         for (int j = 0; j < myList.size(); j++) {
 
             System.out.println(myList.get(j).getState());
         }
-        System.out.println("end list");
 
         return myList;
 

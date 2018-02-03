@@ -1,6 +1,5 @@
-package thread;
+package thread.issue;
 
-import bean.IssueBean;
 import dao.IssueDao;
 import entity.Building;
 import entity.Issue;
