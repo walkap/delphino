@@ -12,8 +12,9 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class HandleRoom {
-    private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.FILE);
+    private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
 
+    private Room myRoom;
     /**
      * This method insert new room in the database, getting parameter
      * from front end
@@ -32,6 +33,11 @@ public class HandleRoom {
         if (name == null || type == null || building == null || area == null) {
             throw new InsertRoomException("Name, type, building and area are mandatory!");
         }
+
+        if(dbFactory.getRoomDao().getRoomByName(name)!= null){
+            throw new InsertRoomException("The room you're trying to insert already exists!");
+        }
+
         //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
         //The builder create a room
@@ -42,7 +48,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        Room myRoom = builder.getRoom();
+        myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -96,7 +102,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        Room myRoom = builder.getRoom();
+        myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -116,7 +122,6 @@ public class HandleRoom {
     public Room getRoomByName(String name) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
-        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by name
             myRoom = roomDao.getRoomByName(name);
@@ -135,7 +140,6 @@ public class HandleRoom {
     public Room getRoomById(int id) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
-        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by id
             myRoom = roomDao.getRoomById(id);
