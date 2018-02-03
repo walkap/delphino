@@ -2,6 +2,7 @@ package boundary.roomManagementBoundary.viewAllRoomsBoundary;
 
 import boundary.roomManagementBoundary.viewRoomBoundary.ViewRoomActivity;
 import control.HandleRoom;
+import entity.Building;
 import entity.room.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ public class ViewAllRoomsActivity {
     @FXML
     private TableColumn<Room, String> roomTypeColumn;
     @FXML
-    private TableColumn<Room, Integer> roomBuilding;
+    private TableColumn<Room, Building> roomBuilding;
     @FXML
     private Button returnButton;
 
@@ -52,9 +53,9 @@ public class ViewAllRoomsActivity {
         //Get all rooms from database
         roomList.addAll(getAllRooms());
         //Define table columns
-        roomNameColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("Name"));
-        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("Type"));
-        roomBuilding.setCellValueFactory(new PropertyValueFactory<Room, Integer>("Building"));
+        roomNameColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("name"));
+        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("type"));
+        roomBuilding.setCellValueFactory(new PropertyValueFactory<Room, Building>("name"));
         //Attach the list to tableView
         roomTable.setItems(roomList);
         addButtonToTable();
