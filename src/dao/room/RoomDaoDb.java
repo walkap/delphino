@@ -36,7 +36,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
      * @param name - String
      * @return Boolean
      */
-    private Boolean isRoomPresent(String name) {
+    public Boolean isRoomPresent(String name) {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT from ")
                 .append(TABLE_NAME)
@@ -150,7 +150,7 @@ public class RoomDaoDb extends AbstractDao implements RoomDao {
 
     @Override
     public Room getRoomById(int id) throws NullPointerException {
-        return getRoom(COLUMN_NAME, id);
+        return getRoom(COLUMN_ID, id);
     }
 
     @Override
