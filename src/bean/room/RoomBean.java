@@ -6,7 +6,7 @@ import entity.room.Room;
 
 public class RoomBean {
 
-    private Room room;
+    private Room myRoom;
     private int id;
     private String name;
     private Building building;
@@ -16,15 +16,27 @@ public class RoomBean {
     private int projectors;
     private int computers;
     private Boolean teacherDesk;
+    private String area;
 
-    public Room getRoom(int id) {
-        HandleRoom handleRoom = new HandleRoom();
-        room = handleRoom.getRoomById(id);
-        return room;
+    public Room getMyRoom() {
+        return myRoom;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setMyRoom(int id) {
+        HandleRoom handleRoom = new HandleRoom();
+        this.myRoom = handleRoom.getRoomById(id);
+    }
+
+    public Boolean getTeacherDesk() {
+        return teacherDesk;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = myRoom.getBuilding().getArea();
     }
 
     public int getId() {
@@ -98,4 +110,5 @@ public class RoomBean {
     public void setTeacherDesk(Boolean teacherDesk) {
         this.teacherDesk = teacherDesk;
     }
+
 }
