@@ -29,6 +29,25 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
+                        <%
+                            String message = "";
+                            boolean success = false;
+                            if(request.getSession().getAttribute("successMessage") != null){
+                                if(request.getSession().getAttribute("successMessage").equals("ok")){
+                                    message = "The room has been successfully added!";
+                                    success = true;
+                                }else if(request.getSession().getAttribute("successMessage").equals("not")){
+                                    message = "Something wen wrong! The room has not been added!";
+                                }
+                            }%>
+                        <% if(!message.equals("")){%>
+                            <%if (success){%>
+                                <div class="alert alert-success"><%=message%></div>
+                            <%}else{ %>
+                                <div class="alert alert-danger"><%=message%></div>
+                            <%}%>
+                        <%}%>
+                        <% request.getSession().removeAttribute("successMessage");%>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -172,6 +191,9 @@
             });
         }
     );
+
+
+
 </script>
 </body>
 </html>

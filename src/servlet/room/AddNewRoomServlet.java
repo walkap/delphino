@@ -40,9 +40,10 @@ public class AddNewRoomServlet extends HttpServlet {
         try {
             //Insert the room
             handleRoom.insertRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
-
+            request.getSession().setAttribute("successMessage", "ok");
         } catch (RoomAlreadyExistsExceptions | MandatoryFieldsExceptions e) {
             e.printStackTrace();
+            request.getSession().setAttribute("successMessage", "not");
         }finally {
             //Redirect the user to the same page refreshed
             response.sendRedirect("/pages/add-new-room.jsp");
