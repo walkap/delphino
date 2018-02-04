@@ -57,13 +57,14 @@
                                     <div class="form-group">
                                         <label for="area">Area</label>
                                         <select id="area" class="form-control" name="area"
-                                                onchange="setOptionValue(value, this.id)" required>
+                                                onchange="setOptionValue(value, this.id)" required disabled>
                                             <% for (String area : areas) { %>
                                             <option value="<%=area%>" <%if (area.equals(room.getBuilding().getArea()))
                                                 out.print("selected='selected'"); %>><%=area%>
                                             </option>
                                             <% } %>
                                         </select>
+                                        <input type="hidden" name="area" value="<%=room.getBuilding().getArea()%>">
                                         <p class="help-block">This is the area where the room is located</p>
                                     </div>
                                     <div class="form-group">
@@ -96,11 +97,12 @@
                                     <div class="form-group">
                                         <label for="building">Building</label>
                                         <select id="building" class="form-control" name="building"
-                                                onchange="setOptionValue(value, this.id)" required>
+                                                onchange="setOptionValue(value, this.id)" required disabled>
                                             <option value="<%=room.getBuilding().getName()%>"
                                                     selected><%=room.getBuilding().getName()%>
                                             </option>
                                         </select>
+                                        <input type="hidden" name="building" value="<%=room.getBuilding().getName()%>">
                                         <p class="help-block">This is the building where the room is located inside the
                                             area</p>
                                     </div>
