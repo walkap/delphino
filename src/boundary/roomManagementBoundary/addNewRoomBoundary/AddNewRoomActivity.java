@@ -2,7 +2,8 @@ package boundary.roomManagementBoundary.addNewRoomBoundary;
 
 import control.HandleRoom;
 import entity.TemplateRoom;
-import exception.room.InsertRoomException;
+import exception.room.MandatoryFieldsExceptions;
+import exception.room.RoomAlreadyExistsExceptions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -147,7 +148,7 @@ public class AddNewRoomActivity {
         HandleRoom rmc = new HandleRoom();
         try {
             rmc.insertRoom(name, type, building, "area", board, desk, seats, projectors, computers);
-        } catch (InsertRoomException e) {
+        } catch (RoomAlreadyExistsExceptions | MandatoryFieldsExceptions e) {
             e.printStackTrace();
         }
     }
