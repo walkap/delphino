@@ -1,7 +1,8 @@
 package servlet.room;
 
 import control.HandleRoom;
-import exception.room.InsertRoomException;
+import exception.room.MandatoryFieldsExceptions;
+import exception.room.RoomAlreadyExistsExceptions;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,10 +40,12 @@ public class AddNewRoomServlet extends HttpServlet {
         try {
             //Insert the room
             handleRoom.insertRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
+
+        } catch (RoomAlreadyExistsExceptions | MandatoryFieldsExceptions e) {
+            e.printStackTrace();
+        }finally {
             //Redirect the user to the same page refreshed
             response.sendRedirect("/pages/add-new-room.jsp");
-        } catch (InsertRoomException e) {
-            e.printStackTrace();
         }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
