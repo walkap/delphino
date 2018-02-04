@@ -1,7 +1,7 @@
 package servlet.room;
 
 import control.HandleRoom;
-import exception.room.InsertRoomException;
+import exception.room.MandatoryFieldsExceptions;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +43,7 @@ public class UpdateRoomServlet extends HttpServlet {
         try {
             handleRoom.updateRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
             response.sendRedirect("/pages/single-room.jsp?id=" + handleRoom.getRoomByName(name).getId());
-        } catch (InsertRoomException e) {
+        } catch (MandatoryFieldsExceptions e) {
             e.printStackTrace();
         }
     }
