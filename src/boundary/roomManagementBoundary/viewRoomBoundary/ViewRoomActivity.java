@@ -2,7 +2,7 @@ package boundary.roomManagementBoundary.viewRoomBoundary;
 
 import control.HandleRoom;
 import entity.room.Room;
-import exception.room.InsertRoomException;
+import exception.room.MandatoryFieldsExceptions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -130,7 +130,7 @@ public class ViewRoomActivity {
         HandleRoom rmc = new HandleRoom();
         try {
             rmc.updateRoom(name, type, building, "area", board, desk, seats, projectors, computers);
-        }catch (InsertRoomException e){
+        }catch (MandatoryFieldsExceptions e){
             e.printStackTrace();
         }
     }
