@@ -25,7 +25,7 @@ public abstract class DaoFactory {
             case FILE:
                 return new FileDaoFactory();
             default:
-                return new DbDaoFactory();
+                return null;
         }
     }
 }
