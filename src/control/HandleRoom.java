@@ -6,7 +6,8 @@ import entity.Building;
 import entity.room.Room;
 import entity.room.builder.RoomBuilder;
 import entity.room.builder.RoomDirectorBuilder;
-import exception.room.InsertRoomException;
+import exception.room.MandatoryFieldsExceptions;
+import exception.room.RoomAlreadyExistsExceptions;
 
 import java.sql.SQLException;
 import java.util.Vector;
@@ -28,14 +29,15 @@ public class HandleRoom {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void insertRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
+    public void insertRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers)
+            throws RoomAlreadyExistsExceptions, MandatoryFieldsExceptions {
         //This exception checks if all mandatory fields have benn filled
         if (name == null || type == null || building == null || area == null) {
-            throw new InsertRoomException("Name, type, building and area are mandatory!");
+            throw new MandatoryFieldsExceptions("Name, type, building and area");
         }
         //If the room already exists then throws an exception
         if(dbFactory.getRoomDao().getRoomByName(name)!= null){
-            throw new InsertRoomException("The room you're trying to insert already exists!");
+            throw new RoomAlreadyExistsExceptions("The room you're trying to insert already exists!");
         }
         //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
@@ -86,10 +88,11 @@ public class HandleRoom {
      * @param projectors  - int
      * @param computers   - int
      */
-    public void updateRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers) throws InsertRoomException {
+    public void updateRoom(String name, String type, String building, String area, String board, boolean teacherDesk, int seats, int projectors, int computers)
+            throws MandatoryFieldsExceptions {
         //This exception checks if all mandatory fields have benn filled
         if (name == null || type == null || building == null || area == null) {
-            throw new InsertRoomException("Name, type, building and area are mandatory!");
+            throw new MandatoryFieldsExceptions("Name, type, building and area");
         }
         //Create a director builder that decides which kind of room instantiate
         RoomDirectorBuilder director = new RoomDirectorBuilder();
