@@ -15,6 +15,9 @@ import java.util.Vector;
 public class HandleRoom {
     //Get the persistence
     private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
+    private RoomDao roomDao;
+    private Room myRoom;
+
     /**
      * This method insert new room in the database, getting parameter
      * from front end
@@ -48,9 +51,9 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        Room myRoom = builder.getRoom();
+        myRoom = builder.getRoom();
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
+        roomDao = dbFactory.getRoomDao();
         try {
             //Get the method to insert the room in the persistence
             roomDao.insertRoom(myRoom);
@@ -66,7 +69,7 @@ public class HandleRoom {
      */
     public void deleteRoom(Room room) throws NullPointerException {
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
+        roomDao = dbFactory.getRoomDao();
         try {
             //Get the method to delete the room from the persistence
             roomDao.deleteRoom(room);
@@ -103,9 +106,9 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        Room myRoom = builder.getRoom();
+        myRoom = builder.getRoom();
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
+        roomDao = dbFactory.getRoomDao();
         try {
             //Get the method to update the current room
             roomDao.updateRoom(myRoom);
@@ -122,8 +125,8 @@ public class HandleRoom {
      */
     public Room getRoomByName(String name) {
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
-        Room myRoom = null;
+        roomDao = dbFactory.getRoomDao();
+        myRoom = null;
         try {
             //Get the method to get the room from the persistence by name
             myRoom = roomDao.getRoomByName(name);
@@ -141,8 +144,8 @@ public class HandleRoom {
      */
     public Room getRoomById(int id) {
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
-        Room myRoom = null;
+        roomDao = dbFactory.getRoomDao();
+        myRoom = null;
         try {
             //Get the method to get the room from the persistence by id
             myRoom = roomDao.getRoomById(id);
@@ -159,7 +162,7 @@ public class HandleRoom {
      */
     public Vector<Room> getAllRooms() {
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
+        roomDao = dbFactory.getRoomDao();
         return roomDao.getAllRooms();
     }
 
@@ -177,7 +180,7 @@ public class HandleRoom {
      */
     public Vector<Room> searchRooms(String type, String building, String board, boolean teacherDesk, int seats, int projectors, int computers) {
         //Get the DAO to access the persistence
-        RoomDao roomDao = dbFactory.getRoomDao();
+        roomDao = dbFactory.getRoomDao();
         return roomDao.searchRooms(type, building, board, teacherDesk, seats, projectors, computers);
     }
 
