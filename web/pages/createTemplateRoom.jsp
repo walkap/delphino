@@ -88,7 +88,7 @@
 
 </body>
 
-<script>
+
 
     <%
     int res;
@@ -99,16 +99,16 @@
     }
     if (res == 1)
     { %>
-    window.alert('Template Room created!');
+<script>window.alert('Template Room created!');</script>
     <%}%>
     <% request.getSession().setAttribute("res",0); %>
     <%
     if (res == 2)
     { %>
-    window.alert('Template Room present in system, change name!');
+<script>window.alert('Template Room present in system, change name!');</script>
     <%}%>
     <% request.getSession().setAttribute("res",0); %>
 
 
-</script>
+
 </html>
