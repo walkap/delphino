@@ -42,9 +42,12 @@ public class UpdateRoomServlet extends HttpServlet {
         HandleRoom handleRoom = new HandleRoom();
         try {
             handleRoom.updateRoom(name, type, building, area, board, hasDesk, seats, projectors, computers);
-            response.sendRedirect("/pages/single-room.jsp?id=" + handleRoom.getRoomByName(name).getId());
+            request.getSession().setAttribute("successMessage", "ok");
         } catch (MandatoryFieldsExceptions e) {
             e.printStackTrace();
+            request.getSession().setAttribute("successMessage", "not");
+        }finally {
+            response.sendRedirect("/pages/single-room.jsp?id=" + handleRoom.getRoomByName(name).getId());
         }
     }
 

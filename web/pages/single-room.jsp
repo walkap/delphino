@@ -43,6 +43,26 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
+
+                        <%
+                            String message = "";
+                            boolean success = false;
+                            if(request.getSession().getAttribute("successMessage") != null){
+                                if(request.getSession().getAttribute("successMessage").equals("ok")){
+                                    message = "The room has been successfully updated!";
+                                    success = true;
+                                }else if(request.getSession().getAttribute("successMessage").equals("not")){
+                                    message = "Something went wrong! The room has not been updated!";
+                                }
+                            }%>
+                        <% if(!message.equals("")){%>
+                            <%if (success){%>
+                                <div class="alert alert-success"><%=message%></div>
+                            <%}else{ %>
+                                <div class="alert alert-danger"><%=message%></div>
+                            <%}%>
+                        <%}%>
+                        <% request.getSession().removeAttribute("successMessage");%>
                         <div class="row">
                             <form role="form" action="/UpdateRoomServlet" method="post">
                                 <div class="col-lg-6">
