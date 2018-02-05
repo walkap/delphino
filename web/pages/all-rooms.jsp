@@ -82,7 +82,7 @@
 
                                     <td>
                                         <a href="single-room.jsp?id=<%= room.getId() %>" type="button"
-                                           class="btn btn-info btn-block">Edit</a>
+                                           class="btn btn-primary btn-block">Edit</a>
                                     </td>
 
                                 </tr>

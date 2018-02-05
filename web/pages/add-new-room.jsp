@@ -137,8 +137,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-default">Submit</button>
                                         <button type="reset" class="btn btn-default">Reset</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                             </form>

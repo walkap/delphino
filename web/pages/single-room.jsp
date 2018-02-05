@@ -153,7 +153,7 @@
                                 <div class="col-sm-12 col-lg-10 pull-right">
                                     <div class="pull-right">
                                         <button type="reset" class="btn btn-default">Reset</button>
-                                        <button type="submit" class="btn btn-default">Update</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </form>
