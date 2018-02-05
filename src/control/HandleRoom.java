@@ -15,7 +15,6 @@ import java.util.Vector;
 public class HandleRoom {
     //Get the persistence
     private DaoFactory dbFactory = DaoFactory.getDaoFactory(DaoFactory.DATABASE);
-    private Room myRoom;
     /**
      * This method insert new room in the database, getting parameter
      * from front end
@@ -49,7 +48,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        myRoom = builder.getRoom();
+        Room myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -104,7 +103,7 @@ public class HandleRoom {
                 .setProjectors(projectors)
                 .setComputers(computers);
         //The builder create a room
-        myRoom = builder.getRoom();
+        Room myRoom = builder.getRoom();
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
         try {
@@ -124,6 +123,7 @@ public class HandleRoom {
     public Room getRoomByName(String name) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
+        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by name
             myRoom = roomDao.getRoomByName(name);
@@ -142,6 +142,7 @@ public class HandleRoom {
     public Room getRoomById(int id) {
         //Get the DAO to access the persistence
         RoomDao roomDao = dbFactory.getRoomDao();
+        Room myRoom = null;
         try {
             //Get the method to get the room from the persistence by id
             myRoom = roomDao.getRoomById(id);
