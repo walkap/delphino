@@ -37,7 +37,7 @@
                                     message = "The room has been successfully added!";
                                     success = true;
                                 }else if(request.getSession().getAttribute("successMessage").equals("not")){
-                                    message = "Something wen wrong! The room has not been added!";
+                                    message = "Something went wrong! The room has not been added!";
                                 }
                             }%>
                         <% if(!message.equals("")){%>
